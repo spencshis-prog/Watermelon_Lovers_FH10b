@@ -1,9 +1,3 @@
-
----
-
-### **Backend `README.md`**
-
-```markdown
 # Watermelon Lover Backend 🍉
 
 This is the backend component of the **Watermelon Lover** project, a senior design project developed at the **University of Texas at Austin**. The backend will handle core functionalities like machine learning model inference, data processing, and integration with the frontend for evaluating watermelon ripeness and quality.

@@ -1,6 +1,6 @@
 # How to Run the Watermelon Lover Project
 
-This guide provides instructions for running the **Watermelon Lover** project's frontend and backend components.
+This guide provides instructions for running the **Watermelon Lover** project's GUI
 
 ---
 
