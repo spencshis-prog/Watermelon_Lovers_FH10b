@@ -1,0 +1,67 @@
+Dependencies for Project 'Lab5', Target 'Lab5': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (.\startup.s)(0x67C79722)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include--pd "__UVISION_VERSION SETA 536" --pd "_RTE_ SETA 1" --pd "LM4F120 SETA 1" --pd "_RTE_ SETA 1"--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\Lab5.c)(0x67CB6CC3)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\lab5.o --omf_browse .\lab5.crf --depend .\lab5.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (../inc/tm4c123gh6pm.h)(0x670000EB)
+I (../inc/Texas.h)(0x670000EB)
+I (../inc/PLL.h)(0x670000EB)
+I (../inc/ST7735.h)(0x670000EB)
+I (../inc/Timer0A.h)(0x670000EB)
+I (../inc/Timer1A.h)(0x670000EB)
+I (Receiver.h)(0x67042AD0)
+I (Transmitter.h)(0x67042393)
+I (../inc/CortexM.h)(0x670000EB)
+I (../inc/SysTickInts.h)(0x670000EB)
+I (../inc/dsp.h)(0x670000EB)
+I (../inc/TLV5616.h)(0x670000EB)
+I (switch.h)(0x67041EAF)
+I (switch.c)(0x67C89B0E)
+I (../inc/fifo.h)(0x67042B13)
+I (UART.h)(0x67BFA207)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
+I (UART.c)(0x67C89BDA)
+I (../inc/UART.h)(0x67C7F181)
+F (..\inc\Texas.c)(0x67BF8123)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\texas.o --omf_browse .\texas.crf --depend .\texas.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (..\inc\../inc/CortexM.h)(0x670000EB)
+I (..\inc\../inc/tm4c123gh6pm.h)(0x670000EB)
+I (..\inc\../inc/TExaS.h)(0x670000EB)
+I (..\inc\../inc/PLL.h)(0x670000EB)
+F (..\inc\Timer0A.c)(0x67C89D39)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\timer0a.o --omf_browse .\timer0a.crf --depend .\timer0a.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (..\inc\../inc/tm4c123gh6pm.h)(0x670000EB)
+I (..\inc\../inc/CortexM.h)(0x670000EB)
+F (..\inc\Timer1A.c)(0x670443D9)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\timer1a.o --omf_browse .\timer1a.crf --depend .\timer1a.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (..\inc\../inc/tm4c123gh6pm.h)(0x670000EB)
+F (.\Transmitter.c)(0x67CA1644)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\transmitter.o --omf_browse .\transmitter.crf --depend .\transmitter.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (../inc/tm4c123gh6pm.h)(0x670000EB)
+I (../inc/Timer0A.h)(0x670000EB)
+I (../inc/Timer1A.h)(0x670000EB)
+I (../inc/fifo.h)(0x67042B13)
+I (../inc/tlv5616.h)(0x670000EB)
+I (../inc/CortexM.h)(0x670000EB)
+I (../inc/SysTickInts.h)(0x670000EB)
+F (.\Receiver.c)(0x67BE35C2)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\receiver.o --omf_browse .\receiver.crf --depend .\receiver.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (../inc/tm4c123gh6pm.h)(0x670000EB)
+I (../inc/dsp.h)(0x670000EB)
+I (../inc/fifo.h)(0x67042B13)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
+F (..\inc\ST7735.c)(0x670000EB)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\st7735.o --omf_browse .\st7735.crf --depend .\st7735.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x6025DA44)
+I (..\inc\ST7735.h)(0x670000EB)
+I (..\inc\../inc/tm4c123gh6pm.h)(0x670000EB)
+F (..\inc\PLL.c)(0x670000EB)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\pll.o --omf_browse .\pll.crf --depend .\pll.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (..\inc\../inc/PLL.h)(0x670000EB)
+I (..\inc\../inc/tm4c123gh6pm.h)(0x670000EB)
+F (..\inc\dsp.c)(0x67BE3AB3)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\dsp.o --omf_browse .\dsp.crf --depend .\dsp.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+F (..\inc\TLV5616.c)(0x67C7BB2F)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Lab5-IC:\Keil_v5\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\Keil\LM4F_DFP\1.0.0\Device\Include-D__UVISION_VERSION="536" -D_RTE_ -DLM4F120 -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\tlv5616.o --omf_browse .\tlv5616.crf --depend .\tlv5616.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6750FCAB)
+I (..\inc\../inc/tm4c123gh6pm.h)(0x670000EB)

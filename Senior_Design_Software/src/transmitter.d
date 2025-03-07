@@ -1,0 +1,9 @@
+.\transmitter.o: Transmitter.c
+.\transmitter.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\transmitter.o: ../inc/tm4c123gh6pm.h
+.\transmitter.o: ../inc/Timer0A.h
+.\transmitter.o: ../inc/Timer1A.h
+.\transmitter.o: ../inc/fifo.h
+.\transmitter.o: ../inc/tlv5616.h
+.\transmitter.o: ../inc/CortexM.h
+.\transmitter.o: ../inc/SysTickInts.h
