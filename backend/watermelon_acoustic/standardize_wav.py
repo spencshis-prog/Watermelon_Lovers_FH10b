@@ -32,7 +32,10 @@ def standardize_wav_file(input_path, output_path, target_duration_ms=1000, targe
             audio = audio[:target_duration_ms]
         # Export ensuring 16-bit PCM (using pcm_s16le)
         audio.export(output_path, format="wav", parameters=["-acodec", "pcm_s16le"])
-        print(f"Reformatted {input_path} to {output_path}")
+
+        rel_input = os.path.relpath(input_path, os.getcwd())
+        rel_output = os.path.relpath(output_path, os.getcwd())
+        print(f"Standardized {rel_input} to {rel_output}")
     except Exception as e:
         print(f"Error processing {input_path}: {e}")
 
@@ -42,6 +45,11 @@ def standardize_wav_files(input_dir, output_dir):
     Processes all .wav files in input_dir and writes standardized versions to output_dir.
     """
     main.clear_output_directory(output_dir)
+
+    rel_input_dir = os.path.relpath(input_dir, os.getcwd())
+    rel_output_dir = os.path.relpath(output_dir, os.getcwd())
+    print(f"Standardizing all .wav files in {rel_input_dir} into {rel_output_dir}")
+
     for file in os.listdir(input_dir):
         input_path = os.path.join(input_dir, file)
         if not os.path.isfile(input_path):
@@ -51,7 +59,7 @@ def standardize_wav_files(input_dir, output_dir):
             input_path = os.path.join(input_dir, file)
             output_path = os.path.join(output_dir, file)
             standardize_wav_file(input_path, output_path)
-    print(f"Reformatting complete. Standardized files are in {output_dir}")
+    print(f"Standardizing complete. Standardized files are in {rel_output_dir}")
 
 
 if __name__ == "__main__":

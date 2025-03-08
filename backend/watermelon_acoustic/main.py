@@ -6,12 +6,36 @@ USE_QILIN = True
 USE_LAB = False
 
 USE_SEPARATE_TEST_SET = False  # set to true it we want to use all datapoints and have a distinct test set
-VAL_SPLIT_RATIO = 0.15   # fraction for validation (e.g. 15%)
-TEST_SPLIT_RATIO = 0.15  # fraction for test (e.g. 15%)
-# TODO: fix test train split when USE_SEPARATE_TEST_SET is flagged False
-# TODO: combined testing also compares models trained on individual datasets for reference
+VAL_SPLIT_RATIO = 0.15  # fraction for validation (e.g. 15%), set to 0 for final model
+TEST_SPLIT_RATIO = 0.15  # fraction for test (e.g. 15%), set to 0 for final model
+EPOCHS = 20  # 20 is recommended, use less for model_testing debugging
+
+
+# TODO: combined testing will try every dataset-noise reduction combination perhaps eliminates dataset
+# TODO: dimension below unless one dataset strictly worsens the medley
 # perhaps add something that exclusively pulls validation and test from lab dataset
-# perhaps combine datasets AFTER noise reduction instead (as it may differ per dataset)
+# perhaps combine datasets AFTER noise reduction instead (as it may differ per dataset
+# TODO: implement the following facets to be tested on lab condition datasets
+'''
+dimensions = {
+    "dataset": ["qilin", "lab", "combined"],
+    "noise_reduction": ["raw", "bandpass", "spectral sub", "wavelet"],
+    "model": {
+        "LinearRegression": {
+            "hp_tuning": ["default"]  # Linear regression might not need extensive tuning
+        },
+        "RandomForest": {
+            "hp_tuning": ["default", "grid search", "random search"]
+        },
+        "XGBoost": {
+            "hp_tuning": ["default", "grid search", "random search", "bayesian"]
+        },
+        "NeuralNetwork": {
+            "hp_tuning": ["default", "grid search", "random search", "bayesian"]
+        }
+    }
+}
+'''
 
 
 def clear_output_directory(output_dir):
@@ -82,29 +106,31 @@ def main():
 
     # Step iii: Noise reduction – apply techniques to the combined standardized data
     from noise_reduction import apply_noise_reduction
-    noise_reduction_base = os.path.join(base_dir, "output", "noise_reduction", "combined")
+    noise_reduction_dir = os.path.join(base_dir, "output", "noise_reduction", "combined")
 
-    clear_output_directory(noise_reduction_base)
+    clear_output_directory(noise_reduction_dir)
 
-    apply_noise_reduction(combined_standard_dir, noise_reduction_base)
+    apply_noise_reduction(combined_standard_dir, noise_reduction_dir)
 
     # Step iv: Model training – train a model for each noise reduction technique grouping
-    from model_training import train_models
+    from model_training import train_all_techniques
     models_output_dir = os.path.join(base_dir, "output", "models")
-    train_models(
-        noise_reduction_base,
-        models_output_dir,
-        use_separate_test_set=USE_SEPARATE_TEST_SET,
-        val_split=VAL_SPLIT_RATIO,
-        test_split=TEST_SPLIT_RATIO
+    # clear_output_directory(models_output_dir)
+    train_all_techniques(
+        noise_reduction_base_dir=noise_reduction_dir,
+        models_output_dir=models_output_dir,
+        test_ratio=TEST_SPLIT_RATIO,
+        val_ratio=VAL_SPLIT_RATIO,
+        epochs=EPOCHS,
+        batch_size=16
     )
 
     # Step v: Testing – run tests on each model, output metrics and charts
-    from model_testing import run_tests
+    from model_testing import test_all_techniques
     testing_output_dir = os.path.join(base_dir, "output", "testing")
     clear_output_directory(testing_output_dir)
     report_file = os.path.join(testing_output_dir, "test_report.txt")
-    run_tests(models_output_dir, noise_reduction_base, report_file)
+    test_all_techniques(models_output_dir, noise_reduction_dir, report_file)
 
 
 if __name__ == "__main__":

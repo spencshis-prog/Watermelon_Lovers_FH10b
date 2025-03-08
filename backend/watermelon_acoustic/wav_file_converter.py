@@ -16,7 +16,10 @@ def convert_m4a_to_wav(m4a_path, output_dir, label, sweetness, index=0):
         os.remove(wav_path)
 
     try:
-        print(f"Converting {m4a_path} to {wav_path}...")
+        rel_m4a = os.path.relpath(m4a_path, os.path.dirname(output_dir))
+        rel_wav = os.path.relpath(wav_path, os.path.dirname(output_dir))
+        print(f"Converting {rel_m4a} to {rel_wav}...")
+
         audio = AudioSegment.from_file(m4a_path, format="m4a")
         audio.export(wav_path, format="wav")
     except Exception as e:
@@ -52,6 +55,10 @@ def convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir):
         print("Failed to add ffmpeg or ffprobe to PATH. Check the paths.")
 
     main.clear_output_directory(output_dir)
+
+    rel_dataset = os.path.relpath(qilin_dataset_dir, base_dir)
+    rel_output = os.path.relpath(output_dir, base_dir)
+    print(f"Converting all files in {rel_dataset} into .wav format; output will be saved in {rel_output}.")
 
     # Iterate over subdirectories (assumes folder names contain an underscore for valid ones)
     for subdir in os.listdir(qilin_dataset_dir):
@@ -89,7 +96,9 @@ def convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir):
                 new_wav_name = f"{label}_{sweetness}_{i}.wav"
                 new_path = os.path.join(output_dir, new_wav_name)
                 if not os.path.exists(new_path):
-                    print(f"Copying {old_path} to {new_path}...")
+                    rel_old = os.path.relpath(old_path, base_dir)
+                    rel_new = os.path.relpath(new_path, base_dir)
+                    print(f"Copying {rel_old} to {rel_new}...")
                     try:
                         audio = AudioSegment.from_wav(old_path)
                         audio.export(new_path, format="wav")
