@@ -35,9 +35,9 @@ def standardize_wav_file(input_path, output_path, target_duration_ms=1000, targe
 
         rel_input = os.path.relpath(input_path, os.getcwd())
         rel_output = os.path.relpath(output_path, os.getcwd())
-        print(f"Standardized {rel_input} to {rel_output}")
+        print(f"[SW] Standardized {rel_input} to {rel_output}")
     except Exception as e:
-        print(f"Error processing {input_path}: {e}")
+        print(f"[SW] Error processing {input_path}: {e}")
 
 
 def standardize_wav_files(input_dir, output_dir):
@@ -48,7 +48,7 @@ def standardize_wav_files(input_dir, output_dir):
 
     rel_input_dir = os.path.relpath(input_dir, os.getcwd())
     rel_output_dir = os.path.relpath(output_dir, os.getcwd())
-    print(f"Standardizing all .wav files in {rel_input_dir} into {rel_output_dir}")
+    print(f"[SW] Standardizing all .wav files in {rel_input_dir} into {rel_output_dir}")
 
     for file in os.listdir(input_dir):
         input_path = os.path.join(input_dir, file)
@@ -59,7 +59,7 @@ def standardize_wav_files(input_dir, output_dir):
             input_path = os.path.join(input_dir, file)
             output_path = os.path.join(output_dir, file)
             standardize_wav_file(input_path, output_path)
-    print(f"Standardizing complete. Standardized files are in {rel_output_dir}")
+    print(f"[SW] Standardizing complete. Standardized files are in {rel_output_dir}")
 
 
 if __name__ == "__main__":

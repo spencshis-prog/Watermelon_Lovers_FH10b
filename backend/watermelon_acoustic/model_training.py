@@ -1,15 +1,51 @@
 import os
-import shutil
 import numpy as np
+import shutil
 import tensorflow as tf
-from sklearn.model_selection import train_test_split
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
+from sklearn.model_selection import KFold, train_test_split
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import math
 
 
-def build_model(input_shape=(16000, 1)):
+def green_print(message):
+    print("\033[92m" + message + "\033[0m")
+
+
+def load_feature_data(folder):
+    """
+    Loads .npy feature files from folder.
+    Assumes naming format: <watermelonID>_<brix>_<index>.npy
+    Returns X, y, fnames
+    """
+    data, labels, fnames = [], [], []
+    for file in os.listdir(folder):
+        if file.lower().endswith(".npy"):
+            parts = file.split("_")
+            if len(parts) < 3:
+                continue
+            try:
+                brix_val = float(parts[1])
+            except:
+                continue
+            file_path = os.path.join(folder, file)
+            feat = np.load(file_path)
+            data.append(feat)
+            labels.append(brix_val)
+            fnames.append(file)
+    return np.array(data), np.array(labels), fnames
+
+
+def build_model_features(input_shape):
+    """
+    Simple MLP regression model for feature vectors.
+    """
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Input, Dense, Dropout
+
     model = Sequential([
-        LSTM(128, input_shape=input_shape, return_sequences=False),
+        Input(shape=input_shape),
+        Dense(128, activation='relu'),
+        Dropout(0.2),
         Dense(64, activation='relu'),
         Dense(1, activation='linear')
     ])
@@ -17,142 +53,144 @@ def build_model(input_shape=(16000, 1)):
     return model
 
 
-def load_wav_data(folder):
+def kfold_train_and_evaluate(X, y, n_splits=5, epochs=20, batch_size=16):
     """
-    Loads .wav files from a folder, returns (X, y, filenames).
-    Assumes naming format: <watermelonID>_<brix>_<index>.wav
-    e.g. 1_9.4_0.wav -> brix=9.4
+    Performs K-fold cross-validation on (X, y).
+    Returns average metrics (MAE, MSE, RMSE, R2) across folds.
     """
-    data, labels, fnames = [], [], []
-    for file in os.listdir(folder):
-        if file.lower().endswith(".wav"):
-            parts = file.split("_")
-            if len(parts) < 3:
-                print(f"Skipping {file}, not in the expected format.")
-                continue
-            try:
-                brix_val = float(parts[1])  # second field is the brix
-            except Exception as e:
-                print(f"Skipping {file}, brix not parseable.", e)
-                continue
+    kf = KFold(n_splits=n_splits, shuffle=True, random_state=42)
+    fold_metrics = []
 
-            wav_path = os.path.join(folder, file)
-            audio_binary = tf.io.read_file(wav_path)
-            audio, _ = tf.audio.decode_wav(audio_binary, desired_channels=1)
-            audio = tf.squeeze(audio, axis=-1).numpy()
+    for fold_idx, (train_idx, val_idx) in enumerate(kf.split(X)):
+        X_train, X_val = X[train_idx], X[val_idx]
+        y_train, y_val = y[train_idx], y[val_idx]
 
-            if len(audio) < 16000:
-                audio = np.pad(audio, (0, 16000 - len(audio)), mode='constant')
-            else:
-                audio = audio[:16000]
+        input_shape = (X_train.shape[1],)
+        model = build_model_features(input_shape)
+        model.fit(X_train, y_train,
+                  validation_data=(X_val, y_val),
+                  epochs=epochs,
+                  batch_size=batch_size,
+                  verbose=0)
 
-            data.append(audio)
-            labels.append(brix_val)
-            fnames.append(file)
-    return np.array(data), np.array(labels), fnames
+        y_pred = model.predict(X_val).flatten()
+        mae = mean_absolute_error(y_val, y_pred)
+        mse = mean_squared_error(y_val, y_pred)
+        rmse = math.sqrt(mse)
+        r2 = r2_score(y_val, y_pred)
 
+        fold_metrics.append((mae, mse, rmse, r2))
+        print(f"[TR] [Fold {fold_idx + 1}] MAE={mae:.2f}, RMSE={rmse:.2f}, R2={r2:.2f}")
 
-def copy_files(filenames, src_folder, dst_folder):
-    """Utility to copy .wav files from src_folder to dst_folder."""
-    if not os.path.exists(dst_folder):
-        os.makedirs(dst_folder)
-    for fn in filenames:
-        src = os.path.join(src_folder, fn)
-        dst = os.path.join(dst_folder, fn)
-        shutil.copy(src, dst)
+    mae_avg = np.mean([m[0] for m in fold_metrics])
+    mse_avg = np.mean([m[1] for m in fold_metrics])
+    rmse_avg = np.mean([m[2] for m in fold_metrics])
+    r2_avg = np.mean([m[3] for m in fold_metrics])
+    return mae_avg, mse_avg, rmse_avg, r2_avg
 
 
-def train_model_for_technique(tech_folder, models_output_dir,
-                              test_ratio=0.15, val_ratio=0.15,
-                              epochs=20, batch_size=16):
+def kfold_train_feature_set(feature_folder, models_output_dir,
+                            holdout_ratio=0.15, n_splits=5,
+                            epochs=20, batch_size=16):
     """
-    1) Load all .wav data from tech_folder.
-    2) Split into train/val/test in memory (70/15/15).
-    3) Copy files into subfolders: tech_folder/train, tech_folder/val, tech_folder/test.
-    4) Train an LSTM model on the train set (with val for validation).
-    5) Save the model to models_output_dir.
+    Loads feature data from feature_folder, splits off a hold-out test set,
+    saves the hold-out test data to a 'test' subfolder,
+    performs K-fold evaluation on the remaining data,
+    writes the k-fold metrics to a summary file,
+    and then trains a final model on the remaining data.
+    Saves the final model to models_output_dir.
+    Returns the robust k-fold metrics.
     """
-    rel_tech = os.path.relpath(tech_folder, os.getcwd())
-    print(f"--- Processing technique folder: {rel_tech} ---")
+    nr_method = os.path.basename(os.path.dirname(feature_folder))
+    feat_method = os.path.basename(feature_folder)
+    green_print(f"[TR] \nK-fold training for {nr_method} - {feat_method}")
 
-    # Step A: Load data
-    X, y, fnames = load_wav_data(tech_folder)
+    X, y, fnames = load_feature_data(feature_folder)
     if len(X) == 0:
-        print(f"No data found in {rel_tech}, skipping.")
-        return
+        print(f"[TR] No data in {feature_folder}. Skipping.")
+        return None
 
-    # Make subfolders for train/val/test
-    train_subfolder = os.path.join(tech_folder, "train")
-    val_subfolder = os.path.join(tech_folder, "val")
-    test_subfolder = os.path.join(tech_folder, "test")
-
-    for folder in [train_subfolder, val_subfolder, test_subfolder]:
-        if os.path.exists(folder):
-            shutil.rmtree(folder)
-        os.makedirs(folder)
-
-    # Step B: Split out test (15%)
-    X_trainval, X_test, y_trainval, y_test, fn_trainval, fn_test = train_test_split(
-        X, y, fnames, test_size=test_ratio, random_state=42
+    # Split off a hold-out test set
+    X_remaining, X_test, y_remaining, y_test, fn_remaining, fn_test = train_test_split(
+        X, y, fnames, test_size=holdout_ratio, random_state=42
     )
+    # Save the hold-out test set into a subfolder "test" within feature_folder.
+    test_folder = os.path.join(feature_folder, "test")
+    if not os.path.exists(test_folder):
+        os.makedirs(test_folder)
+    for file in fn_test:
+        src = os.path.join(feature_folder, file)
+        dst = os.path.join(test_folder, file)
+        shutil.copy(src, dst)
+    rel_test_folder = os.path.relpath(test_folder, os.getcwd())
+    print(f"[TR] Hold-out test set saved with {len(X_test)} samples in {rel_test_folder}")
 
-    # Step C: Split out val (15% of entire dataset => 0.176 of leftover)
-    effective_val_split = val_ratio / (1.0 - test_ratio)
-    X_train, X_val, y_train, y_val, fn_train, fn_val = train_test_split(
-        X_trainval, y_trainval, fn_trainval,
-        test_size=effective_val_split,
-        random_state=42
-    )
+    # Perform K-fold evaluation on the remaining (training+validation) data
+    robust_metrics = kfold_train_and_evaluate(X_remaining, y_remaining,
+                                              n_splits=n_splits,
+                                              epochs=epochs,
+                                              batch_size=batch_size)
+    mae_avg, mse_avg, rmse_avg, r2_avg = robust_metrics
+    print(f"[TR] [{nr_method} - {feat_method}] K-fold average -> MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
 
-    # Copy files physically
-    copy_files(fn_train, tech_folder, train_subfolder)
-    copy_files(fn_val, tech_folder, val_subfolder)
-    copy_files(fn_test, tech_folder, test_subfolder)
+    # Save robust metrics summary to a file in feature_folder (for later visualization)
+    summary_path = os.path.join(feature_folder, "kfold_metrics.txt")
+    with open(summary_path, "w") as f:
+        f.write(f"MAE: {mae_avg:.4f}\nMSE: {mse_avg:.4f}\nRMSE: {rmse_avg:.4f}\nR2: {r2_avg:.4f}\n")
+    rel_summary_path = os.path.relpath(summary_path, os.getcwd())
+    print(f"[TR] K-fold summary saved to {rel_summary_path}")
 
-    print(f"Train size: {len(X_train)}, Val size: {len(X_val)}, Test size: {len(X_test)}")
+    # Train final model on the entire remaining (train+validation) data
+    input_shape = (X_remaining.shape[1],)
+    final_model = build_model_features(input_shape)
+    final_model.fit(X_remaining, y_remaining, epochs=epochs, batch_size=batch_size, verbose=0)
 
-    # Step D: Train in memory
-    X_train = X_train.reshape(-1, 16000, 1)
-    X_val = X_val.reshape(-1, 16000, 1)
-
-    model = build_model(input_shape=(16000, 1))
-    tech_name = os.path.basename(tech_folder)
-    print(f"Starting training on {tech_name} dataset (LSTM regression model)...")
-    model.fit(
-        X_train, y_train,
-        validation_data=(X_val, y_val),
-        epochs=epochs,
-        batch_size=batch_size
-    )
-
-    # Save the model
-    model_name = f"model_{tech_name}.keras"
+    # Save final model
+    # nr_method = os.path.basename(os.path.dirname(feature_folder))  # parent's name, e.g., "bandpass"
+    # feat_method = os.path.basename(feature_folder)  # current folder, e.g., "mfcc"
+    model_name = f"model_{nr_method}_{feat_method}.keras"
     model_path = os.path.join(models_output_dir, model_name)
     if not os.path.exists(models_output_dir):
         os.makedirs(models_output_dir)
-    model.save(model_path)
-    print(f"Model for technique '{tech_name}' saved to {model_path}")
+    final_model.save(model_path)
+    rel_model_path = os.path.relpath(model_path, os.getcwd())
+    print(f"[TR] Final model saved to {rel_model_path}")
+
+    return (mae_avg, mse_avg, rmse_avg, r2_avg)
 
 
-def train_all_techniques(noise_reduction_base_dir, models_output_dir,
-                         test_ratio=0.15, val_ratio=0.15,
-                         epochs=20, batch_size=16):
+def kfold_train_all_feature_models(feature_extraction_base_dir, models_output_dir,
+                                   holdout_ratio=0.15, n_splits=5,
+                                   epochs=20, batch_size=16):
     """
-    Iterates over each technique subfolder (e.g. 'technique1', 'technique2')
-    under noise_reduction_base_dir, trains a model, and saves it in models_output_dir.
+    Iterates over each noise reduction technique folder,
+    then each feature extraction method folder, does K-fold training
+    (with a hold-out test set saved), and saves the final model.
+    Prints out the robust metrics for each combination.
     """
     if not os.path.exists(models_output_dir):
         os.makedirs(models_output_dir)
 
-    for tech_folder in os.listdir(noise_reduction_base_dir):
-        full_path = os.path.join(noise_reduction_base_dir, tech_folder)
-        if os.path.isdir(full_path):
-            train_model_for_technique(
-                tech_folder=full_path,
-                models_output_dir=models_output_dir,
-                test_ratio=test_ratio,
-                val_ratio=val_ratio,
-                epochs=epochs,
-                batch_size=batch_size
-            )
-    print("All techniques have been trained.")
+    results = {}  # store metrics for each (nr, feat)
+
+    nr_folders = sorted([d for d in os.listdir(feature_extraction_base_dir)
+                         if os.path.isdir(os.path.join(feature_extraction_base_dir, d))])
+    for nr in nr_folders:
+        nr_path = os.path.join(feature_extraction_base_dir, nr)
+        feat_folders = sorted([d for d in os.listdir(nr_path)
+                               if os.path.isdir(os.path.join(nr_path, d))])
+        for feat in feat_folders:
+            feat_folder = os.path.join(nr_path, feat)
+            metrics = kfold_train_feature_set(feat_folder, models_output_dir,
+                                              holdout_ratio=holdout_ratio,
+                                              n_splits=n_splits,
+                                              epochs=epochs,
+                                              batch_size=batch_size)
+            if metrics is not None:
+                results[(nr, feat)] = metrics
+
+    # Print out results
+    for (nr, feat), (mae_avg, mse_avg, rmse_avg, r2_avg) in results.items():
+        print(f"[TR] {nr}-{feat} => MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
+
+    print("K-fold training completed for all feature sets.")

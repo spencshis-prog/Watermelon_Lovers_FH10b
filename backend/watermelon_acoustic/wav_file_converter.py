@@ -18,12 +18,12 @@ def convert_m4a_to_wav(m4a_path, output_dir, label, sweetness, index=0):
     try:
         rel_m4a = os.path.relpath(m4a_path, os.path.dirname(output_dir))
         rel_wav = os.path.relpath(wav_path, os.path.dirname(output_dir))
-        print(f"Converting {rel_m4a} to {rel_wav}...")
+        print(f"[FC] Converting {rel_m4a} to {rel_wav}...")
 
         audio = AudioSegment.from_file(m4a_path, format="m4a")
         audio.export(wav_path, format="wav")
     except Exception as e:
-        print(f"Failed to convert {m4a_path}, invalid m4a: {e}")
+        print(f"[FC] Failed to convert {m4a_path}, invalid m4a: {e}")
         if os.path.exists(wav_path):
             os.remove(wav_path)
         return None
@@ -58,13 +58,13 @@ def convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir):
 
     rel_dataset = os.path.relpath(qilin_dataset_dir, base_dir)
     rel_output = os.path.relpath(output_dir, base_dir)
-    print(f"Converting all files in {rel_dataset} into .wav format; output will be saved in {rel_output}.")
+    print(f"[FC] Converting all files in {rel_dataset} into .wav format; output will be saved in {rel_output}.")
 
     # Iterate over subdirectories (assumes folder names contain an underscore for valid ones)
     for subdir in os.listdir(qilin_dataset_dir):
         subdir_path = os.path.join(qilin_dataset_dir, subdir)
         if not os.path.isdir(subdir_path) or "_" not in subdir:
-            print(f"Skipping directory: {subdir}")
+            print(f"[FC] Skipping directory: {subdir}")
             continue
 
         try:
@@ -72,7 +72,7 @@ def convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir):
             label = int(label_str)  # or int(label_str) if these are IDs
             sweetness = float(sweetness_str)
         except ValueError:
-            print(f"Skipping invalid folder (no numeric label/sweetness): {subdir}")
+            print(f"[FC] Skipping invalid folder (no numeric label/sweetness): {subdir}")
             continue
 
         # Process 'audio' folder (for .m4a files)
@@ -83,7 +83,7 @@ def convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir):
                 m4a_path = os.path.join(audio_dir, m4a_file)
                 wav_path = convert_m4a_to_wav(m4a_path, output_dir, label, sweetness, index=i)
                 if wav_path is None:
-                    print(f"Skipping {m4a_path} due to conversion failure.")
+                    print(f"[FC] Skipping {m4a_path} due to conversion failure.")
                     continue  # Skip further processing for this file if needed
 
         # Process 'audios' folder (for .wav files)
@@ -98,12 +98,12 @@ def convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir):
                 if not os.path.exists(new_path):
                     rel_old = os.path.relpath(old_path, base_dir)
                     rel_new = os.path.relpath(new_path, base_dir)
-                    print(f"Copying {rel_old} to {rel_new}...")
+                    print(f"[FC] Copying ..\\{rel_old} to {rel_new}...")
                     try:
                         audio = AudioSegment.from_wav(old_path)
                         audio.export(new_path, format="wav")
                     except Exception as e:
-                        print(f"Failed to copy {old_path}: {e}")
+                        print(f"[FC] Failed to copy {old_path}: {e}")
                         continue
 
     print("Preprocessing of Qilin dataset completed.")

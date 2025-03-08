@@ -144,10 +144,10 @@ def apply_noise_reduction(input_dir, output_base_dir):
 
                     rel_in = os.path.relpath(input_path, os.getcwd())
                     rel_out = os.path.relpath(output_path, os.getcwd())
-                    print(f"Applied {tech_name} to {rel_in} -> saved to {rel_out}")
+                    print(f"[NR] Applied {tech_name} to {rel_in} -> saved to {rel_out}")
                 except Exception as e:
                     print(f"Error processing {os.path.basename(input_path)} with {tech_name}: {e}")
-    print("Noise reduction processing complete.")
+    print("[NR] Noise reduction processing complete.")
 
 
 if __name__ == "__main__":
