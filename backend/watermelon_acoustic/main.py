@@ -1,6 +1,8 @@
 import os
 import shutil
 
+import pipeline_lr
+
 # Configuration booleans
 USE_QILIN = True
 USE_LAB = False
@@ -19,8 +21,10 @@ EPOCHS = 20  # 20 is recommended, use less for model_testing debugging
 dimensions = {
     "dataset": ["qilin", "lab", "combined"],
     "noise_reduction": ["raw", "bandpass", "spectral sub", "wavelet"],
+    "feature_extraction": ["raw", "mfcc", "spectral centroid", "dwavelet", "zcr", "rolloff", "rms"]
     "model": {
         "LinearRegression": {
+            "regularization": ["none", "lasso", "ridge", "ElasticNet"]
             "hp_tuning": ["default"]  # Linear regression might not need extensive tuning
         },
         "RandomForest": {
@@ -30,6 +34,7 @@ dimensions = {
             "hp_tuning": ["default", "grid search", "random search", "bayesian"]
         },
         "NeuralNetwork": {
+            "regularization": ["none", "L1", "L2", "dropout", "early stopping"],
             "hp_tuning": ["default", "grid search", "random search", "bayesian"]
         }
     }
@@ -51,7 +56,6 @@ def clear_output_directory(output_dir):
                     except Exception as e:
                         print(f"Could not remove file {file}: {e}")
     os.makedirs(output_dir, exist_ok=True)
-
 
 
 def combine_folders(folder1, folder2, output_folder):
@@ -129,31 +133,8 @@ def main():
             # Apply feature extraction (this function should create subfolders for each feature method)
             apply_feature_extraction(technique_path, output_feat_dir)
 
-    # # --- Step vi: Model Training on Feature Data ---
-    # # Here, you need to have a module (e.g. model_training_features.py) that loads features from .npy files
-    # # and splits the data into train/val/test based on these features.
-    from model_training import kfold_train_all_feature_models
-    models_output_dir = os.path.join(base_dir, "output", "models")
-    clear_output_directory(models_output_dir)
-    kfold_train_all_feature_models(
-        feature_extraction_base_dir=feature_extraction_base_dir,
-        models_output_dir=models_output_dir,
-        # test_ratio=TEST_SPLIT_RATIO,
-        # val_ratio=VAL_SPLIT_RATIO,
-        # epochs=EPOCHS,
-        # batch_size=16
-    )
-
-    # --- Step vii: Model Testing on Feature Data ---
-    # Similarly, use a module (e.g. model_testing_features.py) that tests models on feature datasets.
-    from model_testing import test_all_feature_models
-    testing_output_dir = os.path.join(base_dir, "output", "testing")
-    clear_output_directory(testing_output_dir)
-
-    print("Starting K-fold evaluation pipeline for feature-based models...")
-    report_path = os.path.join(testing_output_dir, "report.txt")
-    test_all_feature_models(models_output_dir, feature_extraction_base_dir, report_path)
-    print("K-fold evaluation pipeline completed.")
+    # Initiate linear regression pipeline - train and tests LR model for each regularization technique
+    pipeline_lr.main()
 
 
 if __name__ == "__main__":

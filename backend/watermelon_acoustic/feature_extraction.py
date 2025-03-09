@@ -83,18 +83,18 @@ def apply_feature_extraction(input_dir, output_base_dir):
     methods = {
         "raw": extract_features_raw,
         "mfcc": extract_features_mfcc,
-        "spectral": extract_features_spectral,
-        "wavelet": extract_features_wavelet,
-        "zcr": extract_features_zcr,
-        "rolloff": extract_features_rolloff,
-        "rms": extract_features_rms
+        # "spectral": extract_features_spectral,
+        # "wavelet": extract_features_wavelet,
+        # "zcr": extract_features_zcr,
+        # "rolloff": extract_features_rolloff,
+        # "rms": extract_features_rms
     }
 
     # Print a header with relative paths.
     rel_input = os.path.relpath(input_dir, os.getcwd())
     rel_output = os.path.relpath(output_base_dir, os.getcwd())
-    print(f"Extracting features from files in {rel_input}.")
-    print(f"Output will be organized under {rel_output} by extraction method.")
+    print(f"[FE] Extracting features from files in {rel_input}.")
+    print(f"[FE] Output will be organized under {rel_output} by extraction method.")
 
     # For each extraction method, create a clean subfolder.
     for method_name, func in methods.items():
@@ -118,9 +118,9 @@ def apply_feature_extraction(input_dir, output_base_dir):
 
                     rel_in = os.path.relpath(input_path, os.getcwd())
                     rel_out = os.path.relpath(output_path, os.getcwd())
-                    print(f"Extracted {method_name} features from {rel_in} -> saved to {rel_out}")
+                    print(f"[FE] Extracted {method_name} features from {rel_in} -> saved to {rel_out}")
                 except Exception as e:
-                    print(f"Error processing {file} with {method_name}: {e}")
+                    print(f"[FE] Error processing {file} with {method_name}: {e}")
     print("Feature extraction processing complete.")
 
 
