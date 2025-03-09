@@ -65,6 +65,6 @@ def standardize_wav_files(input_dir, output_dir):
 if __name__ == "__main__":
     # if simply called, default to qilin dataset
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    input_dir = os.path.join(base_dir, "output", "qilin_wav")
-    output_dir = os.path.join(base_dir, "output", "qilin_standard")
+    input_dir = os.path.join(base_dir, "input", "wav_qilin")
+    output_dir = os.path.join(base_dir, "intermediate", "standard_qilin")
     standardize_wav_files(input_dir, output_dir)

@@ -83,11 +83,11 @@ def apply_feature_extraction(input_dir, output_base_dir):
     methods = {
         "raw": extract_features_raw,
         "mfcc": extract_features_mfcc,
-        # "spectral": extract_features_spectral,
-        # "wavelet": extract_features_wavelet,
-        # "zcr": extract_features_zcr,
-        # "rolloff": extract_features_rolloff,
-        # "rms": extract_features_rms
+        "spectral": extract_features_spectral,
+        "wavelet": extract_features_wavelet,
+        "zcr": extract_features_zcr,
+        "rolloff": extract_features_rolloff,
+        "rms": extract_features_rms
     }
 
     # Print a header with relative paths.
@@ -128,6 +128,6 @@ if __name__ == "__main__":
     base_dir = os.path.dirname(os.path.abspath(__file__))
     # Example: Process feature extraction for one noise reduction technique.
     # Adjust these paths as needed.
-    input_dir = os.path.join(base_dir, "output", "noise_reduction", "combined", "technique1")
-    output_base_dir = os.path.join(base_dir, "output", "feature_extraction", "technique1")
+    input_dir = os.path.join(base_dir, "intermediate", "noise_reduction", "technique1")
+    output_base_dir = os.path.join(base_dir, "intermediate", "feature_extraction", "technique1")
     apply_feature_extraction(input_dir, output_base_dir)

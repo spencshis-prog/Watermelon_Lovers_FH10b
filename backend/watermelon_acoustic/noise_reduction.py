@@ -118,8 +118,8 @@ def apply_noise_reduction(input_dir, output_base_dir):
     techniques = {
         "raw": noise_reduction_raw,
         "bandpass": noise_reduction_bandpass,
-        # "spectral_sub": noise_reduction_spectral_subtraction,
-        # "wavelet_denoise": noise_reduction_wavelet
+        "spectral_sub": noise_reduction_spectral_subtraction,
+        "wavelet_denoise": noise_reduction_wavelet
         # Append alternative noise reduction technique methods here
     }
 
@@ -152,6 +152,6 @@ def apply_noise_reduction(input_dir, output_base_dir):
 
 if __name__ == "__main__":
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    input_dir = os.path.join(base_dir, "output", "qilin_standard")
-    output_base_dir = os.path.join(base_dir, "output", "noise_reduction", "qilin")
+    input_dir = os.path.join(base_dir, "intermediate", "standard_qilin")
+    output_base_dir = os.path.join(base_dir, "intermediate", "noise_reduction", "qilin")
     apply_noise_reduction(input_dir, output_base_dir)

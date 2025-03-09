@@ -1,6 +1,9 @@
 import os
 import shutil
 
+from lr_training import kfold_train_all_feature_models
+from lr_testing import test_all_lr_models
+
 # Configuration booleans and parameters
 USE_QILIN = True
 USE_LAB = False
@@ -32,43 +35,45 @@ def combine_folders(folder1, folder2, output_folder):
     print(f"Combined folders {folder1} and {folder2} into {output_folder}")
 
 
-def main():
+def main(feature_extraction_base_dir=None):
     base_dir = os.path.dirname(os.path.abspath(__file__))
+    if feature_extraction_base_dir is None:
+        feature_extraction_base_dir = os.path.join(base_dir, "intermediate", "feature_extraction")
 
-    # Assume Steps i-v (preprocessing, standardizing, noise reduction, feature extraction)
-    # have already been executed and the results are in the following directories:
-    qilin_standard_dir = os.path.join(base_dir, "output", "qilin_standard")
-    lab_standard_dir = os.path.join(base_dir, "output", "lab_standard")
-    combined_standard_dir = os.path.join(base_dir, "output", "combined_standard")
-    noise_reduction_dir = os.path.join(base_dir, "output", "noise_reduction", "combined")
-    feature_extraction_base_dir = os.path.join(base_dir, "output", "feature_extraction")
-
-    # (You can call your preprocessing modules here if needed)
-
-    # --- Step vi: LR Model Training ---
-    from lr_training import kfold_train_all_feature_models
     models_output_dir = os.path.join(base_dir, "output", "models_lr")
-    clear_output_directory(models_output_dir)
-    # For each regularization option, run the training pipeline.
-    for reg in REG_OPTIONS:
+    testing_output_dir = os.path.join(base_dir, "output", "testing_lr")
+    report_kfold_path = os.path.join(testing_output_dir, "report_kfold.txt")
+    report_holdout_path = os.path.join(testing_output_dir, "report_holdout.txt")
+
+    open(report_kfold_path, "w").close()  # clearing the report_kfold.txt
+    open(report_holdout_path, "w").close()
+
+    # Clear model and testing directories.
+    if os.path.exists(models_output_dir):
+        shutil.rmtree(models_output_dir)
+    os.makedirs(models_output_dir, exist_ok=True)
+    if os.path.exists(testing_output_dir):
+        shutil.rmtree(testing_output_dir)
+    os.makedirs(testing_output_dir, exist_ok=True)
+
+    # Train final models for each (NR, FE) combination for each regularization option.
+    for reg in sorted(REG_OPTIONS):
         print(f"\n=== Training LR models with regularization: {reg} ===")
         kfold_train_all_feature_models(
             feature_extraction_base_dir=feature_extraction_base_dir,
             models_output_dir=models_output_dir,
-            holdout_ratio=HOLDOUT_RATIO,
-            n_splits=N_SPLITS,
-            epochs=EPOCHS,
-            batch_size=BATCH_SIZE,
+            report_kfold_path=report_kfold_path,
+            holdout_ratio=0.15,
+            n_splits=5,
+            epochs=20,
+            batch_size=16,
             regularization=reg
         )
 
-    # --- Step vii: LR Model Testing ---
-    from lr_testing import test_all_feature_models
-    testing_output_dir = os.path.join(base_dir, "output", "testing_lr")
-    clear_output_directory(testing_output_dir)
-    report_path = os.path.join(testing_output_dir, "lr_report.txt")
+    # Test models on the hold-out test sets and produce visualizations.
     print("\n=== Testing LR models on hold-out test sets ===")
-    test_all_feature_models(models_output_dir, feature_extraction_base_dir, report_path)
+    test_all_lr_models(models_output_dir, feature_extraction_base_dir, report_holdout_path)
+    print("LR pipeline completed.")
 
 
 if __name__ == "__main__":

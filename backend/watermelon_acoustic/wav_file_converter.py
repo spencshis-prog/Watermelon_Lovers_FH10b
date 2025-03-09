@@ -132,6 +132,6 @@ if __name__ == "__main__":
 
     # Example usage:
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    qilin_dataset_dir = os.path.join(base_dir, "qilin_dataset", "19_datasets")
-    output_dir = os.path.join(base_dir, "output", "qilin_wav")
+    qilin_dataset_dir = os.path.join(base_dir, "input/qilin_dataset", "19_datasets")
+    output_dir = os.path.join(base_dir, "input", "wav_qilin")
     convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir)
