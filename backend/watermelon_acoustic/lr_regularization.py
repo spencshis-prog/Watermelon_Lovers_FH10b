@@ -23,7 +23,10 @@ def build_lr_model(input_shape, regularization="none"):
 
     model = Sequential([
         Input(shape=input_shape),
-        Dense(1, activation='linear', kernel_regularizer=reg)
+        tf.keras.layers.Dense(128, activation='relu', kernel_regularizer=reg),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(64, activation='relu', kernel_regularizer=reg),
+        tf.keras.layers.Dense(1, activation='linear', kernel_regularizer=reg)
     ])
     model.compile(optimizer='adam', loss='mse')
     return model
