@@ -5,11 +5,9 @@ import tensorflow as tf
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import math
+
+import func
 from lr_regularization import build_lr_model  # Use our LR builder with regularization
-
-
-def green_print(message):
-    print("\033[92m" + message + "\033[0m")
 
 
 def load_feature_data(folder):
@@ -81,7 +79,7 @@ def kfold_train_feature_set(feature_folder, models_output_dir,
     """
     nr_method = os.path.basename(os.path.dirname(feature_folder))
     feat_method = os.path.basename(feature_folder)
-    green_print(f"\n[LR] K-fold training for [NR: '{nr_method}', FE: '{feat_method}', REG: '{regularization}']")
+    func.green_print(f"\n[LR] K-fold training for [NR: '{nr_method}', FE: '{feat_method}', REG: '{regularization}']")
 
     # Load data from the top level of the feature folder (excluding subfolders)
     X_all, y_all, fnames_all = load_feature_data(feature_folder)
@@ -178,7 +176,7 @@ def kfold_train_all_feature_models(feature_extraction_base_dir, models_output_di
 
     for (nr, feat, reg), (mae_avg, mse_avg, rmse_avg, r2_avg) in results.items():
         print(f"[LR] {nr}-{feat} ({reg}) => MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
-    green_print("[LR] K-fold training completed for all feature sets.")
+    func.green_print("[LR] K-fold training completed for all feature sets.")
 
     # Write the consolidated report to report_kfold.txt
     with open(report_kfold_path, "a") as f:

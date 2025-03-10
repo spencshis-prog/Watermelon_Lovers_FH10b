@@ -7,9 +7,6 @@ import librosa
 import pywt  # only needed for wavelet denoising
 
 
-import main
-
-
 def noise_reduction_raw(audio) -> AudioSegment:
     """
     Dummy noise reduction technique 1.
@@ -130,7 +127,7 @@ def apply_noise_reduction(input_dir, output_base_dir):
 
     for tech_name, func in techniques.items():
         tech_dir = os.path.join(output_base_dir, tech_name)
-        main.clear_output_directory(tech_dir)
+        func.clear_output_directory(tech_dir)
 
         for file in os.listdir(input_dir):
             if file.endswith(".wav"):

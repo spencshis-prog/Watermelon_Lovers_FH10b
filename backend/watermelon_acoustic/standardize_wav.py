@@ -2,6 +2,7 @@ import os
 
 from pydub import AudioSegment
 
+import func
 import main
 
 
@@ -44,7 +45,7 @@ def standardize_wav_files(input_dir, output_dir):
     """
     Processes all .wav files in input_dir and writes standardized versions to output_dir.
     """
-    main.clear_output_directory(output_dir)
+    func.clear_output_directory(output_dir)
 
     rel_input_dir = os.path.relpath(input_dir, os.getcwd())
     rel_output_dir = os.path.relpath(output_dir, os.getcwd())

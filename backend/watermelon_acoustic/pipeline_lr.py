@@ -15,30 +15,9 @@ N_SPLITS = 5
 REG_OPTIONS = ["none", "lasso", "ridge", "ElasticNet"]
 
 
-def clear_output_directory(output_dir):
-    if os.path.exists(output_dir):
-        try:
-            shutil.rmtree(output_dir)
-        except Exception as e:
-            print(f"Error clearing {output_dir}: {e}")
-    os.makedirs(output_dir, exist_ok=True)
-
-
-def combine_folders(folder1, folder2, output_folder):
-    clear_output_directory(output_folder)
-    for folder in [folder1, folder2]:
-        if os.path.exists(folder):
-            for file in os.listdir(folder):
-                src = os.path.join(folder, file)
-                dst = os.path.join(output_folder, file)
-                shutil.copy(src, dst)
-    print(f"Combined folders {folder1} and {folder2} into {output_folder}")
-
-
-def main(feature_extraction_base_dir=None):
+def proceed():
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    if feature_extraction_base_dir is None:
-        feature_extraction_base_dir = os.path.join(base_dir, "intermediate", "feature_extraction")
+    feature_extraction_base_dir = os.path.join(base_dir, "intermediate", "feature_extraction")
 
     models_output_dir = os.path.join(base_dir, "output", "models_lr")
     testing_output_dir = os.path.join(base_dir, "output", "testing_lr")
@@ -77,4 +56,4 @@ def main(feature_extraction_base_dir=None):
 
 
 if __name__ == "__main__":
-    main()
+    proceed()

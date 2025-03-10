@@ -176,7 +176,7 @@ def plot_results_grid(results, project_root):
     os.makedirs(residual_plots_dir, exist_ok=True)
 
     # Attempt to load the K-Fold report.
-    report_kfold_path = os.path.join(project_root, "output", "testing", "report_kfold.txt")
+    report_kfold_path = os.path.join(project_root, "output", "testing_lr", "report_kfold.txt")
     kfold_results = parse_report(report_kfold_path)
     if kfold_results:
         print(f"[TE] Parsed K-Fold report from {os.path.relpath(report_kfold_path, project_root)}")

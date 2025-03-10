@@ -1,17 +1,13 @@
-# feature_extraction.py
 import os
-import shutil
 import numpy as np
 import librosa
 import pywt  # for wavelet extraction
-import main  # to use clear_output_directory
 
 
 def extract_features_raw(audio, sr=16000):
     """
     Raw features: simply return the audio waveform as is.
     """
-    # Optionally, you might want to normalize the audio.
     return audio
 
 
@@ -39,7 +35,7 @@ def extract_features_wavelet(audio, sr=16000):
     Here we use a simple strategy: decompose with a Daubechies wavelet,
     then compute the mean absolute value of the detail coefficients.
     """
-    wavelet = 'db1'
+    wavelet = 'db1'  # or db8
     # Determine maximum level for decomposition
     max_level = pywt.dwt_max_level(len(audio), wavelet)
     coeffs = pywt.wavedec(audio, wavelet, level=max_level)
@@ -79,7 +75,6 @@ def apply_feature_extraction(input_dir, output_base_dir):
     Creates separate subfolders (e.g., "raw", "mfcc", "spectral", "wavelet") under output_base_dir.
     Saves the resulting feature vectors as .npy files.
     """
-    # Define the feature extraction methods.
     methods = {
         "raw": extract_features_raw,
         "mfcc": extract_features_mfcc,
@@ -96,10 +91,10 @@ def apply_feature_extraction(input_dir, output_base_dir):
     print(f"[FE] Extracting features from files in {rel_input}.")
     print(f"[FE] Output will be organized under {rel_output} by extraction method.")
 
-    # For each extraction method, create a clean subfolder.
+    # For each extraction method, create a clean subdirectory.
     for method_name, func in methods.items():
         method_dir = os.path.join(output_base_dir, method_name)
-        main.clear_output_directory(method_dir)
+        func.clear_output_directory(method_dir)
 
         # Process each .wav file in the input directory.
         for file in os.listdir(input_dir):

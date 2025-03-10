@@ -2,6 +2,7 @@ import os
 
 from pydub import AudioSegment
 
+import func
 import main
 
 
@@ -54,7 +55,7 @@ def convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir):
     else:
         print("Failed to add ffmpeg or ffprobe to PATH. Check the paths.")
 
-    main.clear_output_directory(output_dir)
+    func.clear_output_directory(output_dir)
 
     rel_dataset = os.path.relpath(qilin_dataset_dir, base_dir)
     rel_output = os.path.relpath(output_dir, base_dir)
