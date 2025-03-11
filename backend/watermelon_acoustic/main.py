@@ -2,6 +2,7 @@ import model_comparator
 from scripts_linear_regression import pipeline_lr
 from scripts_preprocessing import pipeline_pp
 from scripts_random_forest import pipeline_rf
+from scripts_xgboost import pipeline_xgb
 
 # Dataset Configuration
 USE_QILIN = True
@@ -18,15 +19,14 @@ XGBOOST = False
 NEURAL_NETWORK = False
 
 TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
-OPEN_COMPARATOR = True
+OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
 
 
 # TODO: combined testing will try every dataset-noise reduction combination perhaps eliminates dataset-
 # TODO: dimension below unless one dataset strictly worsens the medley
-# TODO: sort both kfold and holdout report entry orders so they are easily comparable
-# TODO: maybe separate the testing step so it can independently be called?
 # perhaps add something that exclusively pulls validation and test from lab dataset
 # perhaps combine datasets AFTER noise reduction instead (as it may differ per dataset)
+# perhaps add normalization preprocessing step after noise reductions on separate sets
 
 def main():
     if PREPROCESS:
@@ -57,6 +57,9 @@ def main():
         - Plots residuals and actual v predicted graphs
         '''
         pipeline_rf.proceed(TRAIN_NEW_MODELS)
+
+    if XGBOOST:
+        pipeline_xgb.proceed(TRAIN_NEW_MODELS)
 
     if OPEN_COMPARATOR:
         model_comparator.main()
