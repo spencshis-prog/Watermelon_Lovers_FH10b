@@ -1,0 +1,288 @@
+Noise Reduction: bandpass, Feature Extraction: chroma, Hyper-tuning: bayesian
+MAE: 0.7207
+MSE: 0.8469
+RMSE: 0.9003
+R2: -0.0415
+
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Hyper-tuning: bayesian
+MAE: 0.7256
+MSE: 0.8577
+RMSE: 0.9069
+R2: -0.0586
+
+Noise Reduction: bandpass, Feature Extraction: mfcc, Hyper-tuning: bayesian
+MAE: 0.7237
+MSE: 0.8600
+RMSE: 0.9091
+R2: -0.0659
+
+Noise Reduction: bandpass, Feature Extraction: zcr, Hyper-tuning: bayesian
+MAE: 0.7228
+MSE: 0.8591
+RMSE: 0.9090
+R2: -0.0667
+
+Noise Reduction: raw, Feature Extraction: chroma, Hyper-tuning: bayesian
+MAE: 0.7235
+MSE: 0.8591
+RMSE: 0.9085
+R2: -0.0641
+
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Hyper-tuning: bayesian
+MAE: 0.7225
+MSE: 0.8538
+RMSE: 0.9068
+R2: -0.0629
+
+Noise Reduction: raw, Feature Extraction: mfcc, Hyper-tuning: bayesian
+MAE: 0.7220
+MSE: 0.8567
+RMSE: 0.9067
+R2: -0.0585
+
+Noise Reduction: raw, Feature Extraction: zcr, Hyper-tuning: bayesian
+MAE: 0.7186
+MSE: 0.8486
+RMSE: 0.9036
+R2: -0.0546
+
+Noise Reduction: spectral_sub, Feature Extraction: chroma, Hyper-tuning: bayesian
+MAE: 0.7242
+MSE: 0.8588
+RMSE: 0.9083
+R2: -0.0637
+
+Noise Reduction: spectral_sub, Feature Extraction: db1_wavelet, Hyper-tuning: bayesian
+MAE: 0.7255
+MSE: 0.8628
+RMSE: 0.9108
+R2: -0.0707
+
+Noise Reduction: spectral_sub, Feature Extraction: mfcc, Hyper-tuning: bayesian
+MAE: 0.7249
+MSE: 0.8623
+RMSE: 0.9105
+R2: -0.0695
+
+Noise Reduction: spectral_sub, Feature Extraction: zcr, Hyper-tuning: bayesian
+MAE: 0.7232
+MSE: 0.8524
+RMSE: 0.9058
+R2: -0.0600
+
+Noise Reduction: bandpass, Feature Extraction: chroma, Hyper-tuning: default
+MAE: 0.6710
+MSE: 0.7077
+RMSE: 0.8256
+R2: 0.1132
+
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Hyper-tuning: default
+MAE: 0.7146
+MSE: 0.8356
+RMSE: 0.8939
+R2: -0.0256
+
+Noise Reduction: bandpass, Feature Extraction: mfcc, Hyper-tuning: default
+MAE: 0.6216
+MSE: 0.6460
+RMSE: 0.7856
+R2: 0.2015
+
+Noise Reduction: bandpass, Feature Extraction: zcr, Hyper-tuning: default
+MAE: 0.7099
+MSE: 0.8300
+RMSE: 0.8945
+R2: -0.0361
+
+Noise Reduction: raw, Feature Extraction: chroma, Hyper-tuning: default
+MAE: 0.6728
+MSE: 0.7092
+RMSE: 0.8296
+R2: 0.0972
+
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Hyper-tuning: default
+MAE: 0.7169
+MSE: 0.8282
+RMSE: 0.8893
+R2: -0.0171
+
+Noise Reduction: raw, Feature Extraction: mfcc, Hyper-tuning: default
+MAE: 0.6449
+MSE: 0.6762
+RMSE: 0.8060
+R2: 0.1612
+
+Noise Reduction: raw, Feature Extraction: zcr, Hyper-tuning: default
+MAE: 0.6946
+MSE: 0.7830
+RMSE: 0.8684
+R2: 0.0211
+
+Noise Reduction: spectral_sub, Feature Extraction: chroma, Hyper-tuning: default
+MAE: 0.7096
+MSE: 0.7756
+RMSE: 0.8658
+R2: 0.0222
+
+Noise Reduction: spectral_sub, Feature Extraction: db1_wavelet, Hyper-tuning: default
+MAE: 0.6953
+MSE: 0.7532
+RMSE: 0.8537
+R2: 0.0417
+
+Noise Reduction: spectral_sub, Feature Extraction: mfcc, Hyper-tuning: default
+MAE: 0.6936
+MSE: 0.7623
+RMSE: 0.8615
+R2: 0.0279
+
+Noise Reduction: spectral_sub, Feature Extraction: zcr, Hyper-tuning: default
+MAE: 0.6459
+MSE: 0.5823
+RMSE: 0.7610
+R2: 0.1831
+
+Noise Reduction: bandpass, Feature Extraction: chroma, Hyper-tuning: grid
+MAE: 0.7078
+MSE: 0.7936
+RMSE: 0.8740
+R2: 0.0113
+
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Hyper-tuning: grid
+MAE: 0.7217
+MSE: 0.8527
+RMSE: 0.9040
+R2: -0.0510
+
+Noise Reduction: bandpass, Feature Extraction: mfcc, Hyper-tuning: grid
+MAE: 0.6946
+MSE: 0.7918
+RMSE: 0.8726
+R2: 0.0162
+
+Noise Reduction: bandpass, Feature Extraction: zcr, Hyper-tuning: grid
+MAE: 0.7123
+MSE: 0.8350
+RMSE: 0.8973
+R2: -0.0426
+
+Noise Reduction: raw, Feature Extraction: chroma, Hyper-tuning: grid
+MAE: 0.7081
+MSE: 0.7955
+RMSE: 0.8758
+R2: 0.0051
+
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Hyper-tuning: grid
+MAE: 0.7208
+MSE: 0.8476
+RMSE: 0.9021
+R2: -0.0497
+
+Noise Reduction: raw, Feature Extraction: mfcc, Hyper-tuning: grid
+MAE: 0.6970
+MSE: 0.7912
+RMSE: 0.8715
+R2: 0.0218
+
+Noise Reduction: raw, Feature Extraction: zcr, Hyper-tuning: grid
+MAE: 0.7063
+MSE: 0.8071
+RMSE: 0.8800
+R2: 0.0026
+
+Noise Reduction: spectral_sub, Feature Extraction: chroma, Hyper-tuning: grid
+MAE: 0.7176
+MSE: 0.7955
+RMSE: 0.8779
+R2: -0.0047
+
+Noise Reduction: spectral_sub, Feature Extraction: db1_wavelet, Hyper-tuning: grid
+MAE: 0.7173
+MSE: 0.8195
+RMSE: 0.8881
+R2: -0.0201
+
+Noise Reduction: spectral_sub, Feature Extraction: mfcc, Hyper-tuning: grid
+MAE: 0.7061
+MSE: 0.8260
+RMSE: 0.8885
+R2: -0.0127
+
+Noise Reduction: spectral_sub, Feature Extraction: zcr, Hyper-tuning: grid
+MAE: 0.6973
+MSE: 0.7277
+RMSE: 0.8443
+R2: 0.0566
+
+Noise Reduction: bandpass, Feature Extraction: chroma, Hyper-tuning: random
+MAE: 0.7230
+MSE: 0.8555
+RMSE: 0.9060
+R2: -0.0570
+
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Hyper-tuning: random
+MAE: 0.7252
+MSE: 0.8631
+RMSE: 0.9109
+R2: -0.0706
+
+Noise Reduction: bandpass, Feature Extraction: mfcc, Hyper-tuning: random
+MAE: 0.7241
+MSE: 0.8606
+RMSE: 0.9096
+R2: -0.0674
+
+Noise Reduction: bandpass, Feature Extraction: zcr, Hyper-tuning: random
+MAE: 0.7232
+MSE: 0.8600
+RMSE: 0.9094
+R2: -0.0674
+
+Noise Reduction: raw, Feature Extraction: chroma, Hyper-tuning: random
+MAE: 0.7247
+MSE: 0.8607
+RMSE: 0.9097
+R2: -0.0679
+
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Hyper-tuning: random
+MAE: 0.7241
+MSE: 0.8610
+RMSE: 0.9099
+R2: -0.0686
+
+Noise Reduction: raw, Feature Extraction: mfcc, Hyper-tuning: random
+MAE: 0.7243
+MSE: 0.8608
+RMSE: 0.9097
+R2: -0.0677
+
+Noise Reduction: raw, Feature Extraction: zcr, Hyper-tuning: random
+MAE: 0.7208
+MSE: 0.8539
+RMSE: 0.9061
+R2: -0.0596
+
+Noise Reduction: spectral_sub, Feature Extraction: chroma, Hyper-tuning: random
+MAE: 0.7246
+MSE: 0.8599
+RMSE: 0.9092
+R2: -0.0662
+
+Noise Reduction: spectral_sub, Feature Extraction: db1_wavelet, Hyper-tuning: random
+MAE: 0.7255
+MSE: 0.8621
+RMSE: 0.9105
+R2: -0.0697
+
+Noise Reduction: spectral_sub, Feature Extraction: mfcc, Hyper-tuning: random
+MAE: 0.7254
+MSE: 0.8636
+RMSE: 0.9112
+R2: -0.0712
+
+Noise Reduction: spectral_sub, Feature Extraction: zcr, Hyper-tuning: random
+MAE: 0.7223
+MSE: 0.8481
+RMSE: 0.9038
+R2: -0.0556
+

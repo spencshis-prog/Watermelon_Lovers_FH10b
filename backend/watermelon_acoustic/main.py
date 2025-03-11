@@ -1,4 +1,6 @@
 import model_comparator
+from scripts_catboost import pipeline_cat
+from scripts_extra_trees import pipeline_et
 from scripts_linear_regression import pipeline_lr
 from scripts_preprocessing import pipeline_pp
 from scripts_random_forest import pipeline_rf
@@ -15,19 +17,24 @@ TEST_SPLIT_RATIO = 0.15  # fraction for test (e.g. 15%), set to 0 for final mode
 PREPROCESS = False
 LINEAR_REGRESSION = False
 RANDOM_FOREST = False
+EXTRA_TREES = False
 XGBOOST = False
+CATBOOST = False
 NEURAL_NETWORK = False
 
 TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
 OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
 
 
+# TODO: data dump for error metrics for each hypertuning combination, automate analysis (and retrain)
 # TODO: combined testing will try every dataset-noise reduction combination perhaps eliminates dataset-
 # TODO: dimension below unless one dataset strictly worsens the medley
 # perhaps add something that exclusively pulls validation and test from lab dataset
 # perhaps combine datasets AFTER noise reduction instead (as it may differ per dataset)
 # perhaps add normalization preprocessing step after noise reductions on separate sets
+# perhaps introduce scaling/normalization to error metrics for intuition
 
+# concern: qilin dataset seems to range between 9-12 sweetness, never lower. top-heavy training set
 def main():
     if PREPROCESS:
         '''
@@ -58,8 +65,14 @@ def main():
         '''
         pipeline_rf.proceed(TRAIN_NEW_MODELS)
 
+    if EXTRA_TREES:
+        pipeline_et.proceed(TRAIN_NEW_MODELS)
+
     if XGBOOST:
         pipeline_xgb.proceed(TRAIN_NEW_MODELS)
+
+    if CATBOOST:
+        pipeline_cat.proceed(TRAIN_NEW_MODELS)
 
     if OPEN_COMPARATOR:
         model_comparator.main()

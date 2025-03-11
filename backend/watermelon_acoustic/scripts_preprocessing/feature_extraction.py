@@ -71,6 +71,16 @@ def extract_features_rms(audio, sr=16000):
     return np.array([np.mean(rms)])
 
 
+def extract_features_chroma(audio, sr=16000):
+    """
+    Computes chroma features using the Short-Time Fourier Transform (STFT).
+    Returns the mean chroma vector over time as a 12-dimensional feature vector.
+    """
+    chroma = librosa.feature.chroma_stft(y=audio, sr=sr)
+    chroma_mean = np.mean(chroma, axis=1)
+    return chroma_mean
+
+
 def apply_feature_extraction(input_dir, output_base_dir):
     """
     Applies various feature extraction methods to every .wav file in input_dir.
@@ -78,13 +88,14 @@ def apply_feature_extraction(input_dir, output_base_dir):
     Saves the resulting feature vectors as .npy files.
     """
     methods = {
-        # "raw": extract_features_raw,
-        "mfcc": extract_features_mfcc,
-        "spectral": extract_features_spectral,
-        "wavelet": extract_features_wavelet,
-        "zcr": extract_features_zcr,
-        "rolloff": extract_features_rolloff,
-        "rms": extract_features_rms
+        # "raw": extract_features_raw,  # scales badly with hypertuning runtimes
+        "mfcc": extract_features_mfcc,  # high performance
+        # "spectral_cen": extract_features_spectral,  # poor performance
+        "db1_wavelet": extract_features_wavelet,  # decent performance
+        "zcr": extract_features_zcr,  # high performance
+        # "rolloff": extract_features_rolloff,  # poor performance
+        # "rms": extract_features_rms,  # awful performance
+        "chroma": extract_features_chroma
     }
 
     # Print a header with relative paths.

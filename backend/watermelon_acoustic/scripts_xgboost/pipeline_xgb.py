@@ -32,7 +32,7 @@ def proceed(TRAIN_NEW_MODELS=False):
 
         # Train final XGB models for each (NR, FE) combination for each hyperparameter tuning option
         for ht in sorted(HT_OPTIONS):
-            print(f"\n=== Training XGB models with hyperparameter tuning: {ht} ===")
+            functions.green_print(f"\n=== Training XGB models with hyperparameter tuning: {ht} ===")
             kfold_train_all_feature_models_xgb(
                 feature_extraction_base_dir=feature_extraction_base_dir,
                 models_output_dir=models_output_dir,

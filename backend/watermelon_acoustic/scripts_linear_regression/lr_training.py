@@ -123,7 +123,7 @@ def kfold_train_feature_set(feature_folder, models_output_dir,
                                                                   batch_size=batch_size,
                                                                   regularization=regularization)
     print(
-        f"[LR] K-fold average -> MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
+        f"[LR] [{nr_method} - {feat_method}] K-fold average -> MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
 
     # Train final model on the entire remaining training+validation data.
     input_shape = (X_train_val.shape[1],)

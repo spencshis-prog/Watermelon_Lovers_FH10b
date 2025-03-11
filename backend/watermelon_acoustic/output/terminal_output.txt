@@ -1,0 +1,2316 @@
+C:\Users\abarr\PycharmProjects\watermelon_acoustic\venv\Scripts\python.exe C:\Users\abarr\PycharmProjects\Watermelon_Lovers_FH10b\backend\watermelon_acoustic\main.py 
+2025-03-11 14:46:18.594 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-03-11 14:46:20.769357: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-11 14:46:21.805774: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+
+=== Training RF models with hyperparameter tuning: default ===
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.90, RMSE=1.09, R2=0.00
+[RF] [Fold 2] MAE=0.71, RMSE=0.95, R2=0.26
+[RF] [Fold 3] MAE=0.61, RMSE=0.72, R2=-0.08
+[RF] [Fold 4] MAE=0.48, RMSE=0.65, R2=0.16
+[RF] [Fold 5] MAE=0.55, RMSE=0.72, R2=0.22
+[RF] [bandpass - chroma] K-fold average -> MAE=0.65, RMSE=0.82, R2=0.11
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_bandpass_chroma_default.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.83, RMSE=1.08, R2=0.01
+[RF] [Fold 2] MAE=0.93, RMSE=1.22, R2=-0.22
+[RF] [Fold 3] MAE=0.54, RMSE=0.68, R2=0.04
+[RF] [Fold 4] MAE=0.63, RMSE=0.79, R2=-0.22
+[RF] [Fold 5] MAE=0.75, RMSE=0.87, R2=-0.14
+[RF] [bandpass - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.93, R2=-0.11
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_bandpass_db1_wavelet_default.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.72, RMSE=1.00, R2=0.15
+[RF] [Fold 2] MAE=0.77, RMSE=0.99, R2=0.19
+[RF] [Fold 3] MAE=0.45, RMSE=0.57, R2=0.33
+[RF] [Fold 4] MAE=0.60, RMSE=0.74, R2=-0.09
+[RF] [Fold 5] MAE=0.55, RMSE=0.67, R2=0.31
+[RF] [bandpass - mfcc] K-fold average -> MAE=0.62, RMSE=0.80, R2=0.18
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_bandpass_mfcc_default.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.95, RMSE=1.15, R2=-0.12
+[RF] [Fold 2] MAE=0.81, RMSE=1.13, R2=-0.06
+[RF] [Fold 3] MAE=0.75, RMSE=0.89, R2=-0.67
+[RF] [Fold 4] MAE=0.75, RMSE=0.94, R2=-0.75
+[RF] [Fold 5] MAE=0.94, RMSE=1.09, R2=-0.81
+[RF] [bandpass - zcr] K-fold average -> MAE=0.84, RMSE=1.04, R2=-0.48
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_bandpass_zcr_default.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.83, RMSE=1.08, R2=0.02
+[RF] [Fold 2] MAE=0.79, RMSE=1.03, R2=0.13
+[RF] [Fold 3] MAE=0.62, RMSE=0.86, R2=-0.53
+[RF] [Fold 4] MAE=0.47, RMSE=0.64, R2=0.19
+[RF] [Fold 5] MAE=0.61, RMSE=0.75, R2=0.16
+[RF] [raw - chroma] K-fold average -> MAE=0.66, RMSE=0.87, R2=-0.01
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_raw_chroma_default.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.05
+[RF] [Fold 2] MAE=0.91, RMSE=1.18, R2=-0.15
+[RF] [Fold 3] MAE=0.57, RMSE=0.66, R2=0.08
+[RF] [Fold 4] MAE=0.64, RMSE=0.77, R2=-0.18
+[RF] [Fold 5] MAE=0.69, RMSE=0.82, R2=-0.02
+[RF] [raw - db1_wavelet] K-fold average -> MAE=0.74, RMSE=0.91, R2=-0.06
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_raw_db1_wavelet_default.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.78, RMSE=1.11, R2=-0.03
+[RF] [Fold 2] MAE=0.85, RMSE=1.07, R2=0.05
+[RF] [Fold 3] MAE=0.45, RMSE=0.58, R2=0.29
+[RF] [Fold 4] MAE=0.51, RMSE=0.66, R2=0.12
+[RF] [Fold 5] MAE=0.52, RMSE=0.61, R2=0.45
+[RF] [raw - mfcc] K-fold average -> MAE=0.62, RMSE=0.81, R2=0.18
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_raw_mfcc_default.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.91, RMSE=1.15, R2=-0.12
+[RF] [Fold 2] MAE=0.96, RMSE=1.20, R2=-0.19
+[RF] [Fold 3] MAE=0.66, RMSE=0.86, R2=-0.55
+[RF] [Fold 4] MAE=0.74, RMSE=0.94, R2=-0.76
+[RF] [Fold 5] MAE=0.71, RMSE=0.91, R2=-0.25
+[RF] [raw - zcr] K-fold average -> MAE=0.80, RMSE=1.01, R2=-0.37
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_raw_zcr_default.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.88, RMSE=1.07, R2=0.04
+[RF] [Fold 2] MAE=0.85, RMSE=1.05, R2=0.09
+[RF] [Fold 3] MAE=0.67, RMSE=0.79, R2=-0.31
+[RF] [Fold 4] MAE=0.60, RMSE=0.81, R2=-0.30
+[RF] [Fold 5] MAE=0.68, RMSE=0.78, R2=0.07
+[RF] [spectral_sub - chroma] K-fold average -> MAE=0.74, RMSE=0.90, R2=-0.08
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_chroma_default.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.84, RMSE=1.00, R2=0.15
+[RF] [Fold 2] MAE=0.88, RMSE=1.17, R2=-0.12
+[RF] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[RF] [Fold 4] MAE=0.58, RMSE=0.75, R2=-0.11
+[RF] [Fold 5] MAE=0.64, RMSE=0.78, R2=0.08
+[RF] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.89, R2=-0.02
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_db1_wavelet_default.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.84, RMSE=1.05, R2=0.07
+[RF] [Fold 2] MAE=0.78, RMSE=0.96, R2=0.24
+[RF] [Fold 3] MAE=0.51, RMSE=0.66, R2=0.09
+[RF] [Fold 4] MAE=0.55, RMSE=0.68, R2=0.08
+[RF] [Fold 5] MAE=0.61, RMSE=0.82, R2=-0.01
+[RF] [spectral_sub - mfcc] K-fold average -> MAE=0.66, RMSE=0.83, R2=0.09
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_mfcc_default.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'default']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.71, RMSE=0.90, R2=0.32
+[RF] [Fold 2] MAE=0.61, RMSE=0.77, R2=0.51
+[RF] [Fold 3] MAE=0.66, RMSE=0.85, R2=-0.49
+[RF] [Fold 4] MAE=0.69, RMSE=0.91, R2=-0.64
+[RF] [Fold 5] MAE=0.87, RMSE=1.06, R2=-0.69
+[RF] [spectral_sub - zcr] K-fold average -> MAE=0.71, RMSE=0.90, R2=-0.20
+[RF] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_zcr_default.pkl
+[RF] bandpass-chroma (default) => MAE=0.65, RMSE=0.82, R2=0.11
+[RF] bandpass-db1_wavelet (default) => MAE=0.73, RMSE=0.93, R2=-0.11
+[RF] bandpass-mfcc (default) => MAE=0.62, RMSE=0.80, R2=0.18
+[RF] bandpass-zcr (default) => MAE=0.84, RMSE=1.04, R2=-0.48
+[RF] raw-chroma (default) => MAE=0.66, RMSE=0.87, R2=-0.01
+[RF] raw-db1_wavelet (default) => MAE=0.74, RMSE=0.91, R2=-0.06
+[RF] raw-mfcc (default) => MAE=0.62, RMSE=0.81, R2=0.18
+[RF] raw-zcr (default) => MAE=0.80, RMSE=1.01, R2=-0.37
+[RF] spectral_sub-chroma (default) => MAE=0.74, RMSE=0.90, R2=-0.08
+[RF] spectral_sub-db1_wavelet (default) => MAE=0.72, RMSE=0.89, R2=-0.02
+[RF] spectral_sub-mfcc (default) => MAE=0.66, RMSE=0.83, R2=0.09
+[RF] spectral_sub-zcr (default) => MAE=0.71, RMSE=0.90, R2=-0.20
+[RF] K-fold training completed for all feature sets.
+[RF] Report saved to output\testing_rf\report_kfold.txt
+
+=== Training RF models with hyperparameter tuning: grid ===
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.90, RMSE=1.11, R2=-0.04
+[RF] [Fold 2] MAE=0.74, RMSE=0.98, R2=0.21
+[RF] [Fold 3] MAE=0.59, RMSE=0.70, R2=-0.01
+[RF] [Fold 4] MAE=0.48, RMSE=0.65, R2=0.16
+[RF] [Fold 5] MAE=0.54, RMSE=0.72, R2=0.23
+[RF] [bandpass - chroma] K-fold average -> MAE=0.65, RMSE=0.83, R2=0.11
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_bandpass_chroma_grid.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.83, RMSE=1.10, R2=-0.02
+[RF] [Fold 2] MAE=0.93, RMSE=1.20, R2=-0.19
+[RF] [Fold 3] MAE=0.53, RMSE=0.66, R2=0.08
+[RF] [Fold 4] MAE=0.66, RMSE=0.81, R2=-0.30
+[RF] [Fold 5] MAE=0.74, RMSE=0.85, R2=-0.10
+[RF] [bandpass - db1_wavelet] K-fold average -> MAE=0.74, RMSE=0.92, R2=-0.10
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_bandpass_db1_wavelet_grid.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.73, RMSE=1.04, R2=0.09
+[RF] [Fold 2] MAE=0.80, RMSE=1.02, R2=0.14
+[RF] [Fold 3] MAE=0.44, RMSE=0.55, R2=0.36
+[RF] [Fold 4] MAE=0.60, RMSE=0.76, R2=-0.14
+[RF] [Fold 5] MAE=0.54, RMSE=0.67, R2=0.32
+[RF] [bandpass - mfcc] K-fold average -> MAE=0.62, RMSE=0.81, R2=0.16
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_bandpass_mfcc_grid.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.90, RMSE=1.13, R2=-0.07
+[RF] [Fold 2] MAE=0.81, RMSE=1.11, R2=-0.02
+[RF] [Fold 3] MAE=0.75, RMSE=0.87, R2=-0.57
+[RF] [Fold 4] MAE=0.79, RMSE=0.92, R2=-0.68
+[RF] [Fold 5] MAE=0.91, RMSE=1.05, R2=-0.67
+[RF] [bandpass - zcr] K-fold average -> MAE=0.83, RMSE=1.02, R2=-0.40
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_bandpass_zcr_grid.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.82, RMSE=1.09, R2=0.00
+[RF] [Fold 2] MAE=0.76, RMSE=1.00, R2=0.18
+[RF] [Fold 3] MAE=0.62, RMSE=0.84, R2=-0.48
+[RF] [Fold 4] MAE=0.48, RMSE=0.65, R2=0.15
+[RF] [Fold 5] MAE=0.61, RMSE=0.75, R2=0.16
+[RF] [raw - chroma] K-fold average -> MAE=0.66, RMSE=0.87, R2=0.00
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_raw_chroma_grid.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.86, RMSE=1.10, R2=-0.02
+[RF] [Fold 2] MAE=0.89, RMSE=1.16, R2=-0.11
+[RF] [Fold 3] MAE=0.58, RMSE=0.67, R2=0.07
+[RF] [Fold 4] MAE=0.64, RMSE=0.77, R2=-0.16
+[RF] [Fold 5] MAE=0.69, RMSE=0.83, R2=-0.03
+[RF] [raw - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.90, R2=-0.05
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_raw_db1_wavelet_grid.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.80, RMSE=1.13, R2=-0.07
+[RF] [Fold 2] MAE=0.85, RMSE=1.05, R2=0.09
+[RF] [Fold 3] MAE=0.45, RMSE=0.58, R2=0.30
+[RF] [Fold 4] MAE=0.51, RMSE=0.66, R2=0.14
+[RF] [Fold 5] MAE=0.52, RMSE=0.61, R2=0.45
+[RF] [raw - mfcc] K-fold average -> MAE=0.62, RMSE=0.80, R2=0.18
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_raw_mfcc_grid.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.85, RMSE=1.09, R2=-0.01
+[RF] [Fold 2] MAE=0.95, RMSE=1.20, R2=-0.18
+[RF] [Fold 3] MAE=0.62, RMSE=0.80, R2=-0.34
+[RF] [Fold 4] MAE=0.73, RMSE=0.90, R2=-0.62
+[RF] [Fold 5] MAE=0.67, RMSE=0.83, R2=-0.03
+[RF] [raw - zcr] K-fold average -> MAE=0.77, RMSE=0.96, R2=-0.24
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_raw_zcr_grid.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.87, RMSE=1.06, R2=0.06
+[RF] [Fold 2] MAE=0.86, RMSE=1.06, R2=0.07
+[RF] [Fold 3] MAE=0.67, RMSE=0.78, R2=-0.28
+[RF] [Fold 4] MAE=0.61, RMSE=0.83, R2=-0.38
+[RF] [Fold 5] MAE=0.69, RMSE=0.80, R2=0.04
+[RF] [spectral_sub - chroma] K-fold average -> MAE=0.74, RMSE=0.91, R2=-0.10
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_chroma_grid.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.86, RMSE=1.01, R2=0.14
+[RF] [Fold 2] MAE=0.89, RMSE=1.18, R2=-0.14
+[RF] [Fold 3] MAE=0.64, RMSE=0.74, R2=-0.15
+[RF] [Fold 4] MAE=0.59, RMSE=0.75, R2=-0.12
+[RF] [Fold 5] MAE=0.64, RMSE=0.77, R2=0.11
+[RF] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.89, R2=-0.03
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_db1_wavelet_grid.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.83, RMSE=1.05, R2=0.08
+[RF] [Fold 2] MAE=0.78, RMSE=0.96, R2=0.25
+[RF] [Fold 3] MAE=0.51, RMSE=0.67, R2=0.07
+[RF] [Fold 4] MAE=0.57, RMSE=0.70, R2=0.02
+[RF] [Fold 5] MAE=0.59, RMSE=0.79, R2=0.07
+[RF] [spectral_sub - mfcc] K-fold average -> MAE=0.65, RMSE=0.83, R2=0.10
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_mfcc_grid.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'grid']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.73, RMSE=0.92, R2=0.29
+[RF] [Fold 2] MAE=0.63, RMSE=0.76, R2=0.52
+[RF] [Fold 3] MAE=0.66, RMSE=0.85, R2=-0.49
+[RF] [Fold 4] MAE=0.68, RMSE=0.85, R2=-0.42
+[RF] [Fold 5] MAE=0.78, RMSE=0.98, R2=-0.44
+[RF] [spectral_sub - zcr] K-fold average -> MAE=0.69, RMSE=0.87, R2=-0.11
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_zcr_grid.pkl
+[RF] bandpass-chroma (grid) => MAE=0.65, RMSE=0.83, R2=0.11
+[RF] bandpass-db1_wavelet (grid) => MAE=0.74, RMSE=0.92, R2=-0.10
+[RF] bandpass-mfcc (grid) => MAE=0.62, RMSE=0.81, R2=0.16
+[RF] bandpass-zcr (grid) => MAE=0.83, RMSE=1.02, R2=-0.40
+[RF] raw-chroma (grid) => MAE=0.66, RMSE=0.87, R2=0.00
+[RF] raw-db1_wavelet (grid) => MAE=0.73, RMSE=0.90, R2=-0.05
+[RF] raw-mfcc (grid) => MAE=0.62, RMSE=0.80, R2=0.18
+[RF] raw-zcr (grid) => MAE=0.77, RMSE=0.96, R2=-0.24
+[RF] spectral_sub-chroma (grid) => MAE=0.74, RMSE=0.91, R2=-0.10
+[RF] spectral_sub-db1_wavelet (grid) => MAE=0.72, RMSE=0.89, R2=-0.03
+[RF] spectral_sub-mfcc (grid) => MAE=0.65, RMSE=0.83, R2=0.10
+[RF] spectral_sub-zcr (grid) => MAE=0.69, RMSE=0.87, R2=-0.11
+[RF] K-fold training completed for all feature sets.
+[RF] Report saved to output\testing_rf\report_kfold.txt
+
+=== Training RF models with hyperparameter tuning: random ===
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.91, RMSE=1.09, R2=-0.01
+[RF] [Fold 2] MAE=0.79, RMSE=1.02, R2=0.14
+[RF] [Fold 3] MAE=0.63, RMSE=0.72, R2=-0.08
+[RF] [Fold 4] MAE=0.56, RMSE=0.73, R2=-0.06
+[RF] [Fold 5] MAE=0.57, RMSE=0.73, R2=0.20
+[RF] [bandpass - chroma] K-fold average -> MAE=0.69, RMSE=0.86, R2=0.04
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_bandpass_chroma_random.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.86, RMSE=1.11, R2=-0.05
+[RF] [Fold 2] MAE=0.90, RMSE=1.18, R2=-0.16
+[RF] [Fold 3] MAE=0.56, RMSE=0.69, R2=0.02
+[RF] [Fold 4] MAE=0.66, RMSE=0.80, R2=-0.27
+[RF] [Fold 5] MAE=0.70, RMSE=0.82, R2=-0.01
+[RF] [bandpass - db1_wavelet] K-fold average -> MAE=0.74, RMSE=0.92, R2=-0.10
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_bandpass_db1_wavelet_random.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.76, RMSE=1.04, R2=0.09
+[RF] [Fold 2] MAE=0.82, RMSE=1.06, R2=0.07
+[RF] [Fold 3] MAE=0.48, RMSE=0.59, R2=0.26
+[RF] [Fold 4] MAE=0.53, RMSE=0.68, R2=0.09
+[RF] [Fold 5] MAE=0.58, RMSE=0.68, R2=0.30
+[RF] [bandpass - mfcc] K-fold average -> MAE=0.64, RMSE=0.81, R2=0.16
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_bandpass_mfcc_random.pkl
+
+[RF] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.85, RMSE=1.10, R2=-0.02
+[RF] [Fold 2] MAE=0.88, RMSE=1.15, R2=-0.08
+[RF] [Fold 3] MAE=0.65, RMSE=0.82, R2=-0.42
+[RF] [Fold 4] MAE=0.67, RMSE=0.77, R2=-0.16
+[RF] [Fold 5] MAE=0.73, RMSE=0.86, R2=-0.12
+[RF] [bandpass - zcr] K-fold average -> MAE=0.76, RMSE=0.94, R2=-0.16
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_bandpass_zcr_random.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.84, RMSE=1.05, R2=0.06
+[RF] [Fold 2] MAE=0.82, RMSE=1.07, R2=0.05
+[RF] [Fold 3] MAE=0.64, RMSE=0.79, R2=-0.30
+[RF] [Fold 4] MAE=0.52, RMSE=0.67, R2=0.11
+[RF] [Fold 5] MAE=0.59, RMSE=0.72, R2=0.23
+[RF] [raw - chroma] K-fold average -> MAE=0.68, RMSE=0.86, R2=0.03
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_raw_chroma_random.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.92, RMSE=1.19, R2=-0.19
+[RF] [Fold 2] MAE=0.85, RMSE=1.11, R2=-0.01
+[RF] [Fold 3] MAE=0.63, RMSE=0.72, R2=-0.09
+[RF] [Fold 4] MAE=0.58, RMSE=0.71, R2=-0.01
+[RF] [Fold 5] MAE=0.69, RMSE=0.80, R2=0.04
+[RF] [raw - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.05
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_raw_db1_wavelet_random.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.79, RMSE=1.05, R2=0.07
+[RF] [Fold 2] MAE=0.85, RMSE=1.07, R2=0.05
+[RF] [Fold 3] MAE=0.52, RMSE=0.62, R2=0.20
+[RF] [Fold 4] MAE=0.54, RMSE=0.68, R2=0.08
+[RF] [Fold 5] MAE=0.58, RMSE=0.67, R2=0.33
+[RF] [raw - mfcc] K-fold average -> MAE=0.66, RMSE=0.82, R2=0.14
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_raw_mfcc_random.pkl
+
+[RF] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.82, RMSE=1.03, R2=0.10
+[RF] [Fold 2] MAE=0.88, RMSE=1.12, R2=-0.03
+[RF] [Fold 3] MAE=0.66, RMSE=0.75, R2=-0.16
+[RF] [Fold 4] MAE=0.67, RMSE=0.76, R2=-0.16
+[RF] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.04
+[RF] [raw - zcr] K-fold average -> MAE=0.74, RMSE=0.90, R2=-0.06
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_raw_zcr_random.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.87, RMSE=1.07, R2=0.04
+[RF] [Fold 2] MAE=0.84, RMSE=1.10, R2=0.01
+[RF] [Fold 3] MAE=0.66, RMSE=0.75, R2=-0.19
+[RF] [Fold 4] MAE=0.59, RMSE=0.81, R2=-0.30
+[RF] [Fold 5] MAE=0.65, RMSE=0.76, R2=0.13
+[RF] [spectral_sub - chroma] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.06
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_chroma_random.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.85, RMSE=1.01, R2=0.13
+[RF] [Fold 2] MAE=0.85, RMSE=1.12, R2=-0.04
+[RF] [Fold 3] MAE=0.63, RMSE=0.71, R2=-0.06
+[RF] [Fold 4] MAE=0.59, RMSE=0.75, R2=-0.12
+[RF] [Fold 5] MAE=0.67, RMSE=0.80, R2=0.03
+[RF] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.88, R2=-0.01
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_db1_wavelet_random.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.89, RMSE=1.13, R2=-0.08
+[RF] [Fold 2] MAE=0.83, RMSE=1.05, R2=0.10
+[RF] [Fold 3] MAE=0.50, RMSE=0.65, R2=0.11
+[RF] [Fold 4] MAE=0.60, RMSE=0.76, R2=-0.14
+[RF] [Fold 5] MAE=0.68, RMSE=0.86, R2=-0.10
+[RF] [spectral_sub - mfcc] K-fold average -> MAE=0.70, RMSE=0.89, R2=-0.02
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_mfcc_random.pkl
+
+[RF] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'random']
+[RF] Using pre-split hold-out: 26 test samples, 147 training samples
+[RF] [Fold 1] MAE=0.83, RMSE=0.96, R2=0.23
+[RF] [Fold 2] MAE=0.82, RMSE=1.01, R2=0.16
+[RF] [Fold 3] MAE=0.57, RMSE=0.70, R2=-0.02
+[RF] [Fold 4] MAE=0.63, RMSE=0.80, R2=-0.26
+[RF] [Fold 5] MAE=0.71, RMSE=0.91, R2=-0.24
+[RF] [spectral_sub - zcr] K-fold average -> MAE=0.71, RMSE=0.87, R2=-0.03
+[RF] Final model parameters: {}
+[RF] Final model saved to output\models_rf\rf_spectral_sub_zcr_random.pkl
+[RF] bandpass-chroma (random) => MAE=0.69, RMSE=0.86, R2=0.04
+[RF] bandpass-db1_wavelet (random) => MAE=0.74, RMSE=0.92, R2=-0.10
+[RF] bandpass-mfcc (random) => MAE=0.64, RMSE=0.81, R2=0.16
+[RF] bandpass-zcr (random) => MAE=0.76, RMSE=0.94, R2=-0.16
+[RF] raw-chroma (random) => MAE=0.68, RMSE=0.86, R2=0.03
+[RF] raw-db1_wavelet (random) => MAE=0.73, RMSE=0.91, R2=-0.05
+[RF] raw-mfcc (random) => MAE=0.66, RMSE=0.82, R2=0.14
+[RF] raw-zcr (random) => MAE=0.74, RMSE=0.90, R2=-0.06
+[RF] spectral_sub-chroma (random) => MAE=0.72, RMSE=0.90, R2=-0.06
+[RF] spectral_sub-db1_wavelet (random) => MAE=0.72, RMSE=0.88, R2=-0.01
+[RF] spectral_sub-mfcc (random) => MAE=0.70, RMSE=0.89, R2=-0.02
+[RF] spectral_sub-zcr (random) => MAE=0.71, RMSE=0.87, R2=-0.03
+[RF] K-fold training completed for all feature sets.
+[RF] Report saved to output\testing_rf\report_kfold.txt
+
+=== Testing RF models on hold-out test sets ===
+[RF-TE] Evaluating model rf_bandpass_chroma_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[RF-TE] Evaluating model rf_bandpass_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[RF-TE] Evaluating model rf_bandpass_chroma_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[RF-TE] Evaluating model rf_bandpass_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[RF-TE] Evaluating model rf_bandpass_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[RF-TE] Evaluating model rf_bandpass_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[RF-TE] Evaluating model rf_bandpass_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[RF-TE] Evaluating model rf_bandpass_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[RF-TE] Evaluating model rf_bandpass_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[RF-TE] Evaluating model rf_bandpass_zcr_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[RF-TE] Evaluating model rf_bandpass_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[RF-TE] Evaluating model rf_bandpass_zcr_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[RF-TE] Evaluating model rf_raw_chroma_default.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[RF-TE] Evaluating model rf_raw_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[RF-TE] Evaluating model rf_raw_chroma_random.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[RF-TE] Evaluating model rf_raw_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[RF-TE] Evaluating model rf_raw_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[RF-TE] Evaluating model rf_raw_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[RF-TE] Evaluating model rf_raw_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[RF-TE] Evaluating model rf_raw_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[RF-TE] Evaluating model rf_raw_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[RF-TE] Evaluating model rf_raw_zcr_default.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[RF-TE] Evaluating model rf_raw_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[RF-TE] Evaluating model rf_raw_zcr_random.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[RF-TE] Evaluating model rf_spectral_sub_chroma_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[RF-TE] Evaluating model rf_spectral_sub_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[RF-TE] Evaluating model rf_spectral_sub_chroma_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[RF-TE] Evaluating model rf_spectral_sub_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[RF-TE] Evaluating model rf_spectral_sub_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[RF-TE] Evaluating model rf_spectral_sub_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[RF-TE] Evaluating model rf_spectral_sub_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[RF-TE] Evaluating model rf_spectral_sub_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[RF-TE] Evaluating model rf_spectral_sub_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[RF-TE] Evaluating model rf_spectral_sub_zcr_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[RF-TE] Evaluating model rf_spectral_sub_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[RF-TE] Evaluating model rf_spectral_sub_zcr_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[RF-TE] Report saved to ..\output\testing_rf\report_holdout.txt
+[TE] Parsed K-Fold report from ..\output\testing_rf\report_kfold.txt
+[RF-TE] Plotting results for Hyper-tuning: default
+[TE] Saved combined heatmap to ..\output\testing_rf\heatmaps\rf_default_heatmap.png
+[TE] Saved predicted vs. actual plot to ..\output\testing_rf\predicted_vs_actual\rf_default_predicted_vs_actual.png
+[TE] Saved residual plot to ..\output\testing_rf\residual_plots\rf_default_residual_plot.png
+[RF-TE] Plotting results for Hyper-tuning: grid
+[TE] Saved combined heatmap to ..\output\testing_rf\heatmaps\rf_grid_heatmap.png
+[TE] Saved predicted vs. actual plot to ..\output\testing_rf\predicted_vs_actual\rf_grid_predicted_vs_actual.png
+[TE] Saved residual plot to ..\output\testing_rf\residual_plots\rf_grid_residual_plot.png
+[RF-TE] Plotting results for Hyper-tuning: random
+[TE] Saved combined heatmap to ..\output\testing_rf\heatmaps\rf_random_heatmap.png
+[TE] Saved predicted vs. actual plot to ..\output\testing_rf\predicted_vs_actual\rf_random_predicted_vs_actual.png
+[TE] Saved residual plot to ..\output\testing_rf\residual_plots\rf_random_residual_plot.png
+RF pipeline completed.
+
+=== Training ExtraTrees models with hyperparameter tuning: default ===
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.83, RMSE=1.04, R2=0.09
+[ET] [Fold 2] MAE=0.78, RMSE=1.04, R2=0.11
+[ET] [Fold 3] MAE=0.60, RMSE=0.68, R2=0.02
+[ET] [Fold 4] MAE=0.52, RMSE=0.68, R2=0.07
+[ET] [Fold 5] MAE=0.53, RMSE=0.70, R2=0.25
+[ET] [bandpass - chroma] K-fold average -> MAE=0.65, RMSE=0.83, R2=0.11
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_bandpass_chroma_default.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.77, RMSE=1.02, R2=0.12
+[ET] [Fold 2] MAE=0.82, RMSE=1.12, R2=-0.04
+[ET] [Fold 3] MAE=0.56, RMSE=0.70, R2=-0.04
+[ET] [Fold 4] MAE=0.66, RMSE=0.80, R2=-0.28
+[ET] [Fold 5] MAE=0.70, RMSE=0.86, R2=-0.12
+[ET] [bandpass - db1_wavelet] K-fold average -> MAE=0.70, RMSE=0.90, R2=-0.07
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_bandpass_db1_wavelet_default.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.71, RMSE=0.97, R2=0.21
+[ET] [Fold 2] MAE=0.77, RMSE=0.97, R2=0.23
+[ET] [Fold 3] MAE=0.46, RMSE=0.58, R2=0.30
+[ET] [Fold 4] MAE=0.58, RMSE=0.72, R2=-0.02
+[ET] [Fold 5] MAE=0.55, RMSE=0.66, R2=0.34
+[ET] [bandpass - mfcc] K-fold average -> MAE=0.62, RMSE=0.78, R2=0.21
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_bandpass_mfcc_default.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=1.00, RMSE=1.24, R2=-0.29
+[ET] [Fold 2] MAE=0.73, RMSE=1.07, R2=0.06
+[ET] [Fold 3] MAE=0.77, RMSE=0.99, R2=-1.05
+[ET] [Fold 4] MAE=0.89, RMSE=1.16, R2=-1.65
+[ET] [Fold 5] MAE=0.97, RMSE=1.18, R2=-1.08
+[ET] [bandpass - zcr] K-fold average -> MAE=0.87, RMSE=1.13, R2=-0.80
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_bandpass_zcr_default.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.79, RMSE=1.03, R2=0.10
+[ET] [Fold 2] MAE=0.76, RMSE=0.97, R2=0.22
+[ET] [Fold 3] MAE=0.60, RMSE=0.77, R2=-0.22
+[ET] [Fold 4] MAE=0.51, RMSE=0.69, R2=0.04
+[ET] [Fold 5] MAE=0.65, RMSE=0.80, R2=0.04
+[ET] [raw - chroma] K-fold average -> MAE=0.66, RMSE=0.85, R2=0.04
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_raw_chroma_default.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.85, RMSE=1.10, R2=-0.03
+[ET] [Fold 2] MAE=0.83, RMSE=1.14, R2=-0.08
+[ET] [Fold 3] MAE=0.55, RMSE=0.67, R2=0.06
+[ET] [Fold 4] MAE=0.65, RMSE=0.77, R2=-0.19
+[ET] [Fold 5] MAE=0.69, RMSE=0.83, R2=-0.05
+[ET] [raw - db1_wavelet] K-fold average -> MAE=0.71, RMSE=0.90, R2=-0.06
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_raw_db1_wavelet_default.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.69, RMSE=0.98, R2=0.19
+[ET] [Fold 2] MAE=0.81, RMSE=1.02, R2=0.14
+[ET] [Fold 3] MAE=0.47, RMSE=0.60, R2=0.26
+[ET] [Fold 4] MAE=0.59, RMSE=0.73, R2=-0.04
+[ET] [Fold 5] MAE=0.54, RMSE=0.63, R2=0.40
+[ET] [raw - mfcc] K-fold average -> MAE=0.62, RMSE=0.79, R2=0.19
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_raw_mfcc_default.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.92, RMSE=1.15, R2=-0.12
+[ET] [Fold 2] MAE=0.94, RMSE=1.23, R2=-0.24
+[ET] [Fold 3] MAE=0.73, RMSE=0.93, R2=-0.82
+[ET] [Fold 4] MAE=0.86, RMSE=1.12, R2=-1.49
+[ET] [Fold 5] MAE=0.77, RMSE=0.98, R2=-0.46
+[ET] [raw - zcr] K-fold average -> MAE=0.84, RMSE=1.08, R2=-0.63
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_raw_zcr_default.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.85, RMSE=1.02, R2=0.13
+[ET] [Fold 2] MAE=0.85, RMSE=1.06, R2=0.08
+[ET] [Fold 3] MAE=0.69, RMSE=0.83, R2=-0.44
+[ET] [Fold 4] MAE=0.57, RMSE=0.83, R2=-0.36
+[ET] [Fold 5] MAE=0.66, RMSE=0.79, R2=0.07
+[ET] [spectral_sub - chroma] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.10
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_spectral_sub_chroma_default.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.79, RMSE=0.92, R2=0.29
+[ET] [Fold 2] MAE=0.80, RMSE=1.01, R2=0.15
+[ET] [Fold 3] MAE=0.56, RMSE=0.66, R2=0.10
+[ET] [Fold 4] MAE=0.59, RMSE=0.72, R2=-0.03
+[ET] [Fold 5] MAE=0.58, RMSE=0.70, R2=0.26
+[ET] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.66, RMSE=0.80, R2=0.15
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_spectral_sub_db1_wavelet_default.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.76, RMSE=0.87, R2=0.36
+[ET] [Fold 2] MAE=0.69, RMSE=0.84, R2=0.41
+[ET] [Fold 3] MAE=0.39, RMSE=0.54, R2=0.38
+[ET] [Fold 4] MAE=0.53, RMSE=0.68, R2=0.07
+[ET] [Fold 5] MAE=0.59, RMSE=0.76, R2=0.13
+[ET] [spectral_sub - mfcc] K-fold average -> MAE=0.59, RMSE=0.74, R2=0.27
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_spectral_sub_mfcc_default.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'default']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.73, RMSE=0.94, R2=0.26
+[ET] [Fold 2] MAE=0.59, RMSE=0.77, R2=0.51
+[ET] [Fold 3] MAE=0.71, RMSE=0.93, R2=-0.82
+[ET] [Fold 4] MAE=0.79, RMSE=1.03, R2=-1.12
+[ET] [Fold 5] MAE=0.88, RMSE=1.10, R2=-0.84
+[ET] [spectral_sub - zcr] K-fold average -> MAE=0.74, RMSE=0.96, R2=-0.40
+[ET] Final model parameters: {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 1.0}
+[ET] Final model saved to output\models_et\et_spectral_sub_zcr_default.pkl
+[ET] bandpass-chroma (default) => MAE=0.65, RMSE=0.83, R2=0.11
+[ET] bandpass-db1_wavelet (default) => MAE=0.70, RMSE=0.90, R2=-0.07
+[ET] bandpass-mfcc (default) => MAE=0.62, RMSE=0.78, R2=0.21
+[ET] bandpass-zcr (default) => MAE=0.87, RMSE=1.13, R2=-0.80
+[ET] raw-chroma (default) => MAE=0.66, RMSE=0.85, R2=0.04
+[ET] raw-db1_wavelet (default) => MAE=0.71, RMSE=0.90, R2=-0.06
+[ET] raw-mfcc (default) => MAE=0.62, RMSE=0.79, R2=0.19
+[ET] raw-zcr (default) => MAE=0.84, RMSE=1.08, R2=-0.63
+[ET] spectral_sub-chroma (default) => MAE=0.72, RMSE=0.90, R2=-0.10
+[ET] spectral_sub-db1_wavelet (default) => MAE=0.66, RMSE=0.80, R2=0.15
+[ET] spectral_sub-mfcc (default) => MAE=0.59, RMSE=0.74, R2=0.27
+[ET] spectral_sub-zcr (default) => MAE=0.74, RMSE=0.96, R2=-0.40
+[ET] K-fold training completed for all feature sets.
+[ET] Report saved to output\testing_et\report_kfold.txt
+
+=== Training ExtraTrees models with hyperparameter tuning: grid ===
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.84, RMSE=1.07, R2=0.04
+[ET] [Fold 2] MAE=0.79, RMSE=1.06, R2=0.08
+[ET] [Fold 3] MAE=0.63, RMSE=0.73, R2=-0.11
+[ET] [Fold 4] MAE=0.54, RMSE=0.70, R2=0.04
+[ET] [Fold 5] MAE=0.54, RMSE=0.71, R2=0.25
+[ET] [bandpass - chroma] K-fold average -> MAE=0.67, RMSE=0.85, R2=0.06
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_bandpass_chroma_grid.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.77, RMSE=1.02, R2=0.13
+[ET] [Fold 2] MAE=0.87, RMSE=1.17, R2=-0.12
+[ET] [Fold 3] MAE=0.53, RMSE=0.67, R2=0.07
+[ET] [Fold 4] MAE=0.64, RMSE=0.79, R2=-0.23
+[ET] [Fold 5] MAE=0.69, RMSE=0.84, R2=-0.07
+[ET] [bandpass - db1_wavelet] K-fold average -> MAE=0.70, RMSE=0.90, R2=-0.04
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_bandpass_db1_wavelet_grid.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.69, RMSE=0.92, R2=0.28
+[ET] [Fold 2] MAE=0.76, RMSE=0.95, R2=0.25
+[ET] [Fold 3] MAE=0.50, RMSE=0.61, R2=0.23
+[ET] [Fold 4] MAE=0.57, RMSE=0.70, R2=0.04
+[ET] [Fold 5] MAE=0.55, RMSE=0.66, R2=0.34
+[ET] [bandpass - mfcc] K-fold average -> MAE=0.61, RMSE=0.77, R2=0.23
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_bandpass_mfcc_grid.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.86, RMSE=1.08, R2=0.01
+[ET] [Fold 2] MAE=0.82, RMSE=1.15, R2=-0.08
+[ET] [Fold 3] MAE=0.73, RMSE=0.86, R2=-0.55
+[ET] [Fold 4] MAE=0.73, RMSE=0.85, R2=-0.43
+[ET] [Fold 5] MAE=0.83, RMSE=0.96, R2=-0.38
+[ET] [bandpass - zcr] K-fold average -> MAE=0.79, RMSE=0.98, R2=-0.29
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_bandpass_zcr_grid.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.82, RMSE=1.07, R2=0.03
+[ET] [Fold 2] MAE=0.76, RMSE=0.97, R2=0.22
+[ET] [Fold 3] MAE=0.61, RMSE=0.78, R2=-0.29
+[ET] [Fold 4] MAE=0.49, RMSE=0.66, R2=0.13
+[ET] [Fold 5] MAE=0.67, RMSE=0.83, R2=-0.03
+[ET] [raw - chroma] K-fold average -> MAE=0.67, RMSE=0.86, R2=0.01
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_raw_chroma_grid.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.87, RMSE=1.13, R2=-0.08
+[ET] [Fold 2] MAE=0.83, RMSE=1.10, R2=0.01
+[ET] [Fold 3] MAE=0.58, RMSE=0.71, R2=-0.04
+[ET] [Fold 4] MAE=0.64, RMSE=0.78, R2=-0.20
+[ET] [Fold 5] MAE=0.69, RMSE=0.83, R2=-0.04
+[ET] [raw - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_raw_db1_wavelet_grid.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.72, RMSE=0.98, R2=0.19
+[ET] [Fold 2] MAE=0.79, RMSE=0.99, R2=0.19
+[ET] [Fold 3] MAE=0.49, RMSE=0.61, R2=0.22
+[ET] [Fold 4] MAE=0.58, RMSE=0.72, R2=-0.02
+[ET] [Fold 5] MAE=0.56, RMSE=0.65, R2=0.36
+[ET] [raw - mfcc] K-fold average -> MAE=0.63, RMSE=0.79, R2=0.19
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_raw_mfcc_grid.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.82, RMSE=1.06, R2=0.06
+[ET] [Fold 2] MAE=0.88, RMSE=1.13, R2=-0.05
+[ET] [Fold 3] MAE=0.63, RMSE=0.73, R2=-0.12
+[ET] [Fold 4] MAE=0.73, RMSE=0.92, R2=-0.67
+[ET] [Fold 5] MAE=0.67, RMSE=0.84, R2=-0.05
+[ET] [raw - zcr] K-fold average -> MAE=0.75, RMSE=0.94, R2=-0.17
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_raw_zcr_grid.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.85, RMSE=1.03, R2=0.11
+[ET] [Fold 2] MAE=0.84, RMSE=1.07, R2=0.06
+[ET] [Fold 3] MAE=0.71, RMSE=0.83, R2=-0.44
+[ET] [Fold 4] MAE=0.60, RMSE=0.87, R2=-0.49
+[ET] [Fold 5] MAE=0.64, RMSE=0.75, R2=0.16
+[ET] [spectral_sub - chroma] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.12
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_spectral_sub_chroma_grid.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.77, RMSE=0.89, R2=0.32
+[ET] [Fold 2] MAE=0.75, RMSE=0.98, R2=0.21
+[ET] [Fold 3] MAE=0.54, RMSE=0.63, R2=0.17
+[ET] [Fold 4] MAE=0.58, RMSE=0.72, R2=-0.03
+[ET] [Fold 5] MAE=0.56, RMSE=0.70, R2=0.27
+[ET] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.64, RMSE=0.78, R2=0.19
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_spectral_sub_db1_wavelet_grid.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.74, RMSE=0.85, R2=0.39
+[ET] [Fold 2] MAE=0.72, RMSE=0.89, R2=0.35
+[ET] [Fold 3] MAE=0.39, RMSE=0.52, R2=0.43
+[ET] [Fold 4] MAE=0.54, RMSE=0.68, R2=0.07
+[ET] [Fold 5] MAE=0.57, RMSE=0.75, R2=0.15
+[ET] [spectral_sub - mfcc] K-fold average -> MAE=0.59, RMSE=0.74, R2=0.28
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_spectral_sub_mfcc_grid.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'grid']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.69, RMSE=0.83, R2=0.43
+[ET] [Fold 2] MAE=0.56, RMSE=0.65, R2=0.66
+[ET] [Fold 3] MAE=0.61, RMSE=0.75, R2=-0.18
+[ET] [Fold 4] MAE=0.68, RMSE=0.86, R2=-0.47
+[ET] [Fold 5] MAE=0.74, RMSE=0.92, R2=-0.29
+[ET] [spectral_sub - zcr] K-fold average -> MAE=0.66, RMSE=0.80, R2=0.03
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_spectral_sub_zcr_grid.pkl
+[ET] bandpass-chroma (grid) => MAE=0.67, RMSE=0.85, R2=0.06
+[ET] bandpass-db1_wavelet (grid) => MAE=0.70, RMSE=0.90, R2=-0.04
+[ET] bandpass-mfcc (grid) => MAE=0.61, RMSE=0.77, R2=0.23
+[ET] bandpass-zcr (grid) => MAE=0.79, RMSE=0.98, R2=-0.29
+[ET] raw-chroma (grid) => MAE=0.67, RMSE=0.86, R2=0.01
+[ET] raw-db1_wavelet (grid) => MAE=0.72, RMSE=0.91, R2=-0.07
+[ET] raw-mfcc (grid) => MAE=0.63, RMSE=0.79, R2=0.19
+[ET] raw-zcr (grid) => MAE=0.75, RMSE=0.94, R2=-0.17
+[ET] spectral_sub-chroma (grid) => MAE=0.73, RMSE=0.91, R2=-0.12
+[ET] spectral_sub-db1_wavelet (grid) => MAE=0.64, RMSE=0.78, R2=0.19
+[ET] spectral_sub-mfcc (grid) => MAE=0.59, RMSE=0.74, R2=0.28
+[ET] spectral_sub-zcr (grid) => MAE=0.66, RMSE=0.80, R2=0.03
+[ET] K-fold training completed for all feature sets.
+[ET] Report saved to output\testing_et\report_kfold.txt
+
+=== Training ExtraTrees models with hyperparameter tuning: random ===
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.90, RMSE=1.10, R2=-0.02
+[ET] [Fold 2] MAE=0.87, RMSE=1.12, R2=-0.03
+[ET] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.10
+[ET] [Fold 4] MAE=0.56, RMSE=0.71, R2=0.01
+[ET] [Fold 5] MAE=0.63, RMSE=0.77, R2=0.11
+[ET] [bandpass - chroma] K-fold average -> MAE=0.72, RMSE=0.88, R2=-0.01
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_bandpass_chroma_random.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.88, RMSE=1.12, R2=-0.05
+[ET] [Fold 2] MAE=0.87, RMSE=1.15, R2=-0.09
+[ET] [Fold 3] MAE=0.61, RMSE=0.71, R2=-0.07
+[ET] [Fold 4] MAE=0.59, RMSE=0.73, R2=-0.07
+[ET] [Fold 5] MAE=0.69, RMSE=0.82, R2=-0.00
+[ET] [bandpass - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.06
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_bandpass_db1_wavelet_random.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.82, RMSE=1.06, R2=0.05
+[ET] [Fold 2] MAE=0.85, RMSE=1.12, R2=-0.03
+[ET] [Fold 3] MAE=0.57, RMSE=0.68, R2=0.05
+[ET] [Fold 4] MAE=0.56, RMSE=0.70, R2=0.03
+[ET] [Fold 5] MAE=0.65, RMSE=0.76, R2=0.12
+[ET] [bandpass - mfcc] K-fold average -> MAE=0.69, RMSE=0.86, R2=0.04
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_bandpass_mfcc_random.pkl
+
+[ET] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.86, RMSE=1.10, R2=-0.01
+[ET] [Fold 2] MAE=0.85, RMSE=1.13, R2=-0.06
+[ET] [Fold 3] MAE=0.62, RMSE=0.74, R2=-0.13
+[ET] [Fold 4] MAE=0.56, RMSE=0.72, R2=-0.03
+[ET] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[ET] [bandpass - zcr] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.05
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_bandpass_zcr_random.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.87, RMSE=1.08, R2=0.02
+[ET] [Fold 2] MAE=0.85, RMSE=1.10, R2=0.00
+[ET] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[ET] [Fold 4] MAE=0.56, RMSE=0.69, R2=0.06
+[ET] [Fold 5] MAE=0.66, RMSE=0.79, R2=0.05
+[ET] [raw - chroma] K-fold average -> MAE=0.71, RMSE=0.88, R2=0.00
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_raw_chroma_random.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.89, RMSE=1.13, R2=-0.07
+[ET] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[ET] [Fold 3] MAE=0.62, RMSE=0.72, R2=-0.08
+[ET] [Fold 4] MAE=0.58, RMSE=0.72, R2=-0.03
+[ET] [Fold 5] MAE=0.70, RMSE=0.82, R2=-0.00
+[ET] [raw - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.90, R2=-0.05
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_raw_db1_wavelet_random.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.83, RMSE=1.06, R2=0.05
+[ET] [Fold 2] MAE=0.86, RMSE=1.11, R2=-0.02
+[ET] [Fold 3] MAE=0.58, RMSE=0.68, R2=0.04
+[ET] [Fold 4] MAE=0.56, RMSE=0.71, R2=0.01
+[ET] [Fold 5] MAE=0.65, RMSE=0.76, R2=0.14
+[ET] [raw - mfcc] K-fold average -> MAE=0.69, RMSE=0.86, R2=0.04
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_raw_mfcc_random.pkl
+
+[ET] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.87, RMSE=1.10, R2=-0.02
+[ET] [Fold 2] MAE=0.87, RMSE=1.13, R2=-0.06
+[ET] [Fold 3] MAE=0.60, RMSE=0.71, R2=-0.07
+[ET] [Fold 4] MAE=0.56, RMSE=0.71, R2=-0.00
+[ET] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.01
+[ET] [raw - zcr] K-fold average -> MAE=0.71, RMSE=0.90, R2=-0.03
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_raw_zcr_random.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.87, RMSE=1.07, R2=0.03
+[ET] [Fold 2] MAE=0.86, RMSE=1.10, R2=-0.00
+[ET] [Fold 3] MAE=0.65, RMSE=0.74, R2=-0.15
+[ET] [Fold 4] MAE=0.62, RMSE=0.79, R2=-0.24
+[ET] [Fold 5] MAE=0.68, RMSE=0.77, R2=0.10
+[ET] [spectral_sub - chroma] K-fold average -> MAE=0.74, RMSE=0.90, R2=-0.05
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_spectral_sub_chroma_random.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.86, RMSE=1.05, R2=0.07
+[ET] [Fold 2] MAE=0.84, RMSE=1.10, R2=0.01
+[ET] [Fold 3] MAE=0.64, RMSE=0.73, R2=-0.10
+[ET] [Fold 4] MAE=0.62, RMSE=0.75, R2=-0.11
+[ET] [Fold 5] MAE=0.68, RMSE=0.80, R2=0.03
+[ET] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.88, R2=-0.02
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_spectral_sub_db1_wavelet_random.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.87, RMSE=1.09, R2=0.00
+[ET] [Fold 2] MAE=0.87, RMSE=1.12, R2=-0.03
+[ET] [Fold 3] MAE=0.59, RMSE=0.70, R2=-0.02
+[ET] [Fold 4] MAE=0.59, RMSE=0.75, R2=-0.11
+[ET] [Fold 5] MAE=0.71, RMSE=0.83, R2=-0.04
+[ET] [spectral_sub - mfcc] K-fold average -> MAE=0.73, RMSE=0.90, R2=-0.04
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_spectral_sub_mfcc_random.pkl
+
+[ET] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'random']
+[ET] Using pre-split hold-out: 26 test samples, 147 training samples
+[ET] [Fold 1] MAE=0.87, RMSE=1.05, R2=0.08
+[ET] [Fold 2] MAE=0.87, RMSE=1.11, R2=-0.02
+[ET] [Fold 3] MAE=0.62, RMSE=0.71, R2=-0.07
+[ET] [Fold 4] MAE=0.59, RMSE=0.74, R2=-0.08
+[ET] [Fold 5] MAE=0.66, RMSE=0.80, R2=0.04
+[ET] [spectral_sub - zcr] K-fold average -> MAE=0.72, RMSE=0.88, R2=-0.01
+[ET] Final model parameters: {}
+[ET] Final model saved to output\models_et\et_spectral_sub_zcr_random.pkl
+[ET] bandpass-chroma (random) => MAE=0.72, RMSE=0.88, R2=-0.01
+[ET] bandpass-db1_wavelet (random) => MAE=0.73, RMSE=0.91, R2=-0.06
+[ET] bandpass-mfcc (random) => MAE=0.69, RMSE=0.86, R2=0.04
+[ET] bandpass-zcr (random) => MAE=0.72, RMSE=0.90, R2=-0.05
+[ET] raw-chroma (random) => MAE=0.71, RMSE=0.88, R2=0.00
+[ET] raw-db1_wavelet (random) => MAE=0.73, RMSE=0.90, R2=-0.05
+[ET] raw-mfcc (random) => MAE=0.69, RMSE=0.86, R2=0.04
+[ET] raw-zcr (random) => MAE=0.71, RMSE=0.90, R2=-0.03
+[ET] spectral_sub-chroma (random) => MAE=0.74, RMSE=0.90, R2=-0.05
+[ET] spectral_sub-db1_wavelet (random) => MAE=0.73, RMSE=0.88, R2=-0.02
+[ET] spectral_sub-mfcc (random) => MAE=0.73, RMSE=0.90, R2=-0.04
+[ET] spectral_sub-zcr (random) => MAE=0.72, RMSE=0.88, R2=-0.01
+[ET] K-fold training completed for all feature sets.
+[ET] Report saved to output\testing_et\report_kfold.txt
+
+=== Testing ExtraTrees models on hold-out test sets ===
+[ET-TE] Evaluating model et_bandpass_chroma_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[ET-TE] Evaluating model et_bandpass_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[ET-TE] Evaluating model et_bandpass_chroma_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[ET-TE] Evaluating model et_bandpass_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[ET-TE] Evaluating model et_bandpass_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[ET-TE] Evaluating model et_bandpass_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[ET-TE] Evaluating model et_bandpass_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[ET-TE] Evaluating model et_bandpass_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[ET-TE] Evaluating model et_bandpass_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[ET-TE] Evaluating model et_bandpass_zcr_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[ET-TE] Evaluating model et_bandpass_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[ET-TE] Evaluating model et_bandpass_zcr_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[ET-TE] Evaluating model et_raw_chroma_default.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[ET-TE] Evaluating model et_raw_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[ET-TE] Evaluating model et_raw_chroma_random.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[ET-TE] Evaluating model et_raw_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[ET-TE] Evaluating model et_raw_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[ET-TE] Evaluating model et_raw_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[ET-TE] Evaluating model et_raw_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[ET-TE] Evaluating model et_raw_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[ET-TE] Evaluating model et_raw_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[ET-TE] Evaluating model et_raw_zcr_default.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[ET-TE] Evaluating model et_raw_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[ET-TE] Evaluating model et_raw_zcr_random.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[ET-TE] Evaluating model et_spectral_sub_chroma_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[ET-TE] Evaluating model et_spectral_sub_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[ET-TE] Evaluating model et_spectral_sub_chroma_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[ET-TE] Evaluating model et_spectral_sub_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[ET-TE] Evaluating model et_spectral_sub_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[ET-TE] Evaluating model et_spectral_sub_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[ET-TE] Evaluating model et_spectral_sub_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[ET-TE] Evaluating model et_spectral_sub_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[ET-TE] Evaluating model et_spectral_sub_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[ET-TE] Evaluating model et_spectral_sub_zcr_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[ET-TE] Evaluating model et_spectral_sub_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[ET-TE] Evaluating model et_spectral_sub_zcr_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[ET-TE] Report saved to ..\output\testing_et\report_holdout.txt
+[ET-TE] Parsed K-Fold report from ..\output\testing_et\report_kfold.txt
+[ET-TE] Plotting results for Hyper-tuning: default
+[ET-TE] Saved combined heatmap to ..\output\testing_et\heatmaps\et_default_heatmap.png
+[ET-TE] Saved predicted vs. actual plot to ..\output\testing_et\predicted_vs_actual\et_default_predicted_vs_actual.png
+[ET-TE] Saved residual plot to ..\output\testing_et\residual_plots\et_default_residual_plot.png
+[ET-TE] Plotting results for Hyper-tuning: grid
+[ET-TE] Saved combined heatmap to ..\output\testing_et\heatmaps\et_grid_heatmap.png
+[ET-TE] Saved predicted vs. actual plot to ..\output\testing_et\predicted_vs_actual\et_grid_predicted_vs_actual.png
+[ET-TE] Saved residual plot to ..\output\testing_et\residual_plots\et_grid_residual_plot.png
+[ET-TE] Plotting results for Hyper-tuning: random
+[ET-TE] Saved combined heatmap to ..\output\testing_et\heatmaps\et_random_heatmap.png
+[ET-TE] Saved predicted vs. actual plot to ..\output\testing_et\predicted_vs_actual\et_random_predicted_vs_actual.png
+[ET-TE] Saved residual plot to ..\output\testing_et\residual_plots\et_random_residual_plot.png
+ExtraTrees pipeline completed.
+
+=== Training XGB models with hyperparameter tuning: bayesian ===
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.11, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.56, RMSE=0.73, R2=-0.04
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.01
+[XGB] [bandpass - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 1.0}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_chroma_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.87, RMSE=1.15, R2=-0.09
+[XGB] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.11
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[XGB] [Fold 5] MAE=0.67, RMSE=0.81, R2=0.01
+[XGB] [bandpass - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 4, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 1.0}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_db1_wavelet_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.04
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.11
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[XGB] [Fold 5] MAE=0.67, RMSE=0.81, R2=0.01
+[XGB] [bandpass - mfcc] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.05
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 1.0}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_mfcc_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.06
+[XGB] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[XGB] [bandpass - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_zcr_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [raw - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 1.0}
+[XGB] Final model saved to output\models_xgb\xgb_raw_chroma_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.11
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.69, RMSE=0.83, R2=-0.03
+[XGB] [raw - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 1.0}
+[XGB] Final model saved to output\models_xgb\xgb_raw_db1_wavelet_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.12, R2=-0.06
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.61, RMSE=0.72, R2=-0.09
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.01
+[XGB] [raw - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.007930324322883084, 'reg_alpha': 1.0, 'reg_lambda': 1.0787530871494444, 'subsample': 0.8071333254047152}
+[XGB] Final model saved to output\models_xgb\xgb_raw_mfcc_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.04
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [raw - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 1.0}
+[XGB] Final model saved to output\models_xgb\xgb_raw_zcr_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.63, RMSE=0.73, R2=-0.11
+[XGB] [Fold 4] MAE=0.56, RMSE=0.75, R2=-0.11
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [spectral_sub - chroma] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 300, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.1523514449802383, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_chroma_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.10, R2=-0.02
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.74, R2=-0.09
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 0.2581779106801591, 'reg_lambda': 2.0, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_db1_wavelet_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[XGB] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.04
+[XGB] [spectral_sub - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 1.0}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_mfcc_bayesian.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'bayesian']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.10, R2=-0.03
+[XGB] [Fold 2] MAE=0.86, RMSE=1.13, R2=-0.05
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.69, RMSE=0.83, R2=-0.05
+[XGB] [spectral_sub - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_zcr_bayesian.pkl
+[XGB] bandpass-chroma (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] bandpass-db1_wavelet (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] bandpass-mfcc (bayesian) => MAE=0.72, RMSE=0.90, R2=-0.05
+[XGB] bandpass-zcr (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] raw-chroma (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] raw-db1_wavelet (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] raw-mfcc (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] raw-zcr (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] spectral_sub-chroma (bayesian) => MAE=0.73, RMSE=0.91, R2=-0.07
+[XGB] spectral_sub-db1_wavelet (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] spectral_sub-mfcc (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] spectral_sub-zcr (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] K-fold training completed for all feature sets.
+[XGB] Report saved to output\testing_xgb\report_kfold.txt
+
+=== Training XGB models with hyperparameter tuning: default ===
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.80, RMSE=0.98, R2=0.19
+[XGB] [Fold 2] MAE=0.69, RMSE=0.90, R2=0.33
+[XGB] [Fold 3] MAE=0.75, RMSE=1.00, R2=-1.09
+[XGB] [Fold 4] MAE=0.45, RMSE=0.57, R2=0.36
+[XGB] [Fold 5] MAE=0.62, RMSE=0.88, R2=-0.17
+[XGB] [bandpass - chroma] K-fold average -> MAE=0.66, RMSE=0.87, R2=-0.08
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_chroma_default.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.96, RMSE=1.18, R2=-0.18
+[XGB] [Fold 2] MAE=0.98, RMSE=1.27, R2=-0.33
+[XGB] [Fold 3] MAE=0.54, RMSE=0.66, R2=0.08
+[XGB] [Fold 4] MAE=0.76, RMSE=0.90, R2=-0.60
+[XGB] [Fold 5] MAE=0.83, RMSE=0.95, R2=-0.35
+[XGB] [bandpass - db1_wavelet] K-fold average -> MAE=0.81, RMSE=0.99, R2=-0.28
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_db1_wavelet_default.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.61, RMSE=0.91, R2=0.30
+[XGB] [Fold 2] MAE=0.68, RMSE=0.93, R2=0.28
+[XGB] [Fold 3] MAE=0.53, RMSE=0.66, R2=0.09
+[XGB] [Fold 4] MAE=0.57, RMSE=0.76, R2=-0.14
+[XGB] [Fold 5] MAE=0.53, RMSE=0.67, R2=0.33
+[XGB] [bandpass - mfcc] K-fold average -> MAE=0.58, RMSE=0.79, R2=0.17
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_mfcc_default.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=1.13, RMSE=1.31, R2=-0.44
+[XGB] [Fold 2] MAE=0.86, RMSE=1.22, R2=-0.23
+[XGB] [Fold 3] MAE=0.79, RMSE=0.98, R2=-1.02
+[XGB] [Fold 4] MAE=0.95, RMSE=1.30, R2=-2.37
+[XGB] [Fold 5] MAE=1.07, RMSE=1.45, R2=-2.16
+[XGB] [bandpass - zcr] K-fold average -> MAE=0.96, RMSE=1.25, R2=-1.24
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_zcr_default.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.80, RMSE=1.10, R2=-0.02
+[XGB] [Fold 2] MAE=0.81, RMSE=1.10, R2=-0.00
+[XGB] [Fold 3] MAE=0.73, RMSE=0.93, R2=-0.83
+[XGB] [Fold 4] MAE=0.58, RMSE=0.82, R2=-0.32
+[XGB] [Fold 5] MAE=0.64, RMSE=0.83, R2=-0.03
+[XGB] [raw - chroma] K-fold average -> MAE=0.71, RMSE=0.96, R2=-0.24
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_raw_chroma_default.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.86, RMSE=1.11, R2=-0.05
+[XGB] [Fold 2] MAE=0.82, RMSE=1.12, R2=-0.04
+[XGB] [Fold 3] MAE=0.59, RMSE=0.76, R2=-0.20
+[XGB] [Fold 4] MAE=0.67, RMSE=0.80, R2=-0.27
+[XGB] [Fold 5] MAE=0.80, RMSE=0.96, R2=-0.38
+[XGB] [raw - db1_wavelet] K-fold average -> MAE=0.75, RMSE=0.95, R2=-0.19
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_raw_db1_wavelet_default.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.69, RMSE=0.98, R2=0.18
+[XGB] [Fold 2] MAE=0.93, RMSE=1.18, R2=-0.15
+[XGB] [Fold 3] MAE=0.53, RMSE=0.71, R2=-0.05
+[XGB] [Fold 4] MAE=0.59, RMSE=0.78, R2=-0.20
+[XGB] [Fold 5] MAE=0.55, RMSE=0.78, R2=0.08
+[XGB] [raw - mfcc] K-fold average -> MAE=0.66, RMSE=0.89, R2=-0.03
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_raw_mfcc_default.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.75, RMSE=1.07, R2=0.04
+[XGB] [Fold 2] MAE=1.08, RMSE=1.42, R2=-0.66
+[XGB] [Fold 3] MAE=0.77, RMSE=1.02, R2=-1.17
+[XGB] [Fold 4] MAE=0.75, RMSE=1.08, R2=-1.30
+[XGB] [Fold 5] MAE=0.68, RMSE=0.93, R2=-0.29
+[XGB] [raw - zcr] K-fold average -> MAE=0.81, RMSE=1.10, R2=-0.68
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_raw_zcr_default.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.90, RMSE=1.11, R2=-0.04
+[XGB] [Fold 2] MAE=0.94, RMSE=1.18, R2=-0.14
+[XGB] [Fold 3] MAE=0.75, RMSE=0.97, R2=-0.95
+[XGB] [Fold 4] MAE=0.66, RMSE=0.90, R2=-0.60
+[XGB] [Fold 5] MAE=0.66, RMSE=0.82, R2=-0.02
+[XGB] [spectral_sub - chroma] K-fold average -> MAE=0.78, RMSE=0.99, R2=-0.35
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_chroma_default.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.87, RMSE=1.03, R2=0.11
+[XGB] [Fold 2] MAE=0.86, RMSE=1.19, R2=-0.17
+[XGB] [Fold 3] MAE=0.68, RMSE=0.87, R2=-0.57
+[XGB] [Fold 4] MAE=0.79, RMSE=1.01, R2=-1.03
+[XGB] [Fold 5] MAE=0.67, RMSE=0.87, R2=-0.14
+[XGB] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.77, RMSE=0.99, R2=-0.36
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_db1_wavelet_default.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.87, RMSE=1.08, R2=0.01
+[XGB] [Fold 2] MAE=0.70, RMSE=0.88, R2=0.36
+[XGB] [Fold 3] MAE=0.60, RMSE=0.94, R2=-0.86
+[XGB] [Fold 4] MAE=0.71, RMSE=0.85, R2=-0.43
+[XGB] [Fold 5] MAE=0.53, RMSE=0.78, R2=0.07
+[XGB] [spectral_sub - mfcc] K-fold average -> MAE=0.68, RMSE=0.91, R2=-0.17
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_mfcc_default.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'default']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.70, RMSE=0.96, R2=0.22
+[XGB] [Fold 2] MAE=0.53, RMSE=0.80, R2=0.47
+[XGB] [Fold 3] MAE=0.76, RMSE=0.95, R2=-0.89
+[XGB] [Fold 4] MAE=0.90, RMSE=1.09, R2=-1.37
+[XGB] [Fold 5] MAE=1.15, RMSE=1.44, R2=-2.15
+[XGB] [spectral_sub - zcr] K-fold average -> MAE=0.81, RMSE=1.05, R2=-0.74
+[XGB] Final model parameters: {'n_estimators': None, 'max_depth': None, 'learning_rate': None, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_zcr_default.pkl
+[XGB] bandpass-chroma (default) => MAE=0.66, RMSE=0.87, R2=-0.08
+[XGB] bandpass-db1_wavelet (default) => MAE=0.81, RMSE=0.99, R2=-0.28
+[XGB] bandpass-mfcc (default) => MAE=0.58, RMSE=0.79, R2=0.17
+[XGB] bandpass-zcr (default) => MAE=0.96, RMSE=1.25, R2=-1.24
+[XGB] raw-chroma (default) => MAE=0.71, RMSE=0.96, R2=-0.24
+[XGB] raw-db1_wavelet (default) => MAE=0.75, RMSE=0.95, R2=-0.19
+[XGB] raw-mfcc (default) => MAE=0.66, RMSE=0.89, R2=-0.03
+[XGB] raw-zcr (default) => MAE=0.81, RMSE=1.10, R2=-0.68
+[XGB] spectral_sub-chroma (default) => MAE=0.78, RMSE=0.99, R2=-0.35
+[XGB] spectral_sub-db1_wavelet (default) => MAE=0.77, RMSE=0.99, R2=-0.36
+[XGB] spectral_sub-mfcc (default) => MAE=0.68, RMSE=0.91, R2=-0.17
+[XGB] spectral_sub-zcr (default) => MAE=0.81, RMSE=1.05, R2=-0.74
+[XGB] K-fold training completed for all feature sets.
+[XGB] Report saved to output\testing_xgb\report_kfold.txt
+
+=== Training XGB models with hyperparameter tuning: grid ===
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.07, R2=0.04
+[XGB] [Fold 2] MAE=0.81, RMSE=1.09, R2=0.03
+[XGB] [Fold 3] MAE=0.62, RMSE=0.72, R2=-0.07
+[XGB] [Fold 4] MAE=0.47, RMSE=0.62, R2=0.24
+[XGB] [Fold 5] MAE=0.67, RMSE=0.84, R2=-0.07
+[XGB] [bandpass - chroma] K-fold average -> MAE=0.69, RMSE=0.87, R2=0.03
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_chroma_grid.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.10, R2=-0.03
+[XGB] [Fold 2] MAE=0.89, RMSE=1.17, R2=-0.12
+[XGB] [Fold 3] MAE=0.57, RMSE=0.67, R2=0.05
+[XGB] [Fold 4] MAE=0.57, RMSE=0.74, R2=-0.08
+[XGB] [Fold 5] MAE=0.69, RMSE=0.81, R2=0.01
+[XGB] [bandpass - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.03
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_db1_wavelet_grid.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.83, RMSE=1.08, R2=0.01
+[XGB] [Fold 2] MAE=0.84, RMSE=1.09, R2=0.03
+[XGB] [Fold 3] MAE=0.52, RMSE=0.64, R2=0.15
+[XGB] [Fold 4] MAE=0.59, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.59, RMSE=0.72, R2=0.22
+[XGB] [bandpass - mfcc] K-fold average -> MAE=0.68, RMSE=0.85, R2=0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_mfcc_grid.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.85, RMSE=1.08, R2=0.01
+[XGB] [Fold 2] MAE=0.85, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.60, RMSE=0.71, R2=-0.05
+[XGB] [Fold 4] MAE=0.62, RMSE=0.75, R2=-0.12
+[XGB] [Fold 5] MAE=0.69, RMSE=0.83, R2=-0.04
+[XGB] [bandpass - zcr] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.05
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_zcr_grid.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.85, RMSE=1.09, R2=0.01
+[XGB] [Fold 2] MAE=0.84, RMSE=1.11, R2=-0.02
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[XGB] [Fold 5] MAE=0.60, RMSE=0.74, R2=0.17
+[XGB] [raw - chroma] K-fold average -> MAE=0.69, RMSE=0.88, R2=-0.00
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_raw_chroma_grid.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.86, RMSE=1.06, R2=0.06
+[XGB] [Fold 2] MAE=0.86, RMSE=1.13, R2=-0.05
+[XGB] [Fold 3] MAE=0.59, RMSE=0.67, R2=0.05
+[XGB] [Fold 4] MAE=0.56, RMSE=0.69, R2=0.04
+[XGB] [Fold 5] MAE=0.68, RMSE=0.84, R2=-0.06
+[XGB] [raw - db1_wavelet] K-fold average -> MAE=0.71, RMSE=0.88, R2=0.01
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_raw_db1_wavelet_grid.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.84, RMSE=1.10, R2=-0.03
+[XGB] [Fold 2] MAE=0.90, RMSE=1.17, R2=-0.13
+[XGB] [Fold 3] MAE=0.56, RMSE=0.66, R2=0.10
+[XGB] [Fold 4] MAE=0.55, RMSE=0.73, R2=-0.05
+[XGB] [Fold 5] MAE=0.66, RMSE=0.78, R2=0.09
+[XGB] [raw - mfcc] K-fold average -> MAE=0.70, RMSE=0.89, R2=-0.00
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_raw_mfcc_grid.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.81, RMSE=1.05, R2=0.08
+[XGB] [Fold 2] MAE=0.88, RMSE=1.14, R2=-0.06
+[XGB] [Fold 3] MAE=0.60, RMSE=0.72, R2=-0.07
+[XGB] [Fold 4] MAE=0.57, RMSE=0.71, R2=-0.00
+[XGB] [Fold 5] MAE=0.66, RMSE=0.78, R2=0.08
+[XGB] [raw - zcr] K-fold average -> MAE=0.70, RMSE=0.88, R2=0.00
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_raw_zcr_grid.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.10, R2=-0.02
+[XGB] [Fold 2] MAE=0.86, RMSE=1.11, R2=-0.01
+[XGB] [Fold 3] MAE=0.65, RMSE=0.74, R2=-0.14
+[XGB] [Fold 4] MAE=0.57, RMSE=0.75, R2=-0.12
+[XGB] [Fold 5] MAE=0.68, RMSE=0.80, R2=0.02
+[XGB] [spectral_sub - chroma] K-fold average -> MAE=0.73, RMSE=0.90, R2=-0.05
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_chroma_grid.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.90, RMSE=1.10, R2=-0.02
+[XGB] [Fold 2] MAE=0.88, RMSE=1.16, R2=-0.11
+[XGB] [Fold 3] MAE=0.65, RMSE=0.75, R2=-0.18
+[XGB] [Fold 4] MAE=0.59, RMSE=0.80, R2=-0.28
+[XGB] [Fold 5] MAE=0.69, RMSE=0.83, R2=-0.04
+[XGB] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.74, RMSE=0.93, R2=-0.13
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_db1_wavelet_grid.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.86, RMSE=1.04, R2=0.09
+[XGB] [Fold 2] MAE=0.79, RMSE=0.98, R2=0.20
+[XGB] [Fold 3] MAE=0.61, RMSE=0.79, R2=-0.30
+[XGB] [Fold 4] MAE=0.58, RMSE=0.73, R2=-0.04
+[XGB] [Fold 5] MAE=0.64, RMSE=0.82, R2=-0.01
+[XGB] [spectral_sub - mfcc] K-fold average -> MAE=0.70, RMSE=0.87, R2=-0.01
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_mfcc_grid.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'grid']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.82, RMSE=0.96, R2=0.22
+[XGB] [Fold 2] MAE=0.78, RMSE=0.97, R2=0.23
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[XGB] [Fold 4] MAE=0.62, RMSE=0.75, R2=-0.10
+[XGB] [Fold 5] MAE=0.72, RMSE=0.90, R2=-0.21
+[XGB] [spectral_sub - zcr] K-fold average -> MAE=0.71, RMSE=0.86, R2=0.00
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01, 'gamma': None, 'reg_alpha': None, 'reg_lambda': None, 'subsample': None}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_zcr_grid.pkl
+[XGB] bandpass-chroma (grid) => MAE=0.69, RMSE=0.87, R2=0.03
+[XGB] bandpass-db1_wavelet (grid) => MAE=0.72, RMSE=0.90, R2=-0.03
+[XGB] bandpass-mfcc (grid) => MAE=0.68, RMSE=0.85, R2=0.07
+[XGB] bandpass-zcr (grid) => MAE=0.72, RMSE=0.90, R2=-0.05
+[XGB] raw-chroma (grid) => MAE=0.69, RMSE=0.88, R2=-0.00
+[XGB] raw-db1_wavelet (grid) => MAE=0.71, RMSE=0.88, R2=0.01
+[XGB] raw-mfcc (grid) => MAE=0.70, RMSE=0.89, R2=-0.00
+[XGB] raw-zcr (grid) => MAE=0.70, RMSE=0.88, R2=0.00
+[XGB] spectral_sub-chroma (grid) => MAE=0.73, RMSE=0.90, R2=-0.05
+[XGB] spectral_sub-db1_wavelet (grid) => MAE=0.74, RMSE=0.93, R2=-0.13
+[XGB] spectral_sub-mfcc (grid) => MAE=0.70, RMSE=0.87, R2=-0.01
+[XGB] spectral_sub-zcr (grid) => MAE=0.71, RMSE=0.86, R2=0.00
+[XGB] K-fold training completed for all feature sets.
+[XGB] Report saved to output\testing_xgb\report_kfold.txt
+
+=== Training XGB models with hyperparameter tuning: random ===
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.11, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.06
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [bandpass - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_chroma_random.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.87, RMSE=1.15, R2=-0.08
+[XGB] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.03
+[XGB] [bandpass - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_db1_wavelet_random.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.04
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.06
+[XGB] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.10
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.01
+[XGB] [bandpass - mfcc] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_mfcc_random.pkl
+
+[XGB] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.04
+[XGB] [bandpass - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_bandpass_zcr_random.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [raw - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_raw_chroma_random.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [raw - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_raw_db1_wavelet_random.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.61, RMSE=0.72, R2=-0.10
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.01
+[XGB] [raw - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_raw_mfcc_random.pkl
+
+[XGB] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.04
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [raw - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_raw_zcr_random.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.65, RMSE=0.74, R2=-0.16
+[XGB] [Fold 4] MAE=0.57, RMSE=0.74, R2=-0.07
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [spectral_sub - chroma] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.08
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_chroma_random.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.11, R2=-0.04
+[XGB] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[XGB] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[XGB] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_db1_wavelet_random.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[XGB] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.07
+[XGB] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[XGB] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[XGB] [spectral_sub - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_mfcc_random.pkl
+
+[XGB] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'random']
+[XGB] Using pre-split hold-out: 26 test samples, 147 training samples
+[XGB] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.03
+[XGB] [Fold 2] MAE=0.86, RMSE=1.13, R2=-0.05
+[XGB] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.11
+[XGB] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[XGB] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.04
+[XGB] [spectral_sub - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] Final model parameters: {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+[XGB] Final model saved to output\models_xgb\xgb_spectral_sub_zcr_random.pkl
+[XGB] bandpass-chroma (random) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] bandpass-db1_wavelet (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] bandpass-mfcc (random) => MAE=0.72, RMSE=0.90, R2=-0.06
+[XGB] bandpass-zcr (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] raw-chroma (random) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] raw-db1_wavelet (random) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] raw-mfcc (random) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] raw-zcr (random) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] spectral_sub-chroma (random) => MAE=0.73, RMSE=0.91, R2=-0.08
+[XGB] spectral_sub-db1_wavelet (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] spectral_sub-mfcc (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[XGB] spectral_sub-zcr (random) => MAE=0.72, RMSE=0.91, R2=-0.06
+[XGB] K-fold training completed for all feature sets.
+[XGB] Report saved to output\testing_xgb\report_kfold.txt
+
+=== Testing XGB models on hold-out test sets ===
+[XGB-TE] Evaluating model xgb_bandpass_chroma_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[XGB-TE] Evaluating model xgb_bandpass_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[XGB-TE] Evaluating model xgb_bandpass_chroma_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[XGB-TE] Evaluating model xgb_bandpass_chroma_bayesian.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[XGB-TE] Evaluating model xgb_bandpass_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_bandpass_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_bandpass_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_bandpass_db1_wavelet_bayesian.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_bandpass_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[XGB-TE] Evaluating model xgb_bandpass_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[XGB-TE] Evaluating model xgb_bandpass_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[XGB-TE] Evaluating model xgb_bandpass_mfcc_bayesian.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[XGB-TE] Evaluating model xgb_bandpass_zcr_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[XGB-TE] Evaluating model xgb_bandpass_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[XGB-TE] Evaluating model xgb_bandpass_zcr_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[XGB-TE] Evaluating model xgb_bandpass_zcr_bayesian.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[XGB-TE] Evaluating model xgb_raw_chroma_default.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[XGB-TE] Evaluating model xgb_raw_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[XGB-TE] Evaluating model xgb_raw_chroma_random.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[XGB-TE] Evaluating model xgb_raw_chroma_bayesian.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[XGB-TE] Evaluating model xgb_raw_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_raw_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_raw_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_raw_db1_wavelet_bayesian.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_raw_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[XGB-TE] Evaluating model xgb_raw_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[XGB-TE] Evaluating model xgb_raw_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[XGB-TE] Evaluating model xgb_raw_mfcc_bayesian.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[XGB-TE] Evaluating model xgb_raw_zcr_default.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[XGB-TE] Evaluating model xgb_raw_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[XGB-TE] Evaluating model xgb_raw_zcr_random.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[XGB-TE] Evaluating model xgb_raw_zcr_bayesian.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[XGB-TE] Evaluating model xgb_spectral_sub_chroma_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[XGB-TE] Evaluating model xgb_spectral_sub_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[XGB-TE] Evaluating model xgb_spectral_sub_chroma_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[XGB-TE] Evaluating model xgb_spectral_sub_chroma_bayesian.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[XGB-TE] Evaluating model xgb_spectral_sub_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_spectral_sub_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_spectral_sub_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_spectral_sub_db1_wavelet_bayesian.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[XGB-TE] Evaluating model xgb_spectral_sub_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[XGB-TE] Evaluating model xgb_spectral_sub_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[XGB-TE] Evaluating model xgb_spectral_sub_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[XGB-TE] Evaluating model xgb_spectral_sub_mfcc_bayesian.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[XGB-TE] Evaluating model xgb_spectral_sub_zcr_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[XGB-TE] Evaluating model xgb_spectral_sub_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[XGB-TE] Evaluating model xgb_spectral_sub_zcr_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[XGB-TE] Evaluating model xgb_spectral_sub_zcr_bayesian.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[XGB-TE] Report saved to ..\output\testing_xgb\report_holdout.txt
+[XGB-TE] Saved combined heatmap to ..\output\testing_xgb\heatmaps\xgb_bayesian_heatmap.png
+[XGB-TE] Saved predicted vs. actual plot to ..\output\testing_xgb\predicted_vs_actual\xgb_bayesian_predicted_vs_actual.png
+[XGB-TE] Saved residual plot to ..\output\testing_xgb\residual_plots\xgb_bayesian_residual_plot.png
+[XGB-TE] Saved combined heatmap to ..\output\testing_xgb\heatmaps\xgb_default_heatmap.png
+[XGB-TE] Saved predicted vs. actual plot to ..\output\testing_xgb\predicted_vs_actual\xgb_default_predicted_vs_actual.png
+[XGB-TE] Saved residual plot to ..\output\testing_xgb\residual_plots\xgb_default_residual_plot.png
+[XGB-TE] Saved combined heatmap to ..\output\testing_xgb\heatmaps\xgb_grid_heatmap.png
+[XGB-TE] Saved predicted vs. actual plot to ..\output\testing_xgb\predicted_vs_actual\xgb_grid_predicted_vs_actual.png
+[XGB-TE] Saved residual plot to ..\output\testing_xgb\residual_plots\xgb_grid_residual_plot.png
+[XGB-TE] Saved combined heatmap to ..\output\testing_xgb\heatmaps\xgb_random_heatmap.png
+[XGB-TE] Saved predicted vs. actual plot to ..\output\testing_xgb\predicted_vs_actual\xgb_random_predicted_vs_actual.png
+[XGB-TE] Saved residual plot to ..\output\testing_xgb\residual_plots\xgb_random_residual_plot.png
+XGB pipeline completed.
+
+=== Training CatBoost models with hyperparameter tuning: bayesian ===
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.11, R2=-0.04
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.11
+[CAT] [Fold 4] MAE=0.55, RMSE=0.69, R2=0.05
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [bandpass - chroma] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.04
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_bandpass_chroma_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.06
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.71, R2=0.00
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [bandpass - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_bandpass_db1_wavelet_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[CAT] [bandpass - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_bandpass_mfcc_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [bandpass - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_bandpass_zcr_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.03
+[CAT] [raw - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_raw_chroma_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.10, R2=-0.03
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [raw - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_raw_db1_wavelet_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.61, RMSE=0.72, R2=-0.08
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [raw - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_raw_mfcc_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.87, RMSE=1.10, R2=-0.01
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.01
+[CAT] [raw - zcr] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.05
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_raw_zcr_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.11
+[CAT] [Fold 4] MAE=0.56, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[CAT] [spectral_sub - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] Final model parameters: {'iterations': 135, 'depth': 7, 'learning_rate': 0.0023182325546666385, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_chroma_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_db1_wavelet_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+C:\Users\abarr\PycharmProjects\watermelon_acoustic\venv\lib\site-packages\skopt\optimizer\optimizer.py:517: UserWarning: The objective has been evaluated at point [10, 100, 10, 0.001] before, using random point [8, 291, 7, 0.014834966284479084]
+  warnings.warn(
+C:\Users\abarr\PycharmProjects\watermelon_acoustic\venv\lib\site-packages\skopt\optimizer\optimizer.py:517: UserWarning: The objective has been evaluated at point [10, 100, 10, 0.001] before, using random point [7, 285, 6, 0.0046714566340698245]
+  warnings.warn(
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_mfcc_bayesian.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'bayesian']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.11, R2=-0.03
+[CAT] [Fold 2] MAE=0.86, RMSE=1.13, R2=-0.06
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.11
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 4, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_zcr_bayesian.pkl
+[CAT] bandpass-chroma (bayesian) => MAE=0.72, RMSE=0.90, R2=-0.04
+[CAT] bandpass-db1_wavelet (bayesian) => MAE=0.73, RMSE=0.91, R2=-0.06
+[CAT] bandpass-mfcc (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] bandpass-zcr (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] raw-chroma (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] raw-db1_wavelet (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] raw-mfcc (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] raw-zcr (bayesian) => MAE=0.72, RMSE=0.90, R2=-0.05
+[CAT] spectral_sub-chroma (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] spectral_sub-db1_wavelet (bayesian) => MAE=0.73, RMSE=0.91, R2=-0.07
+[CAT] spectral_sub-mfcc (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] spectral_sub-zcr (bayesian) => MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] K-fold training completed for all feature sets.
+[CAT] Report saved to output\testing_cat\report_kfold.txt
+
+=== Training CatBoost models with hyperparameter tuning: default ===
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.87, RMSE=1.05, R2=0.06
+[CAT] [Fold 2] MAE=0.77, RMSE=0.99, R2=0.19
+[CAT] [Fold 3] MAE=0.61, RMSE=0.70, R2=-0.03
+[CAT] [Fold 4] MAE=0.53, RMSE=0.68, R2=0.09
+[CAT] [Fold 5] MAE=0.58, RMSE=0.71, R2=0.25
+[CAT] [bandpass - chroma] K-fold average -> MAE=0.67, RMSE=0.83, R2=0.11
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_bandpass_chroma_default.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.05
+[CAT] [Fold 2] MAE=0.85, RMSE=1.13, R2=-0.06
+[CAT] [Fold 3] MAE=0.60, RMSE=0.70, R2=-0.02
+[CAT] [Fold 4] MAE=0.56, RMSE=0.72, R2=-0.04
+[CAT] [Fold 5] MAE=0.68, RMSE=0.80, R2=0.03
+[CAT] [bandpass - db1_wavelet] K-fold average -> MAE=0.71, RMSE=0.89, R2=-0.03
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_bandpass_db1_wavelet_default.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.75, RMSE=1.01, R2=0.15
+[CAT] [Fold 2] MAE=0.76, RMSE=0.96, R2=0.24
+[CAT] [Fold 3] MAE=0.46, RMSE=0.56, R2=0.34
+[CAT] [Fold 4] MAE=0.56, RMSE=0.71, R2=-0.00
+[CAT] [Fold 5] MAE=0.58, RMSE=0.69, R2=0.29
+[CAT] [bandpass - mfcc] K-fold average -> MAE=0.62, RMSE=0.79, R2=0.20
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_bandpass_mfcc_default.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.83, RMSE=1.07, R2=0.03
+[CAT] [Fold 2] MAE=0.85, RMSE=1.13, R2=-0.05
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.72, R2=-0.02
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[CAT] [bandpass - zcr] K-fold average -> MAE=0.71, RMSE=0.89, R2=-0.04
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_bandpass_zcr_default.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.79, RMSE=0.98, R2=0.19
+[CAT] [Fold 2] MAE=0.81, RMSE=1.03, R2=0.13
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.11
+[CAT] [Fold 4] MAE=0.54, RMSE=0.68, R2=0.07
+[CAT] [Fold 5] MAE=0.61, RMSE=0.73, R2=0.20
+[CAT] [raw - chroma] K-fold average -> MAE=0.67, RMSE=0.83, R2=0.10
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_raw_chroma_default.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.87, RMSE=1.11, R2=-0.03
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.61, RMSE=0.72, R2=-0.08
+[CAT] [Fold 4] MAE=0.58, RMSE=0.72, R2=-0.03
+[CAT] [Fold 5] MAE=0.65, RMSE=0.76, R2=0.14
+[CAT] [raw - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.89, R2=-0.02
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_raw_db1_wavelet_default.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.75, RMSE=1.01, R2=0.14
+[CAT] [Fold 2] MAE=0.79, RMSE=0.99, R2=0.19
+[CAT] [Fold 3] MAE=0.53, RMSE=0.62, R2=0.19
+[CAT] [Fold 4] MAE=0.54, RMSE=0.69, R2=0.07
+[CAT] [Fold 5] MAE=0.62, RMSE=0.72, R2=0.22
+[CAT] [raw - mfcc] K-fold average -> MAE=0.64, RMSE=0.81, R2=0.16
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_raw_mfcc_default.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.78, RMSE=1.01, R2=0.14
+[CAT] [Fold 2] MAE=0.86, RMSE=1.13, R2=-0.05
+[CAT] [Fold 3] MAE=0.60, RMSE=0.72, R2=-0.08
+[CAT] [Fold 4] MAE=0.57, RMSE=0.71, R2=0.01
+[CAT] [Fold 5] MAE=0.66, RMSE=0.78, R2=0.09
+[CAT] [raw - zcr] K-fold average -> MAE=0.69, RMSE=0.87, R2=0.02
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_raw_zcr_default.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.87, RMSE=1.06, R2=0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.06, R2=0.07
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.11
+[CAT] [Fold 4] MAE=0.56, RMSE=0.74, R2=-0.07
+[CAT] [Fold 5] MAE=0.64, RMSE=0.74, R2=0.17
+[CAT] [spectral_sub - chroma] K-fold average -> MAE=0.71, RMSE=0.87, R2=0.02
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_chroma_default.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.80, RMSE=0.94, R2=0.25
+[CAT] [Fold 2] MAE=0.86, RMSE=1.12, R2=-0.04
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.11
+[CAT] [Fold 4] MAE=0.58, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.63, RMSE=0.74, R2=0.17
+[CAT] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.70, RMSE=0.85, R2=0.04
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_db1_wavelet_default.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.84, RMSE=1.02, R2=0.12
+[CAT] [Fold 2] MAE=0.81, RMSE=1.03, R2=0.12
+[CAT] [Fold 3] MAE=0.57, RMSE=0.70, R2=-0.02
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[CAT] [spectral_sub - mfcc] K-fold average -> MAE=0.69, RMSE=0.86, R2=0.03
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_mfcc_default.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'default']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.73, RMSE=0.82, R2=0.43
+[CAT] [Fold 2] MAE=0.66, RMSE=0.75, R2=0.54
+[CAT] [Fold 3] MAE=0.58, RMSE=0.68, R2=0.04
+[CAT] [Fold 4] MAE=0.58, RMSE=0.73, R2=-0.07
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - zcr] K-fold average -> MAE=0.65, RMSE=0.76, R2=0.18
+[CAT] Final model parameters: {}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_zcr_default.pkl
+[CAT] bandpass-chroma (default) => MAE=0.67, RMSE=0.83, R2=0.11
+[CAT] bandpass-db1_wavelet (default) => MAE=0.71, RMSE=0.89, R2=-0.03
+[CAT] bandpass-mfcc (default) => MAE=0.62, RMSE=0.79, R2=0.20
+[CAT] bandpass-zcr (default) => MAE=0.71, RMSE=0.89, R2=-0.04
+[CAT] raw-chroma (default) => MAE=0.67, RMSE=0.83, R2=0.10
+[CAT] raw-db1_wavelet (default) => MAE=0.72, RMSE=0.89, R2=-0.02
+[CAT] raw-mfcc (default) => MAE=0.64, RMSE=0.81, R2=0.16
+[CAT] raw-zcr (default) => MAE=0.69, RMSE=0.87, R2=0.02
+[CAT] spectral_sub-chroma (default) => MAE=0.71, RMSE=0.87, R2=0.02
+[CAT] spectral_sub-db1_wavelet (default) => MAE=0.70, RMSE=0.85, R2=0.04
+[CAT] spectral_sub-mfcc (default) => MAE=0.69, RMSE=0.86, R2=0.03
+[CAT] spectral_sub-zcr (default) => MAE=0.65, RMSE=0.76, R2=0.18
+[CAT] K-fold training completed for all feature sets.
+[CAT] Report saved to output\testing_cat\report_kfold.txt
+
+=== Training CatBoost models with hyperparameter tuning: grid ===
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.87, RMSE=1.07, R2=0.03
+[CAT] [Fold 2] MAE=0.84, RMSE=1.10, R2=0.01
+[CAT] [Fold 3] MAE=0.61, RMSE=0.70, R2=-0.03
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[CAT] [Fold 5] MAE=0.64, RMSE=0.77, R2=0.11
+[CAT] [bandpass - chroma] K-fold average -> MAE=0.71, RMSE=0.87, R2=0.01
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_bandpass_chroma_grid.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.61, RMSE=0.72, R2=-0.08
+[CAT] [Fold 4] MAE=0.57, RMSE=0.72, R2=-0.03
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[CAT] [bandpass - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.05
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_bandpass_db1_wavelet_grid.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.83, RMSE=1.06, R2=0.05
+[CAT] [Fold 2] MAE=0.84, RMSE=1.10, R2=-0.00
+[CAT] [Fold 3] MAE=0.58, RMSE=0.69, R2=0.02
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[CAT] [Fold 5] MAE=0.65, RMSE=0.78, R2=0.09
+[CAT] [bandpass - mfcc] K-fold average -> MAE=0.69, RMSE=0.87, R2=0.02
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_bandpass_mfcc_grid.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.85, RMSE=1.08, R2=0.02
+[CAT] [Fold 2] MAE=0.85, RMSE=1.13, R2=-0.05
+[CAT] [Fold 3] MAE=0.62, RMSE=0.74, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.72, R2=-0.04
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.01
+[CAT] [bandpass - zcr] K-fold average -> MAE=0.71, RMSE=0.90, R2=-0.04
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_bandpass_zcr_grid.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.85, RMSE=1.06, R2=0.05
+[CAT] [Fold 2] MAE=0.85, RMSE=1.10, R2=0.00
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.71, R2=0.01
+[CAT] [Fold 5] MAE=0.65, RMSE=0.78, R2=0.08
+[CAT] [raw - chroma] K-fold average -> MAE=0.71, RMSE=0.88, R2=0.01
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_raw_chroma_grid.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.06
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[CAT] [Fold 5] MAE=0.68, RMSE=0.80, R2=0.04
+[CAT] [raw - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.05
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_raw_db1_wavelet_grid.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.83, RMSE=1.07, R2=0.04
+[CAT] [Fold 2] MAE=0.85, RMSE=1.10, R2=-0.00
+[CAT] [Fold 3] MAE=0.59, RMSE=0.69, R2=0.01
+[CAT] [Fold 4] MAE=0.56, RMSE=0.71, R2=0.01
+[CAT] [Fold 5] MAE=0.66, RMSE=0.79, R2=0.06
+[CAT] [raw - mfcc] K-fold average -> MAE=0.70, RMSE=0.87, R2=0.02
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_raw_mfcc_grid.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.84, RMSE=1.07, R2=0.03
+[CAT] [Fold 2] MAE=0.87, RMSE=1.12, R2=-0.04
+[CAT] [Fold 3] MAE=0.59, RMSE=0.71, R2=-0.04
+[CAT] [Fold 4] MAE=0.56, RMSE=0.71, R2=0.01
+[CAT] [Fold 5] MAE=0.67, RMSE=0.79, R2=0.05
+[CAT] [raw - zcr] K-fold average -> MAE=0.71, RMSE=0.88, R2=0.00
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_raw_zcr_grid.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.09, R2=0.00
+[CAT] [Fold 2] MAE=0.85, RMSE=1.05, R2=0.09
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.11
+[CAT] [Fold 4] MAE=0.57, RMSE=0.74, R2=-0.07
+[CAT] [Fold 5] MAE=0.67, RMSE=0.79, R2=0.06
+[CAT] [spectral_sub - chroma] K-fold average -> MAE=0.72, RMSE=0.88, R2=-0.00
+[CAT] Final model parameters: {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_chroma_grid.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.86, RMSE=1.06, R2=0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.13, R2=-0.06
+[CAT] [Fold 3] MAE=0.62, RMSE=0.71, R2=-0.06
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.80, R2=0.03
+[CAT] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.89, R2=-0.02
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_db1_wavelet_grid.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.11, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.11, R2=-0.02
+[CAT] [Fold 3] MAE=0.54, RMSE=0.66, R2=0.09
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - mfcc] K-fold average -> MAE=0.71, RMSE=0.89, R2=-0.01
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_mfcc_grid.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'grid']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.83, RMSE=0.97, R2=0.21
+[CAT] [Fold 2] MAE=0.80, RMSE=1.00, R2=0.18
+[CAT] [Fold 3] MAE=0.60, RMSE=0.70, R2=-0.01
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - zcr] K-fold average -> MAE=0.70, RMSE=0.84, R2=0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_zcr_grid.pkl
+[CAT] bandpass-chroma (grid) => MAE=0.71, RMSE=0.87, R2=0.01
+[CAT] bandpass-db1_wavelet (grid) => MAE=0.72, RMSE=0.90, R2=-0.05
+[CAT] bandpass-mfcc (grid) => MAE=0.69, RMSE=0.87, R2=0.02
+[CAT] bandpass-zcr (grid) => MAE=0.71, RMSE=0.90, R2=-0.04
+[CAT] raw-chroma (grid) => MAE=0.71, RMSE=0.88, R2=0.01
+[CAT] raw-db1_wavelet (grid) => MAE=0.72, RMSE=0.90, R2=-0.05
+[CAT] raw-mfcc (grid) => MAE=0.70, RMSE=0.87, R2=0.02
+[CAT] raw-zcr (grid) => MAE=0.71, RMSE=0.88, R2=0.00
+[CAT] spectral_sub-chroma (grid) => MAE=0.72, RMSE=0.88, R2=-0.00
+[CAT] spectral_sub-db1_wavelet (grid) => MAE=0.72, RMSE=0.89, R2=-0.02
+[CAT] spectral_sub-mfcc (grid) => MAE=0.71, RMSE=0.89, R2=-0.01
+[CAT] spectral_sub-zcr (grid) => MAE=0.70, RMSE=0.84, R2=0.06
+[CAT] K-fold training completed for all feature sets.
+[CAT] Report saved to output\testing_cat\report_kfold.txt
+
+=== Training CatBoost models with hyperparameter tuning: random ===
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'chroma', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.56, RMSE=0.71, R2=-0.01
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [bandpass - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_bandpass_chroma_random.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'db1_wavelet', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.06
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [bandpass - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_bandpass_db1_wavelet_random.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'mfcc', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.03
+[CAT] [bandpass - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_bandpass_mfcc_random.pkl
+
+[CAT] K-fold training for [NR: 'bandpass', FE: 'zcr', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.74, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [bandpass - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_bandpass_zcr_random.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'chroma', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [raw - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_raw_chroma_random.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'db1_wavelet', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.13
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [raw - db1_wavelet] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_raw_db1_wavelet_random.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'mfcc', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [raw - mfcc] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_raw_mfcc_random.pkl
+
+[CAT] K-fold training for [NR: 'raw', FE: 'zcr', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.11, R2=-0.04
+[CAT] [Fold 2] MAE=0.86, RMSE=1.14, R2=-0.07
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.05
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.01
+[CAT] [raw - zcr] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_raw_zcr_random.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'chroma', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.07
+[CAT] [Fold 3] MAE=0.62, RMSE=0.72, R2=-0.10
+[CAT] [Fold 4] MAE=0.57, RMSE=0.74, R2=-0.09
+[CAT] [Fold 5] MAE=0.68, RMSE=0.82, R2=-0.02
+[CAT] [spectral_sub - chroma] K-fold average -> MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_chroma_random.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'db1_wavelet', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.11, R2=-0.05
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - db1_wavelet] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_db1_wavelet_random.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'mfcc', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.89, RMSE=1.12, R2=-0.05
+[CAT] [Fold 2] MAE=0.87, RMSE=1.14, R2=-0.08
+[CAT] [Fold 3] MAE=0.62, RMSE=0.73, R2=-0.12
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.07
+[CAT] [Fold 5] MAE=0.69, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - mfcc] K-fold average -> MAE=0.73, RMSE=0.91, R2=-0.07
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_mfcc_random.pkl
+
+[CAT] K-fold training for [NR: 'spectral_sub', FE: 'zcr', HT: 'random']
+[CAT] Using pre-split hold-out: 26 test samples, 147 training samples
+[CAT] [Fold 1] MAE=0.88, RMSE=1.10, R2=-0.03
+[CAT] [Fold 2] MAE=0.86, RMSE=1.13, R2=-0.05
+[CAT] [Fold 3] MAE=0.61, RMSE=0.73, R2=-0.11
+[CAT] [Fold 4] MAE=0.57, RMSE=0.73, R2=-0.06
+[CAT] [Fold 5] MAE=0.68, RMSE=0.83, R2=-0.03
+[CAT] [spectral_sub - zcr] K-fold average -> MAE=0.72, RMSE=0.90, R2=-0.06
+[CAT] Final model parameters: {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+[CAT] Final model saved to output\models_cat\cat_spectral_sub_zcr_random.pkl
+[CAT] bandpass-chroma (random) => MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] bandpass-db1_wavelet (random) => MAE=0.73, RMSE=0.91, R2=-0.07
+[CAT] bandpass-mfcc (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] bandpass-zcr (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] raw-chroma (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] raw-db1_wavelet (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] raw-mfcc (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] raw-zcr (random) => MAE=0.72, RMSE=0.91, R2=-0.06
+[CAT] spectral_sub-chroma (random) => MAE=0.72, RMSE=0.91, R2=-0.07
+[CAT] spectral_sub-db1_wavelet (random) => MAE=0.73, RMSE=0.91, R2=-0.07
+[CAT] spectral_sub-mfcc (random) => MAE=0.73, RMSE=0.91, R2=-0.07
+[CAT] spectral_sub-zcr (random) => MAE=0.72, RMSE=0.90, R2=-0.06
+[CAT] K-fold training completed for all feature sets.
+[CAT] Report saved to output\testing_cat\report_kfold.txt
+
+=== Testing CatBoost models on hold-out test sets ===
+[CAT-TE] Evaluating model cat_bandpass_chroma_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[CAT-TE] Evaluating model cat_bandpass_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[CAT-TE] Evaluating model cat_bandpass_chroma_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[CAT-TE] Evaluating model cat_bandpass_chroma_bayesian.pkl on test set from ..\intermediate\feature_extraction\bandpass\chroma\test
+[CAT-TE] Evaluating model cat_bandpass_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[CAT-TE] Evaluating model cat_bandpass_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[CAT-TE] Evaluating model cat_bandpass_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[CAT-TE] Evaluating model cat_bandpass_db1_wavelet_bayesian.pkl on test set from ..\intermediate\feature_extraction\bandpass\db1_wavelet\test
+[CAT-TE] Evaluating model cat_bandpass_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[CAT-TE] Evaluating model cat_bandpass_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[CAT-TE] Evaluating model cat_bandpass_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[CAT-TE] Evaluating model cat_bandpass_mfcc_bayesian.pkl on test set from ..\intermediate\feature_extraction\bandpass\mfcc\test
+[CAT-TE] Evaluating model cat_bandpass_zcr_default.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[CAT-TE] Evaluating model cat_bandpass_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[CAT-TE] Evaluating model cat_bandpass_zcr_random.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[CAT-TE] Evaluating model cat_bandpass_zcr_bayesian.pkl on test set from ..\intermediate\feature_extraction\bandpass\zcr\test
+[CAT-TE] Evaluating model cat_raw_chroma_default.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[CAT-TE] Evaluating model cat_raw_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[CAT-TE] Evaluating model cat_raw_chroma_random.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[CAT-TE] Evaluating model cat_raw_chroma_bayesian.pkl on test set from ..\intermediate\feature_extraction\raw\chroma\test
+[CAT-TE] Evaluating model cat_raw_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[CAT-TE] Evaluating model cat_raw_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[CAT-TE] Evaluating model cat_raw_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[CAT-TE] Evaluating model cat_raw_db1_wavelet_bayesian.pkl on test set from ..\intermediate\feature_extraction\raw\db1_wavelet\test
+[CAT-TE] Evaluating model cat_raw_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[CAT-TE] Evaluating model cat_raw_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[CAT-TE] Evaluating model cat_raw_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[CAT-TE] Evaluating model cat_raw_mfcc_bayesian.pkl on test set from ..\intermediate\feature_extraction\raw\mfcc\test
+[CAT-TE] Evaluating model cat_raw_zcr_default.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[CAT-TE] Evaluating model cat_raw_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[CAT-TE] Evaluating model cat_raw_zcr_random.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[CAT-TE] Evaluating model cat_raw_zcr_bayesian.pkl on test set from ..\intermediate\feature_extraction\raw\zcr\test
+[CAT-TE] Evaluating model cat_spectral_sub_chroma_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[CAT-TE] Evaluating model cat_spectral_sub_chroma_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[CAT-TE] Evaluating model cat_spectral_sub_chroma_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[CAT-TE] Evaluating model cat_spectral_sub_chroma_bayesian.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\chroma\test
+[CAT-TE] Evaluating model cat_spectral_sub_db1_wavelet_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[CAT-TE] Evaluating model cat_spectral_sub_db1_wavelet_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[CAT-TE] Evaluating model cat_spectral_sub_db1_wavelet_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[CAT-TE] Evaluating model cat_spectral_sub_db1_wavelet_bayesian.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\db1_wavelet\test
+[CAT-TE] Evaluating model cat_spectral_sub_mfcc_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[CAT-TE] Evaluating model cat_spectral_sub_mfcc_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[CAT-TE] Evaluating model cat_spectral_sub_mfcc_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[CAT-TE] Evaluating model cat_spectral_sub_mfcc_bayesian.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\mfcc\test
+[CAT-TE] Evaluating model cat_spectral_sub_zcr_default.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[CAT-TE] Evaluating model cat_spectral_sub_zcr_grid.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[CAT-TE] Evaluating model cat_spectral_sub_zcr_random.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[CAT-TE] Evaluating model cat_spectral_sub_zcr_bayesian.pkl on test set from ..\intermediate\feature_extraction\spectral_sub\zcr\test
+[CAT-TE] Report saved to ..\output\testing_cat\report_holdout.txt
+[CAT-TE] Saved combined heatmap to ..\output\testing_cat\heatmaps\cat_bayesian_heatmap.png
+[CAT-TE] Saved predicted vs. actual plot to ..\output\testing_cat\predicted_vs_actual\cat_bayesian_predicted_vs_actual.png
+[CAT-TE] Saved residual plot to ..\output\testing_cat\residual_plots\cat_bayesian_residual_plot.png
+[CAT-TE] Saved combined heatmap to ..\output\testing_cat\heatmaps\cat_default_heatmap.png
+[CAT-TE] Saved predicted vs. actual plot to ..\output\testing_cat\predicted_vs_actual\cat_default_predicted_vs_actual.png
+[CAT-TE] Saved residual plot to ..\output\testing_cat\residual_plots\cat_default_residual_plot.png
+[CAT-TE] Saved combined heatmap to ..\output\testing_cat\heatmaps\cat_grid_heatmap.png
+[CAT-TE] Saved predicted vs. actual plot to ..\output\testing_cat\predicted_vs_actual\cat_grid_predicted_vs_actual.png
+[CAT-TE] Saved residual plot to ..\output\testing_cat\residual_plots\cat_grid_residual_plot.png
+[CAT-TE] Saved combined heatmap to ..\output\testing_cat\heatmaps\cat_random_heatmap.png
+[CAT-TE] Saved predicted vs. actual plot to ..\output\testing_cat\predicted_vs_actual\cat_random_predicted_vs_actual.png
+[CAT-TE] Saved residual plot to ..\output\testing_cat\residual_plots\cat_random_residual_plot.png
+CatBoost pipeline completed.
+
+Process finished with exit code 0

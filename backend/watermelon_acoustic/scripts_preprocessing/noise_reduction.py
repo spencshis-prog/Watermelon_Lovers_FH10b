@@ -118,7 +118,7 @@ def apply_noise_reduction(input_dir, output_base_dir):
         "raw": noise_reduction_raw,
         "bandpass": noise_reduction_bandpass,
         "spectral_sub": noise_reduction_spectral_subtraction,
-        "wavelet_denoise": noise_reduction_wavelet
+        # "dwt": noise_reduction_wavelet  # poor performance
         # Append alternative noise reduction technique methods here
     }
 

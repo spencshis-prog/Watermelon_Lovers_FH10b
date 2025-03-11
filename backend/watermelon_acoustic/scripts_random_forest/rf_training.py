@@ -11,30 +11,6 @@ import joblib  # for saving/loading scikit-learn models
 import functions
 
 
-def load_feature_data(folder):
-    """
-    Loads .npy feature files from folder.
-    Assumes naming format: <watermelonID>_<brix>_<index>.npy.
-    Returns X, y, fnames.
-    """
-    data, labels, fnames = [], [], []
-    for file in os.listdir(folder):
-        if file.lower().endswith(".npy"):
-            parts = file.split("_")
-            if len(parts) < 3:
-                continue
-            try:
-                brix_val = float(parts[1])
-            except:
-                continue
-            file_path = os.path.join(folder, file)
-            feat = np.load(file_path)
-            data.append(feat)
-            labels.append(brix_val)
-            fnames.append(file)
-    return np.array(data), np.array(labels), fnames
-
-
 def build_rf_model(hyper_tuning="default"):
     """
     Returns a RandomForestRegressor configured according to the hyper_tuning strategy.
@@ -45,20 +21,24 @@ def build_rf_model(hyper_tuning="default"):
         param_grid = {
             'n_estimators': [50, 100, 200],
             'max_depth': [None, 10, 20],
-            'min_samples_split': [2, 5]
+            'min_samples_split': [2, 5],
+            # 'min_samples_leaf': [1, 2, 4],  # added
+            # 'max_features': ['sqrt', 'log2', None]  # added
         }
         rf = RandomForestRegressor(random_state=42)
-        model = GridSearchCV(rf, param_grid, cv=3, scoring='neg_mean_squared_error')
+        model = GridSearchCV(rf, param_grid, cv=3, scoring='neg_mean_squared_error', verbose=0)
         return model
     elif hyper_tuning == "random":
         param_dist = {
             'n_estimators': [50, 100, 200, 300],
             'max_depth': [None, 10, 20, 30],
-            'min_samples_split': [2, 5, 10]
+            'min_samples_split': [2, 5, 10],
+            'min_samples_leaf': [1, 2, 4, 6],  # added
+            'max_features': ['sqrt', 'log2', None]  # added
         }
         rf = RandomForestRegressor(random_state=42)
         model = RandomizedSearchCV(rf, param_distributions=param_dist, n_iter=10, cv=3,
-                                   scoring='neg_mean_squared_error', random_state=42)
+                                   scoring='neg_mean_squared_error', random_state=42, verbose=0)
         return model
     else:
         return RandomForestRegressor(random_state=42)
@@ -109,7 +89,7 @@ def kfold_train_feature_set_rf(feature_folder, models_output_dir,
     feat_method = os.path.basename(feature_folder)
     functions.green_print(f"\n[RF] K-fold training for [NR: '{nr_method}', FE: '{feat_method}', HT: '{hyper_tuning}']")
 
-    X, y, fnames = load_feature_data(feature_folder)
+    X, y, fnames = functions.load_feature_data(feature_folder)
     if len(X) == 0:
         print(f"[RF] No data in {feature_folder}. Skipping.")
         return None
@@ -150,6 +130,11 @@ def kfold_train_feature_set_rf(feature_folder, models_output_dir,
     # Train final RF model on all training+validation data.
     final_model = build_rf_model(hyper_tuning)
     final_model.fit(X_train_val, y_train_val)
+    print("[RF] Final model parameters:", functions.relevant_params(
+        final_model.get_params() if hasattr(final_model, 'get_params') else {},
+        "cat", hyper_tuning
+    ))
+
     model_name = f"rf_{nr_method}_{feat_method}_{hyper_tuning}.pkl"
     model_path = os.path.join(models_output_dir, model_name)
     os.makedirs(models_output_dir, exist_ok=True)

@@ -14,30 +14,6 @@ import joblib  # for saving/loading scikit-learn models
 import functions
 
 
-def load_feature_data(folder):
-    """
-    Loads .npy feature files from folder.
-    Assumes naming format: <watermelonID>_<brix>_<index>.npy.
-    Returns X, y, fnames
-    """
-    data, labels, fnames = [], [], []
-    for file in os.listdir(folder):
-        if file.lower().endswith(".npy"):
-            parts = file.split("_")
-            if len(parts) < 3:
-                continue
-            try:
-                brix_val = float(parts[1])
-            except:
-                continue
-            file_path = os.path.join(folder, file)
-            feat = np.load(file_path)
-            data.append(feat)
-            labels.append(brix_val)
-            fnames.append(file)
-    return np.array(data), np.array(labels), fnames
-
-
 def build_xgb_model(hyper_tuning="default"):
     """
     Returns an XGBRegressor or a CV wrapper depending on the hyper_tuning strategy.
@@ -52,6 +28,10 @@ def build_xgb_model(hyper_tuning="default"):
             'n_estimators': [50, 100, 200],
             'max_depth': [3, 6, 10],
             'learning_rate': [0.01, 0.1],
+            # 'gamma': [0, 0.1, 0.5],  # determines best regularization parameter
+            # 'reg_alpha': [0, 0.1, 1.0],  # determines best l1 parameter
+            # 'reg_lambda': [1, 1.5, 2.0],  # determines best l2 parameter
+            # 'subsample': [0.8, 1.0]  # optional
         }
         xgb = XGBRegressor(random_state=42, eval_metric='rmse')
         model = GridSearchCV(xgb, param_grid, cv=3, scoring='neg_mean_squared_error', verbose=0)
@@ -62,6 +42,9 @@ def build_xgb_model(hyper_tuning="default"):
             'n_estimators': [50, 100, 200, 300],
             'max_depth': [3, 6, 10, 12],
             'learning_rate': [0.001, 0.01, 0.1],
+            'gamma': [0, 0.1, 0.5],  # determines best regularization parameter
+            'reg_alpha': [0, 0.1, 1.0],  # determines best l1 parameter
+            'reg_lambda': [1, 1.5, 2.0],  # determines best l2 parameter
             'subsample': [0.6, 0.8, 1.0]
         }
         xgb = XGBRegressor(random_state=42, eval_metric='rmse')
@@ -74,6 +57,9 @@ def build_xgb_model(hyper_tuning="default"):
             'n_estimators': (50, 300),
             'max_depth': (3, 12),
             'learning_rate': (1e-3, 1e-1, 'log-uniform'),
+            'gamma': (0, 0.5),  # continuous between 0 and 0.5
+            'reg_alpha': (0, 1.0),
+            'reg_lambda': (1, 2.0),
             'subsample': (0.6, 1.0, 'uniform')
         }
         xgb = XGBRegressor(random_state=42, eval_metric='rmse')
@@ -102,7 +88,7 @@ def kfold_train_and_evaluate_xgb(X, y, n_splits=5, epochs=20, batch_size=16, hyp
         model.fit(
             X_train, y_train,
             eval_set=[(X_val, y_val)],
-            early_stopping_rounds=10,
+            # early_stopping_rounds=10,
             verbose=False
         )
 
@@ -141,7 +127,7 @@ def kfold_train_feature_set_xgb(feature_folder, models_output_dir,
     feat_method = os.path.basename(feature_folder)
     functions.green_print(f"\n[XGB] K-fold training for [NR: '{nr_method}', FE: '{feat_method}', HT: '{hyper_tuning}']")
 
-    X, y, fnames = load_feature_data(feature_folder)
+    X, y, fnames = functions.load_feature_data(feature_folder)
     if len(X) == 0:
         print(f"[XGB] No data in {feature_folder}. Skipping.")
         return None
@@ -181,10 +167,14 @@ def kfold_train_feature_set_xgb(feature_folder, models_output_dir,
     # Train final XGB model on all training+validation data
     final_model = build_xgb_model(hyper_tuning)
     final_model.fit(X_train_val, y_train_val,  # no eval_set=[(X_val, y_val)]?
-                    early_stopping_rounds=10,
+                    # early_stopping_rounds=10,
                     verbose=False)
     if hasattr(final_model, 'best_estimator_'):
         final_model = final_model.best_estimator_
+    print("[XGB] Final model parameters:", functions.relevant_params(
+        final_model.get_params() if hasattr(final_model, 'get_params') else {},
+        "cat", hyper_tuning
+    ))
 
     model_name = f"xgb_{nr_method}_{feat_method}_{hyper_tuning}.pkl"
     model_path = os.path.join(models_output_dir, model_name)

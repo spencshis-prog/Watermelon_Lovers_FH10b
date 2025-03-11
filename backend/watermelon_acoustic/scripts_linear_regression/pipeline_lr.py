@@ -27,7 +27,7 @@ def proceed(TRAIN_NEW_MODELS=False):
 
         # Train final models for each (NR, FE) combination for each regularization option.
         for reg in sorted(REG_OPTIONS):
-            print(f"\n=== Training LR models with regularization: {reg} ===")
+            functions.green_print(f"\n=== Training Linear Regression models with regularization: {reg} ===")
             kfold_train_all_feature_models(
                 feature_extraction_base_dir=feature_extraction_base_dir,
                 models_output_dir=models_output_dir,

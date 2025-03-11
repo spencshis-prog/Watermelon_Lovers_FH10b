@@ -8,7 +8,9 @@ st.set_page_config(page_title="Unified Model Error Comparison Dashboard", layout
 MODEL_DIRS = {
     "LR": "testing_lr",
     "RF": "testing_rf",
+    "ET": "testing_et",
     "XGB": "testing_xgb",
+    "CAT": "testing_cat",
     "NN": "testing_nn"
 }
 
@@ -54,7 +56,7 @@ def parse_report(report_file, model_label):
             # LR uses regularization; no tuning
             reg = regularization_val
             tuning = "-"
-        elif model_label in ["RF", "XGB"]:
+        elif model_label in ["RF", "ET", "XGB", "CAT"]:
             # RF / XGB uses tuning; no regularization
             reg = "-"
             tuning = tuning_val

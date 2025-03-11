@@ -30,7 +30,7 @@ def proceed(TRAIN_NEW_MODELS=False):
 
         # Train final RF models for each (NR, FE) combination for each hyperparameter tuning option.
         for ht in sorted(HT_OPTIONS):
-            print(f"\n=== Training RF models with hyperparameter tuning: {ht} ===")
+            functions.green_print(f"\n=== Training Random Forest models with hyperparameter tuning: {ht} ===")
             kfold_train_all_feature_models_rf(
                 feature_extraction_base_dir=feature_extraction_base_dir,
                 models_output_dir=models_output_dir,
