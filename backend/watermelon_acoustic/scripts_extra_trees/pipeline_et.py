@@ -20,6 +20,7 @@ def proceed(TRAIN_NEW_MODELS=False):
     # Report files for K-Fold and hold-out evaluations.
     report_kfold_path = os.path.join(testing_output_dir, "report_kfold.txt")
     report_holdout_path = os.path.join(testing_output_dir, "report_holdout.txt")
+    report_params_path = os.path.join(testing_output_dir, "report_params.txt")
 
     if TRAIN_NEW_MODELS:
         open(report_kfold_path, "w").close()  # Clear K-Fold report.
@@ -40,6 +41,9 @@ def proceed(TRAIN_NEW_MODELS=False):
             )
 
     open(report_holdout_path, "w").close()  # Clear hold-out report.
+    open(report_params_path, "w").close()
+
+    functions.generate_report_params(models_output_dir, report_params_path)
 
     # Clear the testing output subdirectories.
     functions.clear_output_directory(os.path.join(testing_output_dir, "heatmaps"))

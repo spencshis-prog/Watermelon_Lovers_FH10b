@@ -1,6 +1,17 @@
 import os
 import shutil
+
+import joblib
 import numpy as np
+from collections import defaultdict
+
+from catboost import CatBoostRegressor
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor
+from skopt import BayesSearchCV
+from xgboost import XGBRegressor
+
+import params
 
 
 def clear_output_directory(output_dir):
@@ -104,3 +115,123 @@ def relevant_params(params, model_type, hyper_tuning):
     # For now, we'll just filter based on the keys list.
     filtered = {k: params[k] for k in keys if k in params}
     return filtered
+
+
+def load_model(model_path):
+    """
+    Loads a saved model (.pkl) and ensures compatibility with GridSearchCV,
+    RandomizedSearchCV, and BayesSearchCV.
+
+    Args:
+        model_path (str): Path to the .pkl model file.
+
+    Returns:
+        model: The loaded model (best estimator if applicable).
+    """
+    try:
+        model = joblib.load(model_path)
+
+        # Handle GridSearchCV, RandomizedSearchCV, or BayesSearchCV
+        if isinstance(model, (GridSearchCV, RandomizedSearchCV, BayesSearchCV)):
+            print(f"[INFO] Found tuned model: {model.__class__.__name__}")
+            return model.best_estimator_ if hasattr(model, 'best_estimator_') else model
+
+        # Handle standard models
+        if isinstance(model, (RandomForestRegressor, ExtraTreesRegressor, XGBRegressor, CatBoostRegressor)):
+            return model
+
+        print(f"[WARNING] Unknown model type for file: {model_path}")
+        return model
+
+    except Exception as e:
+        print(f"[ERROR] Failed to load model from {model_path}: {e}")
+        return None
+
+
+def generate_report_params(model_output_dir, report_path):
+    """
+    Generates a `report_params.txt` file summarizing:
+    - Parameter ranges set for tuning
+    - Chosen parameter values across models
+    - Model summary listing each model's best parameters
+    """
+    param_counts = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    model_summary = {}
+
+    # Iterate through each model file
+    for model_file in os.listdir(model_output_dir):
+        if model_file.endswith('.pkl'):
+            model_path = os.path.join(model_output_dir, model_file)
+            model_name = model_file.split('_')[0]  # RF / ET / XGB / CAT
+            hyper_tuning = model_file.split('_')[-1].replace('.pkl', '')  # e.g. grid / random / bayesian
+
+            # Load the saved model
+            model = load_model(model_path)
+            if model is None:
+                continue  # Skip failed loads
+
+            # Extract model parameters
+            if hasattr(model, 'best_params_'):
+                model_params = model.best_params_
+            else:
+                model_params = model.get_params()
+
+            # Identify correct param range; if bayesian, fallback to using the search space dict.
+            if hyper_tuning == 'bayesian':
+                param_dict_key = f"{model_name.lower()}_search_spaces"
+            else:
+                param_dict_key = f"{model_name.lower()}_{hyper_tuning}"
+            param_ranges = getattr(params, param_dict_key, {})
+
+            # Initialize model summary
+            model_summary[model_file] = {}
+
+            # Track chosen values
+            for param, possible_values in param_ranges.items():
+                chosen_value = model_params.get(param, None)
+                model_summary[model_file][param] = chosen_value
+
+                # Handle both discrete (list) and continuous (tuple) parameter types
+                if isinstance(possible_values, list):
+                    # Discrete values
+                    for value in possible_values:
+                        if value == chosen_value:
+                            param_counts[hyper_tuning][param][value] += 1
+                        else:
+                            param_counts[hyper_tuning][param][value] += 0
+                elif isinstance(possible_values, tuple):
+                    # Continuous values — use range notation
+                    lower, upper = possible_values[:2]
+                    key_str = f"{chosen_value}"
+                    param_counts[hyper_tuning][param][key_str] += 1
+
+    # Write the report
+    with open(report_path, 'w') as f:
+        f.write(f"=== {model_name} Parameter Tuning Report ===\n")
+
+        for tuning_type, params_dict in param_counts.items():
+            f.write(f"\n--- {tuning_type.upper()} ---\n")
+            for param, value_counts in params_dict.items():
+                total = sum(value_counts.values())
+                # Determine the correct key for parameter ranges.
+                if tuning_type == "bayesian":
+                    key = f"{model_name.lower()}_search_spaces"
+                else:
+                    key = f"{model_name.lower()}_{tuning_type}"
+                param_range = getattr(params, key, {}).get(param, None)
+
+                # For continuous ranges, show the range directly; otherwise, show the list.
+                if isinstance(param_range, tuple):
+                    range_str = f"({param_range[0]} to {param_range[1]})"
+                else:
+                    range_str = param_range if param_range else "N/A"
+                f.write(f"\n{model_name.upper()} | {tuning_type} | {param} | {range_str}\n")
+                for value, count in value_counts.items():
+                    f.write(f"    {value}: {count}/{total}\n")
+
+        # Append Model Summary
+        f.write("\n=== Model Summary ===\n")
+        for m_name, chosen_params in model_summary.items():
+            f.write(f"{m_name} -> {chosen_params}\n")
+
+    print(f"Report generated at: {report_path}")

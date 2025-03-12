@@ -22,6 +22,7 @@ def proceed(TRAIN_NEW_MODELS=False):
     # Report files for K-Fold and hold-out evaluations.
     report_kfold_path = os.path.join(testing_output_dir, "report_kfold.txt")
     report_holdout_path = os.path.join(testing_output_dir, "report_holdout.txt")
+    report_params_path = os.path.join(testing_output_dir, "report_params.txt")
 
     if TRAIN_NEW_MODELS:
         # Clear the old K-Fold report
@@ -32,7 +33,7 @@ def proceed(TRAIN_NEW_MODELS=False):
 
         # Train final XGB models for each (NR, FE) combination for each hyperparameter tuning option
         for ht in sorted(HT_OPTIONS):
-            functions.green_print(f"\n=== Training XGB models with hyperparameter tuning: {ht} ===")
+            functions.green_print(f"\n=== Training XGBoost models with hyperparameter tuning: {ht} ===")
             kfold_train_all_feature_models_xgb(
                 feature_extraction_base_dir=feature_extraction_base_dir,
                 models_output_dir=models_output_dir,
@@ -46,6 +47,9 @@ def proceed(TRAIN_NEW_MODELS=False):
 
     # Clear or create holdout report
     open(report_holdout_path, "w").close()
+    open(report_params_path, "w").close()
+
+    functions.generate_report_params(models_output_dir, report_params_path)
 
     # Clear the testing subdirectories
     functions.clear_output_directory(os.path.join(testing_output_dir, "heatmaps"))
@@ -53,9 +57,9 @@ def proceed(TRAIN_NEW_MODELS=False):
     functions.clear_output_directory(os.path.join(testing_output_dir, "residual_plots"))
 
     # Test the trained XGB models on the hold-out test sets and produce visualizations
-    print("\n=== Testing XGB models on hold-out test sets ===")
+    print("\n=== Testing XGBoost models on hold-out test sets ===")
     test_all_xgb_models(models_output_dir, feature_extraction_base_dir, report_holdout_path)
-    print("XGB pipeline completed.")
+    print("XGBoost pipeline completed.")
 
 
 if __name__ == "__main__":

@@ -8,6 +8,7 @@ from sklearn.ensemble import ExtraTreesRegressor
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 import joblib
 import functions
+import params
 
 
 def build_et_model(hyper_tuning="default"):
@@ -17,24 +18,12 @@ def build_et_model(hyper_tuning="default"):
     if hyper_tuning == "default":
         return ExtraTreesRegressor(random_state=42)
     elif hyper_tuning == "grid":
-        param_grid = {
-            'n_estimators': [50, 100, 200],
-            'max_depth': [None, 10, 20],
-            'min_samples_split': [2, 5],
-            # 'min_samples_leaf': [1, 2, 4],  # added
-            # 'max_features': ['sqrt', 'log2', None]  # added
-        }
+        param_grid = params.et_grid
         et = ExtraTreesRegressor(random_state=42)
         model = GridSearchCV(et, param_grid, cv=3, scoring='neg_mean_squared_error', verbose=0)
         return model
     elif hyper_tuning == "random":
-        param_dist = {
-            'n_estimators': [50, 100, 200, 300],
-            'max_depth': [None, 10, 20, 30],
-            'min_samples_split': [2, 5, 10],
-            'min_samples_leaf': [1, 2, 4, 6],  # added
-            'max_features': ['sqrt', 'log2', None]  # added
-        }
+        param_dist = params.et_random
         et = ExtraTreesRegressor(random_state=42)
         model = RandomizedSearchCV(et, param_distributions=param_dist, n_iter=10, cv=3,
                                    scoring='neg_mean_squared_error', random_state=42, verbose=0)

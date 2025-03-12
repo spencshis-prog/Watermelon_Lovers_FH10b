@@ -12,6 +12,7 @@ from skopt import BayesSearchCV
 import joblib  # for saving/loading scikit-learn models
 
 import functions
+import params
 
 
 def build_xgb_model(hyper_tuning="default"):
@@ -24,44 +25,20 @@ def build_xgb_model(hyper_tuning="default"):
 
     elif hyper_tuning == "grid":
         # Example parameter grid
-        param_grid = {
-            'n_estimators': [50, 100, 200],
-            'max_depth': [3, 6, 10],
-            'learning_rate': [0.01, 0.1],
-            # 'gamma': [0, 0.1, 0.5],  # determines best regularization parameter
-            # 'reg_alpha': [0, 0.1, 1.0],  # determines best l1 parameter
-            # 'reg_lambda': [1, 1.5, 2.0],  # determines best l2 parameter
-            # 'subsample': [0.8, 1.0]  # optional
-        }
+        param_grid = params.xgb_grid
         xgb = XGBRegressor(random_state=42, eval_metric='rmse')
         model = GridSearchCV(xgb, param_grid, cv=3, scoring='neg_mean_squared_error', verbose=0)
         return model
 
     elif hyper_tuning == "random":
-        param_dist = {
-            'n_estimators': [50, 100, 200, 300],
-            'max_depth': [3, 6, 10, 12],
-            'learning_rate': [0.001, 0.01, 0.1],
-            'gamma': [0, 0.1, 0.5],  # determines best regularization parameter
-            'reg_alpha': [0, 0.1, 1.0],  # determines best l1 parameter
-            'reg_lambda': [1, 1.5, 2.0],  # determines best l2 parameter
-            'subsample': [0.6, 0.8, 1.0]
-        }
+        param_dist = params.xgb_random
         xgb = XGBRegressor(random_state=42, eval_metric='rmse')
         model = RandomizedSearchCV(xgb, param_distributions=param_dist, n_iter=10, cv=3,
                                    scoring='neg_mean_squared_error', random_state=42, verbose=0)
         return model
 
     elif hyper_tuning == "bayesian":
-        search_spaces = {
-            'n_estimators': (50, 300),
-            'max_depth': (3, 12),
-            'learning_rate': (1e-3, 1e-1, 'log-uniform'),
-            'gamma': (0, 0.5),  # continuous between 0 and 0.5
-            'reg_alpha': (0, 1.0),
-            'reg_lambda': (1, 2.0),
-            'subsample': (0.6, 1.0, 'uniform')
-        }
+        search_spaces = params.xgb_search_spaces
         xgb = XGBRegressor(random_state=42, eval_metric='rmse')
         model = BayesSearchCV(xgb, search_spaces, n_iter=16, cv=3,
                               scoring='neg_mean_squared_error', random_state=42, verbose=0)

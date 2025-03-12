@@ -27,7 +27,7 @@ def proceed(TRAIN_NEW_MODELS=False):
 
         # Train final models for each (NR, FE) combination for each regularization option.
         for reg in sorted(REG_OPTIONS):
-            functions.green_print(f"\n=== Training Linear Regression models with regularization: {reg} ===")
+            functions.green_print(f"\n=== Training LinearRegression models with regularization: {reg} ===")
             kfold_train_all_feature_models(
                 feature_extraction_base_dir=feature_extraction_base_dir,
                 models_output_dir=models_output_dir,
@@ -46,9 +46,9 @@ def proceed(TRAIN_NEW_MODELS=False):
     functions.clear_output_directory(os.path.join(testing_output_dir, "residual_plots"))
 
     # Test models on the hold-out test sets and produce visualizations.
-    print("\n=== Testing LR models on hold-out test sets ===")
+    print("\n=== Testing LinearRegression models on hold-out test sets ===")
     test_all_lr_models(models_output_dir, feature_extraction_base_dir, report_holdout_path)
-    print("LR pipeline completed.")
+    print("Linear regression pipeline completed.")
 
 
 if __name__ == "__main__":

@@ -22,6 +22,7 @@ def proceed(TRAIN_NEW_MODELS=False):
     # Report files for K-Fold and hold-out evaluations.
     report_kfold_path = os.path.join(testing_output_dir, "report_kfold.txt")
     report_holdout_path = os.path.join(testing_output_dir, "report_holdout.txt")
+    report_params_path = os.path.join(testing_output_dir, "report_params.txt")
 
     if TRAIN_NEW_MODELS:
         open(report_kfold_path, "w").close()  # Clear K-Fold report.
@@ -30,7 +31,7 @@ def proceed(TRAIN_NEW_MODELS=False):
 
         # Train final RF models for each (NR, FE) combination for each hyperparameter tuning option.
         for ht in sorted(HT_OPTIONS):
-            functions.green_print(f"\n=== Training Random Forest models with hyperparameter tuning: {ht} ===")
+            functions.green_print(f"\n=== Training RandomForest models with hyperparameter tuning: {ht} ===")
             kfold_train_all_feature_models_rf(
                 feature_extraction_base_dir=feature_extraction_base_dir,
                 models_output_dir=models_output_dir,
@@ -43,6 +44,9 @@ def proceed(TRAIN_NEW_MODELS=False):
             )
 
     open(report_holdout_path, "w").close()  # Clear hold-out report.
+    open(report_params_path, "w").close()
+
+    functions.generate_report_params(models_output_dir, report_params_path)
 
     # clear the testing directory
     functions.clear_output_directory(os.path.join(testing_output_dir, "heatmaps"))
@@ -50,9 +54,9 @@ def proceed(TRAIN_NEW_MODELS=False):
     functions.clear_output_directory(os.path.join(testing_output_dir, "residual_plots"))
 
     # Test the trained RF models on the hold-out test sets and produce visualizations.
-    print("\n=== Testing RF models on hold-out test sets ===")
+    print("\n=== Testing RandomForest models on hold-out test sets ===")
     test_all_rf_models(models_output_dir, feature_extraction_base_dir, report_holdout_path)
-    print("RF pipeline completed.")
+    print("RandomForest pipeline completed.")
 
 
 if __name__ == "__main__":

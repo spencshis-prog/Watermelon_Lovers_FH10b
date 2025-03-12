@@ -9,6 +9,7 @@ from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 import joblib  # for saving/loading scikit-learn models
 
 import functions
+import params
 
 
 def build_rf_model(hyper_tuning="default"):
@@ -18,24 +19,12 @@ def build_rf_model(hyper_tuning="default"):
     if hyper_tuning == "default":
         return RandomForestRegressor(random_state=42)
     elif hyper_tuning == "grid":
-        param_grid = {
-            'n_estimators': [50, 100, 200],
-            'max_depth': [None, 10, 20],
-            'min_samples_split': [2, 5],
-            # 'min_samples_leaf': [1, 2, 4],  # added
-            # 'max_features': ['sqrt', 'log2', None]  # added
-        }
+        param_grid = params.rf_grid
         rf = RandomForestRegressor(random_state=42)
         model = GridSearchCV(rf, param_grid, cv=3, scoring='neg_mean_squared_error', verbose=0)
         return model
     elif hyper_tuning == "random":
-        param_dist = {
-            'n_estimators': [50, 100, 200, 300],
-            'max_depth': [None, 10, 20, 30],
-            'min_samples_split': [2, 5, 10],
-            'min_samples_leaf': [1, 2, 4, 6],  # added
-            'max_features': ['sqrt', 'log2', None]  # added
-        }
+        param_dist = params.rf_random
         rf = RandomForestRegressor(random_state=42)
         model = RandomizedSearchCV(rf, param_distributions=param_dist, n_iter=10, cv=3,
                                    scoring='neg_mean_squared_error', random_state=42, verbose=0)
@@ -130,6 +119,8 @@ def kfold_train_feature_set_rf(feature_folder, models_output_dir,
     # Train final RF model on all training+validation data.
     final_model = build_rf_model(hyper_tuning)
     final_model.fit(X_train_val, y_train_val)
+    if hasattr(final_model, 'best_estimator_'):
+        final_model = final_model.best_estimator_
     print("[RF] Final model parameters:", functions.relevant_params(
         final_model.get_params() if hasattr(final_model, 'get_params') else {},
         "cat", hyper_tuning
@@ -171,6 +162,7 @@ def kfold_train_all_feature_models_rf(feature_extraction_base_dir, models_output
             if metrics is not None:
                 results[(nr, feat, hyper_tuning)] = metrics
 
+    print("\n === Printing all average K-fold error metrics ===")
     for (nr, feat, ht), (mae_avg, mse_avg, rmse_avg, r2_avg) in results.items():
         print(f"[RF] {nr}-{feat} ({ht}) => MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
     print("[RF] K-fold training completed for all feature sets.")

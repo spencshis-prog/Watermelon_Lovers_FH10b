@@ -1,3 +1,4 @@
+import functions
 import model_comparator
 from scripts_catboost import pipeline_cat
 from scripts_extra_trees import pipeline_et
@@ -76,6 +77,7 @@ def main():
 
     if OPEN_COMPARATOR:
         model_comparator.main()
+
 
 
 if __name__ == "__main__":

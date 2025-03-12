@@ -1,0 +1,108 @@
+=== cat Parameter Tuning Report ===
+
+--- BAYESIAN ---
+
+CAT | bayesian | iterations | (100 to 300)
+    100: 11/12
+    135: 1/12
+
+CAT | bayesian | depth | (4 to 10)
+    10: 10/12
+    7: 1/12
+    4: 1/12
+
+CAT | bayesian | learning_rate | (0.001 to 0.1)
+    0.001: 11/12
+    0.0023182325546666385: 1/12
+
+CAT | bayesian | l2_leaf_reg | (1 to 10)
+    10: 12/12
+
+--- GRID ---
+
+CAT | grid | iterations | [100, 200]
+    100: 12/12
+    200: 0/12
+
+CAT | grid | depth | [4, 6, 8]
+    4: 1/12
+    6: 0/12
+    8: 11/12
+
+CAT | grid | learning_rate | [0.01, 0.1]
+    0.01: 12/12
+    0.1: 0/12
+
+--- RANDOM ---
+
+CAT | random | iterations | [100, 200, 300]
+    100: 12/12
+    200: 0/12
+    300: 0/12
+
+CAT | random | depth | [4, 6, 8, 10]
+    4: 0/12
+    6: 0/12
+    8: 0/12
+    10: 12/12
+
+CAT | random | learning_rate | [0.001, 0.01, 0.1]
+    0.001: 12/12
+    0.01: 0/12
+    0.1: 0/12
+
+CAT | random | l2_leaf_reg | [1, 3, 5, 7]
+    1: 0/12
+    3: 0/12
+    5: 0/12
+    7: 12/12
+
+=== Model Summary ===
+cat_bandpass_chroma_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_bandpass_chroma_default.pkl -> {}
+cat_bandpass_chroma_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_bandpass_chroma_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_bandpass_db1_wavelet_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_bandpass_db1_wavelet_default.pkl -> {}
+cat_bandpass_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_bandpass_db1_wavelet_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_bandpass_mfcc_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_bandpass_mfcc_default.pkl -> {}
+cat_bandpass_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_bandpass_mfcc_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_bandpass_zcr_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_bandpass_zcr_default.pkl -> {}
+cat_bandpass_zcr_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_bandpass_zcr_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_raw_chroma_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_raw_chroma_default.pkl -> {}
+cat_raw_chroma_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_raw_chroma_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_raw_db1_wavelet_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_raw_db1_wavelet_default.pkl -> {}
+cat_raw_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_raw_db1_wavelet_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_raw_mfcc_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_raw_mfcc_default.pkl -> {}
+cat_raw_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_raw_mfcc_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_raw_zcr_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_raw_zcr_default.pkl -> {}
+cat_raw_zcr_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_raw_zcr_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_spectral_sub_chroma_bayesian.pkl -> {'iterations': 135, 'depth': 7, 'learning_rate': 0.0023182325546666385, 'l2_leaf_reg': 10}
+cat_spectral_sub_chroma_default.pkl -> {}
+cat_spectral_sub_chroma_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
+cat_spectral_sub_chroma_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_spectral_sub_db1_wavelet_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_spectral_sub_db1_wavelet_default.pkl -> {}
+cat_spectral_sub_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_spectral_sub_db1_wavelet_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_spectral_sub_mfcc_bayesian.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_spectral_sub_mfcc_default.pkl -> {}
+cat_spectral_sub_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_spectral_sub_mfcc_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_spectral_sub_zcr_bayesian.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.001, 'l2_leaf_reg': 10}
+cat_spectral_sub_zcr_default.pkl -> {}
+cat_spectral_sub_zcr_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
+cat_spectral_sub_zcr_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}

@@ -7,6 +7,7 @@ from catboost import CatBoostRegressor
 from skopt import BayesSearchCV
 import joblib
 import functions
+import params
 
 
 def build_cat_model(hyper_tuning="default"):
@@ -19,35 +20,20 @@ def build_cat_model(hyper_tuning="default"):
 
     elif hyper_tuning == "grid":
         # Example parameter grid.
-        param_grid = {
-            'iterations': [100, 200],
-            'depth': [4, 6, 8],
-            'learning_rate': [0.01, 0.1],
-            # 'l2_leaf_reg': [1, 3, 5]  # added
-        }
+        param_grid = params.cat_grid
         cat = CatBoostRegressor(random_state=42, silent=True)
         model = GridSearchCV(cat, param_grid, cv=3, scoring='neg_mean_squared_error', verbose=0)
         return model
 
     elif hyper_tuning == "random":
-        param_dist = {
-            'iterations': [100, 200, 300],
-            'depth': [4, 6, 8, 10],
-            'learning_rate': [0.001, 0.01, 0.1],
-            'l2_leaf_reg': [1, 3, 5, 7]
-        }
+        param_dist = params.cat_random
         cat = CatBoostRegressor(random_state=42, silent=True)
         model = RandomizedSearchCV(cat, param_distributions=param_dist, n_iter=10, cv=3,
                                    scoring='neg_mean_squared_error', random_state=42, verbose=0)
         return model
 
     elif hyper_tuning == "bayesian":
-        search_spaces = {
-            'iterations': (100, 300),
-            'depth': (4, 10),
-            'learning_rate': (1e-3, 1e-1, 'log-uniform'),
-            'l2_leaf_reg': (1, 10)
-        }
+        search_spaces = params.cat_search_spaces
         cat = CatBoostRegressor(random_state=42, silent=True)
         model = BayesSearchCV(cat, search_spaces, n_iter=16, cv=3,
                               scoring='neg_mean_squared_error', random_state=42, verbose=0)

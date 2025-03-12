@@ -1,0 +1,140 @@
+=== xgb Parameter Tuning Report ===
+
+--- BAYESIAN ---
+
+XGB | bayesian | n_estimators | (50 to 300)
+    50: 11/12
+    300: 1/12
+
+XGB | bayesian | max_depth | (3 to 12)
+    3: 6/12
+    4: 1/12
+    12: 5/12
+
+XGB | bayesian | learning_rate | (0.001 to 0.1)
+    0.001: 12/12
+
+XGB | bayesian | gamma | (0 to 0.5)
+    0.0: 5/12
+    0.5: 5/12
+    0.007930324322883084: 1/12
+    0.1523514449802383: 1/12
+
+XGB | bayesian | reg_alpha | (0 to 1.0)
+    1.0: 11/12
+    0.2581779106801591: 1/12
+
+XGB | bayesian | reg_lambda | (1 to 2.0)
+    2.0: 5/12
+    1.0: 6/12
+    1.0787530871494444: 1/12
+
+XGB | bayesian | subsample | (0.6 to 1.0)
+    1.0: 7/12
+    0.6: 4/12
+    0.8071333254047152: 1/12
+
+--- GRID ---
+
+XGB | grid | n_estimators | [50, 100, 200]
+    50: 12/12
+    100: 0/12
+    200: 0/12
+
+XGB | grid | max_depth | [3, 6, 10]
+    3: 8/12
+    6: 0/12
+    10: 4/12
+
+XGB | grid | learning_rate | [0.01, 0.1]
+    0.01: 12/12
+    0.1: 0/12
+
+--- RANDOM ---
+
+XGB | random | n_estimators | [50, 100, 200, 300]
+    50: 12/12
+    100: 0/12
+    200: 0/12
+    300: 0/12
+
+XGB | random | max_depth | [3, 6, 10, 12]
+    3: 0/12
+    6: 0/12
+    10: 0/12
+    12: 12/12
+
+XGB | random | learning_rate | [0.001, 0.01, 0.1]
+    0.001: 12/12
+    0.01: 0/12
+    0.1: 0/12
+
+XGB | random | gamma | [0, 0.1, 0.5]
+    0: 0/12
+    0.1: 12/12
+    0.5: 0/12
+
+XGB | random | reg_alpha | [0, 0.1, 1.0]
+    0: 0/12
+    0.1: 0/12
+    1.0: 12/12
+
+XGB | random | reg_lambda | [1, 1.5, 2.0]
+    1: 12/12
+    1.5: 0/12
+    2.0: 0/12
+
+XGB | random | subsample | [0.6, 0.8, 1.0]
+    0.6: 12/12
+    0.8: 0/12
+    1.0: 0/12
+
+=== Model Summary ===
+xgb_bandpass_chroma_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 1.0}
+xgb_bandpass_chroma_default.pkl -> {}
+xgb_bandpass_chroma_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_bandpass_chroma_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_bandpass_db1_wavelet_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 4, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 1.0}
+xgb_bandpass_db1_wavelet_default.pkl -> {}
+xgb_bandpass_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_bandpass_db1_wavelet_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_bandpass_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 1.0}
+xgb_bandpass_mfcc_default.pkl -> {}
+xgb_bandpass_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_bandpass_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_bandpass_zcr_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 0.6}
+xgb_bandpass_zcr_default.pkl -> {}
+xgb_bandpass_zcr_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_bandpass_zcr_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_raw_chroma_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 1.0}
+xgb_raw_chroma_default.pkl -> {}
+xgb_raw_chroma_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_raw_chroma_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_raw_db1_wavelet_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 1.0}
+xgb_raw_db1_wavelet_default.pkl -> {}
+xgb_raw_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_raw_db1_wavelet_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_raw_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.007930324322883084, 'reg_alpha': 1.0, 'reg_lambda': 1.0787530871494444, 'subsample': 0.8071333254047152}
+xgb_raw_mfcc_default.pkl -> {}
+xgb_raw_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_raw_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_raw_zcr_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 1.0}
+xgb_raw_zcr_default.pkl -> {}
+xgb_raw_zcr_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_raw_zcr_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_chroma_bayesian.pkl -> {'n_estimators': 300, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.1523514449802383, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_spectral_sub_chroma_default.pkl -> {}
+xgb_spectral_sub_chroma_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_spectral_sub_chroma_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_db1_wavelet_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 0.2581779106801591, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_spectral_sub_db1_wavelet_default.pkl -> {}
+xgb_spectral_sub_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_spectral_sub_db1_wavelet_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.0, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 1.0}
+xgb_spectral_sub_mfcc_default.pkl -> {}
+xgb_spectral_sub_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_spectral_sub_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_zcr_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'subsample': 0.6}
+xgb_spectral_sub_zcr_default.pkl -> {}
+xgb_spectral_sub_zcr_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_spectral_sub_zcr_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
