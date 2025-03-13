@@ -80,3 +80,31 @@ cat_search_spaces = {
     'learning_rate': (1e-3, 1e-1, 'log-uniform'),
     'l2_leaf_reg': (1, 10)
 }
+
+lgbm_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [None, 10, 20],
+    'learning_rate': [0.01, 0.1],
+    'num_leaves': [31, 63]  # default is 31 in LightGBM
+}
+
+lgbm_random = {
+    'n_estimators': [50, 100, 200, 300],
+    'max_depth': [None, 10, 20, 30],
+    'learning_rate': [0.001, 0.01, 0.1],
+    'num_leaves': [15, 31, 63, 127],
+    'min_child_samples': [5, 10, 20],
+    'subsample': [0.6, 0.8, 1.0],          # corresponds to bagging_fraction
+    'colsample_bytree': [0.6, 0.8, 1.0]      # fraction of features to consider at each split
+}
+
+lgbm_search_spaces = {
+    'n_estimators': (50, 300),
+    'max_depth': (3, 30),
+    'learning_rate': (1e-3, 1e-1, 'log-uniform'),
+    'num_leaves': (15, 127),
+    'min_child_samples': (5, 20),
+    'subsample': (0.6, 1.0, 'uniform'),
+    'colsample_bytree': (0.6, 1.0, 'uniform')
+}
+

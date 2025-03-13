@@ -1,11 +1,11 @@
-import functions
 import model_comparator
-from scripts_catboost import pipeline_cat
-from scripts_extra_trees import pipeline_et
-from scripts_linear_regression import pipeline_lr
-from scripts_preprocessing import pipeline_pp
-from scripts_random_forest import pipeline_rf
-from scripts_xgboost import pipeline_xgb
+from scripts.catboost import pipeline_cat
+from scripts.extra_trees import pipeline_et
+from scripts.lightgbm import pipeline_lgbm
+from scripts.linear_regression import pipeline_lr
+from scripts.preprocessing import pipeline_pp
+from scripts.random_forest import pipeline_rf
+from scripts.xgboost import pipeline_xgb
 
 # Dataset Configuration
 USE_QILIN = True
@@ -14,22 +14,29 @@ USE_SEPARATE_TEST_SET = False  # set to true it we want to use all datapoints an
 # VAL_SPLIT_RATIO = 0.15  # fraction for validation (e.g. 15%), set to 0 for final model
 TEST_SPLIT_RATIO = 0.15  # fraction for test (e.g. 15%), set to 0 for final model
 
+# Training configs
+OUTER_K_FOLDING = 5  # n_splits KFold param
+INNER_K_FOLDING = 3  # cv=n Regressor param
+
 # Pipeline Configuration
 PREPROCESS = False
 LINEAR_REGRESSION = False
 RANDOM_FOREST = False
 EXTRA_TREES = False
-XGBOOST = False
+LIGHTGBM = False
 CATBOOST = False
+XGBOOST = False
 NEURAL_NETWORK = False
 
 TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
 OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
 
 
+# TODO: LightGDB, optuna, genetic algorithms
 # TODO: data dump for error metrics for each hypertuning combination, automate analysis (and retrain)
 # TODO: combined testing will try every dataset-noise reduction combination perhaps eliminates dataset-
 # TODO: dimension below unless one dataset strictly worsens the medley
+# perhaps add a ml-based denoiser: If you have a large dataset of “clean” vs. “noisy” knocks, you can train a deep neural network (e.g., a simple U-Net or fully connected model in the spectrogram domain) to learn a mapping from noisy signals to clean signals. This is more complex to implement but can yield superior results if you have enough data and consistent noise conditions.
 # perhaps add something that exclusively pulls validation and test from lab dataset
 # perhaps combine datasets AFTER noise reduction instead (as it may differ per dataset)
 # perhaps add normalization preprocessing step after noise reductions on separate sets
@@ -69,15 +76,17 @@ def main():
     if EXTRA_TREES:
         pipeline_et.proceed(TRAIN_NEW_MODELS)
 
-    if XGBOOST:
-        pipeline_xgb.proceed(TRAIN_NEW_MODELS)
+    if LIGHTGBM:
+        pipeline_lgbm.proceed(TRAIN_NEW_MODELS)
 
     if CATBOOST:
         pipeline_cat.proceed(TRAIN_NEW_MODELS)
 
+    if XGBOOST:
+        pipeline_xgb.proceed(TRAIN_NEW_MODELS)
+
     if OPEN_COMPARATOR:
         model_comparator.main()
-
 
 
 if __name__ == "__main__":

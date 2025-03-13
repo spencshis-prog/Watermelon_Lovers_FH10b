@@ -75,45 +75,32 @@ def load_feature_data(folder):
     return np.array(data), np.array(labels), fnames
 
 
-def relevant_params(params, model_type, hyper_tuning):
+def relevant_params(model, model_type, hyper_tuning):
     """
-    Filters the full parameters dictionary for a model and hyper_tuning setting,
-    returning only the most relevant parameters that you want to report.
-
-    Parameters:
-      params (dict): The full parameters dictionary from final_model.get_params()
-                     or final_model.best_params_.
-      model_type (str): The type of model. Supported values are:
-                        "rf" for RandomForest,
-                        "et" for ExtraTrees,
-                        "xgb" for XGBoost,
-                        "cat" for CatBoost.
-      hyper_tuning (str): The hyperparameter tuning strategy used (e.g., "default", "grid",
-                          "random", or "bayesian"). This can be used to further adjust which
-                          keys to show if desired.
-
-    Returns:
-      dict: A filtered dictionary with only the relevant parameter keys.
+    Returns a filtered dictionary of the model's parameters based on model_type.
+    If hyper_tuning is not 'default' and the model has a best_params_ attribute,
+    that dictionary is used; otherwise, model.get_params() is used.
     """
     model_type = model_type.lower()
 
-    if model_type == "rf" or model_type == "et":
-        # For RandomForest and ExtraTrees, we consider these parameters:
+    # Get the parameter dictionary from best_params_ if available.
+    if hyper_tuning != "default" and hasattr(model, "best_params_"):
+        params_dict = model.best_params_
+    elif hasattr(model, "get_params"):
+        params_dict = model.get_params()
+    else:
+        params_dict = {}
+
+    if model_type in ["rf", "et"]:
         keys = ['n_estimators', 'max_depth', 'min_samples_split', 'min_samples_leaf', 'max_features']
     elif model_type == "xgb":
-        # For XGBoost, these are the parameters we're primarily interested in.
         keys = ['n_estimators', 'max_depth', 'learning_rate', 'gamma', 'reg_alpha', 'reg_lambda', 'subsample']
     elif model_type == "cat":
-        # For CatBoost, we consider:
         keys = ['iterations', 'depth', 'learning_rate', 'l2_leaf_reg']
     else:
-        # Fallback: return all parameters.
-        keys = list(params.keys())
+        keys = list(params_dict.keys())
 
-    # Optionally, you can adjust keys further based on the hyper_tuning option.
-    # For instance, if hyper_tuning == "default", you might want to only show a subset.
-    # For now, we'll just filter based on the keys list.
-    filtered = {k: params[k] for k in keys if k in params}
+    filtered = {k: params_dict[k] for k in keys if k in params_dict}
     return filtered
 
 
