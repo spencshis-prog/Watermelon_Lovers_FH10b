@@ -9,8 +9,9 @@ MODEL_DIRS = {
     "LR": "testing_lr",
     "RF": "testing_rf",
     "ET": "testing_et",
-    "XGB": "testing_xgb",
     "CAT": "testing_cat",
+    "LGBM": "testing_lgbm",
+    "XGB": "testing_xgb",
     "NN": "testing_nn"
 }
 
@@ -94,13 +95,20 @@ def load_all_reports(base_dir, report_type="Holdout"):
     report_filename = "report_holdout.txt" if report_type == "Holdout" else "report_kfold.txt"
 
     all_dfs = []
-    for model_label, subdir in MODEL_DIRS.items():
+    progress_bar = st.progress(0)
+    total_models = len(MODEL_DIRS)
+
+    for idx, (model_label, subdir) in enumerate(MODEL_DIRS.items(), start=1):
         report_path = os.path.join(base_dir, "output", subdir, report_filename)
         if os.path.exists(report_path):
+            print(f"[INFO] {report_filename} found for model: {model_label} at {report_path}")
             df_model = parse_report(report_path, model_label=model_label)
             all_dfs.append(df_model)
         else:
             print(f"[INFO] No {report_filename} found for model: {model_label} at {report_path}")
+
+        progress = int(idx / total_models * 100)
+        progress_bar.progress(progress)
 
     if all_dfs:
         return pd.concat(all_dfs, ignore_index=True)
@@ -111,6 +119,7 @@ def load_all_reports(base_dir, report_type="Holdout"):
 
 def main():
     st.title("Unified Model Error Comparison Dashboard")
+    print("here")
 
     # Let user choose "Holdout" or "KFold", defaulting to "Holdout"
     report_type = st.selectbox("Select Report Type", ["Holdout", "KFold"], index=0)

@@ -1,7 +1,7 @@
 import os
 import functions
-from lgbm_training import kfold_train_all_feature_models_lgbm
-from lgbm_testing import test_all_lgbm_models
+from scripts.lightgbm.lgbm_training import kfold_train_all_feature_models_lgbm
+from scripts.lightgbm.lgbm_testing import test_all_lgbm_models
 from scripts.lightgbm.lgbm_optuna import kfold_train_feature_set_lgbm_optuna
 
 # Hyperparameter tuning options for LightGBM

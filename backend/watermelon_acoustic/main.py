@@ -24,7 +24,7 @@ LINEAR_REGRESSION = False
 RANDOM_FOREST = False
 EXTRA_TREES = False
 LIGHTGBM = False
-CATBOOST = False
+CATBOOST = False  # run tests
 XGBOOST = False
 NEURAL_NETWORK = False
 
@@ -86,6 +86,7 @@ def main():
         pipeline_xgb.proceed(TRAIN_NEW_MODELS)
 
     if OPEN_COMPARATOR:
+        print("opening comparator")
         model_comparator.main()
 
 

@@ -150,16 +150,16 @@ def apply_feature_extraction(input_dir, output_base_dir):
         # "raw": ef_raw,  # scales badly with hypertuning runtimes
         "mfcc": ef_mel_features_cepstral_coefficients,  # high performance
         # "spectral_centroid": ef_spectral_centroid,  # poor performance
-        "db1_wavelet": ef_db1_wavelet,  # decent performance
-        "zcr": ef_zero_cross_rate,  # high performance
+        "db1_wavelet": ef_db1_wavelet,  # mid performance
+        # "zcr": ef_zero_cross_rate,  # good performance ONLY with naive spectral subtraction
         # "spectral_rolloff": ef_spectral_rolloff,  # poor performance
         # "rms": ef_rms,  # awful performance
         # "chroma": ef_chroma,  # poor performance
         "log_mel_spec": ef_log_mel_spectrogram,  # untested
-        "delta_mfcc": ef_delta_mfcc,  # untested
-        "spectral_contrast": ef_spectral_contrast,  # untested
+        "delta_mfcc": ef_delta_mfcc,  # good performance typically only w steg
+        # "spectral_contrast": ef_spectral_contrast,  # poor performance
         "percussive_mfcc": ef_percussive_mfcc,  # untested
-        "spectral_flux": ef_spectral_flux,  # untested
+        # "spectral_flux": ef_spectral_flux,  # poor performance
     }
 
     # Print a header with relative paths.
