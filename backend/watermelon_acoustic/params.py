@@ -108,3 +108,49 @@ lgbm_search_spaces = {
     'colsample_bytree': (0.6, 1.0, 'uniform')
 }
 
+# params.py
+
+# ----------------------------
+# Optuna search spaces presets
+# ----------------------------
+
+# RandomForest / ExtraTrees: Both use similar hyperparameters.
+rf_optuna_search_spaces = {
+    'n_estimators': (50, 300),            # integer range
+    'max_depth': (5, 30),                 # integer range
+    'min_samples_split': (2, 10),         # integer range
+    'min_samples_leaf': (1, 6),           # integer range
+    # For categorical parameters, you can simply list the options.
+    'max_features': ['sqrt', 'log2', None]
+}
+
+# XGBoost search space
+xgb_optuna_search_spaces = {
+    'n_estimators': (50, 300),
+    'max_depth': (3, 12),
+    'learning_rate': (1e-3, 1e-1, 'log-uniform'),  # log-uniform distribution
+    'gamma': (0, 0.5),
+    'reg_alpha': (0, 1.0),
+    'reg_lambda': (1, 2.0),
+    'subsample': (0.6, 1.0, 'uniform')
+}
+
+# LightGBM search space
+lgbm_optuna_search_spaces = {
+    'n_estimators': (50, 300),
+    'max_depth': (3, 30),
+    'learning_rate': (1e-3, 1e-1, 'log-uniform'),
+    'num_leaves': (15, 127),            # integer range
+    'min_child_samples': (5, 20),       # integer range
+    'subsample': (0.6, 1.0, 'uniform'), # same as bagging_fraction
+    'colsample_bytree': (0.6, 1.0, 'uniform')
+}
+
+# CatBoost search space
+cat_optuna_search_spaces = {
+    'iterations': (100, 300),
+    'depth': (4, 10),
+    'learning_rate': (1e-3, 1e-1, 'log-uniform'),
+    'l2_leaf_reg': (1, 10)              # integer range
+}
+

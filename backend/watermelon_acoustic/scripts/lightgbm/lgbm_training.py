@@ -12,13 +12,21 @@ import joblib
 import functions
 import params
 
+import warnings
+
+warnings.filterwarnings(
+    "ignore",
+    message="X does not have valid feature names, but LGBMRegressor was fitted with feature names",
+)
+
+
 
 def build_lgbm_model(hyper_tuning="default"):
     """
     Returns an LGBMRegressor or a CV wrapper based on the hyper_tuning strategy.
     """
     if hyper_tuning == "default":
-        return lgb.LGBMRegressor(random_state=42, n_jobs=-1)
+        return lgb.LGBMRegressor(random_state=42, n_jobs=-1, verbose=-1)
     elif hyper_tuning == "grid":
         param_grid = params.lgbm_grid  # e.g., {'n_estimators': [50, 100, 200], ...}
         base_model = lgb.LGBMRegressor(random_state=42, n_jobs=-1)
@@ -26,19 +34,19 @@ def build_lgbm_model(hyper_tuning="default"):
         return model
     elif hyper_tuning == "random":
         param_dist = params.lgbm_random  # e.g., {'n_estimators': [50, 100, 200, 300], ...}
-        base_model = lgb.LGBMRegressor(random_state=42, n_jobs=-1)
+        base_model = lgb.LGBMRegressor(random_state=42, n_jobs=-1, verbose=-1)
         model = RandomizedSearchCV(base_model, param_distributions=param_dist, n_iter=10, cv=3,
                                    scoring='neg_mean_squared_error', random_state=42, verbose=0)
         return model
     elif hyper_tuning == "bayesian":
         search_spaces = params.lgbm_search_spaces  # e.g., {'n_estimators': (50, 300), ...}
-        base_model = lgb.LGBMRegressor(random_state=42, n_jobs=-1)
+        base_model = lgb.LGBMRegressor(random_state=42, n_jobs=-1, verbose=-1)
         model = BayesSearchCV(base_model, search_spaces, n_iter=16, cv=3,
                               scoring='neg_mean_squared_error', random_state=42, verbose=0)
         return model
     else:
         print(f"[LGBM] Warning: '{hyper_tuning}' not recognized. Using default LGBMRegressor.")
-        return lgb.LGBMRegressor(random_state=42, n_jobs=-1)
+        return lgb.LGBMRegressor(random_state=42, n_jobs=-1, verbose=-1)
 
 
 def kfold_train_and_evaluate_lgbm(X, y, n_splits=5, hyper_tuning="default"):

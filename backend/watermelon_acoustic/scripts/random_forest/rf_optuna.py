@@ -9,27 +9,61 @@ import optuna
 import joblib
 
 import functions  # your helper functions (e.g. load_feature_data, clear_output_directory)
+import params
 
+
+def suggest_params(trial, search_space):
+    """
+    Given an Optuna trial and a search space dictionary, this function returns
+    a dictionary of hyperparameters by calling the appropriate trial.suggest_* methods.
+
+    Parameters:
+        trial (optuna.trial.Trial): The current trial object.
+        search_space (dict): Dictionary defining the search space for hyperparameters.
+            Examples:
+              - For numeric parameters with distribution:
+                  'learning_rate': (1e-3, 1e-1, 'log-uniform')
+              - For integer parameters:
+                  'n_estimators': (50, 300)
+              - For categorical parameters:
+                  'max_features': ['sqrt', 'log2', None]
+
+    Returns:
+        dict: A dictionary of suggested hyperparameters.
+    """
+    suggested = {}
+    for key, value in search_space.items():
+        if isinstance(value, tuple):
+            if len(value) == 3:
+                low, high, dist = value
+                if dist == 'log-uniform':
+                    suggested[key] = trial.suggest_loguniform(key, low, high)
+                elif dist == 'uniform':
+                    suggested[key] = trial.suggest_float(key, low, high)
+                else:
+                    raise ValueError(f"Unknown distribution type '{dist}' for parameter '{key}'")
+            elif len(value) == 2:
+                low, high = value
+                # If one of the bounds is float, use float suggestion.
+                if isinstance(low, float) or isinstance(high, float):
+                    suggested[key] = trial.suggest_float(key, low, high)
+                else:
+                    suggested[key] = trial.suggest_int(key, low, high)
+            else:
+                raise ValueError(f"Tuple for parameter '{key}' must have length 2 or 3. Got: {value}")
+        elif isinstance(value, list):
+            suggested[key] = trial.suggest_categorical(key, value)
+        else:
+            raise ValueError(f"Unsupported type for parameter '{key}': {type(value)}. Expected tuple or list.")
+    return suggested
 
 def objective_rf(trial, X, y):
     """
     Objective function for RandomForestRegressor hyperparameter tuning with Optuna.
     """
-    n_estimators = trial.suggest_int("n_estimators", 50, 300)
-    max_depth = trial.suggest_int("max_depth", 5, 30)  # we search only integer values
-    min_samples_split = trial.suggest_int("min_samples_split", 2, 10)
-    min_samples_leaf = trial.suggest_int("min_samples_leaf", 1, 6)
-    max_features = trial.suggest_categorical("max_features", ["sqrt", "log2", None])
-
-    model = RandomForestRegressor(
-        random_state=42,
-        n_jobs=-1,
-        n_estimators=n_estimators,
-        max_depth=max_depth,
-        min_samples_split=min_samples_split,
-        min_samples_leaf=min_samples_leaf,
-        max_features=max_features
-    )
+    search_space = params.rf_optuna_search_spaces
+    hyperparams = suggest_params(trial, search_space)
+    model = RandomForestRegressor(random_state=42, n_jobs=-1, **hyperparams)
 
     # Perform a 3-fold CV for the trial.
     kf = KFold(n_splits=3, shuffle=True, random_state=42)

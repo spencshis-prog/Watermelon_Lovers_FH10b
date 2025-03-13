@@ -1,0 +1,215 @@
+=== lgbm Parameter Tuning Report ===
+
+--- BAYESIAN ---
+
+LGBM | bayesian | n_estimators | (50 to 300)
+    50: 22/25
+    80: 1/25
+    114: 1/25
+    300: 1/25
+
+LGBM | bayesian | max_depth | (3 to 30)
+    3: 15/25
+    10: 1/25
+    4: 1/25
+    30: 6/25
+    28: 1/25
+    23: 1/25
+
+LGBM | bayesian | learning_rate | (0.001 to 0.1)
+    0.001: 21/25
+    0.0015750726828022052: 1/25
+    0.0010972092378026986: 1/25
+    0.0011669317163155912: 1/25
+    0.0017007957769699586: 1/25
+
+LGBM | bayesian | num_leaves | (15 to 127)
+    127: 12/25
+    15: 11/25
+    67: 1/25
+    103: 1/25
+
+LGBM | bayesian | min_child_samples | (5 to 20)
+    5: 13/25
+    19: 2/25
+    20: 7/25
+    8: 2/25
+    15: 1/25
+
+LGBM | bayesian | subsample | (0.6 to 1.0)
+    1.0: 7/25
+    0.6876443584081733: 1/25
+    0.6: 13/25
+    0.9152030788655781: 1/25
+    0.8384426477372795: 1/25
+    0.937306247566414: 1/25
+    0.9805212187518391: 1/25
+
+LGBM | bayesian | colsample_bytree | (0.6 to 1.0)
+    1.0: 13/25
+    0.8578484160928801: 1/25
+    0.6: 9/25
+    0.722095635914984: 1/25
+    0.7789274930608098: 1/25
+
+--- GRID ---
+
+LGBM | grid | n_estimators | [50, 100, 200]
+    50: 25/25
+    100: 0/25
+    200: 0/25
+
+LGBM | grid | max_depth | [None, 10, 20]
+    None: 25/25
+    10: 0/25
+    20: 0/25
+
+LGBM | grid | learning_rate | [0.01, 0.1]
+    0.01: 25/25
+    0.1: 0/25
+
+LGBM | grid | num_leaves | [31, 63]
+    31: 25/25
+    63: 0/25
+
+--- RANDOM ---
+
+LGBM | random | n_estimators | [50, 100, 200, 300]
+    50: 0/25
+    100: 0/25
+    200: 25/25
+    300: 0/25
+
+LGBM | random | max_depth | [None, 10, 20, 30]
+    None: 11/25
+    10: 0/25
+    20: 8/25
+    30: 6/25
+
+LGBM | random | learning_rate | [0.001, 0.01, 0.1]
+    0.001: 25/25
+    0.01: 0/25
+    0.1: 0/25
+
+LGBM | random | num_leaves | [15, 31, 63, 127]
+    15: 0/25
+    31: 8/25
+    63: 0/25
+    127: 17/25
+
+LGBM | random | min_child_samples | [5, 10, 20]
+    5: 14/25
+    10: 0/25
+    20: 11/25
+
+LGBM | random | subsample | [0.6, 0.8, 1.0]
+    0.6: 0/25
+    0.8: 25/25
+    1.0: 0/25
+
+LGBM | random | colsample_bytree | [0.6, 0.8, 1.0]
+    0.6: 17/25
+    0.8: 0/25
+    1.0: 8/25
+
+=== Model Summary ===
+lgbm_bandpass_db1_wavelet_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 1.0, 'colsample_bytree': 1.0}
+lgbm_bandpass_db1_wavelet_default.pkl -> {}
+lgbm_bandpass_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_bandpass_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'learning_rate': 0.001, 'num_leaves': 31, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 1.0}
+lgbm_bandpass_delta_mfcc_bayesian.pkl -> {'n_estimators': 80, 'max_depth': 3, 'learning_rate': 0.0015750726828022052, 'num_leaves': 15, 'min_child_samples': 19, 'subsample': 0.6876443584081733, 'colsample_bytree': 0.8578484160928801}
+lgbm_bandpass_delta_mfcc_default.pkl -> {}
+lgbm_bandpass_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_bandpass_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_bandpass_log_mel_spec_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.6, 'colsample_bytree': 0.6}
+lgbm_bandpass_log_mel_spec_default.pkl -> {}
+lgbm_bandpass_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_bandpass_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_bandpass_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.6, 'colsample_bytree': 1.0}
+lgbm_bandpass_mfcc_default.pkl -> {}
+lgbm_bandpass_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_bandpass_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_bandpass_percussive_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 15, 'min_child_samples': 20, 'subsample': 0.6, 'colsample_bytree': 0.6}
+lgbm_bandpass_percussive_mfcc_default.pkl -> {}
+lgbm_bandpass_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_bandpass_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_raw_db1_wavelet_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.6, 'colsample_bytree': 1.0}
+lgbm_raw_db1_wavelet_default.pkl -> {}
+lgbm_raw_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_raw_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'learning_rate': 0.001, 'num_leaves': 31, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 1.0}
+lgbm_raw_delta_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.001, 'num_leaves': 15, 'min_child_samples': 8, 'subsample': 1.0, 'colsample_bytree': 0.6}
+lgbm_raw_delta_mfcc_default.pkl -> {}
+lgbm_raw_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_raw_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_raw_log_mel_spec_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 1.0, 'colsample_bytree': 1.0}
+lgbm_raw_log_mel_spec_default.pkl -> {}
+lgbm_raw_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_raw_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_raw_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 4, 'learning_rate': 0.001, 'num_leaves': 15, 'min_child_samples': 5, 'subsample': 0.6, 'colsample_bytree': 1.0}
+lgbm_raw_mfcc_default.pkl -> {}
+lgbm_raw_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_raw_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'learning_rate': 0.001, 'num_leaves': 31, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 1.0}
+lgbm_raw_percussive_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.6, 'colsample_bytree': 1.0}
+lgbm_raw_percussive_mfcc_default.pkl -> {}
+lgbm_raw_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_raw_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_spectral_sub_dynamic_db1_wavelet_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.6, 'colsample_bytree': 0.6}
+lgbm_spectral_sub_dynamic_db1_wavelet_default.pkl -> {}
+lgbm_spectral_sub_dynamic_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_spectral_sub_dynamic_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_spectral_sub_dynamic_delta_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 15, 'min_child_samples': 20, 'subsample': 0.6, 'colsample_bytree': 1.0}
+lgbm_spectral_sub_dynamic_delta_mfcc_default.pkl -> {}
+lgbm_spectral_sub_dynamic_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_spectral_sub_dynamic_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_spectral_sub_dynamic_log_mel_spec_bayesian.pkl -> {'n_estimators': 114, 'max_depth': 28, 'learning_rate': 0.0010972092378026986, 'num_leaves': 15, 'min_child_samples': 20, 'subsample': 0.9152030788655781, 'colsample_bytree': 1.0}
+lgbm_spectral_sub_dynamic_log_mel_spec_default.pkl -> {}
+lgbm_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_spectral_sub_dynamic_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_spectral_sub_dynamic_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 67, 'min_child_samples': 15, 'subsample': 0.8384426477372795, 'colsample_bytree': 0.722095635914984}
+lgbm_spectral_sub_dynamic_mfcc_default.pkl -> {}
+lgbm_spectral_sub_dynamic_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_spectral_sub_dynamic_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'learning_rate': 0.001, 'num_leaves': 31, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 1.0}
+lgbm_spectral_sub_dynamic_percussive_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 1.0, 'colsample_bytree': 1.0}
+lgbm_spectral_sub_dynamic_percussive_mfcc_default.pkl -> {}
+lgbm_spectral_sub_dynamic_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_spectral_sub_dynamic_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_steg_db1_wavelet_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 15, 'min_child_samples': 5, 'subsample': 0.937306247566414, 'colsample_bytree': 1.0}
+lgbm_steg_db1_wavelet_default.pkl -> {}
+lgbm_steg_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_steg_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'learning_rate': 0.001, 'num_leaves': 31, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 1.0}
+lgbm_steg_delta_mfcc_bayesian.pkl -> {'n_estimators': 300, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 15, 'min_child_samples': 20, 'subsample': 1.0, 'colsample_bytree': 1.0}
+lgbm_steg_delta_mfcc_default.pkl -> {}
+lgbm_steg_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_steg_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_steg_log_mel_spec_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 30, 'learning_rate': 0.0011669317163155912, 'num_leaves': 15, 'min_child_samples': 5, 'subsample': 0.6, 'colsample_bytree': 0.7789274930608098}
+lgbm_steg_log_mel_spec_default.pkl -> {}
+lgbm_steg_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_steg_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'learning_rate': 0.001, 'num_leaves': 31, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 1.0}
+lgbm_steg_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 15, 'min_child_samples': 20, 'subsample': 0.6, 'colsample_bytree': 1.0}
+lgbm_steg_mfcc_default.pkl -> {}
+lgbm_steg_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_steg_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_steg_percussive_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 1.0, 'colsample_bytree': 0.6}
+lgbm_steg_percussive_mfcc_default.pkl -> {}
+lgbm_steg_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_steg_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'learning_rate': 0.001, 'num_leaves': 31, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 1.0}
+lgbm_wiener_db1_wavelet_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 15, 'min_child_samples': 5, 'subsample': 0.6, 'colsample_bytree': 1.0}
+lgbm_wiener_db1_wavelet_default.pkl -> {}
+lgbm_wiener_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_wiener_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'learning_rate': 0.001, 'num_leaves': 31, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 1.0}
+lgbm_wiener_delta_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.0017007957769699586, 'num_leaves': 103, 'min_child_samples': 19, 'subsample': 0.9805212187518391, 'colsample_bytree': 0.6}
+lgbm_wiener_delta_mfcc_default.pkl -> {}
+lgbm_wiener_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_wiener_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_wiener_log_mel_spec_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 23, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 8, 'subsample': 0.6, 'colsample_bytree': 0.6}
+lgbm_wiener_log_mel_spec_default.pkl -> {}
+lgbm_wiener_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_wiener_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_wiener_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.6, 'colsample_bytree': 0.6}
+lgbm_wiener_mfcc_default.pkl -> {}
+lgbm_wiener_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_wiener_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 20, 'subsample': 0.8, 'colsample_bytree': 0.6}
+lgbm_wiener_percussive_mfcc_bayesian.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 1.0, 'colsample_bytree': 0.6}
+lgbm_wiener_percussive_mfcc_default.pkl -> {}
+lgbm_wiener_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'learning_rate': 0.01, 'num_leaves': 31}
+lgbm_wiener_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 30, 'learning_rate': 0.001, 'num_leaves': 127, 'min_child_samples': 5, 'subsample': 0.8, 'colsample_bytree': 0.6}
