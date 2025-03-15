@@ -50,7 +50,7 @@ xgb_random = {
     'subsample': [0.6, 0.8, 1.0]
 }
 
-xgb_search_spaces = {
+xgb_bayesian = {
     'n_estimators': (50, 300),
     'max_depth': (3, 12),
     'learning_rate': (1e-3, 1e-1, 'log-uniform'),
@@ -74,7 +74,7 @@ cat_random = {
     'l2_leaf_reg': [1, 3, 5, 7]
 }
 
-cat_search_spaces = {
+cat_bayesian = {
     'iterations': (100, 300),
     'depth': (4, 10),
     'learning_rate': (1e-3, 1e-1, 'log-uniform'),
@@ -98,7 +98,7 @@ lgbm_random = {
     'colsample_bytree': [0.6, 0.8, 1.0]      # fraction of features to consider at each split
 }
 
-lgbm_search_spaces = {
+lgbm_bayesian = {
     'n_estimators': (50, 300),
     'max_depth': (3, 30),
     'learning_rate': (1e-3, 1e-1, 'log-uniform'),
@@ -115,7 +115,15 @@ lgbm_search_spaces = {
 # ----------------------------
 
 # RandomForest / ExtraTrees: Both use similar hyperparameters.
-rf_optuna_search_spaces = {
+rf_optuna = {
+    'n_estimators': (50, 300),            # integer range
+    'max_depth': (5, 30),                 # integer range
+    'min_samples_split': (2, 10),         # integer range
+    'min_samples_leaf': (1, 6),           # integer range
+    # For categorical parameters, you can simply list the options.
+    'max_features': ['sqrt', 'log2', None]
+}
+et_optuna = {
     'n_estimators': (50, 300),            # integer range
     'max_depth': (5, 30),                 # integer range
     'min_samples_split': (2, 10),         # integer range
@@ -125,7 +133,7 @@ rf_optuna_search_spaces = {
 }
 
 # XGBoost search space
-xgb_optuna_search_spaces = {
+xgb_optuna = {
     'n_estimators': (50, 300),
     'max_depth': (3, 12),
     'learning_rate': (1e-3, 1e-1, 'log-uniform'),  # log-uniform distribution
@@ -136,7 +144,7 @@ xgb_optuna_search_spaces = {
 }
 
 # LightGBM search space
-lgbm_optuna_search_spaces = {
+lgbm_optuna = {
     'n_estimators': (50, 300),
     'max_depth': (3, 30),
     'learning_rate': (1e-3, 1e-1, 'log-uniform'),
@@ -147,7 +155,7 @@ lgbm_optuna_search_spaces = {
 }
 
 # CatBoost search space
-cat_optuna_search_spaces = {
+cat_optuna = {
     'iterations': (100, 300),
     'depth': (4, 10),
     'learning_rate': (1e-3, 1e-1, 'log-uniform'),

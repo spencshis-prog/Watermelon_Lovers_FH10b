@@ -61,7 +61,7 @@ def objective_rf(trial, X, y):
     """
     Objective function for RandomForestRegressor hyperparameter tuning with Optuna.
     """
-    search_space = params.rf_optuna_search_spaces
+    search_space = params.rf_optuna
     hyperparams = suggest_params(trial, search_space)
     model = RandomForestRegressor(random_state=42, n_jobs=-1, **hyperparams)
 

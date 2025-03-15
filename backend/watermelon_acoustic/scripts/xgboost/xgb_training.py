@@ -38,7 +38,7 @@ def build_xgb_model(hyper_tuning="default"):
         return model
 
     elif hyper_tuning == "bayesian":
-        search_spaces = params.xgb_search_spaces
+        search_spaces = params.xgb_bayesian
         xgb = XGBRegressor(random_state=42, eval_metric='rmse')
         model = BayesSearchCV(xgb, search_spaces, n_iter=16, cv=3,
                               scoring='neg_mean_squared_error', random_state=42, verbose=0)

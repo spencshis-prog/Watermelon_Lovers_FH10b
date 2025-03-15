@@ -1,7 +1,12 @@
+import os
+
+import functions
+from scripts.Pipeline.testing import test_all
+from scripts.Pipeline.training import train_all
 
 
 class ModelPipeline:
-    def __init__(self, model_name, model_cls, inner_kfolding=3, outer_kfolding=5, hyper_tuning=["default"],
+    def __init__(self, model_tag, model_cls, primer_functions=None, inner_folds=3, outer_folds=5, ht_options=None,
                  params_grid=None, params_random=None, params_bayesian=None, params_optuna=None):
         """
         model_name: String identifier, e.g. "RF", "XGB", etc.
@@ -14,12 +19,95 @@ class ModelPipeline:
         params_bayesian: Dictionary of parameters for Bayesian search.
         params_optuna: Dictionary (or search space preset) for Optuna tuning.
         """
-        self.model_name = model_name
+        if ht_options is None:
+            ht_options = ["default"]
+        self.model_tag = model_tag
         self.model_cls = model_cls
-        self.inner_kfolding = inner_kfolding
-        self.outer_kfolding = outer_kfolding
-        self.hyper_tuning = hyper_tuning  # list of strings
+        self.inner_folds = inner_folds
+        self.outer_folds = outer_folds
+        self.ht_options = ht_options  # list of strings
         self.params_grid = params_grid
         self.params_random = params_random
         self.params_bayesian = params_bayesian
         self.params_optuna = params_optuna
+
+        if primer_functions is None:
+            self.primer_functions = []
+        else:
+            self.primer_functions = primer_functions
+
+        self.base_dir = os.path.dirname(os.path.abspath(__file__))
+        self.fe_base_dir = os.path.join(self.base_dir, "../../intermediate", "feature_extraction")
+
+        self.models_output_dir = os.path.join(self.base_dir, "../../output", f"models_{model_tag}")
+        self.testing_output_dir = os.path.join(self.base_dir, "../../output", f"testing_{model_tag}")
+
+        self.report_kfold_path = os.path.join(self.testing_output_dir, "report_kfold.txt")
+        self.report_holdout_path = os.path.join(self.testing_output_dir, "report_holdout.txt")
+        self.report_params_path = os.path.join(self.testing_output_dir, "report_params.txt")
+
+    def prime(self, X, y, fnames):
+        """
+        Applies model-specific priming functions to the data.
+        To ensure priming is done exactly once, we assume the data is wrapped in a dict.
+        If the data is a tuple (X, y, fnames), we assume it has not been primed.
+        """
+        # If data is not wrapped, wrap it.
+        if not isinstance(X, dict):
+            data = {"X": X, "y": y, "fnames": fnames, "primed": False}
+        else:
+            data = X  # already a dict; unlikely
+
+        if data.get("primed", False):
+            return data["X"], data["y"], data["fnames"]
+
+        print(f"[{self.model_tag.upper()}] Priming data using {len(self.primer_functions)} primer(s)")
+        X_out, y_out, fnames_out = data["X"], data["y"], data["fnames"]
+        for primer in self.primer_functions:
+            X_out, y_out, fnames_out = primer(X_out, y_out, fnames_out)
+        data["X"], data["y"], data["fnames"] = X_out, y_out, fnames_out
+        data["primed"] = True
+        return X_out, y_out, fnames_out
+
+    def train(self):
+        # clear training outputs (kfold error metrics + models)
+        open(self.report_kfold_path, "w").close()
+        functions.clear_output_directory(self.models_output_dir)
+
+        for ht in sorted(self.ht_options):
+            functions.green_print(f"\n=== Training {self.model_tag} models with hyperparameter tuning: {ht} ===")
+            if ht == "optuna":
+                print("optuna")
+            else:
+                train_all(self, ht)
+
+    def test(self):
+        open(self.report_holdout_path, "w").close()
+        open(self.report_params_path, "w").close()
+
+        functions.generate_report_params(self.models_output_dir, self.report_params_path)
+
+        functions.clear_output_directory(os.path.join(self.testing_output_dir, "heatmaps"))
+        functions.clear_output_directory(os.path.join(self.testing_output_dir, "predicted_vs_actual"))
+        functions.clear_output_directory(os.path.join(self.testing_output_dir, "residual_plots"))
+
+        print(f"\n=== Testing {self.model_tag} models on hold-out test sets ===")
+        test_all(self)
+        print(f"{self.model_tag.upper()} pipeline completed.")
+
+    def get_params_dict(self, ht):
+        """
+        Returns the appropriate parameter dictionary for the given hyper-tuning method.
+        """
+        if ht == "grid":
+            return self.params_grid
+        elif ht == "random":
+            return self.params_random
+        elif ht == "bayesian":
+            return self.params_bayesian
+        elif ht == "optuna":
+            return self.params_optuna
+        else:
+            return None
+
+

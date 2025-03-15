@@ -3,48 +3,48 @@
 --- GRID ---
 
 RF | grid | n_estimators | [50, 100, 200]
-    50: 7/56
-    100: 17/56
-    200: 32/56
+    50: 3/25
+    100: 8/25
+    200: 14/25
 
 RF | grid | max_depth | [None, 10, 20]
-    None: 20/56
-    10: 30/56
-    20: 6/56
+    None: 10/25
+    10: 11/25
+    20: 4/25
 
 RF | grid | min_samples_split | [2, 5]
-    2: 24/56
-    5: 32/56
+    2: 14/25
+    5: 11/25
 
 --- RANDOM ---
 
 RF | random | n_estimators | [50, 100, 200, 300]
-    50: 9/56
-    100: 1/56
-    200: 46/56
-    300: 0/56
+    50: 4/25
+    100: 0/25
+    200: 21/25
+    300: 0/25
 
 RF | random | max_depth | [None, 10, 20, 30]
-    None: 14/56
-    10: 24/56
-    20: 17/56
-    30: 1/56
+    None: 6/25
+    10: 11/25
+    20: 7/25
+    30: 1/25
 
 RF | random | min_samples_split | [2, 5, 10]
-    2: 0/56
-    5: 28/56
-    10: 28/56
+    2: 0/25
+    5: 13/25
+    10: 12/25
 
 RF | random | min_samples_leaf | [1, 2, 4, 6]
-    1: 6/56
-    2: 12/56
-    4: 5/56
-    6: 33/56
+    1: 2/25
+    2: 7/25
+    4: 1/25
+    6: 15/25
 
 RF | random | max_features | ['sqrt', 'log2', None]
-    sqrt: 1/56
-    log2: 44/56
-    None: 11/56
+    sqrt: 0/25
+    log2: 19/25
+    None: 6/25
 
 === Model Summary ===
 rf_bandpass_db1_wavelet_default.pkl -> {}
@@ -54,47 +54,14 @@ rf_bandpass_delta_mfcc_default.pkl -> {}
 rf_bandpass_delta_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2}
 rf_bandpass_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
 rf_bandpass_log_mel_spec_default.pkl -> {}
-rf_bandpass_log_mel_spec_grid.pkl -> {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2}
+rf_bandpass_log_mel_spec_grid.pkl -> {'n_estimators': 100, 'max_depth': 20, 'min_samples_split': 2}
 rf_bandpass_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': 30, 'min_samples_split': 5, 'min_samples_leaf': 2, 'max_features': 'log2'}
 rf_bandpass_mfcc_default.pkl -> {}
-rf_bandpass_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 2}
+rf_bandpass_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'min_samples_split': 2}
 rf_bandpass_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
 rf_bandpass_percussive_mfcc_default.pkl -> {}
 rf_bandpass_percussive_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
 rf_bandpass_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2'}
-rf_bandpass_spectral_contrast_default.pkl -> {}
-rf_bandpass_spectral_contrast_grid.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 5}
-rf_bandpass_spectral_contrast_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_bandpass_spectral_flux_default.pkl -> {}
-rf_bandpass_spectral_flux_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
-rf_bandpass_spectral_flux_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_bandpass_zcr_default.pkl -> {}
-rf_bandpass_zcr_grid.pkl -> {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 5}
-rf_bandpass_zcr_random.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_db8_dwt_db1_wavelet_default.pkl -> {}
-rf_db8_dwt_db1_wavelet_grid.pkl -> {'n_estimators': 100, 'max_depth': 20, 'min_samples_split': 5}
-rf_db8_dwt_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_db8_dwt_delta_mfcc_default.pkl -> {}
-rf_db8_dwt_delta_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 2}
-rf_db8_dwt_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2'}
-rf_db8_dwt_log_mel_spec_default.pkl -> {}
-rf_db8_dwt_log_mel_spec_grid.pkl -> {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 2}
-rf_db8_dwt_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 5, 'min_samples_leaf': 2, 'max_features': None}
-rf_db8_dwt_mfcc_default.pkl -> {}
-rf_db8_dwt_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'min_samples_split': 2}
-rf_db8_dwt_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2'}
-rf_db8_dwt_percussive_mfcc_default.pkl -> {}
-rf_db8_dwt_percussive_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 2}
-rf_db8_dwt_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2'}
-rf_db8_dwt_spectral_contrast_default.pkl -> {}
-rf_db8_dwt_spectral_contrast_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
-rf_db8_dwt_spectral_contrast_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_db8_dwt_spectral_flux_default.pkl -> {}
-rf_db8_dwt_spectral_flux_grid.pkl -> {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 5}
-rf_db8_dwt_spectral_flux_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_db8_dwt_zcr_default.pkl -> {}
-rf_db8_dwt_zcr_grid.pkl -> {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 5}
-rf_db8_dwt_zcr_random.pkl -> {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
 rf_raw_db1_wavelet_default.pkl -> {}
 rf_raw_db1_wavelet_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
 rf_raw_db1_wavelet_random.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 6, 'max_features': 'log2'}
@@ -108,25 +75,16 @@ rf_raw_mfcc_default.pkl -> {}
 rf_raw_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
 rf_raw_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
 rf_raw_percussive_mfcc_default.pkl -> {}
-rf_raw_percussive_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 5}
+rf_raw_percussive_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 20, 'min_samples_split': 5}
 rf_raw_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_raw_spectral_contrast_default.pkl -> {}
-rf_raw_spectral_contrast_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
-rf_raw_spectral_contrast_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_raw_spectral_flux_default.pkl -> {}
-rf_raw_spectral_flux_grid.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 5}
-rf_raw_spectral_flux_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_raw_zcr_default.pkl -> {}
-rf_raw_zcr_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
-rf_raw_zcr_random.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 6, 'max_features': 'log2'}
 rf_spectral_sub_dynamic_db1_wavelet_default.pkl -> {}
 rf_spectral_sub_dynamic_db1_wavelet_grid.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 2}
 rf_spectral_sub_dynamic_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
 rf_spectral_sub_dynamic_delta_mfcc_default.pkl -> {}
-rf_spectral_sub_dynamic_delta_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 20, 'min_samples_split': 5}
+rf_spectral_sub_dynamic_delta_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 5}
 rf_spectral_sub_dynamic_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
 rf_spectral_sub_dynamic_log_mel_spec_default.pkl -> {}
-rf_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'min_samples_split': 5}
+rf_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 5}
 rf_spectral_sub_dynamic_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': None}
 rf_spectral_sub_dynamic_mfcc_default.pkl -> {}
 rf_spectral_sub_dynamic_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
@@ -134,39 +92,6 @@ rf_spectral_sub_dynamic_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': No
 rf_spectral_sub_dynamic_percussive_mfcc_default.pkl -> {}
 rf_spectral_sub_dynamic_percussive_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
 rf_spectral_sub_dynamic_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 5, 'min_samples_leaf': 2, 'max_features': None}
-rf_spectral_sub_dynamic_spectral_contrast_default.pkl -> {}
-rf_spectral_sub_dynamic_spectral_contrast_grid.pkl -> {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 5}
-rf_spectral_sub_dynamic_spectral_contrast_random.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_spectral_sub_dynamic_spectral_flux_default.pkl -> {}
-rf_spectral_sub_dynamic_spectral_flux_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
-rf_spectral_sub_dynamic_spectral_flux_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_spectral_sub_dynamic_zcr_default.pkl -> {}
-rf_spectral_sub_dynamic_zcr_grid.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 2}
-rf_spectral_sub_dynamic_zcr_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2'}
-rf_spectral_sub_naive_db1_wavelet_default.pkl -> {}
-rf_spectral_sub_naive_db1_wavelet_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 2}
-rf_spectral_sub_naive_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_spectral_sub_naive_delta_mfcc_default.pkl -> {}
-rf_spectral_sub_naive_delta_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 2}
-rf_spectral_sub_naive_delta_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': None}
-rf_spectral_sub_naive_log_mel_spec_default.pkl -> {}
-rf_spectral_sub_naive_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'min_samples_split': 2}
-rf_spectral_sub_naive_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': None}
-rf_spectral_sub_naive_mfcc_default.pkl -> {}
-rf_spectral_sub_naive_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 5}
-rf_spectral_sub_naive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2'}
-rf_spectral_sub_naive_percussive_mfcc_default.pkl -> {}
-rf_spectral_sub_naive_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': None, 'min_samples_split': 5}
-rf_spectral_sub_naive_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': None}
-rf_spectral_sub_naive_spectral_contrast_default.pkl -> {}
-rf_spectral_sub_naive_spectral_contrast_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'min_samples_split': 5}
-rf_spectral_sub_naive_spectral_contrast_random.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_spectral_sub_naive_spectral_flux_default.pkl -> {}
-rf_spectral_sub_naive_spectral_flux_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
-rf_spectral_sub_naive_spectral_flux_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_spectral_sub_naive_zcr_default.pkl -> {}
-rf_spectral_sub_naive_zcr_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 2}
-rf_spectral_sub_naive_zcr_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2'}
 rf_steg_db1_wavelet_default.pkl -> {}
 rf_steg_db1_wavelet_grid.pkl -> {'n_estimators': 100, 'max_depth': None, 'min_samples_split': 5}
 rf_steg_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2'}
@@ -182,15 +107,6 @@ rf_steg_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_s
 rf_steg_percussive_mfcc_default.pkl -> {}
 rf_steg_percussive_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 2}
 rf_steg_percussive_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_steg_spectral_contrast_default.pkl -> {}
-rf_steg_spectral_contrast_grid.pkl -> {'n_estimators': 200, 'max_depth': 20, 'min_samples_split': 5}
-rf_steg_spectral_contrast_random.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_steg_spectral_flux_default.pkl -> {}
-rf_steg_spectral_flux_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
-rf_steg_spectral_flux_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_steg_zcr_default.pkl -> {}
-rf_steg_zcr_grid.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 5}
-rf_steg_zcr_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': None}
 rf_wiener_db1_wavelet_default.pkl -> {}
 rf_wiener_db1_wavelet_grid.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 2}
 rf_wiener_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
@@ -206,12 +122,3 @@ rf_wiener_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples
 rf_wiener_percussive_mfcc_default.pkl -> {}
 rf_wiener_percussive_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 2}
 rf_wiener_percussive_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_wiener_spectral_contrast_default.pkl -> {}
-rf_wiener_spectral_contrast_grid.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 2}
-rf_wiener_spectral_contrast_random.pkl -> {'n_estimators': 200, 'max_depth': None, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2'}
-rf_wiener_spectral_flux_default.pkl -> {}
-rf_wiener_spectral_flux_grid.pkl -> {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 5}
-rf_wiener_spectral_flux_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}
-rf_wiener_zcr_default.pkl -> {}
-rf_wiener_zcr_grid.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5}
-rf_wiener_zcr_random.pkl -> {'n_estimators': 200, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2'}

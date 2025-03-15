@@ -1,11 +1,21 @@
+from catboost import CatBoostRegressor
+from sklearn.ensemble import ExtraTreesRegressor
+from skopt.learning import RandomForestRegressor
+from xgboost import XGBRegressor
+
 import model_comparator
-from scripts.catboost import pipeline_cat
-from scripts.extra_trees import pipeline_et
-from scripts.lightgbm import pipeline_lgbm
+import params
+import primers
+from scripts.Pipeline.ModelPipeline import ModelPipeline
 from scripts.linear_regression import pipeline_lr
 from scripts.preprocessing import pipeline_pp
-from scripts.random_forest import pipeline_rf
-from scripts.xgboost import pipeline_xgb
+
+
+import lightgbm as lgb
+
+import warnings
+warnings.filterwarnings("ignore", message="n_quantiles.*")
+
 
 # Dataset Configuration
 USE_QILIN = True
@@ -15,21 +25,21 @@ USE_SEPARATE_TEST_SET = False  # set to true it we want to use all datapoints an
 TEST_SPLIT_RATIO = 0.15  # fraction for test (e.g. 15%), set to 0 for final model
 
 # Training configs
-OUTER_K_FOLDING = 5  # n_splits KFold param
-INNER_K_FOLDING = 3  # cv=n Regressor param
+K_FOLDS = 5  # n_splits KFold param
+CV_FOLDS = 3  # cv=n Regressor param
 
 # Pipeline Configuration
 PREPROCESS = False
 LINEAR_REGRESSION = False
-RANDOM_FOREST = False
+RANDOM_FOREST = True
 EXTRA_TREES = False
 LIGHTGBM = False
 CATBOOST = False  # run tests
 XGBOOST = False
 NEURAL_NETWORK = False
 
-TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
-OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
+TRAIN_NEW_MODELS = True  # k-fold metrics will not update unless training new models
+OPEN_COMPARATOR = False  # to run, put 'streamlit run main.py' into the command line
 
 
 # TODO: LightGDB, optuna, genetic algorithms
@@ -44,6 +54,8 @@ OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command l
 
 # concern: qilin dataset seems to range between 9-12 sweetness, never lower. top-heavy training set
 def main():
+    rf_pipeline, et_pipeline, lgbm_pipeline, cat_pipeline, xgb_pipeline = instantiate_pipelines()
+
     if PREPROCESS:
         '''
         - Converts qilin .m4a files to .wav
@@ -65,29 +77,89 @@ def main():
         pipeline_lr.proceed(TRAIN_NEW_MODELS)
 
     if RANDOM_FOREST:
-        '''
-        - Creates a random forest regressor for each hyperparameter tuning technique
-        - Trains a model for each combination of noise reduction, feature extraction, regularization
-        - Evaluates each model w MAE, MSE, RMSE, R^2 on both holdout and k-fold validation datasets
-        - Plots residuals and actual v predicted graphs
-        '''
-        pipeline_rf.proceed(TRAIN_NEW_MODELS)
+        if TRAIN_NEW_MODELS:
+            rf_pipeline.train()
+        rf_pipeline.test()
 
     if EXTRA_TREES:
-        pipeline_et.proceed(TRAIN_NEW_MODELS)
+        if TRAIN_NEW_MODELS:
+            et_pipeline.train()
+        et_pipeline.test()
 
     if LIGHTGBM:
-        pipeline_lgbm.proceed(TRAIN_NEW_MODELS)
+        if TRAIN_NEW_MODELS:
+            lgbm_pipeline.train()
+        lgbm_pipeline.test()
 
     if CATBOOST:
-        pipeline_cat.proceed(TRAIN_NEW_MODELS)
+        if TRAIN_NEW_MODELS:
+            cat_pipeline.train()
+        cat_pipeline.test()
 
     if XGBOOST:
-        pipeline_xgb.proceed(TRAIN_NEW_MODELS)
+        if TRAIN_NEW_MODELS:
+            xgb_pipeline.train()
+        xgb_pipeline.test()
 
     if OPEN_COMPARATOR:
         print("opening comparator")
         model_comparator.main()
+
+
+def instantiate_pipelines():
+    rf_pipeline = ModelPipeline(
+        model_tag="rf", model_cls=RandomForestRegressor(random_state=42, n_jobs=-1, verbose=0),
+        primer_functions=None,  # [primers.remove_outliers, primers.quantile_transform],
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
+        ht_options=["default", "grid", "random"],
+        params_grid=params.rf_grid,
+        params_random=params.rf_random,
+        params_optuna=params.rf_optuna
+    )
+    et_pipeline = ModelPipeline(
+        model_tag="et", model_cls=ExtraTreesRegressor(random_state=42, n_jobs=-1, verbose=0),
+        primer_functions=[primers.remove_outliers, primers.quantile_transform],
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
+        ht_options=["default", "grid", "random"],
+        params_grid=params.et_grid,
+        params_random=params.et_random,
+        params_optuna=params.et_optuna
+    )
+    lgbm_pipeline = ModelPipeline(
+        model_tag="lgbm", model_cls=lgb.LGBMRegressor(random_state=42, n_jobs=-1, verbose=-1),
+        primer_functions=[primers.log_transform, primers.standard_scale],
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
+        ht_options=["default", "grid", "random", "bayesian"],
+        params_grid=params.lgbm_grid,
+        params_random=params.lgbm_random,
+        params_bayesian=params.lgbm_bayesian,
+        params_optuna=params.lgbm_optuna
+    )
+    cat_pipeline = ModelPipeline(
+        model_tag="cat", model_cls=CatBoostRegressor(random_state=42, silent=True, verbose=0),
+        primer_functions=[primers.log_transform],
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
+        ht_options=["default", "grid", "random", "bayesian"],
+        params_grid=params.cat_grid,
+        params_random=params.cat_random,
+        params_bayesian=params.cat_bayesian,
+        params_optuna=params.cat_optuna
+    )
+    xgb_pipeline = ModelPipeline(
+        model_tag="xgb", model_cls=XGBRegressor(random_state=42, eval_metric='rmse', verbosity=0),
+        primer_functions=[primers.log_transform, primers.standard_scale],
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
+        ht_options=["default", "grid", "random", "bayesian"],
+        params_grid=params.xgb_grid,
+        params_random=params.xgb_random,
+        params_bayesian=params.xgb_bayesian,
+        params_optuna=params.xgb_optuna
+    )
+
+    return rf_pipeline, et_pipeline, lgbm_pipeline, cat_pipeline, xgb_pipeline
+
+    # lgbm_pipeline.train()
+    # lgbm_pipeline.test()
 
 
 if __name__ == "__main__":

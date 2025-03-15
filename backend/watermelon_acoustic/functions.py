@@ -74,6 +74,13 @@ def load_feature_data(folder):
             fnames.append(file)
     return np.array(data), np.array(labels), fnames
 
+def load_feature_data_wrapped(folder):
+    """
+    Wraps the loaded feature data in a dictionary with a 'primed' flag.
+    """
+    X, y, fnames = load_feature_data(folder)
+    return {"X": X, "y": y, "fnames": fnames, "primed": False}
+
 
 def relevant_params(model, model_type, hyper_tuning):
     """

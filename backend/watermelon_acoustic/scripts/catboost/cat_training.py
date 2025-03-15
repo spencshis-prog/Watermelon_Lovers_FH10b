@@ -33,7 +33,7 @@ def build_cat_model(hyper_tuning="default"):
         return model
 
     elif hyper_tuning == "bayesian":
-        search_spaces = params.cat_search_spaces
+        search_spaces = params.cat_bayesian
         cat = CatBoostRegressor(random_state=42, silent=True)
         model = BayesSearchCV(cat, search_spaces, n_iter=16, cv=3,
                               scoring='neg_mean_squared_error', random_state=42, verbose=0)

@@ -39,7 +39,7 @@ def build_lgbm_model(hyper_tuning="default"):
                                    scoring='neg_mean_squared_error', random_state=42, verbose=0)
         return model
     elif hyper_tuning == "bayesian":
-        search_spaces = params.lgbm_search_spaces  # e.g., {'n_estimators': (50, 300), ...}
+        search_spaces = params.lgbm_bayesian  # e.g., {'n_estimators': (50, 300), ...}
         base_model = lgb.LGBMRegressor(random_state=42, n_jobs=-1, verbose=-1)
         model = BayesSearchCV(base_model, search_spaces, n_iter=16, cv=3,
                               scoring='neg_mean_squared_error', random_state=42, verbose=0)
