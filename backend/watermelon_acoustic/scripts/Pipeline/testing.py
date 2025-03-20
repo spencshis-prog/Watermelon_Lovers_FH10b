@@ -23,7 +23,7 @@ def test_model_on_holdout(pipeline, model_path, test_folder):
         print(f"[{pipeline.model_tag.upper()}-TE] No test data found.")
         return None
 
-    X, y, fnames = pipeline.prime(data["X"], data["y"], data["fnames"])
+    X, y, fnames, transformers = pipeline.prime(data["X"], data["y"], data["fnames"])
 
     model = joblib.load(model_path)
     y_pred = model.predict(X)

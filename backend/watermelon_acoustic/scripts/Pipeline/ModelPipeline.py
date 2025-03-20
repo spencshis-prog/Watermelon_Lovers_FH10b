@@ -46,28 +46,55 @@ class ModelPipeline:
         self.report_holdout_path = os.path.join(self.testing_output_dir, "report_holdout.txt")
         self.report_params_path = os.path.join(self.testing_output_dir, "report_params.txt")
 
-    def prime(self, X, y, fnames):
+    def prime(self, X, y, fnames, training=True):
         """
         Applies model-specific priming functions to the data.
-        To ensure priming is done exactly once, we assume the data is wrapped in a dict.
-        If the data is a tuple (X, y, fnames), we assume it has not been primed.
+        Wraps data in a dict if necessary. In training mode, returns:
+          (X_transformed, y, fnames, transformers)
+        Otherwise, returns:
+          (X_transformed, y, fnames)
         """
-        # If data is not wrapped, wrap it.
         if not isinstance(X, dict):
-            data = {"X": X, "y": y, "fnames": fnames, "primed": False}
+            data = {"X": X, "y": y, "fnames": fnames, "primed": False, "transformers": {}}
         else:
-            data = X  # already a dict; unlikely
+            data = X
 
         if data.get("primed", False):
-            return data["X"], data["y"], data["fnames"]
+            if training:
+                return data["X"], data["y"], data["fnames"], data["transformers"]
+            else:
+                return data["X"], data["y"], data["fnames"]
 
-        print(f"[{self.model_tag.upper()}] Priming data using {len(self.primer_functions)} primer(s)")
+        primer_names = [p[0] if isinstance(p, tuple) else p.__name__ for p in self.primer_functions]
+        print(
+            f"[{self.model_tag.upper()}] Priming data using {len(self.primer_functions)} primer(s): {', '.join(primer_names)}")
+
         X_out, y_out, fnames_out = data["X"], data["y"], data["fnames"]
+        transformers = {}
+
         for primer in self.primer_functions:
-            X_out, y_out, fnames_out = primer(X_out, y_out, fnames_out)
+            # If the primer is not a tuple, get its name from __name__
+            if isinstance(primer, tuple):
+                primer_name, primer_fn = primer
+            else:
+                primer_name = primer.__name__
+                primer_fn = primer
+
+            # If in training and the primer is stateful (name ends with '_fit'), expect four outputs.
+            if training and primer_name.endswith('_fit'):
+                X_out, y_out, fnames_out, fitted_trans = primer_fn(X_out, y_out, fnames_out)
+                transformers[primer_name] = fitted_trans
+            else:
+                X_out, y_out, fnames_out = primer_fn(X_out, y_out, fnames_out)
+
         data["X"], data["y"], data["fnames"] = X_out, y_out, fnames_out
+        data["transformers"] = transformers
         data["primed"] = True
-        return X_out, y_out, fnames_out
+
+        if training:
+            return X_out, y_out, fnames_out, transformers
+        else:
+            return X_out, y_out, fnames_out
 
     def train(self):
         # clear training outputs (kfold error metrics + models)
@@ -109,5 +136,3 @@ class ModelPipeline:
             return self.params_optuna
         else:
             return None
-
-

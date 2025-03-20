@@ -1,10 +1,10 @@
-#!/usr/bin/env python
 import os
-
 import functions
+from scripts.preprocessing import feature_transformation
 
 
 def proceed(USE_QILIN=True, USE_LAB=False, USE_SEPARATE_TEST=False, TEST_SPLIT_RATIO=0.15):
+    global output_feat_dir
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Step i: Reformat Qilin dataset (e.g., m4a to .wav)
@@ -47,7 +47,11 @@ def proceed(USE_QILIN=True, USE_LAB=False, USE_SEPARATE_TEST=False, TEST_SPLIT_R
     functions.clear_output_directory(noise_reduction_dir)
     apply_noise_reduction(combined_standard_dir, noise_reduction_dir)
 
-    # Step v: Feature Extraction
+    # Step v: Normalization
+    from scripts.preprocessing.normalization import normalize_audio_files
+    normalize_audio_files(noise_reduction_dir, noise_reduction_dir)
+
+    # Step vi: Feature Extraction
     from scripts.preprocessing.feature_extraction import apply_feature_extraction
     feature_extraction_base_dir = os.path.join(base_dir, "../../intermediate", "feature_extraction")
     functions.clear_output_directory(feature_extraction_base_dir)
@@ -59,7 +63,10 @@ def proceed(USE_QILIN=True, USE_LAB=False, USE_SEPARATE_TEST=False, TEST_SPLIT_R
             functions.clear_output_directory(output_feat_dir)
             apply_feature_extraction(technique_path, output_feat_dir)
 
-    # Step vi: Set Splitting (e.g., creating a holdout/test set)
+    # Step vii: Feature Transformation (Yeo-Johnson power transformer + Robust Scaling)
+    feature_transformation.main()
+
+    # Step viii: Set Splitting (e.g., creating a holdout/test set)
     from scripts.preprocessing.set_splitting import pre_split_holdouts
     pre_split_holdouts(feature_extraction_base_dir, holdout_ratio=TEST_SPLIT_RATIO)
 

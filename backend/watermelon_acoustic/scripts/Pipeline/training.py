@@ -72,7 +72,7 @@ def train_for_combination_set(pipeline, ht, combination_dir):
         print(f"[{pipeline.model_tag.upper()} No data in {combination_dir}. Skipping.")
         return None
 
-    X, y, fnames = pipeline.prime(data["X"], data["y"], data["fnames"])
+    X, y, fnames, transformers = pipeline.prime(data["X"], data["y"], data["fnames"])
 
     test_set_dir = os.path.join(combination_dir, "test")
     if os.path.exists(test_set_dir) and os.listdir(test_set_dir):

@@ -1,114 +1,127 @@
-# primers.py
 import numpy as np
-from sklearn.preprocessing import QuantileTransformer
+from sklearn.preprocessing import QuantileTransformer, StandardScaler
 
 
-def remove_outliers(X, y, fnames, threshold=3.0):
-    """
-    Removes outliers by clipping feature values that fall outside a specified number
-    of standard deviations (default 3). This can be beneficial for tree-based models
-    like Random Forest and Extra Trees if extreme values exist.
+# --- Stateful Transformer for Outlier Removal ---
+class RemoveOutliersTransformer:
+    def __init__(self, threshold=3.0):
+        self.threshold = threshold
+        self.means_ = None
+        self.stds_ = None
 
-    Parameters:
-      X: 2D numpy array of features.
-      y: Target values.
-      fnames: List of filenames.
-      threshold: Number of standard deviations for clipping (default 3.0).
+    def fit(self, X, y=None):
+        X = np.array(X, dtype=np.float64)
+        self.means_ = np.mean(X, axis=0)
+        self.stds_ = np.std(X, axis=0)
+        return self
 
-    Returns:
-      (X_clipped, y, fnames)
-    """
-    X = np.array(X, dtype=np.float64)
-    means = np.mean(X, axis=0)
-    stds = np.std(X, axis=0)
-    lower_bound = means - threshold * stds
-    upper_bound = means + threshold * stds
-    X_clipped = np.clip(X, lower_bound, upper_bound)
-    return X_clipped, y, fnames
+    def transform(self, X, y=None):
+        X = np.array(X, dtype=np.float64)
+        lower_bound = self.means_ - self.threshold * self.stds_
+        upper_bound = self.means_ + self.threshold * self.stds_
+        X_clipped = np.clip(X, lower_bound, upper_bound)
+        return X_clipped
+
+    def fit_transform(self, X, y=None):
+        return self.fit(X).transform(X)
 
 
+# --- Stateless Log Transformation ---
 def log_transform(X, y, fnames):
     """
-    Applies a logarithmic transformation to features that are strictly positive.
-    Often beneficial for boosting models (XGBoost, LightGBM, CatBoost) when feature
-    distributions are heavy-tailed.
-
-    Parameters:
-      X: 2D numpy array of features.
-      y: Target values.
-      fnames: List of filenames.
-
-    Returns:
-      (X_log, y, fnames)
+    Log transform is stateless and applied directly.
     """
     X = np.array(X, dtype=np.float64)
     epsilon = 1e-6  # to avoid log(0)
     X_trans = X.copy()
     for i in range(X.shape[1]):
+        # Only apply if the entire feature is positive
         if np.all(X[:, i] > 0):
             X_trans[:, i] = np.log(X[:, i] + epsilon)
     return X_trans, y, fnames
 
 
-def standard_scale(X, y, fnames):
-    """
-    Standardizes features by removing the mean and scaling to unit variance.
-    This is helpful for boosting models (XGBoost, LightGBM) when features are on
-    very different scales.
+# --- Stateful Transformer for Standard Scaling ---
+class StandardScaleTransformer:
+    def __init__(self):
+        self.scaler = StandardScaler()
 
-    Parameters:
-      X: 2D numpy array.
-      y: Target values.
-      fnames: List of filenames.
+    def fit(self, X, y=None):
+        self.scaler.fit(X)
+        return self
 
-    Returns:
-      (X_scaled, y, fnames)
-    """
-    X = np.array(X, dtype=np.float64)
-    means = np.mean(X, axis=0)
-    stds = np.std(X, axis=0)
-    stds[stds == 0] = 1.0  # prevent division by zero
-    X_scaled = (X - means) / stds
-    return X_scaled, y, fnames
+    def transform(self, X, y=None):
+        return self.scaler.transform(X)
+
+    def fit_transform(self, X, y=None):
+        return self.fit(X).transform(X)
 
 
-def quantile_transform(X, y, fnames, n_quantiles=1000, output_distribution='uniform'):
-    """
-    Applies a quantile transformation to features. This rank-based transformation
-    maps the data to a uniform (or normal) distribution and is useful for tree-based
-    models (Random Forest, Extra Trees) when feature distributions are highly skewed.
+# --- Stateful Transformer for Quantile Transformation ---
+class QuantileTransformWrapper:
+    def __init__(self, n_quantiles=1000, output_distribution='uniform'):
+        self.n_quantiles = n_quantiles
+        self.output_distribution = output_distribution
+        self.transformer = QuantileTransformer(n_quantiles=self.n_quantiles,
+                                               output_distribution=self.output_distribution,
+                                               random_state=42)
 
-    Parameters:
-      X: 2D numpy array.
-      y: Target values.
-      fnames: List of filenames.
-      n_quantiles: Number of quantiles to use (default 1000).
-      output_distribution: "uniform" or "normal" (default "uniform").
+    def fit(self, X, y=None):
+        self.transformer.fit(X)
+        return self
 
-    Returns:
-      (X_transformed, y, fnames)
-    """
-    X = np.array(X, dtype=np.float64)
-    transformer = QuantileTransformer(n_quantiles=n_quantiles, output_distribution=output_distribution, random_state=42)
-    X_transformed = transformer.fit_transform(X)
-    return X_transformed, y, fnames
+    def transform(self, X, y=None):
+        return self.transformer.transform(X)
+
+    def fit_transform(self, X, y=None):
+        return self.fit(X).transform(X)
 
 
-# Define the primers dictionary.
-# For Random Forest and Extra Trees:
-#   1. remove_outliers: Clip extreme values to reduce influence of outliers.
-#   2. quantile_transform: Map features to a uniform distribution.
-#
-# For XGBoost and LightGBM:
-#   1. log_transform: Compress heavy-tailed distributions.
-#   2. standard_scale: Normalize features to zero mean and unit variance.
-#
-# For CatBoost:
-#   A simple log_transform might be sufficient.
+# --- Wrappers to provide a common interface to ModelPipeline ---
+# Each primer now returns the transformed data as well as (optionally) the fitted transformer.
+def remove_outliers_fit(X, y, fnames, threshold=3.0):
+    transformer = RemoveOutliersTransformer(threshold=threshold)
+    X_trans = transformer.fit_transform(X)
+    return X_trans, y, fnames, transformer
+
+
+def quantile_transform_fit(X, y, fnames, n_quantiles=1000, output_distribution='uniform'):
+    transformer = QuantileTransformWrapper(n_quantiles=n_quantiles,
+                                           output_distribution=output_distribution)
+    X_trans = transformer.fit_transform(X)
+    return X_trans, y, fnames, transformer
+
+
+def standard_scale_fit(X, y, fnames):
+    transformer = StandardScaleTransformer()
+    X_trans = transformer.fit_transform(X)
+    return X_trans, y, fnames, transformer
+
+
+# You might similarly write “transform” versions for when you have already fitted transformers:
+def remove_outliers(X, transformer):
+    return transformer.transform(X)
+
+
+def quantile_transform(X, transformer):
+    return transformer.transform(X)
+
+
+def standard_scale(X, transformer):
+    return transformer.transform(X)
+
+
+# --- Primer Dictionary ---
+# The keys remain the same but each element is now a tuple.
+# For each model type, you can adjust which primers to apply.
 primers = {
-    "rf": [remove_outliers, quantile_transform],
-    "et": [remove_outliers, quantile_transform],
-    "xgb": [log_transform, standard_scale],
-    "lgbm": [log_transform, standard_scale],
-    "cat": [log_transform]
+    "rf": [("remove_outliers", remove_outliers_fit),
+           ("quantile_transform", quantile_transform_fit)],
+    "et": [("remove_outliers", remove_outliers_fit),
+           ("quantile_transform", quantile_transform_fit)],
+    "xgb": [("log_transform", log_transform),
+            ("standard_scale", standard_scale_fit)],
+    "lgbm": [("log_transform", log_transform),
+             ("standard_scale", standard_scale_fit)],
+    "cat": [("log_transform", log_transform)]
 }
