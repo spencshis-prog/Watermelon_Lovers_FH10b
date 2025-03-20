@@ -42,28 +42,31 @@ TRAIN_NEW_MODELS = True  # k-fold metrics will not update unless training new mo
 OPEN_COMPARATOR = False  # to run, put 'streamlit run main.py' into the command line
 
 
-# TODO: feature generator
-# TODO: LightGDB, optuna, genetic algorithms
-# TODO: data dump for error metrics for each hypertuning combination, automate analysis (and retrain)
-# TODO: combined testing will try every dataset-noise reduction combination perhaps eliminates dataset-
-# TODO: dimension below unless one dataset strictly worsens the medley
-# perhaps add a ml-based denoiser: If you have a large dataset of “clean” vs. “noisy” knocks, you can train a deep neural network (e.g., a simple U-Net or fully connected model in the spectrogram domain) to learn a mapping from noisy signals to clean signals. This is more complex to implement but can yield superior results if you have enough data and consistent noise conditions.
-# perhaps add something that exclusively pulls validation and test from lab dataset
-# perhaps combine datasets AFTER noise reduction instead (as it may differ per dataset)
-# perhaps add normalization preprocessing step after noise reductions on separate sets
-# perhaps introduce scaling/normalization to error metrics for intuition
+# TODO: LightGDB, optuna, genetic algorithms TODO: data dump for error metrics for each hypertuning combination,
+#  automate analysis (and retrain) TODO: combined testing will try every dataset-noise reduction combination perhaps
+#   eliminates dataset- TODO: dimension below unless one dataset strictly worsens the medley perhaps add a ml-based
+#    denoiser: If you have a large dataset of “clean” vs. “noisy” knocks, you can train a deep neural network (e.g.,
+#    a simple U-Net or fully connected model in the spectrogram domain) to learn a mapping from noisy signals to
+#    clean signals. This is more complex to implement but can yield superior results if you have enough data and
+#    consistent noise conditions. perhaps add something that exclusively pulls validation and test from lab dataset
+#    perhaps combine datasets AFTER noise reduction instead (as it may differ per dataset) perhaps add normalization
+#    preprocessing step after noise reductions on separate sets perhaps introduce scaling/normalization to error
+#    metrics for intuition
 
 # concern: qilin dataset seems to range between 9-12 sweetness, never lower. top-heavy training set
 def main():
     rf_pipeline, et_pipeline, lgbm_pipeline, cat_pipeline, xgb_pipeline = instantiate_pipelines()
 
     if PREPROCESS:
-        '''
+        ''' (separate into convert qilin, main body preprocess, split dataset)
         - Converts qilin .m4a files to .wav
         - Standardizes to 1 sec, 16kHz sample rate, mono-channel, 16-bit PCM encoding
         - Merges selected datasets (USE_QILIN and/or USE_LAB)
         - Creates new dataset for each noise reduction technique
+        - Normalizes de-noised dataset with pydub.effects
         - Creates new dataset for each feature extraction technique
+        - Generates features by yeo-johnson power transformer, robust scaling, 2nd polynomials interaction
+        - Selects features with a f_regressor SelectKBest using k=50
         - Splits each dataset combination into train/test sets by TEST_SPLIT_RATIO
         '''
         pipeline_pp.proceed(USE_QILIN, USE_LAB, USE_SEPARATE_TEST_SET, TEST_SPLIT_RATIO)

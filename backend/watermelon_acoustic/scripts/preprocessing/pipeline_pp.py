@@ -1,6 +1,7 @@
 import os
+
 import functions
-from scripts.preprocessing import feature_transformation
+from scripts.preprocessing import feature_generation, feature_selection
 
 
 def proceed(USE_QILIN=True, USE_LAB=False, USE_SEPARATE_TEST=False, TEST_SPLIT_RATIO=0.15):
@@ -63,8 +64,11 @@ def proceed(USE_QILIN=True, USE_LAB=False, USE_SEPARATE_TEST=False, TEST_SPLIT_R
             functions.clear_output_directory(output_feat_dir)
             apply_feature_extraction(technique_path, output_feat_dir)
 
-    # Step vii: Feature Transformation (Yeo-Johnson power transformer + Robust Scaling)
-    feature_transformation.main()
+    # Step vii: Feature Generation (Yeo-Johnson power transformer + Robust Scaling + 2nd Polynomials)
+    feature_generation.main()
+
+    # Step viii: Feature Selection (
+    feature_selection.main()
 
     # Step viii: Set Splitting (e.g., creating a holdout/test set)
     from scripts.preprocessing.set_splitting import pre_split_holdouts
