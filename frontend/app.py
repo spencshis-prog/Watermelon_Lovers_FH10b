@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory, jsonify
 import os
+import numpy as np
 
 app = Flask(__name__)
 
@@ -60,6 +61,25 @@ def results():
     results = {file: f"Analysis result for {os.path.basename(file)}" for file in file_paths}
 
     return render_template('results.html', file_paths=file_paths, results=results)
+
+# API endpoint to serve FFT plot
+@app.route('/fft_plot/<int:watermelon_id>', methods=['GET'])
+def get_fft_plot(watermelon_id):
+    plot_path = f"../backend/watermelon_data/watermelon_{watermelon_id}/fft_plot.png"
+    if os.path.exists(plot_path):
+        return send_from_directory(os.path.dirname(plot_path), os.path.basename(plot_path))
+    else:
+        return jsonify({"error": "Plot not found"}), 404
+
+# API endpoint to serve FFT data
+@app.route('/fft_data/<int:watermelon_id>', methods=['GET'])
+def get_fft_data(watermelon_id):
+    data_path = f"../backend/watermelon_data/watermelon_{watermelon_id}/fft_data.npy"
+    if os.path.exists(data_path):
+        fft_data = np.load(data_path).tolist()
+        return jsonify(fft_data)
+    else:
+        return jsonify({"error": "Data not found"}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -21,9 +21,40 @@
             </div>
             {% endfor %}
         </div>
+        <div class="row mt-4">
+            <h2 class="text-center">FFT Results</h2>
+            <div class="col-md-12">
+                <img id="fft-plot" src="" class="img-fluid" alt="FFT Plot">
+                <pre id="fft-data"></pre>
+            </div>
+        </div>
         <div class="text-center mt-4">
             <a href="/" class="btn btn-primary">Upload More Images</a>
         </div>
     </div>
+    <script>
+        const watermelonId = 1; // Replace with the actual watermelon ID
+
+        // Fetch and display FFT plot
+        fetch(`/fft_plot/${watermelonId}`)
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('fft-plot').src = `/api/fft_plot/${watermelonId}`;
+                } else {
+                    console.error('Failed to load FFT plot');
+                }
+            });
+
+        // Fetch and display FFT data
+        fetch(`/fft_data/${watermelonId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                } else {
+                    document.getElementById('fft-data').textContent = JSON.stringify(data, null, 2);
+                }
+            });
+    </script>
 </body>
 </html>

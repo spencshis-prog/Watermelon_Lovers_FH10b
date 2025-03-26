@@ -3,6 +3,7 @@ import numpy as np
 import scipy.io.wavfile as wav
 import matplotlib.pyplot as plt
 import os
+import argparse
 
 # Serial port configuration
 SERIAL_PORT = 'COM6'
@@ -13,12 +14,8 @@ NUM_SAMPLES = SAMPLE_RATE * DURATION
 AMPLITUDE = 4095  # 12-bit max
 
 def get_wav_serial():
-    
-
-    
-    # Open serial connection
+    """Read audio data from the serial port."""
     ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
-
     data = []
     print("Collecting data...")
 
@@ -32,29 +29,29 @@ def get_wav_serial():
             except ValueError:
                 pass  # Ignore invalid lines
 
-    # Close serial port
     ser.close()
     print(f"Collected {len(data)} samples.")
-
-    # Convert list to NumPy array in 16 bit format
-    audio_data = ((np.array(data) - 2048) * (32767 / 2048)).astype(np.int16)
     
+    # Convert list to NumPy array in 16-bit format
+    return ((np.array(data) - 2048) * (32767 / 2048)).astype(np.int16)
 
+def get_wav_file(filename):
+    """Load audio data from a WAV file."""
+    sample_rate, audio_data = wav.read(filename)
+    if sample_rate != SAMPLE_RATE:
+        raise ValueError(f"Expected sample rate {SAMPLE_RATE}, but got {sample_rate}")
+    print(f"Loaded WAV file: {filename}")
     return audio_data
-    
 
-
-def fft(audio_data):
-    # Perform FFT analysis
+def fft(audio_data, watermelon_folder):
+    """Perform FFT analysis and save results."""
     N = len(audio_data)
     freqs = np.fft.rfftfreq(N, 1/SAMPLE_RATE)
     fft_magnitude = np.abs(np.fft.rfft(audio_data))
 
-    # Find peak frequency (resonant frequency)
     resonant_freq = freqs[np.argmax(fft_magnitude)]
     print(f"Resonant Frequency: {resonant_freq:.2f} Hz")
 
-    # Save FFT plot
     plt.figure(figsize=(10, 6))
     plt.plot(freqs, fft_magnitude, label="FFT Magnitude")
     plt.axvline(resonant_freq, color='r', linestyle='--', label=f"Peak: {resonant_freq:.2f} Hz")
@@ -69,18 +66,18 @@ def fft(audio_data):
     plt.close()
     print(f"Saved FFT plot to {fft_plot_file}")
 
-    # Save FFT data
     fft_data_file = os.path.join(watermelon_folder, "fft_data.npy")
     np.save(fft_data_file, fft_magnitude)
     print(f"Saved FFT data to {fft_data_file}")
 
-
 def main():
-    # Define output directory
-    output_dir = "backend/watermelon_data"
+    parser = argparse.ArgumentParser(description="Watermelon FFT Analysis")
+    parser.add_argument("--file", type=str, help="Path to a WAV file for debugging")
+    args = parser.parse_args()
+
+    output_dir = "watermelon_data"
     os.makedirs(output_dir, exist_ok=True)
 
-    # Find the next available watermelon folder
     watermelon_id = 1
     while os.path.exists(os.path.join(output_dir, f"watermelon_{watermelon_id}")):
         watermelon_id += 1
@@ -88,12 +85,16 @@ def main():
     watermelon_folder = os.path.join(output_dir, f"watermelon_{watermelon_id}")
     os.makedirs(watermelon_folder)
 
+    if args.file:
+        audio_data = get_wav_file(args.file)
+    else:
+        audio_data = get_wav_serial()
 
-    audio_data = get_wav_serial()
-    wav_file = os.path.join(dir, "watermelon.wav")
+    wav_file = os.path.join(watermelon_folder, "watermelon.wav")
     wav.write(wav_file, SAMPLE_RATE, audio_data)
     print(f"Saved WAV file: {wav_file}")
-    
 
-    fft(audio_data)
+    fft(audio_data, watermelon_folder)
 
+if __name__ == "__main__":
+    main()
