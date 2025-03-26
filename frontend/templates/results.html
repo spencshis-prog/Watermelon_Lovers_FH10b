@@ -39,7 +39,7 @@
         fetch(`/fft_plot/${watermelonId}`)
             .then(response => {
                 if (response.ok) {
-                    document.getElementById('fft-plot').src = `/api/fft_plot/${watermelonId}`;
+                    document.getElementById('fft-plot').src = `/fft_plot/${watermelonId}`;
                 } else {
                     console.error('Failed to load FFT plot');
                 }
