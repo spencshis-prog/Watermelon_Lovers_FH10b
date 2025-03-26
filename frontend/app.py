@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory, jsonify
 import os
 import numpy as np
+import json
 
 app = Flask(__name__)
 
@@ -74,9 +75,10 @@ def get_fft_plot(watermelon_id):
 # API endpoint to serve FFT data
 @app.route('/fft_data/<int:watermelon_id>', methods=['GET'])
 def get_fft_data(watermelon_id):
-    data_path = f"../backend/watermelon_data/watermelon_{watermelon_id}/fft_data.npy"
+    data_path = f"../backend/watermelon_data/watermelon_{watermelon_id}/fft_data.json"
     if os.path.exists(data_path):
-        fft_data = np.load(data_path).tolist()
+        with open(data_path, 'r') as f:
+            fft_data = json.load(f)
         return jsonify(fft_data)
     else:
         return jsonify({"error": "Data not found"}), 404

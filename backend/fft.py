@@ -3,6 +3,7 @@ import numpy as np
 import scipy.io.wavfile as wav
 import matplotlib.pyplot as plt
 import os
+import json
 import argparse
 
 # Serial port configuration
@@ -66,8 +67,19 @@ def fft(audio_data, watermelon_folder):
     plt.close()
     print(f"Saved FFT plot to {fft_plot_file}")
 
-    fft_data_file = os.path.join(watermelon_folder, "fft_data.npy")
-    np.save(fft_data_file, fft_magnitude)
+    fft_data = {
+        "frequencies": freqs.tolist(),  # List of frequencies (Hz)
+        "magnitudes": fft_magnitude.tolist(),  # List of magnitudes
+        "resonant_frequency": resonant_freq,  # Resonant frequency (Hz)
+        "sampling_rate": SAMPLE_RATE,  # Sampling rate (Hz)
+        "fft_resolution": N  # FFT resolution (number of bins)
+    }
+
+    # Save the FFT data to a JSON file
+    fft_data_file = os.path.join(watermelon_folder, "fft_data.json")
+    with open(fft_data_file, 'w') as f:
+        json.dump(fft_data, f, indent=4)
+
     print(f"Saved FFT data to {fft_data_file}")
 
 def main():
