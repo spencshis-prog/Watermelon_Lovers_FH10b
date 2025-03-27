@@ -29,23 +29,22 @@ K_FOLDS = 5  # n_splits KFold param
 CV_FOLDS = 3  # cv=n Regressor param
 
 # Pipeline Configuration
-PREPROCESS = True
+PREPROCESS = False
 LINEAR_REGRESSION = False
-RANDOM_FOREST = True
+RANDOM_FOREST = False
 EXTRA_TREES = False
 LIGHTGBM = False
 CATBOOST = False  # run tests
 XGBOOST = False
 NEURAL_NETWORK = False
 
-TRAIN_NEW_MODELS = True  # k-fold metrics will not update unless training new models
-OPEN_COMPARATOR = False  # to run, put 'streamlit run main.py' into the command line
+TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
+OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
 
 
-# TODO: LightGDB, optuna, genetic algorithms TODO: data dump for error metrics for each hypertuning combination,
-#  automate analysis (and retrain) TODO: combined testing will try every dataset-noise reduction combination perhaps
-#   eliminates dataset- TODO: dimension below unless one dataset strictly worsens the medley perhaps add a ml-based
-#    denoiser: If you have a large dataset of “clean” vs. “noisy” knocks, you can train a deep neural network (e.g.,
+# TODO: optuna, genetic algorithms
+#  automate analysis (and retrain) TODO:  perhaps add a ml-based denoiser: If you have a large dataset of “clean” vs.
+#   “noisy” knocks, you can train a deep neural network (e.g.,
 #    a simple U-Net or fully connected model in the spectrogram domain) to learn a mapping from noisy signals to
 #    clean signals. This is more complex to implement but can yield superior results if you have enough data and
 #    consistent noise conditions. perhaps add something that exclusively pulls validation and test from lab dataset
@@ -69,7 +68,7 @@ def main():
         - Selects features with a f_regressor SelectKBest using k=50
         - Splits each dataset combination into train/test sets by TEST_SPLIT_RATIO
         '''
-        pipeline_pp.proceed(USE_QILIN, USE_LAB, USE_SEPARATE_TEST_SET, TEST_SPLIT_RATIO)
+        pipeline_pp.main(USE_QILIN, USE_LAB, USE_SEPARATE_TEST_SET, TEST_SPLIT_RATIO)
 
     if LINEAR_REGRESSION:
         '''
@@ -113,7 +112,7 @@ def main():
 def instantiate_pipelines():
     rf_pipeline = ModelPipeline(
         model_tag="rf", model_cls=RandomForestRegressor(random_state=42, n_jobs=-1, verbose=0),
-        primer_functions=None,  # [primers.remove_outliers_fit, primers.quantile_transform_fit],
+        # primer_functions=[primers.remove_outliers_fit, primers.quantile_transform_fit],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
         ht_options=["default", "grid", "random"],
         params_grid=params.rf_grid,
@@ -122,7 +121,7 @@ def instantiate_pipelines():
     )
     et_pipeline = ModelPipeline(
         model_tag="et", model_cls=ExtraTreesRegressor(random_state=42, n_jobs=-1, verbose=0),
-        primer_functions=[primers.remove_outliers_fit, primers.quantile_transform_fit],
+        # primer_functions=[primers.remove_outliers_fit, primers.quantile_transform_fit],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
         ht_options=["default", "grid", "random"],
         params_grid=params.et_grid,
@@ -131,7 +130,7 @@ def instantiate_pipelines():
     )
     lgbm_pipeline = ModelPipeline(
         model_tag="lgbm", model_cls=lgb.LGBMRegressor(random_state=42, n_jobs=-1, verbose=-1),
-        primer_functions=[primers.log_transform, primers.standard_scale_fit],
+        # primer_functions=[primers.log_transform, primers.standard_scale_fit],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
         ht_options=["default", "grid", "random", "bayesian"],
         params_grid=params.lgbm_grid,
@@ -140,8 +139,8 @@ def instantiate_pipelines():
         params_optuna=params.lgbm_optuna
     )
     cat_pipeline = ModelPipeline(
-        model_tag="cat", model_cls=CatBoostRegressor(random_state=42, silent=True, verbose=0),
-        primer_functions=[primers.log_transform],
+        model_tag="cat", model_cls=CatBoostRegressor(random_state=42, silent=True),
+        # primer_functions=[primers.log_transform],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
         ht_options=["default", "grid", "random", "bayesian"],
         params_grid=params.cat_grid,
@@ -151,7 +150,7 @@ def instantiate_pipelines():
     )
     xgb_pipeline = ModelPipeline(
         model_tag="xgb", model_cls=XGBRegressor(random_state=42, eval_metric='rmse', verbosity=0),
-        primer_functions=[primers.log_transform, primers.standard_scale_fit],
+        # primer_functions=[primers.log_transform, primers.standard_scale_fit],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
         ht_options=["default", "grid", "random", "bayesian"],
         params_grid=params.xgb_grid,

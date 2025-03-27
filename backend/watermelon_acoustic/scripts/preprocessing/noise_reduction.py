@@ -232,7 +232,7 @@ def apply_noise_reduction(input_dir, output_base_dir):
         "raw": nr_raw,  # high performance
         "bandpass": nr_bandpass,  # high performance
         # "spectral_sub_naive": nr_spectral_subtraction_naive,  # mid performance, good only w zcr
-        # "db1_wavelet": nr_db1_wavelet  # poor performance
+        # "db1_dwt": nr_db1_wavelet  # poor performance
         "spectral_sub_dynamic": nr_spectral_subtraction_dynamic,  # good performance
         "wiener": nr_wiener,  # decent performance
         "steg": nr_short_time_energy_gating,  # good performance

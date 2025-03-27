@@ -64,7 +64,7 @@ def transform_features_in_folder(folder_path, pipeline):
             print(f"[FG] Error saving {file}: {e}")
 
 
-def main():
+def generate_features():
     # Path to the feature extraction output directory (adjust as needed)
     base_dir = os.path.dirname(os.path.abspath(__file__))
     feature_extraction_base_dir = os.path.join(base_dir, "../../intermediate", "feature_extraction")
@@ -93,4 +93,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    generate_features()

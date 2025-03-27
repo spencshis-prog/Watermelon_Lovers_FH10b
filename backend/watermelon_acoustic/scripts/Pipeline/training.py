@@ -4,6 +4,7 @@ import shutil
 
 import joblib
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.ensemble import RandomForestRegressor
@@ -11,6 +12,19 @@ from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from skopt import BayesSearchCV
 
 import functions
+
+
+def maybe_convert_features(X, pipeline):
+    """
+    Convert features to a pandas DataFrame with dummy feature names if using models
+    that expect feature names (e.g. LGBM or XGBoost).
+    """
+    if pipeline.model_tag.lower() in ["lgbm", "xgb"]:
+        # Only convert if X is not already a DataFrame.
+        if not isinstance(X, pd.DataFrame):
+            feature_names = [f"f{i}" for i in range(X.shape[1])]
+            return pd.DataFrame(X, columns=feature_names)
+    return X
 
 
 def build_model(pipeline, ht):
@@ -21,11 +35,13 @@ def build_model(pipeline, ht):
     elif ht == "grid":
         if params_dict is None:
             raise ValueError("Grid search selected but no parameter grid provided.")
-        return GridSearchCV(pipeline.model_cls, params_dict, cv=pipeline.inner_folds, scoring='neg_mean_squared_error', verbose=0)
+        return GridSearchCV(pipeline.model_cls, params_dict, cv=pipeline.inner_folds, scoring='neg_mean_squared_error',
+                            verbose=0)
     elif ht == "random":
         if params_dict is None:
             raise ValueError("Random search selected but no parameter distribution provided.")
-        return RandomizedSearchCV(pipeline.model_cls, param_distributions=params_dict, n_iter=10, cv=pipeline.inner_folds,
+        return RandomizedSearchCV(pipeline.model_cls, param_distributions=params_dict, n_iter=10,
+                                  cv=pipeline.inner_folds,
                                   scoring='neg_mean_squared_error', random_state=42, verbose=0)
     elif ht == "bayesian":
         if params_dict is None:
@@ -43,9 +59,12 @@ def outer_kfolding(pipeline, ht, X, y):
         X_train, X_val = X[train_idx], X[val_idx]
         y_train, y_val = y[train_idx], y[val_idx]
 
+        X_train_conv = maybe_convert_features(X_train, pipeline)
+        X_val_conv   = maybe_convert_features(X_val, pipeline)
+
         model = build_model(pipeline, ht)
-        model.fit(X_train, y_train)
-        y_pred = model.predict(X_val)
+        model.fit(X_train_conv, y_train)
+        y_pred = model.predict(X_val_conv)
 
         mae = mean_absolute_error(y_val, y_pred)
         mse = mean_squared_error(y_val, y_pred)
@@ -102,11 +121,13 @@ def train_for_combination_set(pipeline, ht, combination_dir):
     print(
         f"[{pipeline.model_tag.upper()}] [{nr_method} - {fe_method} - {ht}] K-fold average -> MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
 
+    X_train_val_conv = maybe_convert_features(X_train_val, pipeline)
     final_model = build_model(pipeline, ht)
-    final_model.fit(X_train_val, y_train_val)
+    final_model.fit(X_train_val_conv, y_train_val)
     if hasattr(final_model, 'best_estimator_'):
         final_model = final_model.best_estimator_
-    print(f"[{pipeline.model_tag.upper()}] Final model parameters:", functions.relevant_params(final_model, pipeline.model_tag.lower(), ht))
+    print(f"[{pipeline.model_tag.upper()}] Final model parameters:",
+          functions.relevant_params(final_model, pipeline.model_tag.lower(), ht))
 
     model_filename = f"{pipeline.model_tag.lower()}_{nr_method}_{fe_method}_{ht}.pkl"
     model_path = os.path.join(pipeline.models_output_dir, model_filename)
@@ -120,7 +141,8 @@ def train_all(pipeline, ht):
     if not os.path.exists(pipeline.models_output_dir):
         os.makedirs(pipeline.models_output_dir)
     results = {}
-    nr_folders = sorted([d for d in os.listdir(pipeline.fe_base_dir) if os.path.isdir(os.path.join(pipeline.fe_base_dir, d))])
+    nr_folders = sorted(
+        [d for d in os.listdir(pipeline.fe_base_dir) if os.path.isdir(os.path.join(pipeline.fe_base_dir, d))])
     for nr in nr_folders:
         nr_path = os.path.join(pipeline.fe_base_dir, nr)
         fe_folders = sorted([d for d in os.listdir(nr_path) if os.path.isdir(os.path.join(nr_path, d))])
@@ -132,7 +154,8 @@ def train_all(pipeline, ht):
 
     functions.green_print("\n=== Printing all average K-fold error metrics ===")
     for (nr, fe, ht), (mae_avg, mse_avg, rmse_avg, r2_avg) in results.items():
-        print(f"[{pipeline.model_tag.upper()}] {nr}-{fe} ({ht}) => MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
+        print(
+            f"[{pipeline.model_tag.upper()}] {nr}-{fe} ({ht}) => MAE={mae_avg:.2f}, RMSE={rmse_avg:.2f}, R2={r2_avg:.2f}")
     print(f"[{pipeline.model_tag.upper()}] K-fold training completed for all combination sets.")
 
     with open(pipeline.report_kfold_path, "a") as f:

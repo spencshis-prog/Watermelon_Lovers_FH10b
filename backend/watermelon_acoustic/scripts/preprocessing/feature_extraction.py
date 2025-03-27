@@ -140,7 +140,7 @@ def ef_spectral_flux(audio, sr=16000, n_fft=2048, hop_length=512):
     return np.array([np.mean(flux)])
 
 
-def apply_feature_extraction(input_dir, output_base_dir):
+def extract_features(input_dir, output_base_dir):
     """
     Applies various feature extraction methods to every .wav file in input_dir.
     Creates separate subfolders (e.g., "raw", "mfcc", "spectral", "wavelet") under output_base_dir.
@@ -202,4 +202,4 @@ if __name__ == "__main__":
     # Adjust these paths as needed.
     input_dir = os.path.join(base_dir, "../../intermediate", "noise_reduction", "technique1")
     output_base_dir = os.path.join(base_dir, "../../intermediate", "feature_extraction", "technique1")
-    apply_feature_extraction(input_dir, output_base_dir)
+    extract_features(input_dir, output_base_dir)

@@ -55,7 +55,7 @@ def select_features_in_folder(folder_path, selector):
             print(f"[FS] Error saving {file_path}: {e}")
 
 
-def main():
+def select_features():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     # Use the feature extraction directory since all processing occurs there.
     feature_extraction_base_dir = os.path.join(base_dir, "../../intermediate", "feature_extraction")
@@ -77,5 +77,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    select_features()
     input("Feature selection complete. Press Enter to exit...")

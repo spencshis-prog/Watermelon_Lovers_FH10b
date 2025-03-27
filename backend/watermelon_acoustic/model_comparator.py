@@ -133,8 +133,8 @@ def main():
 
     st.subheader("Combined Report Data")
     st.write("Below is a single table containing the metrics from all model types "
-             "(LinearRegression, RandomForestRegressor, ExtraTreesRegressor, XGBoost, "
-             "CatBoost, NeuralNetwork).")
+             "(LinearRegression, RandomForestRegressor, ExtraTreesRegressor, LightGBM, "
+             "CatBoost, XGBoost, NeuralNetwork).")
 
     # Use container width to avoid horizontal scrolling
     st.dataframe(df, use_container_width=True)

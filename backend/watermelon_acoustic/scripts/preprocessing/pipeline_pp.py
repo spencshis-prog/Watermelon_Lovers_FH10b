@@ -1,81 +1,191 @@
+#!/usr/bin/env python
 import os
-
+import sys
 import functions
-from scripts.preprocessing import feature_generation, feature_selection
+
+# Import your existing modules
+from scripts.preprocessing.wav_conversion import convert_qilin_file_formats_to_wav
+from scripts.preprocessing.standardization import standardize_wav_files
+from scripts.preprocessing.noise_reduction import apply_noise_reduction
+from scripts.preprocessing.normalization import normalize_audio_files
+from scripts.preprocessing.feature_extraction import extract_features
+from scripts.preprocessing.feature_generation import generate_features  # renamed module for clarity
+from scripts.preprocessing.feature_selection import select_features
+from scripts.preprocessing.set_splitting import pre_split_holdouts
 
 
-def proceed(USE_QILIN=True, USE_LAB=False, USE_SEPARATE_TEST=False, TEST_SPLIT_RATIO=0.15):
-    global output_feat_dir
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+class PipelineStage:
+    def __init__(self, name, func):
+        self.name = name
+        self.func = func
 
-    # Step i: Reformat Qilin dataset (e.g., m4a to .wav)
+    def run(self, context):
+        print(f"Running stage: {self.name}")
+        return self.func(context)
+
+
+class Pipeline:
+    def __init__(self, stages):
+        self.stages = stages
+
+    def run(self, context):
+        for stage in self.stages:
+            context = stage.run(context)
+        return context
+
+
+# Stage functions – each accepts a context dictionary and returns it (possibly updated).
+
+def stage_reformat_dataset(context):
+    base_dir = context['base_dir']
+    use_qilin = context.get('USE_QILIN', True)
     qilin_dataset_dir = os.path.join(base_dir, "../../input", "qilin_dataset", "19_datasets")
     qilin_preprocess_dir = os.path.join(base_dir, "../../input", "wav_qilin")
-    if USE_QILIN:
+    context['qilin_preprocess_dir'] = qilin_preprocess_dir
+
+    if use_qilin:
         print("Starting Qilin dataset preprocessing...")
-        from scripts.preprocessing.wav_file_converter import convert_qilin_file_formats_to_wav
         convert_qilin_file_formats_to_wav(qilin_dataset_dir, qilin_preprocess_dir)
     else:
         print("Skipping Qilin dataset preprocessing.")
+    return context
 
-    # Step ii: Standardize .wav files
-    from scripts.preprocessing.standardize_wav import standardize_wav_files
-    qilin_standard_dir = os.path.join(base_dir, "../../intermediate", "standard_qilin")
-    if USE_QILIN:
+
+def stage_standardize(context):
+    base_dir = context['base_dir']
+    use_qilin = context.get('USE_QILIN', True)
+    use_lab = context.get('USE_LAB', False)
+
+    if use_qilin:
+        qilin_preprocess_dir = context.get('qilin_preprocess_dir')
+        qilin_standard_dir = os.path.join(base_dir, "../../intermediate", "standard_qilin")
+        context['qilin_standard_dir'] = qilin_standard_dir
         print("Standardizing Qilin dataset...")
         standardize_wav_files(qilin_preprocess_dir, qilin_standard_dir)
-    if USE_LAB:
+
+    if use_lab:
         lab_dataset_dir = os.path.join(base_dir, "../../input", "wav_lab")
         lab_standard_dir = os.path.join(base_dir, "../../intermediate", "standard_lab")
+        context['lab_standard_dir'] = lab_standard_dir
         print("Standardizing Lab dataset...")
         standardize_wav_files(lab_dataset_dir, lab_standard_dir)
 
-    # Step iii: Combine datasets (if using both)
-    combined_standard_dir = os.path.join(base_dir, "../../intermediate", "combined_standard")
-    if USE_QILIN and USE_LAB:
+    return context
+
+
+def stage_combine_datasets(context):
+    base_dir = context['base_dir']
+    use_qilin = context.get('USE_QILIN', True)
+    use_lab = context.get('USE_LAB', False)
+
+    if use_qilin and use_lab:
+        qilin_standard_dir = context.get('qilin_standard_dir')
+        lab_standard_dir = context.get('lab_standard_dir')
+        combined_standard_dir = os.path.join(base_dir, "../../intermediate", "combined_standard")
         functions.combine_folders(qilin_standard_dir, lab_standard_dir, combined_standard_dir)
-    elif USE_QILIN:
-        combined_standard_dir = qilin_standard_dir
-    elif USE_LAB:
-        combined_standard_dir = lab_standard_dir
+        context['combined_standard_dir'] = combined_standard_dir
+    elif use_qilin:
+        context['combined_standard_dir'] = context.get('qilin_standard_dir')
+    elif use_lab:
+        context['combined_standard_dir'] = context.get('lab_standard_dir')
     else:
         print("No dataset selected for training. Please select at least one.")
-        return
+        sys.exit(1)
+    return context
 
-    # Step iv: Noise Reduction
-    from scripts.preprocessing.noise_reduction import apply_noise_reduction
+
+def stage_noise_reduction(context):
+    base_dir = context['base_dir']
+    combined_standard_dir = context.get('combined_standard_dir')
     noise_reduction_dir = os.path.join(base_dir, "../../intermediate", "noise_reduction")
     functions.clear_output_directory(noise_reduction_dir)
     apply_noise_reduction(combined_standard_dir, noise_reduction_dir)
+    context['noise_reduction_dir'] = noise_reduction_dir
+    return context
 
-    # Step v: Normalization
-    from scripts.preprocessing.normalization import normalize_audio_files
+
+def stage_normalization(context):
+    base_dir = context['base_dir']
+    noise_reduction_dir = context.get('noise_reduction_dir')
+    print("Normalizing audio files...")
+    # Normalizes in-place (input and output directories are the same)
     normalize_audio_files(noise_reduction_dir, noise_reduction_dir)
+    return context
 
-    # Step vi: Feature Extraction
-    from scripts.preprocessing.feature_extraction import apply_feature_extraction
+
+def stage_feature_extraction(context):
+    base_dir = context['base_dir']
+    noise_reduction_dir = context.get('noise_reduction_dir')
     feature_extraction_base_dir = os.path.join(base_dir, "../../intermediate", "feature_extraction")
     functions.clear_output_directory(feature_extraction_base_dir)
-    # Process each noise reduction technique folder separately
+
+    # Process each noise reduction technique subfolder
     for technique in os.listdir(noise_reduction_dir):
         technique_path = os.path.join(noise_reduction_dir, technique)
         if os.path.isdir(technique_path):
             output_feat_dir = os.path.join(feature_extraction_base_dir, technique)
             functions.clear_output_directory(output_feat_dir)
-            apply_feature_extraction(technique_path, output_feat_dir)
+            extract_features(technique_path, output_feat_dir)
 
-    # Step vii: Feature Generation (Yeo-Johnson power transformer + Robust Scaling + 2nd Polynomials)
-    feature_generation.main()
+    context['feature_extraction_base_dir'] = feature_extraction_base_dir
+    return context
 
-    # Step viii: Feature Selection (
-    feature_selection.main()
 
-    # Step viii: Set Splitting (e.g., creating a holdout/test set)
-    from scripts.preprocessing.set_splitting import pre_split_holdouts
-    pre_split_holdouts(feature_extraction_base_dir, holdout_ratio=TEST_SPLIT_RATIO)
+def stage_feature_generation(context):
+    print("Running feature generation (transformation)...")
+    # Assuming feature_transformation.main() operates on the feature extraction directory structure
+    generate_features()
+    return context
 
-    print("Preprocessing complete. Ready for the model training.")
+
+def stage_feature_selection(context):
+    print("Running feature selection...")
+    # Assuming feature_selection.main() uses the same feature extraction structure
+    select_features()
+    return context
+
+
+def stage_set_splitting(context):
+    base_dir = context['base_dir']
+    feature_extraction_base_dir = context.get('feature_extraction_base_dir')
+    print("Splitting dataset into training and holdout sets...")
+    pre_split_holdouts(feature_extraction_base_dir, holdout_ratio=context.get('TEST_SPLIT_RATIO', 0.15))
+    return context
+
+
+def stage_completion(context):
+    print("Preprocessing complete. Ready for model training.")
+    input("Press Enter to exit...")
+    return context
+
+
+def main(USE_QILIN, USE_LAB, USE_SEPARATE_TEST=False, TEST_SPLIT_RATIO=0.15):
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    # Set initial context
+    context = {
+        'base_dir': base_dir,
+        'USE_QILIN': USE_QILIN,
+        'USE_LAB': USE_LAB,
+        'TEST_SPLIT_RATIO': TEST_SPLIT_RATIO
+    }
+
+    # Define all pipeline stages in the order you want them executed
+    stages = [
+        PipelineStage("Reformat Dataset", stage_reformat_dataset),
+        PipelineStage("Standardize Wav Files", stage_standardize),
+        PipelineStage("Combine Datasets", stage_combine_datasets),
+        PipelineStage("Noise Reduction", stage_noise_reduction),
+        PipelineStage("Normalization", stage_normalization),
+        PipelineStage("Feature Extraction", stage_feature_extraction),
+        PipelineStage("Feature Generation", stage_feature_generation),
+        PipelineStage("Feature Selection", stage_feature_selection),
+        PipelineStage("Set Splitting", stage_set_splitting),
+        PipelineStage("Completion", stage_completion)
+    ]
+
+    pipeline = Pipeline(stages)
+    pipeline.run(context)
 
 
 if __name__ == "__main__":
-    proceed()
+    main()

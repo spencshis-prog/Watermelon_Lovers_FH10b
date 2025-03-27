@@ -5,10 +5,11 @@ import joblib
 import numpy as np
 from collections import defaultdict
 
-from catboost import CatBoostRegressor
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
-from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor
 from skopt import BayesSearchCV
+from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor
+from catboost import CatBoostRegressor
+from lightgbm import LGBMRegressor
 from xgboost import XGBRegressor
 
 import params
@@ -131,7 +132,8 @@ def load_model(model_path):
             return model.best_estimator_ if hasattr(model, 'best_estimator_') else model
 
         # Handle standard models
-        if isinstance(model, (RandomForestRegressor, ExtraTreesRegressor, XGBRegressor, CatBoostRegressor)):
+        if isinstance(model, (RandomForestRegressor, ExtraTreesRegressor, LGBMRegressor,
+                              XGBRegressor, CatBoostRegressor)):
             return model
 
         print(f"[WARNING] Unknown model type for file: {model_path}")

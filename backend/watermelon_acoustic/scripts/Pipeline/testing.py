@@ -1,11 +1,25 @@
 import os
 import math
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import joblib
 
 import functions
+
+
+def maybe_convert_features(X, pipeline):
+    """
+    Convert features to a pandas DataFrame with dummy feature names if using models
+    that expect feature names (e.g. LGBM or XGBoost).
+    """
+    if pipeline.model_tag.lower() in ["lgbm", "xgb"]:
+        # Only convert if X is not already a DataFrame.
+        if not isinstance(X, pd.DataFrame):
+            feature_names = [f"f{i}" for i in range(X.shape[1])]
+            return pd.DataFrame(X, columns=feature_names)
+    return X
 
 
 def test_model_on_holdout(pipeline, model_path, test_folder):
@@ -25,8 +39,10 @@ def test_model_on_holdout(pipeline, model_path, test_folder):
 
     X, y, fnames, transformers = pipeline.prime(data["X"], data["y"], data["fnames"])
 
+    X_conv = maybe_convert_features(X, pipeline)
+
     model = joblib.load(model_path)
-    y_pred = model.predict(X)
+    y_pred = model.predict(X_conv)
     mae = mean_absolute_error(y, y_pred)
     mse = mean_squared_error(y, y_pred)
     rmse = math.sqrt(mse)
@@ -67,7 +83,8 @@ def test_all(pipeline):
                 model_path = os.path.join(pipeline.models_output_dir, file_name)
                 rel_model_path = os.path.relpath(model_path, project_root)
                 if not os.path.exists(model_path):
-                    print(f"[{pipeline.model_tag.upper()}-TE] No model found for {nr}, {fe}, ht={ht} at {rel_model_path}. Skipping.")
+                    print(
+                        f"[{pipeline.model_tag.upper()}-TE] No model found for {nr}, {fe}, ht={ht} at {rel_model_path}. Skipping.")
                     continue
                 print(
                     f"[{pipeline.model_tag.upper()}-TE] Evaluating model {file_name} on test set from {os.path.relpath(test_folder, project_root)}")
@@ -152,12 +169,15 @@ def plot_results_grid(pipeline, results, project_root):
     os.makedirs(residual_plots_dir, exist_ok=True)
 
     # Attempt to load the K-Fold report.
-    report_kfold_path = os.path.join(project_root, "../../output", f"testing_{pipeline.model_tag.lower()}", "report_kfold.txt")
+    report_kfold_path = os.path.join(project_root, "../../output", f"testing_{pipeline.model_tag.lower()}",
+                                     "report_kfold.txt")
     kfold_results = parse_report(report_kfold_path)
     if kfold_results:
-        print(f"[{pipeline.model_tag.upper()}-TE] Parsed K-Fold report from {os.path.relpath(report_kfold_path, project_root)}")
+        print(
+            f"[{pipeline.model_tag.upper()}-TE] Parsed K-Fold report from {os.path.relpath(report_kfold_path, project_root)}")
     else:
-        print(f"[{pipeline.model_tag.upper()}-TE] No valid K-Fold report found; only hold-out heatmaps will be plotted.")
+        print(
+            f"[{pipeline.model_tag.upper()}-TE] No valid K-Fold report found; only hold-out heatmaps will be plotted.")
 
     # Produce separate grids for each hyperparameter tuning option.
     ht_options = sorted(list(set([ht for (_, _, ht) in results.keys()])))
@@ -318,7 +338,8 @@ def plot_results_grid(pipeline, results, project_root):
                 ax.tick_params(axis='both', labelsize=8)
         fig2.suptitle(f"Predicted vs. Actual (Hold-out Test Set) (HT: {ht})", fontsize=10)
         fig2.tight_layout(rect=[0, 0, 1, 0.95])
-        pred_vs_actual_path = os.path.join(pred_vs_actual_dir, f"{pipeline.model_tag.lower()}_{ht}_predicted_vs_actual.png")
+        pred_vs_actual_path = os.path.join(pred_vs_actual_dir,
+                                           f"{pipeline.model_tag.lower()}_{ht}_predicted_vs_actual.png")
         rel_pred_vs_actual_path = os.path.relpath(pred_vs_actual_path, project_root)
         fig2.savefig(pred_vs_actual_path, dpi=300)
         print(f"[{pipeline.model_tag.upper()}-TE] Saved predicted vs. actual plot to {rel_pred_vs_actual_path}")
