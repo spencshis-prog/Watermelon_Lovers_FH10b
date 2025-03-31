@@ -68,7 +68,7 @@ int sampleMic = 0;
 
 
 
-uint16_t ADC_Array[8000];
+uint16_t ADC_Array[14100];
 int ADC_Index = 0;
 int ADC_Index_Offload = 0;
 int ADC_Flag_Stop = 0;
@@ -150,7 +150,7 @@ void micInput(void){
 	GPIO_PORTC_DATA_R = GPIO_PORTC_DATA_R ^ 0x80; //Debugging LED
 	
 		
-	if(((GPIO_PORTF_DATA_R & 0x10) == 0x0) && (sampeling_array_index < 7500)){
+	if(((GPIO_PORTF_DATA_R & 0x10) == 0x0) && (sampeling_array_index < 14000)){
 			if(t <=20000){
 				t++;
 				
