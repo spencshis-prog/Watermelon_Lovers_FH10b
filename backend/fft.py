@@ -18,13 +18,24 @@ def get_wav_serial():
     """Read audio data from the serial port."""
     ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
     data = []
-    print("Collecting data...")
+    print("Waiting for valid input...")
+    
+    # Wait until we receive valid data
+    while True:
+        line = ser.readline().decode('utf-8').strip()
+        if line:  # Ensure line is not empty
+            try:
+                value = int(line)
+                print("Received first valid input. Starting recording...")
+                break  # Exit loop once valid data is received
+            except ValueError:
+                pass  # Ignore non-numeric lines
 
     while len(data) < NUM_SAMPLES:
         line = ser.readline().decode('utf-8').strip()
-        if line.startswith("Microphone_Output="):
+        if line:  # Ensure the line is not empty
             try:
-                value = int(line.split('=')[1].strip())
+                value = int(line)
                 value = max(0, min(value, AMPLITUDE))  # Clamp values within 0-4095
                 data.append(value)
             except ValueError:
@@ -44,7 +55,7 @@ def get_wav_file(filename):
     print(f"Loaded WAV file: {filename}")
     return audio_data
 
-def fft(audio_data, watermelon_folder):
+def fft(audio_data, watermelon_folder, brix_number):
     """Perform FFT analysis and save results."""
     N = len(audio_data)
     freqs = np.fft.rfftfreq(N, 1/SAMPLE_RATE)
@@ -72,7 +83,8 @@ def fft(audio_data, watermelon_folder):
         "magnitudes": fft_magnitude.tolist(),  # List of magnitudes
         "resonant_frequency": resonant_freq,  # Resonant frequency (Hz)
         "sampling_rate": SAMPLE_RATE,  # Sampling rate (Hz)
-        "fft_resolution": N  # FFT resolution (number of bins)
+        "fft_resolution": N,  # FFT resolution (number of bins)
+        "brix_number": brix_number  # Brix number
     }
 
     # Save the FFT data to a JSON file
@@ -87,15 +99,15 @@ def main():
     parser.add_argument("--file", type=str, help="Path to a WAV file for debugging")
     args = parser.parse_args()
 
+    watermelon_id = input("Enter the watermelon ID: ")
+    brix_number = input("Enter the Brix number: ")
+
     output_dir = "watermelon_data"
     os.makedirs(output_dir, exist_ok=True)
 
-    watermelon_id = 1
-    while os.path.exists(os.path.join(output_dir, f"watermelon_{watermelon_id}")):
-        watermelon_id += 1
-
     watermelon_folder = os.path.join(output_dir, f"watermelon_{watermelon_id}")
-    os.makedirs(watermelon_folder)
+    os.makedirs(watermelon_folder, exist_ok=True)
+
 
     if args.file:
         audio_data = get_wav_file(args.file)
@@ -106,7 +118,7 @@ def main():
     wav.write(wav_file, SAMPLE_RATE, audio_data)
     print(f"Saved WAV file: {wav_file}")
 
-    fft(audio_data, watermelon_folder)
+    fft(audio_data, watermelon_folder, brix_number)
 
 if __name__ == "__main__":
     main()
