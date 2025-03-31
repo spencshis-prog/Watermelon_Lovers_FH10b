@@ -1,0 +1,38 @@
+import serial
+import numpy as np
+import wave
+
+def read_serial_data(port, baudrate, duration, sampling_rate, output_file):
+    ser = serial.Serial(port, baudrate, timeout=1)
+    num_samples = int(duration * sampling_rate)
+    data = []
+    
+    try:
+        print("Reading data from serial port...")
+        while len(data) < num_samples:
+            line = ser.readline().strip()
+            try:
+                freq = float(line)
+                data.append(freq)
+            except ValueError:
+                continue
+    finally:
+        ser.close()
+    
+    print("Converting frequency data to waveform...")
+    time = np.linspace(0, duration, num_samples)
+    waveform = np.sin(2 * np.pi * np.array(data) * time)  # Convert frequency to waveform
+    waveform = (waveform * 32767).astype(np.int16)  # Scale to 16-bit PCM
+    
+    print("Saving WAV file...")
+    with wave.open(output_file, 'w') as wav_file:
+        wav_file.setnchannels(1)
+        wav_file.setsampwidth(2)
+        wav_file.setframerate(sampling_rate)
+        wav_file.writeframes(waveform.tobytes())
+    
+    print(f"WAV file saved as {output_file}")
+
+# Example usage
+read_serial_data(port='COM3', baudrate=115200, duration=5, sampling_rate=44100, output_file='output.wav')
+
