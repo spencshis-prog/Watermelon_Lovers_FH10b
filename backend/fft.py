@@ -1,6 +1,7 @@
 import serial
 import numpy as np
 import scipy.io.wavfile as wav
+import scipy.signal as signal
 import matplotlib.pyplot as plt
 import os
 import json
@@ -13,6 +14,29 @@ SAMPLE_RATE = 16000  # Hz
 DURATION = 1  # seconds
 NUM_SAMPLES = SAMPLE_RATE * DURATION
 AMPLITUDE = 4095  # 12-bit max
+
+
+# Define bandpass filter range (Adjust as needed)
+LOWCUT = 50.0   # Hz (Lower bound of expected resonance)
+HIGHCUT = 2000.0  # Hz (Upper bound of useful frequencies)
+
+def bandpass_filter(data, order=5):
+    """Apply a Butterworth bandpass filter to the signal."""
+    nyquist = 0.5 * SAMPLE_RATE
+    low = LOWCUT / nyquist
+    high = HIGHCUT / nyquist
+    b, a = signal.butter(order, [low, high], btype='band')
+    # Apply filter and handle potential issues
+    filtered_data = signal.filtfilt(b, a, data)
+    
+    # Ensure no NaN or Inf values
+    filtered_data = np.nan_to_num(filtered_data)
+    
+    # Normalize back to 16-bit range
+    filtered_data = np.clip(filtered_data, -32768, 32767).astype(np.int16)
+    
+    return filtered_data
+
 
 def get_wav_serial():
     """Read audio data from the serial port, waiting for the first valid input."""
@@ -46,7 +70,8 @@ def get_wav_serial():
     ser.close()
     print(f"Collected {len(data)} samples.")
 
-    return ((np.array(data) - 2048) * (32767 / 2048)).astype(np.int16)
+    signal_data = ((np.array(data) - 2048) * (32767 / 2048)).astype(np.int16)
+    return bandpass_filter(signal_data.astype(np.int16))
 
 def get_wav_from_file(filename):
     """Simulate serial input by reading from a text file."""
@@ -70,7 +95,9 @@ def get_wav_from_file(filename):
 
     print(f"Simulated collection of {len(data)} samples.")
 
-    return ((np.array(data) - 2048) * (32767 / 2048)).astype(np.int16)
+    signal_data = ((np.array(data) - 2048) * (32767 / 2048)).astype(np.int16)
+
+    return bandpass_filter(signal_data.astype(np.int16))
 
 def get_wav_file(filename):
     """Load audio data from a WAV file."""
