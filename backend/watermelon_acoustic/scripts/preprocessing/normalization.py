@@ -12,6 +12,7 @@ def normalize_audio_files(input_dir, output_dir):
         input_dir (str): Directory containing subfolders for noise-reduced .wav files.
         output_dir (str): Base directory where normalized files will be saved (with same subfolder structure).
     """
+    base_dir = os.getcwd()
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -22,7 +23,7 @@ def normalize_audio_files(input_dir, output_dir):
             normalized_technique_dir = os.path.join(output_dir, technique)
             if not os.path.exists(normalized_technique_dir):
                 os.makedirs(normalized_technique_dir)
-            print(f"[NM] Normalizing files in technique folder: {technique_path}")
+            print(f"[NM] Normalizing files in technique folder: {os.path.relpath(technique_path, base_dir)}")
             # Process each WAV file in the subfolder.
             for file in os.listdir(technique_path):
                 if file.lower().endswith(".wav"):
@@ -35,9 +36,9 @@ def normalize_audio_files(input_dir, output_dir):
                         normalized_audio = effects.normalize(audio)
                         # Export the normalized audio.
                         normalized_audio.export(output_path, format="wav")
-                        print(f"[NM] Normalized {input_path} -> {output_path}")
+                        print(f"[NM] Normalized {os.path.relpath(input_path, base_dir)} -> {os.path.relpath(output_path, base_dir)}")
                     except Exception as e:
-                        print(f"[NM] Error normalizing {input_path}: {e}")
+                        print(f"[NM] Error normalizing {os.path.relpath(input_path, base_dir)}: {e}")
 
 
 if __name__ == "__main__":
@@ -48,6 +49,6 @@ if __name__ == "__main__":
     # Output: a new directory for normalized files.
     normalized_dir = os.path.join(base_dir, "../../intermediate", "normalized_noise_reduction")
 
-    print(f"[NM] Normalizing files from {noise_reduction_dir} and saving to {normalized_dir}")
+    print(f"[NM] Normalizing files from {os.path.relpath(noise_reduction_dir, base_dir)} and saving to {os.path.relpath(normalized_dir, base_dir)}")
     normalize_audio_files(noise_reduction_dir, normalized_dir)
     print("Normalization complete.")

@@ -1,0 +1,600 @@
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Hyper-tuning: bayesian
+MAE: 0.8013
+MSE: 1.0234
+RMSE: 1.0116
+R2: -0.0984
+
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Hyper-tuning: default
+MAE: 0.9263
+MSE: 1.4854
+RMSE: 1.2188
+R2: -0.5943
+
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Hyper-tuning: grid
+MAE: 1.2367
+MSE: 2.3082
+RMSE: 1.5193
+R2: -1.4774
+
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Hyper-tuning: random
+MAE: 0.9099
+MSE: 1.2799
+RMSE: 1.1313
+R2: -0.3737
+
+Noise Reduction: bandpass, Feature Extraction: delta_mfcc, Hyper-tuning: bayesian
+MAE: 0.7184
+MSE: 0.8223
+RMSE: 0.9068
+R2: 0.1175
+
+Noise Reduction: bandpass, Feature Extraction: delta_mfcc, Hyper-tuning: default
+MAE: 2.0721
+MSE: 6.9067
+RMSE: 2.6281
+R2: -6.4129
+
+Noise Reduction: bandpass, Feature Extraction: delta_mfcc, Hyper-tuning: grid
+MAE: 0.7185
+MSE: 0.8222
+RMSE: 0.9067
+R2: 0.1176
+
+Noise Reduction: bandpass, Feature Extraction: delta_mfcc, Hyper-tuning: random
+MAE: 0.6055
+MSE: 0.5596
+RMSE: 0.7481
+R2: 0.3994
+
+Noise Reduction: bandpass, Feature Extraction: log_mel_spec, Hyper-tuning: bayesian
+MAE: 0.9540
+MSE: 1.9681
+RMSE: 1.4029
+R2: -1.1123
+
+Noise Reduction: bandpass, Feature Extraction: log_mel_spec, Hyper-tuning: default
+MAE: 0.9054
+MSE: 1.3368
+RMSE: 1.1562
+R2: -0.4348
+
+Noise Reduction: bandpass, Feature Extraction: log_mel_spec, Hyper-tuning: grid
+MAE: 0.7593
+MSE: 0.9277
+RMSE: 0.9632
+R2: 0.0043
+
+Noise Reduction: bandpass, Feature Extraction: log_mel_spec, Hyper-tuning: random
+MAE: 0.8801
+MSE: 1.2129
+RMSE: 1.1013
+R2: -0.3018
+
+Noise Reduction: bandpass, Feature Extraction: mfcc, Hyper-tuning: bayesian
+MAE: 0.6969
+MSE: 0.7648
+RMSE: 0.8745
+R2: 0.1792
+
+Noise Reduction: bandpass, Feature Extraction: mfcc, Hyper-tuning: default
+MAE: 1.9894
+MSE: 7.6329
+RMSE: 2.7628
+R2: -7.1923
+
+Noise Reduction: bandpass, Feature Extraction: mfcc, Hyper-tuning: grid
+MAE: 0.9962
+MSE: 1.5334
+RMSE: 1.2383
+R2: -0.6458
+
+Noise Reduction: bandpass, Feature Extraction: mfcc, Hyper-tuning: random
+MAE: 0.5493
+MSE: 0.4905
+RMSE: 0.7004
+R2: 0.4735
+
+Noise Reduction: bandpass, Feature Extraction: percussive_mfcc, Hyper-tuning: bayesian
+MAE: 0.5075
+MSE: 0.4361
+RMSE: 0.6604
+R2: 0.5320
+
+Noise Reduction: bandpass, Feature Extraction: percussive_mfcc, Hyper-tuning: default
+MAE: 2.2711
+MSE: 11.3707
+RMSE: 3.3720
+R2: -11.2040
+
+Noise Reduction: bandpass, Feature Extraction: percussive_mfcc, Hyper-tuning: grid
+MAE: 0.5441
+MSE: 0.4323
+RMSE: 0.6575
+R2: 0.5360
+
+Noise Reduction: bandpass, Feature Extraction: percussive_mfcc, Hyper-tuning: random
+MAE: 0.5303
+MSE: 0.4415
+RMSE: 0.6644
+R2: 0.5262
+
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Hyper-tuning: bayesian
+MAE: 0.7849
+MSE: 0.9938
+RMSE: 0.9969
+R2: -0.0666
+
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Hyper-tuning: default
+MAE: 0.7733
+MSE: 1.0169
+RMSE: 1.0084
+R2: -0.0914
+
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Hyper-tuning: grid
+MAE: 0.9401
+MSE: 1.4750
+RMSE: 1.2145
+R2: -0.5831
+
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Hyper-tuning: random
+MAE: 0.9346
+MSE: 1.4059
+RMSE: 1.1857
+R2: -0.5090
+
+Noise Reduction: raw, Feature Extraction: delta_mfcc, Hyper-tuning: bayesian
+MAE: 0.7651
+MSE: 0.9406
+RMSE: 0.9698
+R2: -0.0095
+
+Noise Reduction: raw, Feature Extraction: delta_mfcc, Hyper-tuning: default
+MAE: 1.2389
+MSE: 2.2577
+RMSE: 1.5026
+R2: -1.4232
+
+Noise Reduction: raw, Feature Extraction: delta_mfcc, Hyper-tuning: grid
+MAE: 0.7428
+MSE: 0.8747
+RMSE: 0.9352
+R2: 0.0612
+
+Noise Reduction: raw, Feature Extraction: delta_mfcc, Hyper-tuning: random
+MAE: 0.6638
+MSE: 0.6053
+RMSE: 0.7780
+R2: 0.3503
+
+Noise Reduction: raw, Feature Extraction: log_mel_spec, Hyper-tuning: bayesian
+MAE: 0.6870
+MSE: 0.7586
+RMSE: 0.8710
+R2: 0.1858
+
+Noise Reduction: raw, Feature Extraction: log_mel_spec, Hyper-tuning: default
+MAE: 0.5875
+MSE: 0.7569
+RMSE: 0.8700
+R2: 0.1877
+
+Noise Reduction: raw, Feature Extraction: log_mel_spec, Hyper-tuning: grid
+MAE: 0.6342
+MSE: 0.6138
+RMSE: 0.7834
+R2: 0.3413
+
+Noise Reduction: raw, Feature Extraction: log_mel_spec, Hyper-tuning: random
+MAE: 0.7565
+MSE: 0.8969
+RMSE: 0.9470
+R2: 0.0374
+
+Noise Reduction: raw, Feature Extraction: mfcc, Hyper-tuning: bayesian
+MAE: 0.4844
+MSE: 0.3826
+RMSE: 0.6185
+R2: 0.5894
+
+Noise Reduction: raw, Feature Extraction: mfcc, Hyper-tuning: default
+MAE: 1.9334
+MSE: 8.4098
+RMSE: 2.9000
+R2: -8.0261
+
+Noise Reduction: raw, Feature Extraction: mfcc, Hyper-tuning: grid
+MAE: 0.5042
+MSE: 0.3700
+RMSE: 0.6083
+R2: 0.6029
+
+Noise Reduction: raw, Feature Extraction: mfcc, Hyper-tuning: random
+MAE: 0.5116
+MSE: 0.4063
+RMSE: 0.6374
+R2: 0.5639
+
+Noise Reduction: raw, Feature Extraction: percussive_mfcc, Hyper-tuning: bayesian
+MAE: 0.6110
+MSE: 0.5015
+RMSE: 0.7081
+R2: 0.4618
+
+Noise Reduction: raw, Feature Extraction: percussive_mfcc, Hyper-tuning: default
+MAE: 1.6557
+MSE: 4.8153
+RMSE: 2.1944
+R2: -4.1683
+
+Noise Reduction: raw, Feature Extraction: percussive_mfcc, Hyper-tuning: grid
+MAE: 0.8162
+MSE: 0.9733
+RMSE: 0.9866
+R2: -0.0446
+
+Noise Reduction: raw, Feature Extraction: percussive_mfcc, Hyper-tuning: random
+MAE: 0.6794
+MSE: 0.7708
+RMSE: 0.8780
+R2: 0.1727
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: db1_wavelet, Hyper-tuning: bayesian
+MAE: 0.6277
+MSE: 0.6052
+RMSE: 0.7779
+R2: 0.3505
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: db1_wavelet, Hyper-tuning: default
+MAE: 0.8909
+MSE: 1.1637
+RMSE: 1.0787
+R2: -0.2490
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: db1_wavelet, Hyper-tuning: grid
+MAE: 0.5959
+MSE: 0.5154
+RMSE: 0.7179
+R2: 0.4468
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: db1_wavelet, Hyper-tuning: random
+MAE: 0.6108
+MSE: 0.5957
+RMSE: 0.7718
+R2: 0.3607
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: delta_mfcc, Hyper-tuning: bayesian
+MAE: 0.5804
+MSE: 0.4168
+RMSE: 0.6456
+R2: 0.5526
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: delta_mfcc, Hyper-tuning: default
+MAE: 0.8794
+MSE: 1.2325
+RMSE: 1.1102
+R2: -0.3228
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: delta_mfcc, Hyper-tuning: grid
+MAE: 0.5544
+MSE: 0.4119
+RMSE: 0.6418
+R2: 0.5580
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: delta_mfcc, Hyper-tuning: random
+MAE: 0.6044
+MSE: 0.4360
+RMSE: 0.6603
+R2: 0.5321
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: log_mel_spec, Hyper-tuning: bayesian
+MAE: 0.8583
+MSE: 1.0380
+RMSE: 1.0188
+R2: -0.1141
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: log_mel_spec, Hyper-tuning: default
+MAE: 0.7988
+MSE: 0.9399
+RMSE: 0.9695
+R2: -0.0088
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: log_mel_spec, Hyper-tuning: grid
+MAE: 0.8563
+MSE: 1.0550
+RMSE: 1.0271
+R2: -0.1323
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: log_mel_spec, Hyper-tuning: random
+MAE: 0.8048
+MSE: 0.9334
+RMSE: 0.9661
+R2: -0.0018
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: mfcc, Hyper-tuning: bayesian
+MAE: 0.7635
+MSE: 0.9065
+RMSE: 0.9521
+R2: 0.0271
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: mfcc, Hyper-tuning: default
+MAE: 0.8838
+MSE: 1.1214
+RMSE: 1.0590
+R2: -0.2036
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: mfcc, Hyper-tuning: grid
+MAE: 1.0234
+MSE: 1.6859
+RMSE: 1.2984
+R2: -0.8094
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: mfcc, Hyper-tuning: random
+MAE: 0.7950
+MSE: 0.9482
+RMSE: 0.9737
+R2: -0.0177
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: percussive_mfcc, Hyper-tuning: bayesian
+MAE: 0.7508
+MSE: 0.8930
+RMSE: 0.9450
+R2: 0.0416
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: percussive_mfcc, Hyper-tuning: default
+MAE: 0.7600
+MSE: 0.9814
+RMSE: 0.9907
+R2: -0.0533
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: percussive_mfcc, Hyper-tuning: grid
+MAE: 0.7326
+MSE: 0.8592
+RMSE: 0.9269
+R2: 0.0778
+
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: percussive_mfcc, Hyper-tuning: random
+MAE: 0.7836
+MSE: 0.9470
+RMSE: 0.9732
+R2: -0.0164
+
+Noise Reduction: steg, Feature Extraction: db1_wavelet, Hyper-tuning: bayesian
+MAE: 0.6384
+MSE: 0.6771
+RMSE: 0.8229
+R2: 0.2732
+
+Noise Reduction: steg, Feature Extraction: db1_wavelet, Hyper-tuning: default
+MAE: 0.6842
+MSE: 0.9035
+RMSE: 0.9505
+R2: 0.0303
+
+Noise Reduction: steg, Feature Extraction: db1_wavelet, Hyper-tuning: grid
+MAE: 0.8869
+MSE: 1.2630
+RMSE: 1.1238
+R2: -0.3555
+
+Noise Reduction: steg, Feature Extraction: db1_wavelet, Hyper-tuning: random
+MAE: 0.6335
+MSE: 0.6375
+RMSE: 0.7984
+R2: 0.3158
+
+Noise Reduction: steg, Feature Extraction: delta_mfcc, Hyper-tuning: bayesian
+MAE: 1.0333
+MSE: 1.5996
+RMSE: 1.2648
+R2: -0.7169
+
+Noise Reduction: steg, Feature Extraction: delta_mfcc, Hyper-tuning: default
+MAE: 1.3651
+MSE: 3.0471
+RMSE: 1.7456
+R2: -2.2704
+
+Noise Reduction: steg, Feature Extraction: delta_mfcc, Hyper-tuning: grid
+MAE: 0.6043
+MSE: 0.6107
+RMSE: 0.7815
+R2: 0.3446
+
+Noise Reduction: steg, Feature Extraction: delta_mfcc, Hyper-tuning: random
+MAE: 0.6872
+MSE: 0.6884
+RMSE: 0.8297
+R2: 0.2611
+
+Noise Reduction: steg, Feature Extraction: log_mel_spec, Hyper-tuning: bayesian
+MAE: 0.8046
+MSE: 0.9047
+RMSE: 0.9512
+R2: 0.0290
+
+Noise Reduction: steg, Feature Extraction: log_mel_spec, Hyper-tuning: default
+MAE: 0.6659
+MSE: 0.7258
+RMSE: 0.8520
+R2: 0.2210
+
+Noise Reduction: steg, Feature Extraction: log_mel_spec, Hyper-tuning: grid
+MAE: 0.7961
+MSE: 0.9157
+RMSE: 0.9569
+R2: 0.0172
+
+Noise Reduction: steg, Feature Extraction: log_mel_spec, Hyper-tuning: random
+MAE: 0.7803
+MSE: 0.8809
+RMSE: 0.9386
+R2: 0.0545
+
+Noise Reduction: steg, Feature Extraction: mfcc, Hyper-tuning: bayesian
+MAE: 0.4840
+MSE: 0.4561
+RMSE: 0.6754
+R2: 0.5105
+
+Noise Reduction: steg, Feature Extraction: mfcc, Hyper-tuning: default
+MAE: 1.1081
+MSE: 2.0416
+RMSE: 1.4288
+R2: -1.1912
+
+Noise Reduction: steg, Feature Extraction: mfcc, Hyper-tuning: grid
+MAE: 1.0841
+MSE: 1.5789
+RMSE: 1.2565
+R2: -0.6946
+
+Noise Reduction: steg, Feature Extraction: mfcc, Hyper-tuning: random
+MAE: 0.5678
+MSE: 0.6142
+RMSE: 0.7837
+R2: 0.3407
+
+Noise Reduction: steg, Feature Extraction: percussive_mfcc, Hyper-tuning: bayesian
+MAE: 0.5780
+MSE: 0.6079
+RMSE: 0.7797
+R2: 0.3476
+
+Noise Reduction: steg, Feature Extraction: percussive_mfcc, Hyper-tuning: default
+MAE: 1.1006
+MSE: 2.7629
+RMSE: 1.6622
+R2: -1.9654
+
+Noise Reduction: steg, Feature Extraction: percussive_mfcc, Hyper-tuning: grid
+MAE: 1.1351
+MSE: 1.8151
+RMSE: 1.3473
+R2: -0.9482
+
+Noise Reduction: steg, Feature Extraction: percussive_mfcc, Hyper-tuning: random
+MAE: 0.6126
+MSE: 0.6386
+RMSE: 0.7991
+R2: 0.3146
+
+Noise Reduction: wiener, Feature Extraction: db1_wavelet, Hyper-tuning: bayesian
+MAE: 0.8267
+MSE: 1.0722
+RMSE: 1.0355
+R2: -0.1508
+
+Noise Reduction: wiener, Feature Extraction: db1_wavelet, Hyper-tuning: default
+MAE: 1.3502
+MSE: 2.6674
+RMSE: 1.6332
+R2: -1.8629
+
+Noise Reduction: wiener, Feature Extraction: db1_wavelet, Hyper-tuning: grid
+MAE: 0.9394
+MSE: 1.2807
+RMSE: 1.1317
+R2: -0.3745
+
+Noise Reduction: wiener, Feature Extraction: db1_wavelet, Hyper-tuning: random
+MAE: 0.8704
+MSE: 1.1506
+RMSE: 1.0727
+R2: -0.2349
+
+Noise Reduction: wiener, Feature Extraction: delta_mfcc, Hyper-tuning: bayesian
+MAE: 0.8720
+MSE: 1.0693
+RMSE: 1.0341
+R2: -0.1477
+
+Noise Reduction: wiener, Feature Extraction: delta_mfcc, Hyper-tuning: default
+MAE: 1.7782
+MSE: 6.0238
+RMSE: 2.4543
+R2: -5.4653
+
+Noise Reduction: wiener, Feature Extraction: delta_mfcc, Hyper-tuning: grid
+MAE: 0.8117
+MSE: 1.0398
+RMSE: 1.0197
+R2: -0.1160
+
+Noise Reduction: wiener, Feature Extraction: delta_mfcc, Hyper-tuning: random
+MAE: 0.7161
+MSE: 0.7515
+RMSE: 0.8669
+R2: 0.1934
+
+Noise Reduction: wiener, Feature Extraction: log_mel_spec, Hyper-tuning: bayesian
+MAE: 0.7662
+MSE: 1.2583
+RMSE: 1.1217
+R2: -0.3505
+
+Noise Reduction: wiener, Feature Extraction: log_mel_spec, Hyper-tuning: default
+MAE: 0.5986
+MSE: 0.6078
+RMSE: 0.7796
+R2: 0.3477
+
+Noise Reduction: wiener, Feature Extraction: log_mel_spec, Hyper-tuning: grid
+MAE: 0.7622
+MSE: 1.2668
+RMSE: 1.1255
+R2: -0.3597
+
+Noise Reduction: wiener, Feature Extraction: log_mel_spec, Hyper-tuning: random
+MAE: 0.9497
+MSE: 1.5452
+RMSE: 1.2430
+R2: -0.6584
+
+Noise Reduction: wiener, Feature Extraction: mfcc, Hyper-tuning: bayesian
+MAE: 0.7975
+MSE: 0.9887
+RMSE: 0.9944
+R2: -0.0612
+
+Noise Reduction: wiener, Feature Extraction: mfcc, Hyper-tuning: default
+MAE: 2.6151
+MSE: 30.0298
+RMSE: 5.4799
+R2: -31.2307
+
+Noise Reduction: wiener, Feature Extraction: mfcc, Hyper-tuning: grid
+MAE: 0.7914
+MSE: 1.1295
+RMSE: 1.0628
+R2: -0.2123
+
+Noise Reduction: wiener, Feature Extraction: mfcc, Hyper-tuning: random
+MAE: 1.0069
+MSE: 1.5930
+RMSE: 1.2622
+R2: -0.7098
+
+Noise Reduction: wiener, Feature Extraction: percussive_mfcc, Hyper-tuning: bayesian
+MAE: 0.9994
+MSE: 2.0260
+RMSE: 1.4234
+R2: -1.1745
+
+Noise Reduction: wiener, Feature Extraction: percussive_mfcc, Hyper-tuning: default
+MAE: 1.9849
+MSE: 9.3801
+RMSE: 3.0627
+R2: -9.0675
+
+Noise Reduction: wiener, Feature Extraction: percussive_mfcc, Hyper-tuning: grid
+MAE: 1.2753
+MSE: 2.4368
+RMSE: 1.5610
+R2: -1.6153
+
+Noise Reduction: wiener, Feature Extraction: percussive_mfcc, Hyper-tuning: random
+MAE: 0.8902
+MSE: 1.4098
+RMSE: 1.1873
+R2: -0.5131
+

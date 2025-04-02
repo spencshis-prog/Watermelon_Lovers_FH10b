@@ -1,13 +1,14 @@
 import math
 import os.path
 import shutil
+import sys
 
 import joblib
 import numpy as np
 import pandas as pd
+from lightgbm import early_stopping, log_evaluation
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from skopt import BayesSearchCV
 
@@ -60,10 +61,28 @@ def outer_kfolding(pipeline, ht, X, y):
         y_train, y_val = y[train_idx], y[val_idx]
 
         X_train_conv = maybe_convert_features(X_train, pipeline)
-        X_val_conv   = maybe_convert_features(X_val, pipeline)
+        X_val_conv = maybe_convert_features(X_val, pipeline)
 
         model = build_model(pipeline, ht)
-        model.fit(X_train_conv, y_train)
+
+        old_stdout = sys.stdout
+        old_stderr = sys.stderr
+        sys.stdout = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, 'w')
+
+        fit_kwargs = {}
+        if pipeline.early_stopping_rounds is not None:
+            if pipeline.model_tag.lower() == "lgbm":
+                fit_kwargs["callbacks"] = [early_stopping(pipeline.early_stopping_rounds)]  # , log_evaluation(0)
+            else:
+                fit_kwargs["early_stopping_rounds"] = pipeline.early_stopping_rounds
+        if pipeline.use_eval_set is True:
+            fit_kwargs["eval_set"] = [(X_val, y_val)]
+        model.fit(X_train_conv, y_train, **fit_kwargs)
+
+        sys.stdout = old_stdout
+        sys.stderr = old_stderr
+
         y_pred = model.predict(X_val_conv)
 
         mae = mean_absolute_error(y_val, y_pred)

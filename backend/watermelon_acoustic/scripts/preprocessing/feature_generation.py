@@ -18,7 +18,7 @@ def transform_features_in_folder(folder_path, pipeline):
     npy_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path)
                  if f.lower().endswith('.npy')]
     if not npy_files:
-        print(f"[FG] No .npy files found in {folder_path}")
+        print(f"[FG] No .npy files found in {os.path.relpath(folder_path, os.getcwd())}")
         return
 
     features_list = []
@@ -32,20 +32,20 @@ def transform_features_in_folder(folder_path, pipeline):
             features_list.append(features)
             file_names.append(file)
         except Exception as e:
-            print(f"[FG] Error loading {file}: {e}")
+            print(f"[FG] Error loading {os.path.relpath(file, os.getcwd())}: {e}")
 
     try:
         # Stack all features vertically
         X = np.vstack(features_list)
     except Exception as e:
-        print(f"[FG] Error stacking features in {folder_path}: {e}")
+        print(f"[FG] Error stacking features in {os.path.relpath(folder_path, os.getcwd())}: {e}")
         return
 
     # Fit and transform the features using the provided pipeline
     try:
         X_transformed = pipeline.fit_transform(X)
     except Exception as e:
-        print(f"[FG] Error during transformation in {folder_path}: {e}")
+        print(f"[FG] Error during transformation in {os.path.relpath(folder_path, os.getcwd())}: {e}")
         return
 
     # Split the transformed data back into the original file groupings and overwrite each file.
@@ -59,15 +59,14 @@ def transform_features_in_folder(folder_path, pipeline):
             transformed_subset = transformed_subset.flatten()
         try:
             np.save(file, transformed_subset)
-            print(f"[FG] Transformed and saved: {file}")
+            print(f"[FG] Transformed and saved: {os.path.relpath(file, os.getcwd())}")
         except Exception as e:
-            print(f"[FG] Error saving {file}: {e}")
+            print(f"[FG] Error saving {os.path.relpath(file, os.getcwd())}: {e}")
 
 
-def generate_features():
+def generate_features(feature_extraction_base_dir):
     # Path to the feature extraction output directory (adjust as needed)
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    feature_extraction_base_dir = os.path.join(base_dir, "../../intermediate", "feature_extraction")
 
     # Define the transformation pipeline:
     # 1. Yeo-Johnson power transform to reduce skewness.
@@ -83,12 +82,12 @@ def generate_features():
     for nr_folder in os.listdir(feature_extraction_base_dir):
         nr_folder_path = os.path.join(feature_extraction_base_dir, nr_folder)
         if os.path.isdir(nr_folder_path):
-            print(f"[FG] Entering noise reduction folder: {nr_folder_path}")
+            print(f"[FG] Entering noise reduction folder: {os.path.relpath(nr_folder_path, base_dir)}")
             # Iterate over each feature extraction folder (FE folder) inside the NR folder
             for fe_folder in os.listdir(nr_folder_path):
                 fe_folder_path = os.path.join(nr_folder_path, fe_folder)
                 if os.path.isdir(fe_folder_path):
-                    print(f"[FG] Applying feature transformation to folder: {fe_folder_path}")
+                    print(f"[FG] Applying feature transformation to folder: {os.path.relpath(fe_folder_path, base_dir)}")
                     transform_features_in_folder(fe_folder_path, transformation_pipeline)
 
 

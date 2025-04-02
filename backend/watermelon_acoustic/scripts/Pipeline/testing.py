@@ -50,7 +50,7 @@ def test_model_on_holdout(pipeline, model_path, test_folder):
     return {"MAE": mae, "MSE": mse, "RMSE": rmse, "R2": r2, "y_true": y, "y_pred": y_pred}
 
 
-def test_all(pipeline):
+def test_all(pipeline, run_num):
     """
     Iterates over each (NR, FE, hyper-tuning) combination in feature_extraction_base_dir,
     loads the corresponding final model (named <model_name>_<NR>_<FE>_<ht>.pkl),
@@ -104,6 +104,7 @@ def test_all(pipeline):
     print(f"[{pipeline.model_tag.upper()}-TE] Report saved to {rel_report_path}")
 
     plot_results_grid(pipeline, results, project_root)
+    append_report_history(pipeline, results, run_num)
 
 
 def parse_report(report_path):
@@ -368,3 +369,32 @@ def plot_results_grid(pipeline, results, project_root):
         fig3.savefig(residual_plot_path, dpi=300)
         print(f"[{pipeline.model_tag.upper()}-TE] Saved residual plot to {rel_residual_plot_path}")
         plt.close(fig3)
+
+
+def append_report_history(pipeline, results, run_num):
+    """
+    Appends the current testing results to a history report file.
+    The file is CSV formatted with columns:
+    Run,Model,Noise Reduction,Feature Extraction,Hyper-tuning,MAE,MSE,RMSE,R2
+
+    Parameters:
+      pipeline: the current pipeline object (to get model_tag, testing_output_dir)
+      results: dictionary with keys (nr, fe, ht) and values as metrics dict.
+    """
+    history_path = os.path.join(os.getcwd(), "output", "report_history.txt")
+
+    # Append current run's results in a consistent CSV format.
+    # We'll write a header if the file is new or empty.
+    header = "Run,Model,Noise Reduction,Feature Extraction,Hyper-tuning,MAE,MSE,RMSE,R2\n"
+    write_header = not os.path.exists(history_path) or os.path.getsize(history_path) == 0
+
+    with open(history_path, "a") as f:
+        if write_header:
+            f.write(header)
+        # For each (NR, FE, HT) combination, write a row.
+        # Sorting by NR and FE helps the dashboard later, but you can adjust the sort order as needed.
+        for (nr, fe, ht), m in sorted(results.items(), key=lambda x: (x[0][1], x[0][2])):
+            row = f"{run_num},{pipeline.model_tag},{nr},{fe},{ht},{m['MAE']:.4f},{m['MSE']:.4f},{m['RMSE']:.4f},{m['R2']:.4f}\n"
+            f.write(row)
+    print(f"[{pipeline.model_tag.upper()}-TE] Appended run {run_num} results to report_history.")
+

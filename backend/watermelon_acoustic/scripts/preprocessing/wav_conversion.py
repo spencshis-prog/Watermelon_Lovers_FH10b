@@ -51,9 +51,9 @@ def convert_qilin_file_formats_to_wav(qilin_dataset_dir, output_dir):
     ffprobe_available = "ffprobe" in os.popen("where ffprobe").read()
 
     if ffmpeg_available and ffprobe_available:
-        print("ffmpeg and ffprobe are now available in the PATH.")
+        print("[FC] ffmpeg and ffprobe are now available in the PATH.")
     else:
-        print("Failed to add ffmpeg or ffprobe to PATH. Check the paths.")
+        print("[FC] Failed to add ffmpeg or ffprobe to PATH. Check the paths.")
 
     functions.clear_output_directory(output_dir)
 

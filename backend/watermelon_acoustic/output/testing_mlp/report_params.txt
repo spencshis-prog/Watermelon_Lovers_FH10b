@@ -1,0 +1,157 @@
+=== mlp Parameter Tuning Report ===
+
+--- GRID ---
+
+MLP | grid | n_layers | [1, 2, 3]
+    1: 1/25
+    2: 4/25
+    3: 20/25
+
+MLP | grid | layer_size | [64, 128]
+    64: 14/25
+    128: 11/25
+
+MLP | grid | activation | ['relu', 'tanh']
+    relu: 1/25
+    tanh: 24/25
+
+MLP | grid | solver | ['adam', 'sgd']
+    adam: 1/25
+    sgd: 24/25
+
+MLP | grid | alpha | [0.0001, 0.001]
+    0.0001: 8/25
+    0.001: 17/25
+
+MLP | grid | learning_rate | ['constant', 'adaptive']
+    constant: 17/25
+    adaptive: 8/25
+
+MLP | grid | max_iter | [500]
+    500: 25/25
+
+--- RANDOM ---
+
+MLP | random | n_layers | [1, 2, 3]
+    1: 0/25
+    2: 10/25
+    3: 15/25
+
+MLP | random | activation | ['relu', 'tanh']
+    relu: 0/25
+    tanh: 25/25
+
+MLP | random | solver | ['adam', 'sgd']
+    adam: 0/25
+    sgd: 25/25
+
+MLP | random | learning_rate | ['constant', 'adaptive']
+    constant: 15/25
+    adaptive: 10/25
+
+MLP | random | max_iter | [300, 500, 1000]
+    300: 22/25
+    500: 2/25
+    1000: 1/25
+
+=== Model Summary ===
+mlp_bandpass_db1_wavelet_bayesian.pkl -> {}
+mlp_bandpass_db1_wavelet_default.pkl -> {}
+mlp_bandpass_db1_wavelet_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0001, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_bandpass_db1_wavelet_random.pkl -> {'n_layers': 2, 'layer_size': 40, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0008183973481164612, 'learning_rate': 'adaptive', 'max_iter': 300}
+mlp_bandpass_delta_mfcc_bayesian.pkl -> {}
+mlp_bandpass_delta_mfcc_default.pkl -> {}
+mlp_bandpass_delta_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_bandpass_delta_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_bandpass_log_mel_spec_bayesian.pkl -> {}
+mlp_bandpass_log_mel_spec_default.pkl -> {}
+mlp_bandpass_log_mel_spec_grid.pkl -> {'n_layers': 2, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_bandpass_log_mel_spec_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_bandpass_mfcc_bayesian.pkl -> {}
+mlp_bandpass_mfcc_default.pkl -> {}
+mlp_bandpass_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_bandpass_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_bandpass_percussive_mfcc_bayesian.pkl -> {}
+mlp_bandpass_percussive_mfcc_default.pkl -> {}
+mlp_bandpass_percussive_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_bandpass_percussive_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_raw_db1_wavelet_bayesian.pkl -> {}
+mlp_raw_db1_wavelet_default.pkl -> {}
+mlp_raw_db1_wavelet_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'adam', 'alpha': 0.0001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_raw_db1_wavelet_random.pkl -> {'n_layers': 2, 'layer_size': 40, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0008183973481164612, 'learning_rate': 'adaptive', 'max_iter': 300}
+mlp_raw_delta_mfcc_bayesian.pkl -> {}
+mlp_raw_delta_mfcc_default.pkl -> {}
+mlp_raw_delta_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_raw_delta_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_raw_log_mel_spec_bayesian.pkl -> {}
+mlp_raw_log_mel_spec_default.pkl -> {}
+mlp_raw_log_mel_spec_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_raw_log_mel_spec_random.pkl -> {'n_layers': 2, 'layer_size': 40, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0008183973481164612, 'learning_rate': 'adaptive', 'max_iter': 300}
+mlp_raw_mfcc_bayesian.pkl -> {}
+mlp_raw_mfcc_default.pkl -> {}
+mlp_raw_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_raw_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_raw_percussive_mfcc_bayesian.pkl -> {}
+mlp_raw_percussive_mfcc_default.pkl -> {}
+mlp_raw_percussive_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_raw_percussive_mfcc_random.pkl -> {'n_layers': 2, 'layer_size': 40, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0008183973481164612, 'learning_rate': 'adaptive', 'max_iter': 300}
+mlp_spectral_sub_dynamic_db1_wavelet_bayesian.pkl -> {}
+mlp_spectral_sub_dynamic_db1_wavelet_default.pkl -> {}
+mlp_spectral_sub_dynamic_db1_wavelet_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'relu', 'solver': 'sgd', 'alpha': 0.0001, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_spectral_sub_dynamic_db1_wavelet_random.pkl -> {'n_layers': 2, 'layer_size': 91, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 5.666566321361543e-05, 'learning_rate': 'adaptive', 'max_iter': 1000}
+mlp_spectral_sub_dynamic_delta_mfcc_bayesian.pkl -> {}
+mlp_spectral_sub_dynamic_delta_mfcc_default.pkl -> {}
+mlp_spectral_sub_dynamic_delta_mfcc_grid.pkl -> {'n_layers': 2, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_spectral_sub_dynamic_delta_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_spectral_sub_dynamic_log_mel_spec_bayesian.pkl -> {}
+mlp_spectral_sub_dynamic_log_mel_spec_default.pkl -> {}
+mlp_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'n_layers': 1, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_spectral_sub_dynamic_log_mel_spec_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_spectral_sub_dynamic_mfcc_bayesian.pkl -> {}
+mlp_spectral_sub_dynamic_mfcc_default.pkl -> {}
+mlp_spectral_sub_dynamic_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_spectral_sub_dynamic_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_spectral_sub_dynamic_percussive_mfcc_bayesian.pkl -> {}
+mlp_spectral_sub_dynamic_percussive_mfcc_default.pkl -> {}
+mlp_spectral_sub_dynamic_percussive_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_spectral_sub_dynamic_percussive_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_steg_db1_wavelet_bayesian.pkl -> {}
+mlp_steg_db1_wavelet_default.pkl -> {}
+mlp_steg_db1_wavelet_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_steg_db1_wavelet_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_steg_delta_mfcc_bayesian.pkl -> {}
+mlp_steg_delta_mfcc_default.pkl -> {}
+mlp_steg_delta_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_steg_delta_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_steg_log_mel_spec_bayesian.pkl -> {}
+mlp_steg_log_mel_spec_default.pkl -> {}
+mlp_steg_log_mel_spec_grid.pkl -> {'n_layers': 3, 'layer_size': 128, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_steg_log_mel_spec_random.pkl -> {'n_layers': 2, 'layer_size': 40, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0008183973481164612, 'learning_rate': 'adaptive', 'max_iter': 300}
+mlp_steg_mfcc_bayesian.pkl -> {}
+mlp_steg_mfcc_default.pkl -> {}
+mlp_steg_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_steg_mfcc_random.pkl -> {'n_layers': 2, 'layer_size': 81, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0004010606075732408, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_steg_percussive_mfcc_bayesian.pkl -> {}
+mlp_steg_percussive_mfcc_default.pkl -> {}
+mlp_steg_percussive_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_steg_percussive_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_wiener_db1_wavelet_bayesian.pkl -> {}
+mlp_wiener_db1_wavelet_default.pkl -> {}
+mlp_wiener_db1_wavelet_grid.pkl -> {'n_layers': 2, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0001, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_wiener_db1_wavelet_random.pkl -> {'n_layers': 2, 'layer_size': 81, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0004010606075732408, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_wiener_delta_mfcc_bayesian.pkl -> {}
+mlp_wiener_delta_mfcc_default.pkl -> {}
+mlp_wiener_delta_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_wiener_delta_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
+mlp_wiener_log_mel_spec_bayesian.pkl -> {}
+mlp_wiener_log_mel_spec_default.pkl -> {}
+mlp_wiener_log_mel_spec_grid.pkl -> {'n_layers': 2, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0001, 'learning_rate': 'adaptive', 'max_iter': 500}
+mlp_wiener_log_mel_spec_random.pkl -> {'n_layers': 2, 'layer_size': 40, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0008183973481164612, 'learning_rate': 'adaptive', 'max_iter': 300}
+mlp_wiener_mfcc_bayesian.pkl -> {}
+mlp_wiener_mfcc_default.pkl -> {}
+mlp_wiener_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_wiener_mfcc_random.pkl -> {'n_layers': 2, 'layer_size': 40, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.0008183973481164612, 'learning_rate': 'adaptive', 'max_iter': 300}
+mlp_wiener_percussive_mfcc_bayesian.pkl -> {}
+mlp_wiener_percussive_mfcc_default.pkl -> {}
+mlp_wiener_percussive_mfcc_grid.pkl -> {'n_layers': 3, 'layer_size': 64, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.001, 'learning_rate': 'constant', 'max_iter': 500}
+mlp_wiener_percussive_mfcc_random.pkl -> {'n_layers': 3, 'layer_size': 106, 'activation': 'tanh', 'solver': 'sgd', 'alpha': 0.00016599452033620266, 'learning_rate': 'constant', 'max_iter': 300}
