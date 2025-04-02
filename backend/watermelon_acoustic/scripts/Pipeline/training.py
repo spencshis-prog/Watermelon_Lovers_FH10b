@@ -12,6 +12,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from skopt import BayesSearchCV
 
+
 import functions
 
 
@@ -67,8 +68,9 @@ def outer_kfolding(pipeline, ht, X, y):
 
         old_stdout = sys.stdout
         old_stderr = sys.stderr
-        sys.stdout = open(os.devnull, 'w')
-        sys.stderr = open(os.devnull, 'w')
+        if pipeline.model_tag.lower() in ["lgbm", "xgb"]:
+            sys.stdout = open(os.devnull, 'w')
+            sys.stderr = open(os.devnull, 'w')
 
         fit_kwargs = {}
         if pipeline.early_stopping_rounds is not None:
@@ -77,7 +79,7 @@ def outer_kfolding(pipeline, ht, X, y):
             else:
                 fit_kwargs["early_stopping_rounds"] = pipeline.early_stopping_rounds
         if pipeline.use_eval_set is True:
-            fit_kwargs["eval_set"] = [(X_val, y_val)]
+            fit_kwargs["eval_set"] = [(X_val_conv, y_val)]
         model.fit(X_train_conv, y_train, **fit_kwargs)
 
         sys.stdout = old_stdout
@@ -126,7 +128,6 @@ def train_for_combination_set(pipeline, ht, combination_dir):
         print(
             f"[{pipeline.model_tag.upper()}] Using pre-split hold-out: {len(fnames_test)} test samples, {len(fnames_train_val)} training samples")
     else:
-        from sklearn.model_selection import train_test_split
         X_train_val, X_test, y_train_val, y_test, fn_train_val, fn_test = train_test_split(
             X, y, fnames, test_size=pipeline.holdout_ratio, random_state=42
         )
@@ -142,7 +143,42 @@ def train_for_combination_set(pipeline, ht, combination_dir):
 
     X_train_val_conv = maybe_convert_features(X_train_val, pipeline)
     final_model = build_model(pipeline, ht)
-    final_model.fit(X_train_val_conv, y_train_val)
+
+    fit_kwargs = {}
+    if pipeline.early_stopping_rounds is not None:
+        if pipeline.model_tag.lower() == "lgbm":
+            from lightgbm import early_stopping, log_evaluation
+            fit_kwargs["callbacks"] = [early_stopping(pipeline.early_stopping_rounds)]
+            # Optionally, you can add log_evaluation(0) if you want to suppress logging:
+            # fit_kwargs["callbacks"].append(log_evaluation(0))
+        elif pipeline.model_tag.lower() == "xgb":
+            # For XGBoost, skip early_stopping_rounds if unsupported.
+            pass
+        else:
+            fit_kwargs["early_stopping_rounds"] = pipeline.early_stopping_rounds
+
+    if pipeline.use_eval_set:
+        # Split off 10% for evaluation
+        X_train_sub, X_eval, y_train_sub, y_eval = train_test_split(
+            X_train_val_conv, y_train_val, test_size=0.1, random_state=42
+        )
+
+        fit_kwargs["eval_set"] = [(X_eval, y_eval)]
+
+        # For LGBM and XGB, you might want to suppress excessive output:
+        old_stdout = sys.stdout
+        old_stderr = sys.stderr
+        if pipeline.model_tag.lower() in ["lgbm", "xgb"]:
+            sys.stdout = open(os.devnull, 'w')
+            sys.stderr = open(os.devnull, 'w')
+
+        final_model.fit(X_train_sub, y_train_sub, **fit_kwargs)
+
+        sys.stdout = old_stdout
+        sys.stderr = old_stderr
+    else:
+        final_model.fit(X_train_val_conv, y_train_val)
+
     if hasattr(final_model, 'best_estimator_'):
         final_model = final_model.best_estimator_
     print(f"[{pipeline.model_tag.upper()}] Final model parameters:",

@@ -3,156 +3,156 @@
 --- GRID ---
 
 XGB | grid | n_estimators | [50, 100, 200]
-    50: 24/25
-    100: 1/25
-    200: 0/25
+    50: 17/25
+    100: 5/25
+    200: 3/25
 
 XGB | grid | max_depth | [3, 6, 10]
-    3: 16/25
-    6: 2/25
-    10: 7/25
+    3: 14/25
+    6: 5/25
+    10: 6/25
 
 XGB | grid | learning_rate | [0.01, 0.1]
-    0.01: 25/25
-    0.1: 0/25
+    0.01: 16/25
+    0.1: 9/25
 
 --- RANDOM ---
 
 XGB | random | n_estimators | [50, 100, 200, 300]
-    50: 20/25
-    100: 4/25
-    200: 0/25
-    300: 1/25
+    50: 8/25
+    100: 10/25
+    200: 2/25
+    300: 5/25
 
 XGB | random | max_depth | [3, 6, 10, 12]
-    3: 2/25
-    6: 3/25
-    10: 0/25
-    12: 20/25
+    3: 10/25
+    6: 5/25
+    10: 3/25
+    12: 7/25
 
 XGB | random | learning_rate | [0.001, 0.01, 0.1]
-    0.001: 19/25
-    0.01: 4/25
-    0.1: 2/25
+    0.001: 3/25
+    0.01: 8/25
+    0.1: 14/25
 
 XGB | random | gamma | [0, 0.1, 0.5]
-    0: 1/25
-    0.1: 20/25
-    0.5: 4/25
+    0: 6/25
+    0.1: 7/25
+    0.5: 12/25
 
 XGB | random | reg_alpha | [0, 0.1, 1.0]
     0: 0/25
-    0.1: 4/25
-    1.0: 21/25
+    0.1: 12/25
+    1.0: 13/25
 
 XGB | random | reg_lambda | [1, 1.5, 2.0]
-    1: 20/25
-    1.5: 1/25
-    2.0: 4/25
+    1: 8/25
+    1.5: 4/25
+    2.0: 13/25
 
 XGB | random | subsample | [0.6, 0.8, 1.0]
-    0.6: 24/25
-    0.8: 0/25
-    1.0: 1/25
+    0.6: 17/25
+    0.8: 4/25
+    1.0: 4/25
 
 === Model Summary ===
 xgb_bandpass_db1_wavelet_bayesian.pkl -> {}
 xgb_bandpass_db1_wavelet_default.pkl -> {}
-xgb_bandpass_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_bandpass_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 6, 'learning_rate': 0.01}
 xgb_bandpass_db1_wavelet_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
 xgb_bandpass_delta_mfcc_bayesian.pkl -> {}
 xgb_bandpass_delta_mfcc_default.pkl -> {}
-xgb_bandpass_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
-xgb_bandpass_delta_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.1, 'reg_alpha': 0.1, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_bandpass_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 6, 'learning_rate': 0.1}
+xgb_bandpass_delta_mfcc_random.pkl -> {'n_estimators': 300, 'max_depth': 12, 'learning_rate': 0.1, 'gamma': 0, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.8}
 xgb_bandpass_log_mel_spec_bayesian.pkl -> {}
 xgb_bandpass_log_mel_spec_default.pkl -> {}
-xgb_bandpass_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_bandpass_log_mel_spec_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_bandpass_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 6, 'learning_rate': 0.01}
+xgb_bandpass_log_mel_spec_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_bandpass_mfcc_bayesian.pkl -> {}
 xgb_bandpass_mfcc_default.pkl -> {}
-xgb_bandpass_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_bandpass_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_bandpass_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1}
+xgb_bandpass_mfcc_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_bandpass_percussive_mfcc_bayesian.pkl -> {}
 xgb_bandpass_percussive_mfcc_default.pkl -> {}
-xgb_bandpass_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_bandpass_percussive_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_bandpass_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1}
+xgb_bandpass_percussive_mfcc_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_raw_db1_wavelet_bayesian.pkl -> {}
 xgb_raw_db1_wavelet_default.pkl -> {}
-xgb_raw_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_raw_db1_wavelet_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_raw_db1_wavelet_grid.pkl -> {'n_estimators': 200, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_raw_db1_wavelet_random.pkl -> {'n_estimators': 300, 'max_depth': 12, 'learning_rate': 0.1, 'gamma': 0, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.8}
 xgb_raw_delta_mfcc_bayesian.pkl -> {}
 xgb_raw_delta_mfcc_default.pkl -> {}
-xgb_raw_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_raw_delta_mfcc_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_raw_delta_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1}
+xgb_raw_delta_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.1, 'reg_alpha': 0.1, 'reg_lambda': 1, 'subsample': 0.6}
 xgb_raw_log_mel_spec_bayesian.pkl -> {}
 xgb_raw_log_mel_spec_default.pkl -> {}
-xgb_raw_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_raw_log_mel_spec_random.pkl -> {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_raw_log_mel_spec_grid.pkl -> {'n_estimators': 200, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_raw_log_mel_spec_random.pkl -> {'n_estimators': 200, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 1.5, 'subsample': 1.0}
 xgb_raw_mfcc_bayesian.pkl -> {}
 xgb_raw_mfcc_default.pkl -> {}
-xgb_raw_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_raw_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_raw_mfcc_grid.pkl -> {'n_estimators': 200, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_raw_mfcc_random.pkl -> {'n_estimators': 300, 'max_depth': 10, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.8}
 xgb_raw_percussive_mfcc_bayesian.pkl -> {}
 xgb_raw_percussive_mfcc_default.pkl -> {}
-xgb_raw_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_raw_percussive_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_raw_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 6, 'learning_rate': 0.1}
+xgb_raw_percussive_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.1, 'reg_alpha': 0.1, 'reg_lambda': 1, 'subsample': 0.6}
 xgb_spectral_sub_dynamic_db1_wavelet_bayesian.pkl -> {}
 xgb_spectral_sub_dynamic_db1_wavelet_default.pkl -> {}
-xgb_spectral_sub_dynamic_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_spectral_sub_dynamic_db1_wavelet_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_dynamic_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_spectral_sub_dynamic_db1_wavelet_random.pkl -> {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_spectral_sub_dynamic_delta_mfcc_bayesian.pkl -> {}
 xgb_spectral_sub_dynamic_delta_mfcc_default.pkl -> {}
-xgb_spectral_sub_dynamic_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_spectral_sub_dynamic_delta_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_dynamic_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1}
+xgb_spectral_sub_dynamic_delta_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.1, 'reg_alpha': 0.1, 'reg_lambda': 1, 'subsample': 0.6}
 xgb_spectral_sub_dynamic_log_mel_spec_bayesian.pkl -> {}
 xgb_spectral_sub_dynamic_log_mel_spec_default.pkl -> {}
-xgb_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_spectral_sub_dynamic_log_mel_spec_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.1}
+xgb_spectral_sub_dynamic_log_mel_spec_random.pkl -> {'n_estimators': 100, 'max_depth': 10, 'learning_rate': 0.1, 'gamma': 0, 'reg_alpha': 1.0, 'reg_lambda': 1.5, 'subsample': 1.0}
 xgb_spectral_sub_dynamic_mfcc_bayesian.pkl -> {}
 xgb_spectral_sub_dynamic_mfcc_default.pkl -> {}
-xgb_spectral_sub_dynamic_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
-xgb_spectral_sub_dynamic_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_dynamic_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 6, 'learning_rate': 0.01}
+xgb_spectral_sub_dynamic_mfcc_random.pkl -> {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_spectral_sub_dynamic_percussive_mfcc_bayesian.pkl -> {}
 xgb_spectral_sub_dynamic_percussive_mfcc_default.pkl -> {}
 xgb_spectral_sub_dynamic_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
-xgb_spectral_sub_dynamic_percussive_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_spectral_sub_dynamic_percussive_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.1, 'gamma': 0, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_steg_db1_wavelet_bayesian.pkl -> {}
 xgb_steg_db1_wavelet_default.pkl -> {}
-xgb_steg_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_steg_db1_wavelet_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_steg_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1}
+xgb_steg_db1_wavelet_random.pkl -> {'n_estimators': 200, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 1.5, 'subsample': 1.0}
 xgb_steg_delta_mfcc_bayesian.pkl -> {}
 xgb_steg_delta_mfcc_default.pkl -> {}
-xgb_steg_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
-xgb_steg_delta_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_steg_delta_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_steg_delta_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.1, 'reg_alpha': 0.1, 'reg_lambda': 1, 'subsample': 0.6}
 xgb_steg_log_mel_spec_bayesian.pkl -> {}
 xgb_steg_log_mel_spec_default.pkl -> {}
-xgb_steg_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 6, 'learning_rate': 0.01}
-xgb_steg_log_mel_spec_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_steg_log_mel_spec_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_steg_log_mel_spec_random.pkl -> {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_steg_mfcc_bayesian.pkl -> {}
 xgb_steg_mfcc_default.pkl -> {}
-xgb_steg_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
-xgb_steg_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_steg_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_steg_mfcc_random.pkl -> {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_steg_percussive_mfcc_bayesian.pkl -> {}
 xgb_steg_percussive_mfcc_default.pkl -> {}
-xgb_steg_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_steg_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
 xgb_steg_percussive_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
 xgb_wiener_db1_wavelet_bayesian.pkl -> {}
 xgb_wiener_db1_wavelet_default.pkl -> {}
-xgb_wiener_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
-xgb_wiener_db1_wavelet_random.pkl -> {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_wiener_db1_wavelet_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1}
+xgb_wiener_db1_wavelet_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_wiener_delta_mfcc_bayesian.pkl -> {}
 xgb_wiener_delta_mfcc_default.pkl -> {}
-xgb_wiener_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 6, 'learning_rate': 0.01}
+xgb_wiener_delta_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
 xgb_wiener_delta_mfcc_random.pkl -> {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'subsample': 0.6}
 xgb_wiener_log_mel_spec_bayesian.pkl -> {}
 xgb_wiener_log_mel_spec_default.pkl -> {}
-xgb_wiener_log_mel_spec_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_wiener_log_mel_spec_random.pkl -> {'n_estimators': 300, 'max_depth': 12, 'learning_rate': 0.01, 'gamma': 0, 'reg_alpha': 1.0, 'reg_lambda': 1.5, 'subsample': 1.0}
+xgb_wiener_log_mel_spec_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_wiener_log_mel_spec_random.pkl -> {'n_estimators': 300, 'max_depth': 12, 'learning_rate': 0.1, 'gamma': 0, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.8}
 xgb_wiener_mfcc_bayesian.pkl -> {}
 xgb_wiener_mfcc_default.pkl -> {}
-xgb_wiener_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_wiener_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 10, 'learning_rate': 0.01}
 xgb_wiener_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
 xgb_wiener_percussive_mfcc_bayesian.pkl -> {}
 xgb_wiener_percussive_mfcc_default.pkl -> {}
-xgb_wiener_percussive_mfcc_grid.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.01}
-xgb_wiener_percussive_mfcc_random.pkl -> {'n_estimators': 50, 'max_depth': 12, 'learning_rate': 0.001, 'gamma': 0.1, 'reg_alpha': 1.0, 'reg_lambda': 1, 'subsample': 0.6}
+xgb_wiener_percussive_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_wiener_percussive_mfcc_random.pkl -> {'n_estimators': 300, 'max_depth': 12, 'learning_rate': 0.01, 'gamma': 0, 'reg_alpha': 1.0, 'reg_lambda': 1.5, 'subsample': 1.0}

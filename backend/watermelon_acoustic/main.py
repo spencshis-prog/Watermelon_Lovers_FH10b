@@ -59,7 +59,8 @@ KERAS = False  # run tests pls
 TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
 OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
 
-
+# TODO: determine if the eval set and early stopping should be used on the final model training
+# TODO: also fix xgbregressor's early stopping mechanism
 # TODO: optuna, genetic algorithms
 #  automate analysis (and retrain) TODO:  perhaps add a ml-based denoiser: If you have a large dataset of “clean” vs.
 #   “noisy” knocks, you can train a deep neural network (e.g.,
@@ -185,9 +186,9 @@ def instantiate_pipelines():
         dataset_path=EXTRACTED_SET  # no feature generation and selection
     )
     xgb_pipeline = ModelPipeline(
-        model_tag="xgb", model_cls=XGBRegressor(random_state=42, eval_metric='rmse', verbosity=0),
+        model_tag="xgb", model_cls=XGBRegressor(random_state=42, eval_metric='rmse', early_stopping_rounds=10, verbosity=0),
         # primer_functions=[primers.log_transform, primers.standard_scale_fit],
-        inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, use_eval_set=True,
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS, use_eval_set=True,
         ht_options=["default", "grid", "random", "bayesian"],
         params_grid=params.xgb_grid,
         params_random=params.xgb_random,
