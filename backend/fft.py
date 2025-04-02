@@ -5,10 +5,10 @@ import scipy.signal as signal
 import matplotlib.pyplot as plt
 import os
 import json
-import argparse
+import argparse, time
 
 # Serial port configuration
-SERIAL_PORT = 'COM6'
+SERIAL_PORT = 'COM3'
 BAUD_RATE = 115200
 SAMPLE_RATE = 16000  # Hz
 DURATION = 1  # seconds
@@ -18,7 +18,7 @@ AMPLITUDE = 4095  # 12-bit max
 
 # Define bandpass filter range (Adjust as needed)
 LOWCUT = 50.0   # Hz (Lower bound of expected resonance)
-HIGHCUT = 2000.0  # Hz (Upper bound of useful frequencies)
+HIGHCUT = 600.0  # Hz (Upper bound of useful frequencies)
 
 def bandpass_filter(data, order=5):
     """Apply a Butterworth bandpass filter to the signal."""
@@ -39,10 +39,12 @@ def bandpass_filter(data, order=5):
 
 
 def get_wav_serial():
-    """Read audio data from the serial port, waiting for the first valid input."""
+    """Read audio data from the serial port with timeout for inactivity."""
     ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
     data = []
     print("Waiting for valid input...")
+
+    
 
     # Wait for first valid input
     while True:
@@ -54,24 +56,33 @@ def get_wav_serial():
                 break
             except ValueError:
                 pass  # Ignore non-numeric lines
+        
 
-    # Start collecting data
     data.append(value)
+    
+    start_time = time.time()
+    TIMEOUT_SECONDS = 2  # Stop if no input for this long
     while len(data) < NUM_SAMPLES:
         line = ser.readline().decode('utf-8').strip()
         if line:
             try:
                 value = int(line)
-                value = max(0, min(value, AMPLITUDE))  # Clamp values within 0-4095
+                value = max(0, min(value, AMPLITUDE))
                 data.append(value)
+                last_data_time = time.time()  # Reset timeout
             except ValueError:
-                pass  # Ignore invalid lines
+                pass
+        elif time.time() - start_time > TIMEOUT_SECONDS:
+            print("Timeout during recording. Ending early.")
+            break
 
     ser.close()
     print(f"Collected {len(data)} samples.")
 
     signal_data = ((np.array(data) - 2048) * (32767 / 2048)).astype(np.int16)
-    return bandpass_filter(signal_data.astype(np.int16))
+
+    return bandpass_filter(signal_data)
+
 
 def get_wav_from_file(filename):
     """Simulate serial input by reading from a text file."""
@@ -119,6 +130,7 @@ def fft(audio_data, watermelon_folder, brix_number):
     plt.figure(figsize=(10, 6))
     plt.plot(freqs, fft_magnitude, label="FFT Magnitude")
     plt.axvline(resonant_freq, color='r', linestyle='--', label=f"Peak: {resonant_freq:.2f} Hz")
+    plt.xlim(0, 500) 
     plt.xlabel("Frequency (Hz)")
     plt.ylabel("Magnitude")
     plt.title("Watermelon Resonant Frequency Spectrum")
