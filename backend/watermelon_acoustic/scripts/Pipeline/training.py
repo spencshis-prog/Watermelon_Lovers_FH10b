@@ -6,12 +6,10 @@ import sys
 import joblib
 import numpy as np
 import pandas as pd
-from lightgbm import early_stopping, log_evaluation
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from skopt import BayesSearchCV
-
 
 import functions
 
@@ -75,10 +73,15 @@ def outer_kfolding(pipeline, ht, X, y):
         fit_kwargs = {}
         if pipeline.early_stopping_rounds is not None:
             if pipeline.model_tag.lower() == "lgbm":
-                fit_kwargs["callbacks"] = [early_stopping(pipeline.early_stopping_rounds)]  # , log_evaluation(0)
+                from typing import cast, List
+                from lightgbm import early_stopping, EarlyStopping, log_evaluation
+                fit_kwargs["callbacks"] = cast(List[EarlyStopping], [early_stopping(pipeline.early_stopping_rounds)])
+            elif pipeline.model_tag.lower() == "xgb":
+                from xgboost import callback
+                fit_kwargs["callbacks"] = [callback.EarlyStopping(pipeline.early_stopping_rounds)]
             else:
                 fit_kwargs["early_stopping_rounds"] = pipeline.early_stopping_rounds
-        if pipeline.use_eval_set is True:
+        if pipeline.eval_set_split is not None:  # if not none, should be an integer
             fit_kwargs["eval_set"] = [(X_val_conv, y_val)]
         model.fit(X_train_conv, y_train, **fit_kwargs)
 
@@ -147,20 +150,19 @@ def train_for_combination_set(pipeline, ht, combination_dir):
     fit_kwargs = {}
     if pipeline.early_stopping_rounds is not None:
         if pipeline.model_tag.lower() == "lgbm":
-            from lightgbm import early_stopping, log_evaluation
-            fit_kwargs["callbacks"] = [early_stopping(pipeline.early_stopping_rounds)]
-            # Optionally, you can add log_evaluation(0) if you want to suppress logging:
-            # fit_kwargs["callbacks"].append(log_evaluation(0))
+            from typing import cast, List
+            from lightgbm import early_stopping, EarlyStopping, log_evaluation
+            fit_kwargs["callbacks"] = cast(List[EarlyStopping], [early_stopping(pipeline.early_stopping_rounds)])
         elif pipeline.model_tag.lower() == "xgb":
-            # For XGBoost, skip early_stopping_rounds if unsupported.
-            pass
+            from xgboost import callback
+            fit_kwargs["callbacks"] = [callback.EarlyStopping(pipeline.early_stopping_rounds)]
         else:
             fit_kwargs["early_stopping_rounds"] = pipeline.early_stopping_rounds
 
-    if pipeline.use_eval_set:
+    if pipeline.eval_set_split is not None:
         # Split off 10% for evaluation
         X_train_sub, X_eval, y_train_sub, y_eval = train_test_split(
-            X_train_val_conv, y_train_val, test_size=0.1, random_state=42
+            X_train_val_conv, y_train_val, test_size=pipeline.eval_set_split, random_state=42
         )
 
         fit_kwargs["eval_set"] = [(X_eval, y_eval)]

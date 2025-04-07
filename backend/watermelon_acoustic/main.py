@@ -52,11 +52,11 @@ RANDOM_FOREST = False
 EXTRA_TREES = False
 LIGHTGBM = False
 CATBOOST = False  # run tests
-XGBOOST = False
+XGBOOST = True
 MULTILAYER_PERCEPTRON = False
 KERAS = False  # run tests pls
 
-TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
+TRAIN_NEW_MODELS = True  # k-fold metrics will not update unless training new models
 OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
 
 # TODO: determine if the eval set and early stopping should be used on the final model training
@@ -166,7 +166,7 @@ def instantiate_pipelines():
     lgbm_pipeline = ModelPipeline(
         model_tag="lgbm", model_cls=lgb.LGBMRegressor(random_state=42, n_jobs=-1, verbose=-1),
         # primer_functions=[primers.log_transform, primers.standard_scale_fit],
-        inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, use_eval_set=True,  # does not support early stopping
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, eval_set_split=0.1,  # does not support early stopping
         ht_options=["default", "grid", "random", "bayesian"],
         params_grid=params.lgbm_grid,
         params_random=params.lgbm_random,
@@ -177,7 +177,7 @@ def instantiate_pipelines():
     cat_pipeline = ModelPipeline(
         model_tag="cat", model_cls=CatBoostRegressor(random_state=42, silent=True),
         # primer_functions=[primers.log_transform],
-        inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, use_eval_set=True,
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, eval_set_split=0.1,
         ht_options=["default", "grid", "random", "bayesian"],
         params_grid=params.cat_grid,
         params_random=params.cat_random,
@@ -186,9 +186,9 @@ def instantiate_pipelines():
         dataset_path=EXTRACTED_SET  # no feature generation and selection
     )
     xgb_pipeline = ModelPipeline(
-        model_tag="xgb", model_cls=XGBRegressor(random_state=42, eval_metric='rmse', early_stopping_rounds=10, verbosity=0),
+        model_tag="xgb", model_cls=XGBRegressor(random_state=42, eval_metric='rmse', verbosity=0),
         # primer_functions=[primers.log_transform, primers.standard_scale_fit],
-        inner_folds=CV_FOLDS, outer_folds=K_FOLDS, use_eval_set=True,
+        inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, eval_set_split=0.1,
         ht_options=["default", "grid", "random", "bayesian"],
         params_grid=params.xgb_grid,
         params_random=params.xgb_random,

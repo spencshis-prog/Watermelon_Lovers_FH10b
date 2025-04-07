@@ -6,7 +6,7 @@ from scripts.Pipeline.training import train_all
 
 
 class ModelPipeline:
-    def __init__(self, model_tag, model_cls, dataset_path, primer_functions=None, inner_folds=3, outer_folds=5, early_stopping_rounds=None, use_eval_set=False,
+    def __init__(self, model_tag, model_cls, dataset_path, primer_functions=None, inner_folds=3, outer_folds=5, early_stopping_rounds=None, eval_set_split=None,
                  ht_options=None, params_grid=None, params_random=None, params_bayesian=None, params_optuna=None):
         """
         model_name: String identifier, e.g. "RF", "XGB", etc.
@@ -26,7 +26,7 @@ class ModelPipeline:
         self.inner_folds = inner_folds
         self.outer_folds = outer_folds
         self.early_stopping_rounds = early_stopping_rounds
-        self.use_eval_set = use_eval_set
+        self.eval_set_split = eval_set_split
         self.ht_options = ht_options  # list of strings
         self.params_grid = params_grid
         self.params_random = params_random
