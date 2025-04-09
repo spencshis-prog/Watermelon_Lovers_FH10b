@@ -1,0 +1,57 @@
+<!-- templates/watermelon.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watermelon {{ wm_folder }}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h1 class="text-center">Watermelon {{ wm_folder }}</h1>
+    <div class="text-center">
+      <img src="{{ fft_plot_url }}" alt="FFT Plot" class="img-fluid">
+    </div>
+    <div class="mt-4">
+      <h4>Current Data:</h4>
+      <ul>
+        {% if fft_data.real_brix %}
+        <li>Real Brix: {{ fft_data.real_brix }}</li>
+        {% endif %}
+        {% if fft_data.predicted_brix %}
+        <li>Predicted Brix: {{ fft_data.predicted_brix }}</li>
+        {% endif %}
+      </ul>
+    </div>
+    <!-- Form to store the real Brix value -->
+    <div class="mt-4">
+      <form method="post">
+        <div class="mb-3">
+          <label for="real_brix" class="form-label">Enter Real Brix:</label>
+          <input type="number" step="any" class="form-control" id="real_brix" name="real_brix">
+        </div>
+        <button type="submit" name="action" value="store_real" class="btn btn-primary">Store Real Brix</button>
+      </form>
+    </div>
+    <!-- Form to get the predicted Brix value -->
+    <div class="mt-4">
+      <form method="post">
+        <button type="submit" name="action" value="predict" class="btn btn-success">Predict Brix</button>
+      </form>
+    </div>
+    <div class="mt-4 text-center">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-info">
+            {{ messages[0] }}
+          </div>
+        {% endif %}
+      {% endwith %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="{{ url_for('results') }}" class="btn btn-secondary">Back to Results</a>
+    </div>
+  </div>
+</body>
+</html>

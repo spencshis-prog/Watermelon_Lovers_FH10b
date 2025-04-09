@@ -1,0 +1,22 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watermelon Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h1 class="text-center">Watermelon Project</h1>
+    <p class="text-center">
+      This project uses FFT and machine learning to analyze watermelons and predict their Brix values.
+      Click the button below to view the available results.
+    </p>
+    <div class="text-center mt-4">
+      <a href="{{ url_for('results') }}" class="btn btn-primary">View Results</a>
+    </div>
+  </div>
+</body>
+</html>
