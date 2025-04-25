@@ -1,5 +1,6 @@
 import os
 import numpy as np
+from matplotlib import pyplot as plt
 from sklearn.feature_selection import SelectKBest, f_regression
 
 
@@ -41,6 +42,53 @@ def select_features_in_folder(folder_path, selector):
     try:
         # Apply supervised feature selection using the Brix labels.
         X_selected = selector.fit_transform(X, y)
+
+        scores = selector.scores_
+        mask = selector.get_support()  # Boolean mask of selected features
+
+        # Get indices of the selected top k features
+        selected_indices = np.where(mask)[0]
+        selected_scores = scores[mask]
+
+        top_10_idx = np.argsort(selected_scores)[-10:][::-1]
+        top_10_scores = selected_scores[top_10_idx]
+        top_10_features = selected_indices[top_10_idx]  # actual column indices
+
+        feature_names = [f"f{i}" for i in range(X.shape[1])]  # or load from CSV
+        top_10_names = [feature_names[i] for i in top_10_features]
+
+        plt.figure(figsize=(10, 6))
+        plt.barh(top_10_names[::-1], top_10_scores[::-1], color='darkgreen')
+        plt.xlabel("F-score")
+        plt.title("Top 10 Selected Features by SelectKBest")
+        plt.tight_layout()
+        plt.close()
+
+        # Wrap only scores and angles, not labels
+        angles = np.linspace(0, 2 * np.pi, len(top_10_scores), endpoint=False).tolist()
+        scores = top_10_scores.tolist()
+        scores += scores[:1]
+        angles += angles[:1]
+
+        fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
+        ax.plot(angles, scores, linewidth=2, color='teal')
+        ax.fill(angles, scores, alpha=0.3)
+
+        labels = top_10_names  # Do NOT wrap labels
+        ax.set_xticks(angles[:-1])
+        ax.set_xticklabels(labels, fontsize=10)
+
+        plt.title("Top 10 Feature Importance (SelectKBest)", y=1.1)
+        plt.tight_layout()
+
+        best_feat_dir = os.path.join(os.getcwd(), "best_feature_charts")
+        os.makedirs(best_feat_dir, exist_ok=True)
+
+        chart_path = os.path.join(best_feat_dir, os.path.basename(folder_path) + ".png")
+
+        plt.savefig(chart_path)
+        plt.close()
+
     except Exception as e:
         print(f"[FS] Error during feature selection in {os.path.relpath(folder_path, os.getcwd())}: {e}")
         return

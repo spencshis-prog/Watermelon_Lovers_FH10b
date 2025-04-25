@@ -228,7 +228,7 @@ def main(USE_QILIN, USE_LAB, TEST_SPLIT_RATIO=0.15, K=50):
         PipelineStage("Duplicate Feature Extraction", stage_duplicate_feature_extraction),
         # Process branch that will have feature generation/selection:
         PipelineStage("Feature Generation (with FS)", stage_feature_generation_fs),
-        PipelineStage("Feature Selection (with FS)", stage_feature_selection_fs(50)),
+        PipelineStage("Feature Selection (with FS)", stage_feature_selection_fs),
         PipelineStage("Set Splitting (with FS)", stage_set_splitting_fs),
         # Process branch that skips generation/selection:
         PipelineStage("Set Splitting (without FS)", stage_set_splitting_without_fs),

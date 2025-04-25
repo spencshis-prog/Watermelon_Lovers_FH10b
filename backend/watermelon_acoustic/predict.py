@@ -125,7 +125,7 @@ def predict_brix(input_wav_path, model_pkl_path):
 
     # Predict Brix score (assuming model.predict returns an array-like)
     prediction = model.predict(features)
-    return int(round(prediction[0]))
+    return prediction[0]
 
 
 if __name__ == "__main__":
