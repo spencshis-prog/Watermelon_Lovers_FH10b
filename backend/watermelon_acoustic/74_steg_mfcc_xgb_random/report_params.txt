@@ -1,0 +1,82 @@
+=== xgb Parameter Tuning Report ===
+
+--- GRID ---
+
+XGB | grid | n_estimators | [50, 100, 200]
+    50: 0/6
+    100: 6/6
+    200: 0/6
+
+XGB | grid | max_depth | [3, 6, 10]
+    3: 4/6
+    6: 1/6
+    10: 1/6
+
+XGB | grid | learning_rate | [0.01, 0.1]
+    0.01: 5/6
+    0.1: 1/6
+
+--- RANDOM ---
+
+XGB | random | n_estimators | [50, 100, 200, 300]
+    50: 1/6
+    100: 4/6
+    200: 1/6
+    300: 0/6
+
+XGB | random | max_depth | [3, 6, 10, 12]
+    3: 6/6
+    6: 0/6
+    10: 0/6
+    12: 0/6
+
+XGB | random | learning_rate | [0.001, 0.01, 0.1]
+    0.001: 0/6
+    0.01: 1/6
+    0.1: 5/6
+
+XGB | random | gamma | [0, 0.1, 0.5]
+    0: 0/6
+    0.1: 1/6
+    0.5: 5/6
+
+XGB | random | reg_alpha | [0, 0.1, 1.0]
+    0: 0/6
+    0.1: 2/6
+    1.0: 4/6
+
+XGB | random | reg_lambda | [1, 1.5, 2.0]
+    1: 1/6
+    1.5: 1/6
+    2.0: 4/6
+
+XGB | random | subsample | [0.6, 0.8, 1.0]
+    0.6: 5/6
+    0.8: 0/6
+    1.0: 1/6
+
+=== Model Summary ===
+xgb_spectral_sub_dynamic_log_mel_spec_bayesian.pkl -> {}
+xgb_spectral_sub_dynamic_log_mel_spec_default.pkl -> {}
+xgb_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1}
+xgb_spectral_sub_dynamic_log_mel_spec_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_spectral_sub_dynamic_mfcc_bayesian.pkl -> {}
+xgb_spectral_sub_dynamic_mfcc_default.pkl -> {}
+xgb_spectral_sub_dynamic_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_spectral_sub_dynamic_mfcc_random.pkl -> {'n_estimators': 200, 'max_depth': 3, 'learning_rate': 0.01, 'gamma': 0.5, 'reg_alpha': 0.1, 'reg_lambda': 1.5, 'subsample': 1.0}
+xgb_spectral_sub_dynamic_spectral_flux_bayesian.pkl -> {}
+xgb_spectral_sub_dynamic_spectral_flux_default.pkl -> {}
+xgb_spectral_sub_dynamic_spectral_flux_grid.pkl -> {'n_estimators': 100, 'max_depth': 6, 'learning_rate': 0.01}
+xgb_spectral_sub_dynamic_spectral_flux_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_steg_log_mel_spec_bayesian.pkl -> {}
+xgb_steg_log_mel_spec_default.pkl -> {}
+xgb_steg_log_mel_spec_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_steg_log_mel_spec_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_steg_mfcc_bayesian.pkl -> {}
+xgb_steg_mfcc_default.pkl -> {}
+xgb_steg_mfcc_grid.pkl -> {'n_estimators': 100, 'max_depth': 10, 'learning_rate': 0.01}
+xgb_steg_mfcc_random.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.5, 'reg_alpha': 1.0, 'reg_lambda': 2.0, 'subsample': 0.6}
+xgb_steg_spectral_flux_bayesian.pkl -> {}
+xgb_steg_spectral_flux_default.pkl -> {}
+xgb_steg_spectral_flux_grid.pkl -> {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.01}
+xgb_steg_spectral_flux_random.pkl -> {'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1, 'gamma': 0.1, 'reg_alpha': 0.1, 'reg_lambda': 1, 'subsample': 0.6}

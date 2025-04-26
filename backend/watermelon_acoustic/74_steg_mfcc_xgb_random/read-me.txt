@@ -1,0 +1,33 @@
+OUTLINE
+
+The following noise filtering techniques were evaluated: {raw (control), Bandpass Filter, Debauchies-1 DWT, Debauchies-8 DWT, Spectral Subtraction Dynamic, Short-Time Energy Gating, Wiener Filter}
+The following feature extraction techniques were evaluated: {MFCC, Spectral Centroid, Debauchies-1 Wavelet Extraction, Zero-Cross Rate, Spectral Roll-off, Short-Time RMS Energy, Chroma Features, log-Mel Spectrogram, Delta MFCC, Spectral Contrast, Percussive MFCC, Spectral Flux}
+The following regressor classes were evaluated: {RandomForest, ExtraTrees, LightGBM, CatBoost, XGBoost, KerasRegressor, MLPRegressor}
+The following hyperparameter tuning strategies were evaluated: {default (none), GridSearch, RandomSearch, BayesianOptimization}
+
+The dataset recordings were acquired in a frequency sweep
+The dataset consisted of (6 x 3) + (14 x 5) = 88 recordings
+
+Each dataset underwent Yeo-Johnson Power Transformation, RobustScaling, 2nd deg Polynomial Interaction Feature expansion (the dataset-specific transformer was saved for later use)
+Each dataset underwent SelectKBest features where k=50 (the dataset-specific selector was saved for later use)
+Each dataset had an 85/15 holdout split (74 / 14 recordings) for evaluation
+
+Each model underwent 3-fold (inner) hyperparameter selection and 5-fold (outer) cross-validation
+Each model saved its selected hyperparameters, an aggregate of all selections models made for each dataset variation was saved
+Each model was evaluated with the holdout split (predicted v. actual), residuals saved and MAE, RMSE, R^2 calculated and saved
+
+PERFORMANCE
+
+Our highest performing model was an XGBRegressor with RandomSearchCV hyper-tuning on a dataset filtered with Short-Time Energy Gating (STEG) and features extracted by MFCC.
+This model had: {MAE: 0.6212, RMSE: 0.826, R^2: 0.6669}
+
+The noise filtering techniques that yielded the highest performance were STEG and spectral subtraction dynamic (SSD)
+The feature extraction techniques that yielded the highest performance were MFCCs, log-Mel Spectrograms (LMS), and Spectral Flux
+
+IMPLICATIONS
+
+Recording with a sweep distributes energy across frequencies; MFCCs then summarize how that sweep is sculpted by the rind, making them well suited to this task.
+Time-domain gating (steg) effectively isolates the transient knock/frequency, removing steady background noise—critical when sweeps can create low-energy tails.
+Tuning deeper regularization (γ≈0.5, α≈1, λ≈2) and subsampling (~0.6) helps XGBoost avoid overfitting to subtle sweep-related artifacts.
+
+Overall, for future development we’d prioritize MFCCs and plus a robust gating filter, paired with a finely tuned gradient‐boosted tree, to push predictive accuracy even higher.
