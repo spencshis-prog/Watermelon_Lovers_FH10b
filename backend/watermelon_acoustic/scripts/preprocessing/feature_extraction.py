@@ -149,16 +149,16 @@ def extract_features(input_dir, output_base_dir):
     methods = {  # as assessed by qilin set
         # "raw": ef_raw,  # scales badly with hypertuning runtimes
         "mfcc": ef_mel_features_cepstral_coefficients,  # high performance
-        "spectral_centroid": ef_spectral_centroid,  # poor performance qilin
-        "db1_wavelet": ef_db1_wavelet,  # mid performance
-        "zcr": ef_zero_cross_rate,  # good performance ONLY with naive spectral subtraction qilin
-        "spectral_rolloff": ef_spectral_rolloff,  # poor performance qilin
-        "rms": ef_rms,  # awful performance qilin
-        "chroma": ef_chroma,  # poor performance qilin
+        # "spectral_centroid": ef_spectral_centroid,  # poor performance qilin
+        # "db1_wavelet": ef_db1_wavelet,  # mid performance
+        # "zcr": ef_zero_cross_rate,  # good performance ONLY with naive spectral subtraction qilin
+        # "spectral_rolloff": ef_spectral_rolloff,  # poor performance qilin
+        # "rms": ef_rms,  # awful performance qilin
+        # "chroma": ef_chroma,  # poor performance qilin
         "log_mel_spec": ef_log_mel_spectrogram,  # untested
         "delta_mfcc": ef_delta_mfcc,  # good performance typically only w steg
-        "spectral_contrast": ef_spectral_contrast,  # poor performance qilin
-        "percussive_mfcc": ef_percussive_mfcc,  # untested
+        # "spectral_contrast": ef_spectral_contrast,  # poor performance qilin
+        # "percussive_mfcc": ef_percussive_mfcc,  # untested
         "spectral_flux": ef_spectral_flux,  # poor performance qilin
     }
 

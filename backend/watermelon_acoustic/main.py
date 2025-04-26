@@ -51,13 +51,13 @@ LINEAR_REGRESSION = False
 RANDOM_FOREST = False
 EXTRA_TREES = False
 LIGHTGBM = False
-CATBOOST = False  # run tests
-XGBOOST = False
+CATBOOST = True  # run tests
+XGBOOST = True
 
 MULTILAYER_PERCEPTRON = False
 KERAS = False  # run tests pls
 
-TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
+TRAIN_NEW_MODELS = True  # k-fold metrics will not update unless training new models
 OPEN_COMPARATOR = False  # to run, put 'streamlit run main.py' into the command line
 
 # TODO: determine if the eval set and early stopping should be used on the final model training
@@ -148,7 +148,7 @@ def instantiate_pipelines():
         model_tag="rf", model_cls=RandomForestRegressor(random_state=42, n_jobs=-1, verbose=0),
         # primer_functions=[primers.remove_outliers_fit, primers.quantile_transform_fit],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
-        ht_options=["default", "grid", "random"],
+        ht_options=["default", "grid"],  #, "random"
         params_grid=params.rf_grid,
         params_random=params.rf_random,
         params_optuna=params.rf_optuna,
@@ -158,7 +158,7 @@ def instantiate_pipelines():
         model_tag="et", model_cls=ExtraTreesRegressor(random_state=42, n_jobs=-1, verbose=0),
         # primer_functions=[primers.remove_outliers_fit, primers.quantile_transform_fit],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS,
-        ht_options=["default", "grid", "random"],
+        ht_options=["default", "grid"],  #, "random"
         params_grid=params.et_grid,
         params_random=params.et_random,
         params_optuna=params.et_optuna,
@@ -179,7 +179,7 @@ def instantiate_pipelines():
         model_tag="cat", model_cls=CatBoostRegressor(random_state=42, silent=True),
         # primer_functions=[primers.log_transform],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, eval_set_split=0.1,
-        ht_options=["default", "grid", "random"], #, "bayesian"],
+        ht_options=["default", "grid", "random", "bayesian"],
         params_grid=params.cat_grid,
         params_random=params.cat_random,
         params_bayesian=params.cat_bayesian,

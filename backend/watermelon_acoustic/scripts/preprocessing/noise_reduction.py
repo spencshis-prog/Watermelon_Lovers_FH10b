@@ -229,14 +229,14 @@ def apply_noise_reduction(input_dir, output_base_dir):
     Creates separate folders (e.g., "technique1", "technique2") under output_base_dir.
     """
     techniques = {  # as assessed by qilin set
-        "raw": nr_raw,  # high performance
-        "bandpass": nr_bandpass,  # high performance
+        # "raw": nr_raw,  # high performance
+        # "bandpass": nr_bandpass,  # high performance
         # "spectral_sub_naive": nr_spectral_subtraction_naive,  # mid performance, good only w zcr qilin
-        "db1_dwt": nr_db1_wavelet,  # poor performance qilin
+        # "db1_dwt": nr_db1_wavelet,  # poor performance qilin
         "spectral_sub_dynamic": nr_spectral_subtraction_dynamic,  # good performance
-        "wiener": nr_wiener,  # decent performance
+        # "wiener": nr_wiener,  # decent performance
         "steg": nr_short_time_energy_gating,  # good performance
-        "db8_dwt": nr_db8_wavelet_advanced,  # very poor performance qilin
+        # "db8_dwt": nr_db8_wavelet_advanced,  # very poor performance qilin
     }
 
     rel_input = os.path.relpath(input_dir, os.getcwd())
