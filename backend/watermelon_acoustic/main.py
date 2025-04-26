@@ -46,7 +46,7 @@ K_FOLDS = 5  # n_splits KFold param
 CV_FOLDS = 3  # cv=n Regressor param
 
 # Pipeline Configuration
-PREPROCESS = False
+PREPROCESS = True
 LINEAR_REGRESSION = False
 RANDOM_FOREST = False
 EXTRA_TREES = False
@@ -58,7 +58,7 @@ MULTILAYER_PERCEPTRON = False
 KERAS = False  # run tests pls
 
 TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
-OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
+OPEN_COMPARATOR = False  # to run, put 'streamlit run main.py' into the command line
 
 # TODO: determine if the eval set and early stopping should be used on the final model training
 # TODO: also fix xgbregressor's early stopping mechanism

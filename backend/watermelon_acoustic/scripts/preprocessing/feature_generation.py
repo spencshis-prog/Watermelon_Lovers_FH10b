@@ -1,10 +1,12 @@
 import os
+
+import joblib
 import numpy as np
 from sklearn.preprocessing import PowerTransformer, RobustScaler, PolynomialFeatures
 from sklearn.pipeline import Pipeline
 
 
-def transform_features_in_folder(folder_path, pipeline):
+def transform_features_in_folder(folder_path, pipeline, transformer_output_path):
     """
     Reads all .npy files in folder_path, stacks them into a matrix,
     fits the transformation pipeline, transforms them, and writes the transformed
@@ -48,6 +50,13 @@ def transform_features_in_folder(folder_path, pipeline):
         print(f"[FG] Error during transformation in {os.path.relpath(folder_path, os.getcwd())}: {e}")
         return
 
+    os.makedirs(os.path.dirname(transformer_output_path), exist_ok=True)
+    try:
+        joblib.dump(pipeline, transformer_output_path)
+        print(f"[FG] Saved transformer to {os.path.relpath(transformer_output_path, os.getcwd())}")
+    except Exception as e:
+        print(f"[FG] Error saving transformer to {transformer_output_path}: {e}")
+
     # Split the transformed data back into the original file groupings and overwrite each file.
     start = 0
     for file, orig_features in zip(file_names, features_list):
@@ -88,7 +97,13 @@ def generate_features(feature_extraction_base_dir):
                 fe_folder_path = os.path.join(nr_folder_path, fe_folder)
                 if os.path.isdir(fe_folder_path):
                     print(f"[FG] Applying feature transformation to folder: {os.path.relpath(fe_folder_path, base_dir)}")
-                    transform_features_in_folder(fe_folder_path, transformation_pipeline)
+
+                    transformers_dir = os.path.join(os.getcwd(), "output", "transformers")
+                    os.makedirs(transformers_dir, exist_ok=True)
+                    transformer_filename = f"{nr_folder}_{fe_folder}_transformer.pkl"
+                    transformer_output_path = os.path.join(transformers_dir, transformer_filename)
+
+                    transform_features_in_folder(fe_folder_path, transformation_pipeline, transformer_output_path)
 
 
 if __name__ == "__main__":
