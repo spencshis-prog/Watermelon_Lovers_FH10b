@@ -13,8 +13,8 @@ MODEL_DIRS = {
     "CAT": "testing_cat",
     "LGBM": "testing_lgbm",
     "XGB": "testing_xgb",
-    "MLP": "testing_mlp",
-    "KRS": "testing_krs"
+    # "MLP": "testing_mlp",
+    # "KRS": "testing_krs"
 }
 
 

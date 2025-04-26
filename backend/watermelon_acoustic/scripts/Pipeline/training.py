@@ -74,11 +74,13 @@ def outer_kfolding(pipeline, ht, X, y):
         if pipeline.early_stopping_rounds is not None:
             if pipeline.model_tag.lower() == "lgbm":
                 from typing import cast, List
-                from lightgbm import early_stopping, EarlyStopping, log_evaluation
-                fit_kwargs["callbacks"] = cast(List[EarlyStopping], [early_stopping(pipeline.early_stopping_rounds)])
+                from lightgbm import early_stopping, log_evaluation
+                fit_kwargs["callbacks"] = [early_stopping(pipeline.early_stopping_rounds)]
             elif pipeline.model_tag.lower() == "xgb":
-                from xgboost import callback
-                fit_kwargs["callbacks"] = [callback.EarlyStopping(pipeline.early_stopping_rounds)]
+                pass
+                # if ht is not "bayesian":
+                #     from xgboost import callback
+                #     fit_kwargs["callbacks"] = [callback.EarlyStopping(rounds=pipeline.early_stopping_rounds)]
             else:
                 fit_kwargs["early_stopping_rounds"] = pipeline.early_stopping_rounds
         if pipeline.eval_set_split is not None:  # if not none, should be an integer
@@ -112,7 +114,7 @@ def train_for_combination_set(pipeline, ht, combination_dir):
 
     data = functions.load_feature_data_wrapped(combination_dir)
     if len(data["X"]) == 0:
-        print(f"[{pipeline.model_tag.upper()} No data in {combination_dir}. Skipping.")
+        print(f"[{pipeline.model_tag.upper()}] No data in {combination_dir}. Skipping.")
         return None
 
     X, y, fnames, transformers = pipeline.prime(data["X"], data["y"], data["fnames"])
@@ -151,11 +153,13 @@ def train_for_combination_set(pipeline, ht, combination_dir):
     if pipeline.early_stopping_rounds is not None:
         if pipeline.model_tag.lower() == "lgbm":
             from typing import cast, List
-            from lightgbm import early_stopping, EarlyStopping, log_evaluation
-            fit_kwargs["callbacks"] = cast(List[EarlyStopping], [early_stopping(pipeline.early_stopping_rounds)])
+            from lightgbm import early_stopping, log_evaluation
+            fit_kwargs["callbacks"] = [early_stopping(pipeline.early_stopping_rounds)]
         elif pipeline.model_tag.lower() == "xgb":
-            from xgboost import callback
-            fit_kwargs["callbacks"] = [callback.EarlyStopping(pipeline.early_stopping_rounds)]
+            pass
+        #     if ht is not "bayesian":
+        #         from xgboost import callback
+        #         fit_kwargs["callbacks"] = [callback.EarlyStopping(rounds=pipeline.early_stopping_rounds)]
         else:
             fit_kwargs["early_stopping_rounds"] = pipeline.early_stopping_rounds
 

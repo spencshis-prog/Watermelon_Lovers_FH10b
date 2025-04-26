@@ -65,8 +65,8 @@ def stage_standardize(context):
         standardize_wav_files(qilin_preprocess_dir, qilin_standard_dir)
 
     if use_lab:
-        lab_dataset_dir = os.path.join(base_dir, "../../input", "wav_lab")
-        lab_standard_dir = os.path.join(base_dir, "../../intermediate", "standard_lab")
+        lab_dataset_dir = os.path.join(os.getcwd(), "input", "wav_lab")
+        lab_standard_dir = os.path.join(os.getcwd(), "intermediate", "standard_lab")
         context['lab_standard_dir'] = lab_standard_dir
         print("[SW] Standardizing Lab dataset...")
         standardize_wav_files(lab_dataset_dir, lab_standard_dir)

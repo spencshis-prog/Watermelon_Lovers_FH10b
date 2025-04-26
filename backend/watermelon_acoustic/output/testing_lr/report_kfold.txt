@@ -1,672 +1,450 @@
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Regularization: ElasticNet
+MAE: 7.9837
+MSE: 65.0239
+RMSE: 8.0450
+R2: -170.7739
+
+Noise Reduction: bandpass, Feature Extraction: delta_mfcc, Regularization: ElasticNet
+MAE: 4.7973
+MSE: 32.4668
+RMSE: 4.9364
+R2: -96.4486
+
+Noise Reduction: bandpass, Feature Extraction: log_mel_spec, Regularization: ElasticNet
+MAE: 4.7160
+MSE: 39.1052
+RMSE: 4.8585
+R2: -149.8957
+
 Noise Reduction: bandpass, Feature Extraction: mfcc, Regularization: ElasticNet
-MAE: 2.6559
-MSE: 11.7730
-RMSE: 2.9374
-R2: -12.8080
+MAE: 7.6043
+MSE: 86.6625
+RMSE: 7.7129
+R2: -189.6643
 
-Noise Reduction: bandpass, Feature Extraction: raw, Regularization: ElasticNet
-MAE: 1.1686
-MSE: 2.2279
-RMSE: 1.4772
-R2: -1.9256
+Noise Reduction: bandpass, Feature Extraction: percussive_mfcc, Regularization: ElasticNet
+MAE: 11.2022
+MSE: 416.1679
+RMSE: 11.3565
+R2: -1701.4517
 
-Noise Reduction: bandpass, Feature Extraction: rms, Regularization: ElasticNet
-MAE: 0.7658
-MSE: 0.9290
-RMSE: 0.9457
-R2: -0.1555
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Regularization: ElasticNet
+MAE: 8.0009
+MSE: 65.3518
+RMSE: 8.0623
+R2: -170.9155
 
-Noise Reduction: bandpass, Feature Extraction: rolloff, Regularization: ElasticNet
-MAE: 10.8568
-MSE: 172.0278
-RMSE: 11.5154
-R2: -172.2658
+Noise Reduction: raw, Feature Extraction: delta_mfcc, Regularization: ElasticNet
+MAE: 6.1672
+MSE: 93.0938
+RMSE: 6.2895
+R2: -52.0237
 
-Noise Reduction: bandpass, Feature Extraction: spectral, Regularization: ElasticNet
-MAE: 6.3784
-MSE: 58.9620
-RMSE: 6.8161
-R2: -61.2633
-
-Noise Reduction: bandpass, Feature Extraction: wavelet, Regularization: ElasticNet
-MAE: 0.9772
-MSE: 1.4507
-RMSE: 1.1927
-R2: -0.9005
-
-Noise Reduction: bandpass, Feature Extraction: zcr, Regularization: ElasticNet
-MAE: 0.7740
-MSE: 1.0662
-RMSE: 1.0079
-R2: -0.3139
+Noise Reduction: raw, Feature Extraction: log_mel_spec, Regularization: ElasticNet
+MAE: 7.4523
+MSE: 90.4799
+RMSE: 7.6260
+R2: -125.7169
 
 Noise Reduction: raw, Feature Extraction: mfcc, Regularization: ElasticNet
-MAE: 2.2484
-MSE: 7.3092
-RMSE: 2.4960
-R2: -8.0676
+MAE: 9.1248
+MSE: 106.7296
+RMSE: 9.2305
+R2: -154.2704
 
-Noise Reduction: raw, Feature Extraction: raw, Regularization: ElasticNet
-MAE: 1.4928
-MSE: 3.3682
-RMSE: 1.8013
-R2: -3.9841
+Noise Reduction: raw, Feature Extraction: percussive_mfcc, Regularization: ElasticNet
+MAE: 11.5091
+MSE: 174.1347
+RMSE: 11.5797
+R2: -707.0371
 
-Noise Reduction: raw, Feature Extraction: rms, Regularization: ElasticNet
-MAE: 0.7515
-MSE: 0.8963
-RMSE: 0.9277
-R2: -0.1091
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: db1_wavelet, Regularization: ElasticNet
+MAE: 6.7746
+MSE: 47.1494
+RMSE: 6.8515
+R2: -121.4674
 
-Noise Reduction: raw, Feature Extraction: rolloff, Regularization: ElasticNet
-MAE: 20.8557
-MSE: 511.1220
-RMSE: 21.1831
-R2: -603.2600
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: delta_mfcc, Regularization: ElasticNet
+MAE: 1.6499
+MSE: 4.4568
+RMSE: 1.8635
+R2: -4.1404
 
-Noise Reduction: raw, Feature Extraction: spectral, Regularization: ElasticNet
-MAE: 7.5913
-MSE: 85.6090
-RMSE: 8.2247
-R2: -109.9352
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: log_mel_spec, Regularization: ElasticNet
+MAE: 6.2647
+MSE: 44.9956
+RMSE: 6.3896
+R2: -123.6195
 
-Noise Reduction: raw, Feature Extraction: wavelet, Regularization: ElasticNet
-MAE: 1.1811
-MSE: 2.1943
-RMSE: 1.4715
-R2: -1.9228
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: mfcc, Regularization: ElasticNet
+MAE: 1.6718
+MSE: 4.1107
+RMSE: 1.8385
+R2: -8.3802
 
-Noise Reduction: raw, Feature Extraction: zcr, Regularization: ElasticNet
-MAE: 0.8648
-MSE: 1.3379
-RMSE: 1.1366
-R2: -0.7055
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: percussive_mfcc, Regularization: ElasticNet
+MAE: 2.5452
+MSE: 9.1884
+RMSE: 2.6512
+R2: -11.9094
 
-Noise Reduction: spectral_sub, Feature Extraction: mfcc, Regularization: ElasticNet
-MAE: 1.8189
-MSE: 5.1045
-RMSE: 2.2418
-R2: -6.8993
+Noise Reduction: steg, Feature Extraction: db1_wavelet, Regularization: ElasticNet
+MAE: 6.9318
+MSE: 49.5182
+RMSE: 7.0057
+R2: -132.2046
 
-Noise Reduction: spectral_sub, Feature Extraction: raw, Regularization: ElasticNet
-MAE: 7.9220
-MSE: 65.0610
-RMSE: 8.0612
-R2: -91.9338
+Noise Reduction: steg, Feature Extraction: delta_mfcc, Regularization: ElasticNet
+MAE: 3.7942
+MSE: 24.0084
+RMSE: 3.9818
+R2: -60.4372
 
-Noise Reduction: spectral_sub, Feature Extraction: rms, Regularization: ElasticNet
-MAE: 0.7776
-MSE: 0.9701
-RMSE: 0.9650
-R2: -0.2012
+Noise Reduction: steg, Feature Extraction: log_mel_spec, Regularization: ElasticNet
+MAE: 5.5387
+MSE: 47.7716
+RMSE: 5.6426
+R2: -62.5538
 
-Noise Reduction: spectral_sub, Feature Extraction: rolloff, Regularization: ElasticNet
-MAE: 34.6900
-MSE: 1353.8943
-RMSE: 34.7988
-R2: -2322.7166
+Noise Reduction: steg, Feature Extraction: mfcc, Regularization: ElasticNet
+MAE: 1.9368
+MSE: 5.8196
+RMSE: 2.0845
+R2: -6.2185
 
-Noise Reduction: spectral_sub, Feature Extraction: spectral, Regularization: ElasticNet
-MAE: 7.9027
-MSE: 84.7881
-RMSE: 8.0958
-R2: -130.5084
+Noise Reduction: steg, Feature Extraction: percussive_mfcc, Regularization: ElasticNet
+MAE: 3.8263
+MSE: 19.9667
+RMSE: 3.9858
+R2: -44.5936
 
-Noise Reduction: spectral_sub, Feature Extraction: wavelet, Regularization: ElasticNet
-MAE: 0.9984
-MSE: 1.4797
-RMSE: 1.2115
-R2: -1.0494
+Noise Reduction: wiener, Feature Extraction: db1_wavelet, Regularization: ElasticNet
+MAE: 7.5595
+MSE: 58.3124
+RMSE: 7.6195
+R2: -150.6450
 
-Noise Reduction: spectral_sub, Feature Extraction: zcr, Regularization: ElasticNet
-MAE: 0.8617
-MSE: 1.1512
-RMSE: 1.0556
-R2: -0.4584
+Noise Reduction: wiener, Feature Extraction: delta_mfcc, Regularization: ElasticNet
+MAE: 3.1319
+MSE: 12.6036
+RMSE: 3.2381
+R2: -41.0851
 
-Noise Reduction: wavelet_denoise, Feature Extraction: mfcc, Regularization: ElasticNet
-MAE: 1.4590
-MSE: 3.5677
-RMSE: 1.8690
-R2: -4.3102
+Noise Reduction: wiener, Feature Extraction: log_mel_spec, Regularization: ElasticNet
+MAE: 2.8584
+MSE: 13.2143
+RMSE: 3.0448
+R2: -36.7983
 
-Noise Reduction: wavelet_denoise, Feature Extraction: raw, Regularization: ElasticNet
-MAE: 5.5368
-MSE: 40.4292
-RMSE: 6.3268
-R2: -57.0418
+Noise Reduction: wiener, Feature Extraction: mfcc, Regularization: ElasticNet
+MAE: 3.2334
+MSE: 13.9976
+RMSE: 3.4272
+R2: -53.2584
 
-Noise Reduction: wavelet_denoise, Feature Extraction: rms, Regularization: ElasticNet
-MAE: 0.9768
-MSE: 1.5907
-RMSE: 1.2430
-R2: -1.0207
+Noise Reduction: wiener, Feature Extraction: percussive_mfcc, Regularization: ElasticNet
+MAE: 4.6404
+MSE: 27.9937
+RMSE: 4.7311
+R2: -99.3751
 
-Noise Reduction: wavelet_denoise, Feature Extraction: rolloff, Regularization: ElasticNet
-MAE: 28.4755
-MSE: 1064.7109
-RMSE: 30.0338
-R2: -1863.5818
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Regularization: lasso
+MAE: 7.9440
+MSE: 64.5067
+RMSE: 8.0096
+R2: -123.4158
 
-Noise Reduction: wavelet_denoise, Feature Extraction: spectral, Regularization: ElasticNet
-MAE: 12.5515
-MSE: 290.2813
-RMSE: 13.3319
-R2: -518.8821
+Noise Reduction: bandpass, Feature Extraction: delta_mfcc, Regularization: lasso
+MAE: 5.0367
+MSE: 36.6442
+RMSE: 5.3101
+R2: -40.2755
 
-Noise Reduction: wavelet_denoise, Feature Extraction: wavelet, Regularization: ElasticNet
-MAE: 1.5932
-MSE: 4.1630
-RMSE: 2.0211
-R2: -5.5572
-
-Noise Reduction: wavelet_denoise, Feature Extraction: zcr, Regularization: ElasticNet
-MAE: 1.3317
-MSE: 2.6542
-RMSE: 1.5993
-R2: -2.3687
+Noise Reduction: bandpass, Feature Extraction: log_mel_spec, Regularization: lasso
+MAE: 5.2846
+MSE: 38.8131
+RMSE: 5.4481
+R2: -49.9633
 
 Noise Reduction: bandpass, Feature Extraction: mfcc, Regularization: lasso
-MAE: 2.2748
-MSE: 7.5841
-RMSE: 2.5965
-R2: -9.2891
+MAE: 8.6600
+MSE: 113.0752
+RMSE: 8.7739
+R2: -79.7568
 
-Noise Reduction: bandpass, Feature Extraction: raw, Regularization: lasso
-MAE: 1.0517
-MSE: 1.8311
-RMSE: 1.3130
-R2: -1.2015
+Noise Reduction: bandpass, Feature Extraction: percussive_mfcc, Regularization: lasso
+MAE: 3.8059
+MSE: 22.2313
+RMSE: 3.9927
+R2: -35.6926
 
-Noise Reduction: bandpass, Feature Extraction: rms, Regularization: lasso
-MAE: 0.7648
-MSE: 0.9376
-RMSE: 0.9487
-R2: -0.1618
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Regularization: lasso
+MAE: 7.9690
+MSE: 64.7622
+RMSE: 8.0346
+R2: -121.7872
 
-Noise Reduction: bandpass, Feature Extraction: rolloff, Regularization: lasso
-MAE: 10.2143
-MSE: 139.3723
-RMSE: 10.9008
-R2: -189.8487
+Noise Reduction: raw, Feature Extraction: delta_mfcc, Regularization: lasso
+MAE: 3.1342
+MSE: 15.0901
+RMSE: 3.2681
+R2: -21.1388
 
-Noise Reduction: bandpass, Feature Extraction: spectral, Regularization: lasso
-MAE: 6.0916
-MSE: 49.8780
-RMSE: 6.8380
-R2: -71.7249
-
-Noise Reduction: bandpass, Feature Extraction: wavelet, Regularization: lasso
-MAE: 0.9948
-MSE: 1.4949
-RMSE: 1.2132
-R2: -0.9843
-
-Noise Reduction: bandpass, Feature Extraction: zcr, Regularization: lasso
-MAE: 0.7870
-MSE: 1.0961
-RMSE: 1.0188
-R2: -0.3322
+Noise Reduction: raw, Feature Extraction: log_mel_spec, Regularization: lasso
+MAE: 6.9500
+MSE: 57.1982
+RMSE: 7.0669
+R2: -71.9793
 
 Noise Reduction: raw, Feature Extraction: mfcc, Regularization: lasso
-MAE: 2.6645
-MSE: 11.5281
-RMSE: 2.9691
-R2: -17.0636
+MAE: 6.2789
+MSE: 53.1747
+RMSE: 6.3893
+R2: -83.9862
 
-Noise Reduction: raw, Feature Extraction: raw, Regularization: lasso
-MAE: 1.3137
-MSE: 2.8774
-RMSE: 1.6338
-R2: -2.4785
+Noise Reduction: raw, Feature Extraction: percussive_mfcc, Regularization: lasso
+MAE: 4.8047
+MSE: 41.7390
+RMSE: 5.0555
+R2: -117.0789
 
-Noise Reduction: raw, Feature Extraction: rms, Regularization: lasso
-MAE: 0.7617
-MSE: 0.9137
-RMSE: 0.9357
-R2: -0.1251
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: db1_wavelet, Regularization: lasso
+MAE: 6.7542
+MSE: 47.1366
+RMSE: 6.8252
+R2: -93.3714
 
-Noise Reduction: raw, Feature Extraction: rolloff, Regularization: lasso
-MAE: 20.3831
-MSE: 524.4055
-RMSE: 21.1560
-R2: -829.6734
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: delta_mfcc, Regularization: lasso
+MAE: 2.7163
+MSE: 8.8920
+RMSE: 2.8681
+R2: -16.5311
 
-Noise Reduction: raw, Feature Extraction: spectral, Regularization: lasso
-MAE: 7.1505
-MSE: 71.4775
-RMSE: 7.5671
-R2: -113.0902
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: log_mel_spec, Regularization: lasso
+MAE: 2.2458
+MSE: 7.4441
+RMSE: 2.4767
+R2: -12.7650
 
-Noise Reduction: raw, Feature Extraction: wavelet, Regularization: lasso
-MAE: 1.1640
-MSE: 2.1096
-RMSE: 1.4469
-R2: -1.8817
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: mfcc, Regularization: lasso
+MAE: 2.4589
+MSE: 10.2406
+RMSE: 2.6755
+R2: -6.9403
 
-Noise Reduction: raw, Feature Extraction: zcr, Regularization: lasso
-MAE: 0.8658
-MSE: 1.3498
-RMSE: 1.1415
-R2: -0.7019
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: percussive_mfcc, Regularization: lasso
+MAE: 3.7003
+MSE: 19.5159
+RMSE: 3.8093
+R2: -17.7404
 
-Noise Reduction: spectral_sub, Feature Extraction: mfcc, Regularization: lasso
-MAE: 1.6252
-MSE: 5.0046
-RMSE: 2.1823
-R2: -5.4687
+Noise Reduction: steg, Feature Extraction: db1_wavelet, Regularization: lasso
+MAE: 6.5504
+MSE: 44.6224
+RMSE: 6.6280
+R2: -87.8044
 
-Noise Reduction: spectral_sub, Feature Extraction: raw, Regularization: lasso
-MAE: 7.7120
-MSE: 62.7997
-RMSE: 7.9184
-R2: -89.7865
+Noise Reduction: steg, Feature Extraction: delta_mfcc, Regularization: lasso
+MAE: 4.4754
+MSE: 33.5879
+RMSE: 4.6233
+R2: -28.9613
 
-Noise Reduction: spectral_sub, Feature Extraction: rms, Regularization: lasso
-MAE: 0.7792
-MSE: 0.9902
-RMSE: 0.9727
-R2: -0.2141
+Noise Reduction: steg, Feature Extraction: log_mel_spec, Regularization: lasso
+MAE: 3.1009
+MSE: 14.6944
+RMSE: 3.3172
+R2: -25.1899
 
-Noise Reduction: spectral_sub, Feature Extraction: rolloff, Regularization: lasso
-MAE: 24.0604
-MSE: 882.4100
-RMSE: 24.2465
-R2: -864.5254
+Noise Reduction: steg, Feature Extraction: mfcc, Regularization: lasso
+MAE: 3.1272
+MSE: 11.8707
+RMSE: 3.3219
+R2: -27.8634
 
-Noise Reduction: spectral_sub, Feature Extraction: spectral, Regularization: lasso
-MAE: 12.0898
-MSE: 194.2226
-RMSE: 12.2718
-R2: -189.9728
+Noise Reduction: steg, Feature Extraction: percussive_mfcc, Regularization: lasso
+MAE: 4.0462
+MSE: 24.4384
+RMSE: 4.1303
+R2: -31.7707
 
-Noise Reduction: spectral_sub, Feature Extraction: wavelet, Regularization: lasso
-MAE: 1.0101
-MSE: 1.5306
-RMSE: 1.2277
-R2: -1.1035
+Noise Reduction: wiener, Feature Extraction: db1_wavelet, Regularization: lasso
+MAE: 7.5306
+MSE: 58.0349
+RMSE: 7.6041
+R2: -109.6783
 
-Noise Reduction: spectral_sub, Feature Extraction: zcr, Regularization: lasso
-MAE: 0.8588
-MSE: 1.1660
-RMSE: 1.0597
-R2: -0.4578
+Noise Reduction: wiener, Feature Extraction: delta_mfcc, Regularization: lasso
+MAE: 1.7117
+MSE: 4.3406
+RMSE: 1.9341
+R2: -5.0902
 
-Noise Reduction: wavelet_denoise, Feature Extraction: mfcc, Regularization: lasso
-MAE: 1.6549
-MSE: 4.7405
-RMSE: 2.1262
-R2: -4.8342
+Noise Reduction: wiener, Feature Extraction: log_mel_spec, Regularization: lasso
+MAE: 3.4607
+MSE: 17.4110
+RMSE: 3.5772
+R2: -44.8017
 
-Noise Reduction: wavelet_denoise, Feature Extraction: raw, Regularization: lasso
-MAE: 5.5754
-MSE: 40.9435
-RMSE: 6.3554
-R2: -57.4052
+Noise Reduction: wiener, Feature Extraction: mfcc, Regularization: lasso
+MAE: 4.0128
+MSE: 31.9079
+RMSE: 4.2203
+R2: -91.3520
 
-Noise Reduction: wavelet_denoise, Feature Extraction: rms, Regularization: lasso
-MAE: 0.9731
-MSE: 1.5745
-RMSE: 1.2407
-R2: -1.0330
+Noise Reduction: wiener, Feature Extraction: percussive_mfcc, Regularization: lasso
+MAE: 3.0165
+MSE: 18.0457
+RMSE: 3.1432
+R2: -12.3258
 
-Noise Reduction: wavelet_denoise, Feature Extraction: rolloff, Regularization: lasso
-MAE: 12.9012
-MSE: 377.9925
-RMSE: 13.7722
-R2: -347.0607
+Noise Reduction: bandpass, Feature Extraction: db1_wavelet, Regularization: none
+MAE: 7.9664
+MSE: 64.8466
+RMSE: 8.0315
+R2: -124.3130
 
-Noise Reduction: wavelet_denoise, Feature Extraction: spectral, Regularization: lasso
-MAE: 11.9977
-MSE: 278.1218
-RMSE: 13.7125
-R2: -544.4429
+Noise Reduction: bandpass, Feature Extraction: delta_mfcc, Regularization: none
+MAE: 8.3183
+MSE: 99.6136
+RMSE: 8.4734
+R2: -263.3024
 
-Noise Reduction: wavelet_denoise, Feature Extraction: wavelet, Regularization: lasso
-MAE: 1.7230
-MSE: 4.4664
-RMSE: 2.1040
-R2: -5.6564
-
-Noise Reduction: wavelet_denoise, Feature Extraction: zcr, Regularization: lasso
-MAE: 1.3610
-MSE: 2.8236
-RMSE: 1.6461
-R2: -2.6798
+Noise Reduction: bandpass, Feature Extraction: log_mel_spec, Regularization: none
+MAE: 4.7583
+MSE: 29.8929
+RMSE: 4.9055
+R2: -43.6629
 
 Noise Reduction: bandpass, Feature Extraction: mfcc, Regularization: none
-MAE: 2.6840
-MSE: 10.9323
-RMSE: 2.9894
-R2: -13.9157
+MAE: 6.4000
+MSE: 48.6785
+RMSE: 6.4666
+R2: -68.5499
 
-Noise Reduction: bandpass, Feature Extraction: raw, Regularization: none
-MAE: 4.4900
-MSE: 24.5731
-RMSE: 4.9310
-R2: -33.9000
+Noise Reduction: bandpass, Feature Extraction: percussive_mfcc, Regularization: none
+MAE: 7.8219
+MSE: 66.7786
+RMSE: 7.8987
+R2: -109.5749
 
-Noise Reduction: bandpass, Feature Extraction: rms, Regularization: none
-MAE: 0.7639
-MSE: 0.9131
-RMSE: 0.9445
-R2: -0.1786
+Noise Reduction: raw, Feature Extraction: db1_wavelet, Regularization: none
+MAE: 7.9221
+MSE: 64.1576
+RMSE: 7.9877
+R2: -123.6792
 
-Noise Reduction: bandpass, Feature Extraction: rolloff, Regularization: none
-MAE: 16.1756
-MSE: 339.1113
-RMSE: 17.4689
-R2: -527.3633
+Noise Reduction: raw, Feature Extraction: delta_mfcc, Regularization: none
+MAE: 8.0665
+MSE: 107.0226
+RMSE: 8.2139
+R2: -101.8743
 
-Noise Reduction: bandpass, Feature Extraction: spectral, Regularization: none
-MAE: 7.3452
-MSE: 77.1988
-RMSE: 7.9763
-R2: -125.2169
-
-Noise Reduction: bandpass, Feature Extraction: wavelet, Regularization: none
-MAE: 1.0326
-MSE: 1.6295
-RMSE: 1.2660
-R2: -1.1720
-
-Noise Reduction: bandpass, Feature Extraction: zcr, Regularization: none
-MAE: 0.7919
-MSE: 1.0656
-RMSE: 1.0165
-R2: -0.3606
+Noise Reduction: raw, Feature Extraction: log_mel_spec, Regularization: none
+MAE: 3.8976
+MSE: 23.4572
+RMSE: 4.0825
+R2: -52.9708
 
 Noise Reduction: raw, Feature Extraction: mfcc, Regularization: none
-MAE: 2.4567
-MSE: 9.1888
-RMSE: 2.8666
-R2: -11.0098
+MAE: 8.2322
+MSE: 111.0786
+RMSE: 8.3702
+R2: -93.3621
 
-Noise Reduction: raw, Feature Extraction: raw, Regularization: none
-MAE: 4.7785
-MSE: 27.7148
-RMSE: 5.2506
-R2: -39.2985
+Noise Reduction: raw, Feature Extraction: percussive_mfcc, Regularization: none
+MAE: 2.8776
+MSE: 12.9955
+RMSE: 3.1255
+R2: -38.5477
 
-Noise Reduction: raw, Feature Extraction: rms, Regularization: none
-MAE: 0.7650
-MSE: 0.9372
-RMSE: 0.9577
-R2: -0.2129
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: db1_wavelet, Regularization: none
+MAE: 7.0068
+MSE: 50.1175
+RMSE: 7.0733
+R2: -92.1906
 
-Noise Reduction: raw, Feature Extraction: rolloff, Regularization: none
-MAE: 20.7839
-MSE: 515.4953
-RMSE: 21.4062
-R2: -718.8537
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: delta_mfcc, Regularization: none
+MAE: 3.1499
+MSE: 15.6554
+RMSE: 3.3173
+R2: -42.1597
 
-Noise Reduction: raw, Feature Extraction: spectral, Regularization: none
-MAE: 7.4924
-MSE: 89.0776
-RMSE: 8.1213
-R2: -94.2205
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: log_mel_spec, Regularization: none
+MAE: 1.9599
+MSE: 6.8893
+RMSE: 2.1723
+R2: -19.2772
 
-Noise Reduction: raw, Feature Extraction: wavelet, Regularization: none
-MAE: 1.1952
-MSE: 2.2154
-RMSE: 1.4772
-R2: -1.9825
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: mfcc, Regularization: none
+MAE: 3.7725
+MSE: 21.6838
+RMSE: 3.9341
+R2: -16.6915
 
-Noise Reduction: raw, Feature Extraction: zcr, Regularization: none
-MAE: 0.8925
-MSE: 1.4404
-RMSE: 1.1847
-R2: -0.8634
+Noise Reduction: spectral_sub_dynamic, Feature Extraction: percussive_mfcc, Regularization: none
+MAE: 2.2933
+MSE: 6.8516
+RMSE: 2.5379
+R2: -10.5046
 
-Noise Reduction: spectral_sub, Feature Extraction: mfcc, Regularization: none
-MAE: 1.9849
-MSE: 7.9054
-RMSE: 2.7212
-R2: -9.5635
+Noise Reduction: steg, Feature Extraction: db1_wavelet, Regularization: none
+MAE: 6.9032
+MSE: 49.1152
+RMSE: 6.9812
+R2: -90.6214
 
-Noise Reduction: spectral_sub, Feature Extraction: raw, Regularization: none
-MAE: 8.0982
-MSE: 67.1399
-RMSE: 8.1898
-R2: -95.7370
+Noise Reduction: steg, Feature Extraction: delta_mfcc, Regularization: none
+MAE: 4.2427
+MSE: 29.7742
+RMSE: 4.4102
+R2: -37.2171
 
-Noise Reduction: spectral_sub, Feature Extraction: rms, Regularization: none
-MAE: 0.7841
-MSE: 0.9683
-RMSE: 0.9657
-R2: -0.2091
+Noise Reduction: steg, Feature Extraction: log_mel_spec, Regularization: none
+MAE: 6.2414
+MSE: 53.0149
+RMSE: 6.3213
+R2: -151.1682
 
-Noise Reduction: spectral_sub, Feature Extraction: rolloff, Regularization: none
-MAE: 44.0210
-MSE: 2647.4765
-RMSE: 44.1523
-R2: -2819.6231
+Noise Reduction: steg, Feature Extraction: mfcc, Regularization: none
+MAE: 2.9145
+MSE: 12.6512
+RMSE: 3.1388
+R2: -34.4922
 
-Noise Reduction: spectral_sub, Feature Extraction: spectral, Regularization: none
-MAE: 17.5312
-MSE: 387.4410
-RMSE: 17.8089
-R2: -483.6615
+Noise Reduction: steg, Feature Extraction: percussive_mfcc, Regularization: none
+MAE: 2.7481
+MSE: 11.1857
+RMSE: 2.9946
+R2: -31.5004
 
-Noise Reduction: spectral_sub, Feature Extraction: wavelet, Regularization: none
-MAE: 1.0128
-MSE: 1.5091
-RMSE: 1.2222
-R2: -1.0563
+Noise Reduction: wiener, Feature Extraction: db1_wavelet, Regularization: none
+MAE: 7.6030
+MSE: 59.0794
+RMSE: 7.6752
+R2: -110.7957
 
-Noise Reduction: spectral_sub, Feature Extraction: zcr, Regularization: none
-MAE: 0.8560
-MSE: 1.1367
-RMSE: 1.0468
-R2: -0.4243
+Noise Reduction: wiener, Feature Extraction: delta_mfcc, Regularization: none
+MAE: 4.0407
+MSE: 21.2166
+RMSE: 4.2111
+R2: -30.1856
 
-Noise Reduction: wavelet_denoise, Feature Extraction: mfcc, Regularization: none
-MAE: 2.0979
-MSE: 6.4323
-RMSE: 2.5286
-R2: -7.9084
+Noise Reduction: wiener, Feature Extraction: log_mel_spec, Regularization: none
+MAE: 6.6581
+MSE: 52.0917
+RMSE: 6.7513
+R2: -122.3104
 
-Noise Reduction: wavelet_denoise, Feature Extraction: raw, Regularization: none
-MAE: 5.8128
-MSE: 43.3152
-RMSE: 6.5475
-R2: -62.0174
+Noise Reduction: wiener, Feature Extraction: mfcc, Regularization: none
+MAE: 1.9492
+MSE: 5.7592
+RMSE: 2.1617
+R2: -9.5161
 
-Noise Reduction: wavelet_denoise, Feature Extraction: rms, Regularization: none
-MAE: 0.9854
-MSE: 1.6168
-RMSE: 1.2573
-R2: -1.0880
-
-Noise Reduction: wavelet_denoise, Feature Extraction: rolloff, Regularization: none
-MAE: 24.0688
-MSE: 690.6146
-RMSE: 24.7964
-R2: -1077.9108
-
-Noise Reduction: wavelet_denoise, Feature Extraction: spectral, Regularization: none
-MAE: 15.9557
-MSE: 478.1539
-RMSE: 17.7599
-R2: -606.0977
-
-Noise Reduction: wavelet_denoise, Feature Extraction: wavelet, Regularization: none
-MAE: 1.5874
-MSE: 4.0325
-RMSE: 1.9921
-R2: -5.2023
-
-Noise Reduction: wavelet_denoise, Feature Extraction: zcr, Regularization: none
-MAE: 1.4152
-MSE: 3.0573
-RMSE: 1.7151
-R2: -2.9682
-
-Noise Reduction: bandpass, Feature Extraction: mfcc, Regularization: ridge
-MAE: 1.6386
-MSE: 4.1822
-RMSE: 2.0165
-R2: -5.7622
-
-Noise Reduction: bandpass, Feature Extraction: raw, Regularization: ridge
-MAE: 3.9603
-MSE: 19.4038
-RMSE: 4.3807
-R2: -27.2714
-
-Noise Reduction: bandpass, Feature Extraction: rms, Regularization: ridge
-MAE: 0.7545
-MSE: 0.9048
-RMSE: 0.9336
-R2: -0.1262
-
-Noise Reduction: bandpass, Feature Extraction: rolloff, Regularization: ridge
-MAE: 15.5219
-MSE: 346.7313
-RMSE: 16.1536
-R2: -461.2696
-
-Noise Reduction: bandpass, Feature Extraction: spectral, Regularization: ridge
-MAE: 4.4020
-MSE: 29.2360
-RMSE: 4.8002
-R2: -43.4558
-
-Noise Reduction: bandpass, Feature Extraction: wavelet, Regularization: ridge
-MAE: 1.0042
-MSE: 1.5268
-RMSE: 1.2257
-R2: -1.0346
-
-Noise Reduction: bandpass, Feature Extraction: zcr, Regularization: ridge
-MAE: 0.7800
-MSE: 1.0825
-RMSE: 1.0175
-R2: -0.3494
-
-Noise Reduction: raw, Feature Extraction: mfcc, Regularization: ridge
-MAE: 1.5509
-MSE: 3.6603
-RMSE: 1.8631
-R2: -3.9388
-
-Noise Reduction: raw, Feature Extraction: raw, Regularization: ridge
-MAE: 4.4352
-MSE: 25.2713
-RMSE: 4.9831
-R2: -35.5291
-
-Noise Reduction: raw, Feature Extraction: rms, Regularization: ridge
-MAE: 0.7615
-MSE: 0.9254
-RMSE: 0.9463
-R2: -0.1656
-
-Noise Reduction: raw, Feature Extraction: rolloff, Regularization: ridge
-MAE: 19.0084
-MSE: 448.1472
-RMSE: 19.5198
-R2: -778.2123
-
-Noise Reduction: raw, Feature Extraction: spectral, Regularization: ridge
-MAE: 9.2296
-MSE: 112.0103
-RMSE: 9.6418
-R2: -150.0436
-
-Noise Reduction: raw, Feature Extraction: wavelet, Regularization: ridge
-MAE: 1.2142
-MSE: 2.2782
-RMSE: 1.4986
-R2: -2.0662
-
-Noise Reduction: raw, Feature Extraction: zcr, Regularization: ridge
-MAE: 0.9097
-MSE: 1.4833
-RMSE: 1.1996
-R2: -0.9951
-
-Noise Reduction: spectral_sub, Feature Extraction: mfcc, Regularization: ridge
-MAE: 1.9196
-MSE: 6.5064
-RMSE: 2.4851
-R2: -7.3422
-
-Noise Reduction: spectral_sub, Feature Extraction: raw, Regularization: ridge
-MAE: 8.1472
-MSE: 67.7989
-RMSE: 8.2275
-R2: -94.6661
-
-Noise Reduction: spectral_sub, Feature Extraction: rms, Regularization: ridge
-MAE: 0.7775
-MSE: 0.9661
-RMSE: 0.9629
-R2: -0.1951
-
-Noise Reduction: spectral_sub, Feature Extraction: rolloff, Regularization: ridge
-MAE: 19.2042
-MSE: 433.3698
-RMSE: 19.3822
-R2: -700.4013
-
-Noise Reduction: spectral_sub, Feature Extraction: spectral, Regularization: ridge
-MAE: 14.9877
-MSE: 327.1903
-RMSE: 15.1613
-R2: -485.7266
-
-Noise Reduction: spectral_sub, Feature Extraction: wavelet, Regularization: ridge
-MAE: 0.9811
-MSE: 1.4329
-RMSE: 1.1892
-R2: -0.9352
-
-Noise Reduction: spectral_sub, Feature Extraction: zcr, Regularization: ridge
-MAE: 0.8629
-MSE: 1.1618
-RMSE: 1.0591
-R2: -0.4613
-
-Noise Reduction: wavelet_denoise, Feature Extraction: mfcc, Regularization: ridge
-MAE: 1.7189
-MSE: 4.9705
-RMSE: 2.1765
-R2: -5.9790
-
-Noise Reduction: wavelet_denoise, Feature Extraction: raw, Regularization: ridge
-MAE: 6.0969
-MSE: 45.9281
-RMSE: 6.7633
-R2: -65.7982
-
-Noise Reduction: wavelet_denoise, Feature Extraction: rms, Regularization: ridge
-MAE: 0.9826
-MSE: 1.6063
-RMSE: 1.2528
-R2: -1.0690
-
-Noise Reduction: wavelet_denoise, Feature Extraction: rolloff, Regularization: ridge
-MAE: 16.5357
-MSE: 322.6858
-RMSE: 17.6724
-R2: -419.7737
-
-Noise Reduction: wavelet_denoise, Feature Extraction: spectral, Regularization: ridge
-MAE: 7.1506
-MSE: 91.7935
-RMSE: 8.0144
-R2: -93.1336
-
-Noise Reduction: wavelet_denoise, Feature Extraction: wavelet, Regularization: ridge
-MAE: 1.5833
-MSE: 4.0107
-RMSE: 1.9901
-R2: -4.9396
-
-Noise Reduction: wavelet_denoise, Feature Extraction: zcr, Regularization: ridge
-MAE: 1.3612
-MSE: 2.8087
-RMSE: 1.6509
-R2: -2.6906
+Noise Reduction: wiener, Feature Extraction: percussive_mfcc, Regularization: none
+MAE: 2.9628
+MSE: 11.3709
+RMSE: 3.0846
+R2: -26.1277
 

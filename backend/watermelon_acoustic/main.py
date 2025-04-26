@@ -33,8 +33,8 @@ import warnings
 warnings.filterwarnings("ignore", message="n_quantiles.*")
 
 # Dataset Configuration
-USE_QILIN = True
-USE_LAB = False
+USE_QILIN = False
+USE_LAB = True
 TEST_SPLIT_RATIO = 0.15  # fraction for test (e.g. 15%), set to 0 for final model
 NUM_FEAT = 50
 
@@ -46,18 +46,19 @@ K_FOLDS = 5  # n_splits KFold param
 CV_FOLDS = 3  # cv=n Regressor param
 
 # Pipeline Configuration
-PREPROCESS = True
+PREPROCESS = False
 LINEAR_REGRESSION = False
 RANDOM_FOREST = False
 EXTRA_TREES = False
 LIGHTGBM = False
 CATBOOST = False  # run tests
 XGBOOST = False
+
 MULTILAYER_PERCEPTRON = False
 KERAS = False  # run tests pls
 
 TRAIN_NEW_MODELS = False  # k-fold metrics will not update unless training new models
-OPEN_COMPARATOR = False  # to run, put 'streamlit run main.py' into the command line
+OPEN_COMPARATOR = True  # to run, put 'streamlit run main.py' into the command line
 
 # TODO: determine if the eval set and early stopping should be used on the final model training
 # TODO: also fix xgbregressor's early stopping mechanism
@@ -178,7 +179,7 @@ def instantiate_pipelines():
         model_tag="cat", model_cls=CatBoostRegressor(random_state=42, silent=True),
         # primer_functions=[primers.log_transform],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, eval_set_split=0.1,
-        ht_options=["default", "grid", "random", "bayesian"],
+        ht_options=["default", "grid", "random"], #, "bayesian"],
         params_grid=params.cat_grid,
         params_random=params.cat_random,
         params_bayesian=params.cat_bayesian,

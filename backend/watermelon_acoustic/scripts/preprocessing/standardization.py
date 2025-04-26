@@ -1,6 +1,7 @@
 import os
 
 from pydub import AudioSegment
+from pydub.utils import which
 
 import functions
 import main
@@ -17,6 +18,8 @@ def standardize_wav_file(input_path, output_path, target_duration_ms=1000, targe
       - Export with 16-bit PCM
     """
     try:
+        AudioSegment.converter = which("ffmpeg") or os.path.abspath("ffmpeg/bin/ffmpeg.exe")
+
         audio = AudioSegment.from_wav(input_path)
         # Set sample rate and channels
         audio = audio.set_frame_rate(target_sample_rate).set_channels(target_channels)
@@ -52,14 +55,17 @@ def standardize_wav_files(input_dir, output_dir):
     print(f"[SW] Standardizing all .wav files in {rel_input_dir} into {rel_output_dir}")
 
     for file in os.listdir(input_dir):
-        input_path = os.path.join(input_dir, file)
+        input_path = os.path.normpath(os.path.join(input_dir, file))
+        output_path = os.path.normpath(os.path.join(output_dir, file))
+
         if not os.path.isfile(input_path):
-            # Skip subfolders
             continue
-        if file.endswith(".wav"):
-            input_path = os.path.join(input_dir, file)
-            output_path = os.path.join(output_dir, file)
+
+        print(f"[SW] Preparing to standardize: {input_path}")
+        try:
             standardize_wav_file(input_path, output_path)
+        except Exception as e:
+            print(f"[SW] ERROR for {file}: {e}")
     print(f"[SW] Standardizing complete. Standardized files are in {rel_output_dir}")
 
 
