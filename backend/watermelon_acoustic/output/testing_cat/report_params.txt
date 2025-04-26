@@ -3,292 +3,64 @@
 --- GRID ---
 
 CAT | grid | iterations | [100, 200]
-    100: 71/84
-    200: 13/84
+    100: 6/6
+    200: 0/6
 
 CAT | grid | depth | [4, 6, 8]
-    4: 37/84
-    6: 25/84
-    8: 22/84
+    4: 4/6
+    6: 1/6
+    8: 1/6
 
 CAT | grid | learning_rate | [0.01, 0.1]
-    0.01: 37/84
-    0.1: 47/84
+    0.01: 0/6
+    0.1: 6/6
 
 --- RANDOM ---
 
 CAT | random | iterations | [100, 200, 300]
-    100: 13/84
-    200: 25/84
-    300: 46/84
+    100: 0/6
+    200: 1/6
+    300: 5/6
 
 CAT | random | depth | [4, 6, 8, 10]
-    4: 10/84
-    6: 46/84
-    8: 15/84
-    10: 13/84
+    4: 1/6
+    6: 5/6
+    8: 0/6
+    10: 0/6
 
 CAT | random | learning_rate | [0.001, 0.01, 0.1]
-    0.001: 21/84
-    0.01: 20/84
-    0.1: 43/84
+    0.001: 0/6
+    0.01: 1/6
+    0.1: 5/6
 
 CAT | random | l2_leaf_reg | [1, 3, 5, 7]
-    1: 15/84
-    3: 28/84
-    5: 28/84
-    7: 13/84
+    1: 0/6
+    3: 5/6
+    5: 1/6
+    7: 0/6
 
 === Model Summary ===
-cat_bandpass_chroma_default.pkl -> {}
-cat_bandpass_chroma_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_bandpass_chroma_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_bandpass_db1_wavelet_default.pkl -> {}
-cat_bandpass_db1_wavelet_grid.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.01}
-cat_bandpass_db1_wavelet_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.001, 'l2_leaf_reg': 5}
-cat_bandpass_delta_mfcc_default.pkl -> {}
-cat_bandpass_delta_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_bandpass_delta_mfcc_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_bandpass_log_mel_spec_default.pkl -> {}
-cat_bandpass_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_bandpass_log_mel_spec_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_bandpass_mfcc_default.pkl -> {}
-cat_bandpass_mfcc_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_bandpass_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_bandpass_percussive_mfcc_default.pkl -> {}
-cat_bandpass_percussive_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_bandpass_percussive_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_bandpass_rms_default.pkl -> {}
-cat_bandpass_rms_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_bandpass_rms_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.001, 'l2_leaf_reg': 5}
-cat_bandpass_spectral_centroid_default.pkl -> {}
-cat_bandpass_spectral_centroid_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
-cat_bandpass_spectral_centroid_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01, 'l2_leaf_reg': 5}
-cat_bandpass_spectral_contrast_default.pkl -> {}
-cat_bandpass_spectral_contrast_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_bandpass_spectral_contrast_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_bandpass_spectral_flux_default.pkl -> {}
-cat_bandpass_spectral_flux_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_bandpass_spectral_flux_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_bandpass_spectral_rolloff_default.pkl -> {}
-cat_bandpass_spectral_rolloff_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_bandpass_spectral_rolloff_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_bandpass_zcr_default.pkl -> {}
-cat_bandpass_zcr_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_bandpass_zcr_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_db1_dwt_chroma_default.pkl -> {}
-cat_db1_dwt_chroma_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
-cat_db1_dwt_chroma_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01, 'l2_leaf_reg': 5}
-cat_db1_dwt_db1_wavelet_default.pkl -> {}
-cat_db1_dwt_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_db1_dwt_db1_wavelet_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_db1_dwt_delta_mfcc_default.pkl -> {}
-cat_db1_dwt_delta_mfcc_grid.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.1}
-cat_db1_dwt_delta_mfcc_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_db1_dwt_log_mel_spec_default.pkl -> {}
-cat_db1_dwt_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_db1_dwt_log_mel_spec_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_db1_dwt_mfcc_default.pkl -> {}
-cat_db1_dwt_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_db1_dwt_mfcc_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_db1_dwt_percussive_mfcc_default.pkl -> {}
-cat_db1_dwt_percussive_mfcc_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_db1_dwt_percussive_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_db1_dwt_rms_default.pkl -> {}
-cat_db1_dwt_rms_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
-cat_db1_dwt_rms_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.001, 'l2_leaf_reg': 5}
-cat_db1_dwt_spectral_centroid_default.pkl -> {}
-cat_db1_dwt_spectral_centroid_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_db1_dwt_spectral_centroid_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.001, 'l2_leaf_reg': 5}
-cat_db1_dwt_spectral_contrast_default.pkl -> {}
-cat_db1_dwt_spectral_contrast_grid.pkl -> {'iterations': 200, 'depth': 8, 'learning_rate': 0.01}
-cat_db1_dwt_spectral_contrast_random.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 7}
-cat_db1_dwt_spectral_flux_default.pkl -> {}
-cat_db1_dwt_spectral_flux_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_db1_dwt_spectral_flux_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.001, 'l2_leaf_reg': 5}
-cat_db1_dwt_spectral_rolloff_default.pkl -> {}
-cat_db1_dwt_spectral_rolloff_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_db1_dwt_spectral_rolloff_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_db1_dwt_zcr_default.pkl -> {}
-cat_db1_dwt_zcr_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_db1_dwt_zcr_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_db8_dwt_chroma_default.pkl -> {}
-cat_db8_dwt_chroma_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
-cat_db8_dwt_chroma_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.001, 'l2_leaf_reg': 5}
-cat_db8_dwt_db1_wavelet_default.pkl -> {}
-cat_db8_dwt_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_db8_dwt_db1_wavelet_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_db8_dwt_delta_mfcc_default.pkl -> {}
-cat_db8_dwt_delta_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_db8_dwt_delta_mfcc_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_db8_dwt_log_mel_spec_default.pkl -> {}
-cat_db8_dwt_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_db8_dwt_log_mel_spec_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_db8_dwt_mfcc_default.pkl -> {}
-cat_db8_dwt_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_db8_dwt_mfcc_random.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 7}
-cat_db8_dwt_percussive_mfcc_default.pkl -> {}
-cat_db8_dwt_percussive_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_db8_dwt_percussive_mfcc_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_db8_dwt_rms_default.pkl -> {}
-cat_db8_dwt_rms_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_db8_dwt_rms_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01, 'l2_leaf_reg': 5}
-cat_db8_dwt_spectral_centroid_default.pkl -> {}
-cat_db8_dwt_spectral_centroid_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_db8_dwt_spectral_centroid_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_db8_dwt_spectral_contrast_default.pkl -> {}
-cat_db8_dwt_spectral_contrast_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_db8_dwt_spectral_contrast_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_db8_dwt_spectral_flux_default.pkl -> {}
-cat_db8_dwt_spectral_flux_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_db8_dwt_spectral_flux_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_db8_dwt_spectral_rolloff_default.pkl -> {}
-cat_db8_dwt_spectral_rolloff_grid.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01}
-cat_db8_dwt_spectral_rolloff_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_db8_dwt_zcr_default.pkl -> {}
-cat_db8_dwt_zcr_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_db8_dwt_zcr_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_raw_chroma_default.pkl -> {}
-cat_raw_chroma_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_raw_chroma_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_raw_db1_wavelet_default.pkl -> {}
-cat_raw_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_raw_db1_wavelet_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_raw_delta_mfcc_default.pkl -> {}
-cat_raw_delta_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_raw_delta_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_raw_log_mel_spec_default.pkl -> {}
-cat_raw_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_raw_log_mel_spec_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_raw_mfcc_default.pkl -> {}
-cat_raw_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_raw_mfcc_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_raw_percussive_mfcc_default.pkl -> {}
-cat_raw_percussive_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_raw_percussive_mfcc_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_raw_rms_default.pkl -> {}
-cat_raw_rms_grid.pkl -> {'iterations': 200, 'depth': 8, 'learning_rate': 0.01}
-cat_raw_rms_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_raw_spectral_centroid_default.pkl -> {}
-cat_raw_spectral_centroid_grid.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01}
-cat_raw_spectral_centroid_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_raw_spectral_contrast_default.pkl -> {}
-cat_raw_spectral_contrast_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_raw_spectral_contrast_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_raw_spectral_flux_default.pkl -> {}
-cat_raw_spectral_flux_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_raw_spectral_flux_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_raw_spectral_rolloff_default.pkl -> {}
-cat_raw_spectral_rolloff_grid.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01}
-cat_raw_spectral_rolloff_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01, 'l2_leaf_reg': 5}
-cat_raw_zcr_default.pkl -> {}
-cat_raw_zcr_grid.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01}
-cat_raw_zcr_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_spectral_sub_dynamic_chroma_default.pkl -> {}
-cat_spectral_sub_dynamic_chroma_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_spectral_sub_dynamic_chroma_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_spectral_sub_dynamic_db1_wavelet_default.pkl -> {}
-cat_spectral_sub_dynamic_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_spectral_sub_dynamic_db1_wavelet_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_spectral_sub_dynamic_delta_mfcc_default.pkl -> {}
-cat_spectral_sub_dynamic_delta_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_spectral_sub_dynamic_delta_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
+cat_spectral_sub_dynamic_log_mel_spec_bayesian.pkl -> {}
 cat_spectral_sub_dynamic_log_mel_spec_default.pkl -> {}
-cat_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
-cat_spectral_sub_dynamic_log_mel_spec_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
+cat_spectral_sub_dynamic_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
+cat_spectral_sub_dynamic_log_mel_spec_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
+cat_spectral_sub_dynamic_mfcc_bayesian.pkl -> {}
 cat_spectral_sub_dynamic_mfcc_default.pkl -> {}
-cat_spectral_sub_dynamic_mfcc_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
+cat_spectral_sub_dynamic_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
 cat_spectral_sub_dynamic_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_spectral_sub_dynamic_percussive_mfcc_default.pkl -> {}
-cat_spectral_sub_dynamic_percussive_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_spectral_sub_dynamic_percussive_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_spectral_sub_dynamic_rms_default.pkl -> {}
-cat_spectral_sub_dynamic_rms_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_spectral_sub_dynamic_rms_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_spectral_sub_dynamic_spectral_centroid_default.pkl -> {}
-cat_spectral_sub_dynamic_spectral_centroid_grid.pkl -> {'iterations': 200, 'depth': 8, 'learning_rate': 0.01}
-cat_spectral_sub_dynamic_spectral_centroid_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_spectral_sub_dynamic_spectral_contrast_default.pkl -> {}
-cat_spectral_sub_dynamic_spectral_contrast_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_spectral_sub_dynamic_spectral_contrast_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.001, 'l2_leaf_reg': 5}
+cat_spectral_sub_dynamic_spectral_flux_bayesian.pkl -> {}
 cat_spectral_sub_dynamic_spectral_flux_default.pkl -> {}
-cat_spectral_sub_dynamic_spectral_flux_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_spectral_sub_dynamic_spectral_flux_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_spectral_sub_dynamic_spectral_rolloff_default.pkl -> {}
-cat_spectral_sub_dynamic_spectral_rolloff_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_spectral_sub_dynamic_spectral_rolloff_random.pkl -> {'iterations': 300, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 1}
-cat_spectral_sub_dynamic_zcr_default.pkl -> {}
-cat_spectral_sub_dynamic_zcr_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_spectral_sub_dynamic_zcr_random.pkl -> {'iterations': 300, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 1}
-cat_steg_chroma_default.pkl -> {}
-cat_steg_chroma_grid.pkl -> {'iterations': 200, 'depth': 8, 'learning_rate': 0.01}
-cat_steg_chroma_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_steg_db1_wavelet_default.pkl -> {}
-cat_steg_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_steg_db1_wavelet_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_steg_delta_mfcc_default.pkl -> {}
-cat_steg_delta_mfcc_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_steg_delta_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
+cat_spectral_sub_dynamic_spectral_flux_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
+cat_spectral_sub_dynamic_spectral_flux_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
+cat_steg_log_mel_spec_bayesian.pkl -> {}
 cat_steg_log_mel_spec_default.pkl -> {}
-cat_steg_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_steg_log_mel_spec_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_steg_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
+cat_steg_log_mel_spec_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01, 'l2_leaf_reg': 5}
+cat_steg_mfcc_bayesian.pkl -> {}
 cat_steg_mfcc_default.pkl -> {}
 cat_steg_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
 cat_steg_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_steg_percussive_mfcc_default.pkl -> {}
-cat_steg_percussive_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_steg_percussive_mfcc_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_steg_rms_default.pkl -> {}
-cat_steg_rms_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_steg_rms_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_steg_spectral_centroid_default.pkl -> {}
-cat_steg_spectral_centroid_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_steg_spectral_centroid_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.01, 'l2_leaf_reg': 5}
-cat_steg_spectral_contrast_default.pkl -> {}
-cat_steg_spectral_contrast_grid.pkl -> {'iterations': 200, 'depth': 8, 'learning_rate': 0.01}
-cat_steg_spectral_contrast_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
+cat_steg_spectral_flux_bayesian.pkl -> {}
 cat_steg_spectral_flux_default.pkl -> {}
-cat_steg_spectral_flux_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_steg_spectral_flux_random.pkl -> {'iterations': 200, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 5}
-cat_steg_spectral_rolloff_default.pkl -> {}
-cat_steg_spectral_rolloff_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_steg_spectral_rolloff_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_steg_zcr_default.pkl -> {}
-cat_steg_zcr_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.01}
-cat_steg_zcr_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_wiener_chroma_default.pkl -> {}
-cat_wiener_chroma_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_wiener_chroma_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_wiener_db1_wavelet_default.pkl -> {}
-cat_wiener_db1_wavelet_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_wiener_db1_wavelet_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_wiener_delta_mfcc_default.pkl -> {}
-cat_wiener_delta_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_wiener_delta_mfcc_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_wiener_log_mel_spec_default.pkl -> {}
-cat_wiener_log_mel_spec_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_wiener_log_mel_spec_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_wiener_mfcc_default.pkl -> {}
-cat_wiener_mfcc_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_wiener_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_wiener_percussive_mfcc_default.pkl -> {}
-cat_wiener_percussive_mfcc_grid.pkl -> {'iterations': 100, 'depth': 8, 'learning_rate': 0.1}
-cat_wiener_percussive_mfcc_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_wiener_rms_default.pkl -> {}
-cat_wiener_rms_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.01}
-cat_wiener_rms_random.pkl -> {'iterations': 100, 'depth': 10, 'learning_rate': 0.001, 'l2_leaf_reg': 7}
-cat_wiener_spectral_centroid_default.pkl -> {}
-cat_wiener_spectral_centroid_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.1}
-cat_wiener_spectral_centroid_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_wiener_spectral_contrast_default.pkl -> {}
-cat_wiener_spectral_contrast_grid.pkl -> {'iterations': 200, 'depth': 8, 'learning_rate': 0.01}
-cat_wiener_spectral_contrast_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_wiener_spectral_flux_default.pkl -> {}
-cat_wiener_spectral_flux_grid.pkl -> {'iterations': 200, 'depth': 8, 'learning_rate': 0.01}
-cat_wiener_spectral_flux_random.pkl -> {'iterations': 300, 'depth': 8, 'learning_rate': 0.01, 'l2_leaf_reg': 1}
-cat_wiener_spectral_rolloff_default.pkl -> {}
-cat_wiener_spectral_rolloff_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
-cat_wiener_spectral_rolloff_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}
-cat_wiener_zcr_default.pkl -> {}
-cat_wiener_zcr_grid.pkl -> {'iterations': 100, 'depth': 4, 'learning_rate': 0.01}
-cat_wiener_zcr_random.pkl -> {'iterations': 200, 'depth': 4, 'learning_rate': 0.001, 'l2_leaf_reg': 5}
+cat_steg_spectral_flux_grid.pkl -> {'iterations': 100, 'depth': 6, 'learning_rate': 0.1}
+cat_steg_spectral_flux_random.pkl -> {'iterations': 300, 'depth': 6, 'learning_rate': 0.1, 'l2_leaf_reg': 3}

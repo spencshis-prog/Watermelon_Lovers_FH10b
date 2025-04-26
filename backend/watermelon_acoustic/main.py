@@ -46,12 +46,12 @@ K_FOLDS = 5  # n_splits KFold param
 CV_FOLDS = 3  # cv=n Regressor param
 
 # Pipeline Configuration
-PREPROCESS = True
+PREPROCESS = False
 LINEAR_REGRESSION = False
 RANDOM_FOREST = False
 EXTRA_TREES = False
 LIGHTGBM = False
-CATBOOST = True  # run tests
+CATBOOST = False  # run tests
 XGBOOST = True
 
 MULTILAYER_PERCEPTRON = False
@@ -190,7 +190,7 @@ def instantiate_pipelines():
         model_tag="xgb", model_cls=XGBRegressor(random_state=42, eval_metric='rmse', verbosity=0),
         # primer_functions=[primers.log_transform, primers.standard_scale_fit],
         inner_folds=CV_FOLDS, outer_folds=K_FOLDS, early_stopping_rounds=10, eval_set_split=0.1,
-        ht_options=["default", "grid", "random", "bayesian"],
+        ht_options=["default", "random", "bayesian"],
         params_grid=params.xgb_grid,
         params_random=params.xgb_random,
         params_bayesian=params.xgb_bayesian,

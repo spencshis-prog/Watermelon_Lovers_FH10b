@@ -156,7 +156,7 @@ def extract_features(input_dir, output_base_dir):
         # "rms": ef_rms,  # awful performance qilin
         # "chroma": ef_chroma,  # poor performance qilin
         "log_mel_spec": ef_log_mel_spectrogram,  # untested
-        "delta_mfcc": ef_delta_mfcc,  # good performance typically only w steg
+        # "delta_mfcc": ef_delta_mfcc,  # good performance typically only w steg
         # "spectral_contrast": ef_spectral_contrast,  # poor performance qilin
         # "percussive_mfcc": ef_percussive_mfcc,  # untested
         "spectral_flux": ef_spectral_flux,  # poor performance qilin

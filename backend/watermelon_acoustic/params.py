@@ -63,23 +63,24 @@ xgb_grid = {
 }
 
 xgb_random = {
-    'n_estimators': [50, 100, 200, 300],
-    'max_depth': [3, 6, 10, 12],
-    'learning_rate': [0.001, 0.01, 0.1],
-    'gamma': [0, 0.1, 0.5],  # determines best regularization parameter
-    'reg_alpha': [0, 0.1, 1.0],  # determines best l1 parameter
-    'reg_lambda': [1, 1.5, 2.0],  # determines best l2 parameter
-    'subsample': [0.6, 0.8, 1.0]
+    'n_estimators':    [80, 100, 120, 160, 200],
+    'max_depth':       [2, 3, 4, 5],
+    'learning_rate':   [0.005, 0.01, 0.02, 0.05, 0.1],
+    'gamma':           [0.25, 0.5, 0.75, 1.0],
+    'reg_alpha':       [0.01, 0.1, 0.5, 1.0, 2.0],
+    'reg_lambda':      [1.0, 1.5, 2.0, 2.5],
+    'subsample':       [0.4, 0.5, 0.6, 0.7],
 }
 
+# Bayesian ranges (continuous where sensible, log-uniform for learning rate)
 xgb_bayesian = {
-    'n_estimators': (50, 300),
-    'max_depth': (3, 12),
-    'learning_rate': (1e-3, 1e-1, 'log-uniform'),
-    'gamma': (0, 0.5),  # continuous between 0 and 0.5
-    'reg_alpha': (0, 1.0),
-    'reg_lambda': (1, 2.0),
-    'subsample': (0.6, 1.0, 'uniform')
+    'n_estimators':    (80, 200),
+    'max_depth':       (2, 5),
+    'learning_rate':   (5e-3, 1e-1, 'log-uniform'),
+    'gamma':           (0.25, 1.0),
+    'reg_alpha':       (0.01, 2.0),
+    'reg_lambda':      (1.0, 2.5),
+    'subsample':       (0.4, 0.7,   'uniform'),
 }
 
 xgb_optuna = {
