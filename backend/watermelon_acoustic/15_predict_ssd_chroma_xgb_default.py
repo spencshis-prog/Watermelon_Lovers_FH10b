@@ -30,7 +30,7 @@ def standardize(input_path, target_duration_ms=1000, target_sample_rate=16000, t
 
 
 # --- Step 2: Noise Reduction ---
-def noise_reduce(audio: AudioSegment, frame_length=2048, hop_length=512, noise_frames_percent=0.1) -> AudioSegment:
+def noise_reduce(audio: AudioSegment, frame_length=2048, hop_length=512, noise_frames_percent=0.1):
     """
     Computes the STFT of the input audio and identifies a fraction
     of the frames (determined by noise_frames_percent) with the lowest energy.
@@ -81,9 +81,15 @@ def extract_features(audio, sr=16000):
     Computes chroma features using the Short-Time Fourier Transform (STFT).
     Returns the mean chroma vector over time as a 12-dimensional feature vector.
     """
-    chroma = librosa.feature.chroma_stft(y=audio, sr=sr)
+    samples = np.array(audio.get_array_of_samples())
+
+    # PyDub typically stores 16-bit PCM
+    if audio.sample_width == 2:
+        samples = samples.astype(np.float32) / 32768.0  # scale to [-1, 1] float range
+
+    chroma = librosa.feature.chroma_stft(y=samples, sr=sr)
     chroma_mean = np.mean(chroma, axis=1)
-    return chroma_mean
+    return chroma_mean.reshape(1, -1)  # important: reshape to (1, 12) for sklearn
 
 
 # --- Step 5: Feature Generation (Transformation) ---
@@ -149,7 +155,7 @@ def predict_brix(input_wav_path, model_pkl_path):
 
 if __name__ == "__main__":
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    input_wav = os.path.join(base_dir, "sample.wav")  # replace w the actual .wav file
+    input_wav = os.path.join(base_dir, "input", "wav_lab", "1b_10.15_1.wav")  # replace w the actual .wav file
     model_path = os.path.join(base_dir, "15_model_ssd_chroma_xgb_default.pkl")  # replace w the actual .pkl file
 
     try:
